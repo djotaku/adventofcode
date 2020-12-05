@@ -27,8 +27,14 @@ def find_highest_seat_id(seats):
     return sorted_seats[-1]
 
 
+def find_missing_seat(seat_ids, lower_seat, upper_seat):
+    taken_seats = set(seat_ids)
+    all_seats = set(range(lower_seat, upper_seat))
+    return all_seats - taken_seats
+
+
 if __name__ == "__main__":
     with open("input", 'r') as file:
         tickets = file.readlines()
         seat_ids = [find_seat_id(find_row_column(ticket)) for ticket in tickets]
-        print(find_highest_seat_id(seat_ids))
+        print(find_missing_seat(seat_ids, 85, 890))
