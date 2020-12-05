@@ -24,4 +24,4 @@ So, decoding FBFBBFFRLR reveals that it is the seat at row 44, column 5.
 
 # Problem 2
 
-d
+Find the missing number.
