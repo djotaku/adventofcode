@@ -21,13 +21,24 @@ def create_chars(string):
 
 def yes_count(list_of_entries):
     if len(list_of_entries) == 1:
-        a_list = []
-        for char in list_of_entries[0]:
-            if char != '\n':
-                a_list.append(char)
-        return len(a_list)
+        return len(create_chars(list_of_entries[0]))
     else:
-        pass
+        set_of_entries = set()
+        count = 0
+        for item in list_of_entries:
+            print(f'{set_of_entries=}')
+            characters = create_chars(item)
+            print(f'{characters=}')
+            for character in characters:
+                if count == 0:
+                    set_of_entries = {character}
+                    count += 1
+                else:
+                    set_of_entries = set_of_entries & {character}
+                    count += 1
+        print(set_of_entries)
+        return len(set_of_entries)
+
     set_of_answers = set()
     for item in list_of_entries:
         for char in item:
