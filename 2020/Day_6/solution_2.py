@@ -36,6 +36,7 @@ def yes_count(list_of_entries):
                 count += 1
             else:
                 set_of_entries = set_of_entries & temp_set_of_entries
+                temp_set_of_entries.clear()
                 count += 1
         return len(set_of_entries)
 
