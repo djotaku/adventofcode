@@ -24,27 +24,20 @@ def yes_count(list_of_entries):
         return len(create_chars(list_of_entries[0]))
     else:
         set_of_entries = set()
+        temp_set_of_entries = set()
         count = 0
         for item in list_of_entries:
-            print(f'{set_of_entries=}')
             characters = create_chars(item)
-            print(f'{characters=}')
             for character in characters:
-                if count == 0:
-                    set_of_entries = {character}
-                    count += 1
-                else:
-                    set_of_entries = set_of_entries & {character}
-                    count += 1
-        print(set_of_entries)
+                temp_set_of_entries.add(character)
+            if count == 0:
+                set_of_entries = temp_set_of_entries.copy()
+                temp_set_of_entries.clear()
+                count += 1
+            else:
+                set_of_entries = set_of_entries & temp_set_of_entries
+                count += 1
         return len(set_of_entries)
-
-    set_of_answers = set()
-    for item in list_of_entries:
-        for char in item:
-            if char != '\n':
-                set_of_answers.add(char)
-    return len(set_of_answers)
 
 
 def sum_of_counts(list_of_counts):
