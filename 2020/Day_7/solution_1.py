@@ -42,16 +42,18 @@ def find_adjective_color(bag):
 
 
 def recursive_count(list_of_bags):
-    print(len(list_of_bags))
+    total = 0
+    print(f'{len(list_of_bags)=}')
     for bag in list_of_bags:
         if len(bag.list_of_parent_bags) == 0:
-            return 1
+            print(f'{total=}')
         else:
-            return recursive_count(bag.list_of_parent_bags)
+            total += 1 + recursive_count(bag.list_of_parent_bags)
+    return total
 
 
 if __name__ == "__main__":
-    with open('input', 'r') as file:
+    with open('ref_input', 'r') as file:
         bag_rules = file.readlines()
         all_bags = []
         for bag in bag_rules:
@@ -70,6 +72,13 @@ if __name__ == "__main__":
                         if already_bag == inner_bag:
                             already_bag.add_parent_bag(outer_bag)
         master_bags = 0
+        # for debugging
+        for bag in all_bags:
+            print(f'{bag.name=}')
+            for parents in bag.list_of_parent_bags:
+                print(f'{parents.name=}')
+            print('----------------\n')
+        # end debugging
         for bag in all_bags:
             if bag.name == "shiny gold":
                 master_bags = master_bags + len(bag.list_of_parent_bags)
