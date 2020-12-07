@@ -70,6 +70,7 @@ if __name__ == "__main__":
                 else:
                     for already_bag in all_bags:
                         if already_bag == inner_bag:
+                            print("My code isn't getting here")
                             already_bag.add_parent_bag(outer_bag)
         master_bags = 0
         # for debugging
