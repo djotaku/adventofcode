@@ -18,7 +18,9 @@ def test_find_adjective_color():
 
 
 def test_create_bag():
-    test_bag_1 = solution_1.Bag([['light', 'red']], None, [[['bright', 'white']], [['muted', 'yellow']]])
+    test_bag_1 = solution_1.Bag([['light', 'red']], None, None)
     assert test_bag_1.name == 'light red'
     assert test_bag_1.list_of_parent_bags == []
-    assert test_bag_1.list_of_child_bags == ['bright white', 'muted yellow']
+    test_bag_2 = solution_1.Bag([['bright', 'white']], test_bag_1, None)
+    test_bag_3 = solution_1.Bag([['muted', 'yellow']], test_bag_1, None)
+    assert test_bag_1.list_of_child_bags == [test_bag_2, test_bag_3]
