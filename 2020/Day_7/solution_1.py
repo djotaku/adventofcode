@@ -41,14 +41,14 @@ def find_adjective_color(bag):
             if word == "bag" or word == "bags"]
 
 
-def recursive_count(list_of_bags, current_bag):
+def recursive_count(list_of_bags, accumulation):
+    print(len(list_of_bags))
     for bag in list_of_bags:
-            if bag.name == current_bag:
-                if len(bag.list_of_parent_bags) != 0:
-                    return len(bag.list_of_parent_bags) + recursive_count(list_of_bags, bag)
-                else:
-                    return len(bag.list_of_parent_bags)
-
+        if len(bag.list_of_parent_bags) == 0:
+            return accumulation
+        else:
+            accumulation = accumulation + 1
+            return recursive_count(bag.list_of_parent_bags, accumulation)
 
 
 if __name__ == "__main__":
@@ -66,17 +66,17 @@ if __name__ == "__main__":
                 inner_bag = Bag(a_bag, outer_bag, None)
                 if inner_bag not in all_bags:
                     all_bags.append(inner_bag)
-#                else:
-#                    for already_bag in all_bags:
-#                        if already_bag == inner_bag:
-#                            already_bag.add_parent_bag(outer_bag_name)
-#        master_bags = 0
-#        for bag in all_bags:
-#            if bag.name == "shiny gold":
-#                master_bags = master_bags + len(bag.list_of_parent_bags)
-#                for outer_bag in bag.list_of_parent_bags:
-#                    master_bags = master_bags + recursive_count(all_bags, outer_bag)
-#        print(master_bags)
+                else:
+                    for already_bag in all_bags:
+                        if already_bag == inner_bag:
+                            already_bag.add_parent_bag(outer_bag)
+        master_bags = 0
+        for bag in all_bags:
+            if bag.name == "shiny gold":
+                master_bags = master_bags + len(bag.list_of_parent_bags)
+                master_bags = master_bags + recursive_count(bag.list_of_parent_bags, 0)
+
+        print(f'{master_bags=}')
 
 # 15 is not answer
 # 11 is not answer
