@@ -52,12 +52,12 @@ def recursive_count(list_of_bags):
             total += 1
         else:
             print("I have parents")
-            total = recursive_count(bag.list_of_parent_bags)
+            total += recursive_count(bag.list_of_parent_bags)
     return total
 
 
 if __name__ == "__main__":
-    with open('ref_input', 'r') as file:
+    with open('input', 'r') as file:
         bag_rules = file.readlines()
         all_bags = []
         for bag in bag_rules:
