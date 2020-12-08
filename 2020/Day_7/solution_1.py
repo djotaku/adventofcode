@@ -45,19 +45,20 @@ def find_adjective_color(bag):
 
 
 def recursive_count(list_of_bags):
-    total = 0
+    ancestors = set()
     for bag in list_of_bags:
-        print(f'{bag.name}')
         if len(bag.list_of_parent_bags) == 0:
-            total += 1
+            return ancestors
         else:
-            print("I have parents")
-            total += recursive_count(bag.list_of_parent_bags)
-    return total
+            for parent in bag.list_of_parent_bags:
+                ancestors.add(parent.name)
+            return recursive_count(bag.list_of_parent_bags)
+    print(ancestors)
+    return ancestors
 
 
 if __name__ == "__main__":
-    with open('input', 'r') as file:
+    with open('ref_input', 'r') as file:
         bag_rules = file.readlines()
         all_bags = []
         for bag in bag_rules:
@@ -86,22 +87,25 @@ if __name__ == "__main__":
                                 for already_bag in all_bags:
                                     if already_bag == inner_bag:
                                         already_bag.add_parent_bag(already_extant_outer_bag)
-        master_bags = 0
         # for debugging
         for bag in all_bags:
             print(f'{bag.name=}')
             for parents in bag.list_of_parent_bags:
                 print(f'{parents.name=}')
+                for grandparent in parents.list_of_parent_bags:
+                    print(f'{grandparent.name=}')
             print('----------------\n')
         # end debugging
+        ancestors = set()
         for bag in all_bags:
             if bag.name == "shiny gold":
-                master_bags = master_bags + len(bag.list_of_parent_bags)
-                master_bags = master_bags + recursive_count(bag.list_of_parent_bags)
+                ancestors = recursive_count(bag.list_of_parent_bags)
 
-        print(f'{master_bags=}')
+        print(f'{ancestors}')
+        print(f'{len(ancestors)=}')
 
 
+# 12 is not answer
 # 9 is not answer
 # 147 is not answer
 # 20 is not answer
