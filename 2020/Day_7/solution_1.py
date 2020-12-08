@@ -1,6 +1,6 @@
 class Bag:
     def __init__(self, name, parent, children):
-        self.name = self.name(name)
+        self.name = self.create_name(name)
         self.list_of_parent_bags = []
         if parent is not None:
             self.add_parent_bag(parent)
@@ -9,9 +9,9 @@ class Bag:
             for child in children:
                 self.add_child_bag(child)
 
-    def name(self, name):
+    def create_name(self, name):
         if name != []:
-            return f'{name[0][0]} {name[0][1]}'
+            return f'{name[0]} {name[1]}'
 
     def add_parent_bag(self, parent):
         if parent not in self.list_of_parent_bags:
@@ -25,6 +25,9 @@ class Bag:
     def __eq__(self, other):
         return self.name == other.name
 
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
 
 def split_outer_inner_bags(bag_rule):
     return bag_rule.split('contain')
@@ -35,10 +38,14 @@ def split_inner_bags(inner_bags):
 
 
 def find_adjective_color(bag):
+    print(f'{bag=}')
     bag_list = bag.split()
-    return [[bag_list[position - 2], bag_list[position - 1]]
-            for position, word in enumerate(bag_list)
-            if word == "bag" or word == "bags"]
+    print(bag_list)
+    for position, word in enumerate(bag_list):
+        if word == "bag" or word == "bags" or word == "bags." or word == "bag.":
+            print(f'{word=}')
+            print(bag_list[position - 2], bag_list[position - 1])
+            return [bag_list[position - 2], bag_list[position - 1]]
 
 
 def recursive_count(list_of_bags):
@@ -58,8 +65,8 @@ if __name__ == "__main__":
         all_bags = []
         for bag in bag_rules:
             outer_bag_name = find_adjective_color(split_outer_inner_bags(bag)[0])
-            inner_bags_names = [find_adjective_color(inner_bag) for inner_bag in split_inner_bags(split_outer_inner_bags(bag)[1])]
-            inner_bags_names.remove([])
+            inner_bags_names = [find_adjective_color(inner_bag)
+                                for inner_bag in split_inner_bags(split_outer_inner_bags(bag)[1])]
             outer_bag = Bag(outer_bag_name, None, None)
             if outer_bag not in all_bags:
                 all_bags.append(outer_bag)
