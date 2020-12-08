@@ -38,24 +38,21 @@ def split_inner_bags(inner_bags):
 
 
 def find_adjective_color(bag):
-    print(f'{bag=}')
     bag_list = bag.split()
-    print(bag_list)
     for position, word in enumerate(bag_list):
         if word == "bag" or word == "bags" or word == "bags." or word == "bag.":
-            print(f'{word=}')
-            print(bag_list[position - 2], bag_list[position - 1])
             return [bag_list[position - 2], bag_list[position - 1]]
 
 
 def recursive_count(list_of_bags):
     total = 0
-    print(f'{len(list_of_bags)=}')
     for bag in list_of_bags:
+        print(f'{bag.name}')
         if len(bag.list_of_parent_bags) == 0:
-            print(f'{total=}')
+            total += 1
         else:
-            total += 1 + recursive_count(bag.list_of_parent_bags)
+            print("I have parents")
+            total = recursive_count(bag.list_of_parent_bags)
     return total
 
 
@@ -70,15 +67,25 @@ if __name__ == "__main__":
             outer_bag = Bag(outer_bag_name, None, None)
             if outer_bag not in all_bags:
                 all_bags.append(outer_bag)
-            for a_bag in inner_bags_names:
-                inner_bag = Bag(a_bag, outer_bag, None)
-                if inner_bag not in all_bags:
-                    all_bags.append(inner_bag)
-                else:
-                    for already_bag in all_bags:
-                        if already_bag == inner_bag:
-                            print("My code isn't getting here")
-                            already_bag.add_parent_bag(outer_bag)
+                for a_bag in inner_bags_names:
+                    inner_bag = Bag(a_bag, outer_bag, None)
+                    if inner_bag not in all_bags:
+                        all_bags.append(inner_bag)
+                    else:
+                        for already_bag in all_bags:
+                            if already_bag == inner_bag:
+                                already_bag.add_parent_bag(outer_bag)
+            else:
+                for already_extant_outer_bag in all_bags:
+                    if already_extant_outer_bag == outer_bag:
+                        for a_bag in inner_bags_names:
+                            inner_bag = Bag(a_bag, already_extant_outer_bag, None)
+                            if inner_bag not in all_bags:
+                                all_bags.append(inner_bag)
+                            else:
+                                for already_bag in all_bags:
+                                    if already_bag == inner_bag:
+                                        already_bag.add_parent_bag(already_extant_outer_bag)
         master_bags = 0
         # for debugging
         for bag in all_bags:
@@ -94,5 +101,9 @@ if __name__ == "__main__":
 
         print(f'{master_bags=}')
 
+
+# 9 is not answer
+# 147 is not answer
+# 20 is not answer
 # 15 is not answer
 # 11 is not answer
