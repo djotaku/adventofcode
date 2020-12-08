@@ -45,20 +45,20 @@ def find_adjective_color(bag):
 
 
 def recursive_count(list_of_bags):
-    ancestors = set()
+    ancestors = []
     for bag in list_of_bags:
+        print(f'{bag.name=}')
         if len(bag.list_of_parent_bags) == 0:
-            return ancestors
+            ancestors.append(bag.name)
         else:
-            for parent in bag.list_of_parent_bags:
-                ancestors.add(parent.name)
-            return recursive_count(bag.list_of_parent_bags)
-    print(ancestors)
+            ancestors.append(bag.name)
+            ancestors += recursive_count(bag.list_of_parent_bags)
+
     return ancestors
 
 
 if __name__ == "__main__":
-    with open('ref_input', 'r') as file:
+    with open('input', 'r') as file:
         bag_rules = file.readlines()
         all_bags = []
         for bag in bag_rules:
@@ -102,7 +102,8 @@ if __name__ == "__main__":
                 ancestors = recursive_count(bag.list_of_parent_bags)
 
         print(f'{ancestors}')
-        print(f'{len(ancestors)=}')
+        ancestors_set = set(ancestors)
+        print(f'{len(ancestors_set)=}')
 
 
 # 12 is not answer
