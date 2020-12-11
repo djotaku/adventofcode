@@ -22,92 +22,92 @@ def check_neighbors(tiles, coordinates):
     if seat_status == "L":
         # check left neighbor
         # first make sure not going to go out of bounds
-        if coordinates[0] != 0:
-            if tiles[coordinates[0]-1][coordinates[1]] == '#':
+        if coordinates[1] != 0:
+            if tiles[coordinates[1]-1][coordinates[0]] == '#':
                 return False
         # check top-left neighbor
-        if coordinates[0] != 0 and coordinates[1] != 0:
-            if tiles[coordinates[0]-1][coordinates[1]-1] == '#':
+        if coordinates[1] != 0 and coordinates[0] != 0:
+            if tiles[coordinates[1]-1][coordinates[0]-1] == '#':
                 return False
         # check top neighbor
         # first make sure not going to go out of bounds
-        if coordinates[1] != 0:
-            if tiles[coordinates[0]][coordinates[1]-1] == '#':
+        if coordinates[0] != 0:
+            if tiles[coordinates[1]][coordinates[0]-1] == '#':
                 return False
         # check top-right neighbor
         # first make sure not going to go out of bounds
-        if coordinates[0] != len(tiles[0]) - 1 and coordinates[1] != 0:
+        if coordinates[1] != len(tiles[0]) - 1 and coordinates[0] != 0:
             if tiles[coordinates[0]+1][coordinates[1]-1] == '#':
                 return False
         # check right neighbor
         # first make sure not going to go out of bounds
-        if coordinates[0] != len(tiles[0]) - 1:
-            if tiles[coordinates[0]+1][coordinates[1]] == '#':
+        if coordinates[1] != len(tiles[0]) - 1:
+            if tiles[coordinates[1]+1][coordinates[0]] == '#':
                 return False
         # check bottom-right neighbor
-        if coordinates[0] != len(tiles[0]) - 1 and coordinates[1] != len(tiles):
-            if tiles[coordinates[0]+1][coordinates[1]+1] == '#':
+        if coordinates[1] != len(tiles[0]) - 1 and coordinates[0] != len(tiles):
+            if tiles[coordinates[1]+1][coordinates[0]+1] == '#':
                 return False
         # check bottom neighbor
-        if coordinates[1] != len(tiles):
-            if tiles[coordinates[0]][coordinates[1]+1] == '#':
+        if coordinates[0] != len(tiles):
+            if tiles[coordinates[1]][coordinates[0]+1] == '#':
                 return False
         # check bottom-left neighbor
-        if coordinates[0] != 0 and coordinates[1] != len(tiles):
-            if tiles[coordinates[0]-1][coordinates[1] + 1] == '#':
+        if coordinates[1] != 0 and coordinates[0] != len(tiles):
+            if tiles[coordinates[1]-1][coordinates[0] + 1] == '#':
                 return False
         return True
     elif seat_status == "#":
         occupied_neighbors = 0
         # check left neighbor
         # first make sure not going to go out of bounds
-        if coordinates[0] != 0:
-            if tiles[coordinates[0] - 1][coordinates[1]] == 'L':
+        if coordinates[1] != 0:
+            if tiles[coordinates[1] - 1][coordinates[0]] == 'L':
                 occupied_neighbors += 1
                 if occupied_neighbors == 4:
                     return True
         # check top-left neighbor
-        if coordinates[0] != 0 and coordinates[1] != 0:
-            if tiles[coordinates[0] - 1][coordinates[1] - 1] == 'L':
+        if coordinates[1] != 0 and coordinates[0] != 0:
+            if tiles[coordinates[1] - 1][coordinates[0] - 1] == 'L':
                 occupied_neighbors += 1
                 if occupied_neighbors == 4:
                     return True
         # check top neighbor
         # first make sure not going to go out of bounds
-        if coordinates[1] != 0:
-            if tiles[coordinates[0]][coordinates[1] - 1] == 'L':
+        if coordinates[0] != 0:
+            if tiles[coordinates[1]][coordinates[0] - 1] == 'L':
                 occupied_neighbors += 1
                 if occupied_neighbors == 4:
                     return True
         # check top-right neighbor
         # first make sure not going to go out of bounds
-        if coordinates[0] != len(tiles[0]) - 1 and coordinates[1] != 0:
-            if tiles[coordinates[0] + 1][coordinates[1] - 1] == 'L':
+        if coordinates[1] != len(tiles[0]) - 1 and coordinates[0] != 0:
+            if tiles[coordinates[1] + 1][coordinates[0] - 1] == 'L':
                 occupied_neighbors += 1
                 if occupied_neighbors == 4:
                     return True
         # check right neighbor
         # first make sure not going to go out of bounds
-        if coordinates[0] != len(tiles[0]) - 1:
-            if tiles[coordinates[0] + 1][coordinates[1]] == 'L':
+        if coordinates[1] != len(tiles[0]) - 1:
+            if tiles[coordinates[1] + 1][coordinates[0]] == 'L':
                 occupied_neighbors += 1
                 if occupied_neighbors == 4:
                     return True
         # check bottom-right neighbor
-        if coordinates[0] != len(tiles[0]) - 1 and coordinates[1] != len(tiles):
-            if tiles[coordinates[0] + 1][coordinates[1] + 1] == 'L':
+        if coordinates[1] != len(tiles[0]) - 1 and coordinates[0] != len(tiles):
+            if tiles[coordinates[1] + 1][coordinates[0] + 1] == 'L':
                 occupied_neighbors += 1
                 if occupied_neighbors == 4:
                     return True
         # check bottom neighbor
         if coordinates[1] != len(tiles):
-            if tiles[coordinates[0]][coordinates[1] + 1] == 'L':
+            if tiles[coordinates[1]][coordinates[0] + 1] == 'L':
                 occupied_neighbors += 1
                 if occupied_neighbors == 4:
                     return True
         # check bottom-left neighbor
-        if coordinates[0] != 0 and coordinates[1] != len(tiles):
-            if tiles[coordinates[0] - 1][coordinates[1] + 1] == 'L':
+        if coordinates[1] != 0 and coordinates[0] != len(tiles):
+            if tiles[coordinates[1] - 1][coordinates[0] + 1] == 'L':
                 occupied_neighbors += 1
                 if occupied_neighbors == 4:
                     return True

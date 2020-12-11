@@ -21,7 +21,7 @@ def test_check_neighbors():
              ['.','.','L','.','L', '.','.','.','.','.'],['L','L','L','L','L','L','L','L','L','L'],
              ['L','.','L','L','L','L','L','L','.','L'], ['L','.','L','L','L','L','L','.','L','L']]
     assert solution_1.check_neighbors(tiles, (0, 0)) is True
-    assert solution_1.check_neighbors(tiles, (0, 1)) is False
+    assert solution_1.check_neighbors(tiles, (1, 0)) is False
 
 
 #def test_apply_seating_rules():
