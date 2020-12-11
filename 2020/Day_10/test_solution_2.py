@@ -13,3 +13,5 @@ def test_check_combinations():
 def test_adapter_combinations():
     joltage_list = solution_2.import_joltages('ref_input_1')
     assert solution_2.adapter_combinations(joltage_list, 0) == 8
+    joltage_list = solution_2.import_joltages('ref_input_2')
+    assert solution_2.adapter_combinations(joltage_list, 0) == 19208

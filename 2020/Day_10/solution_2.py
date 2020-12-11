@@ -31,5 +31,6 @@ def adapter_combinations(jolt_list, pop_index):
 
 
 if __name__ == "__main__":
-    answer = 0
-    print(f"And the answer is {answer}")
+    joltage_list = import_joltages('input')
+    combo_number = adapter_combinations(joltage_list, 0)
+    print(f"And the answer is {combo_number}")
