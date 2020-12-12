@@ -28,6 +28,7 @@ def move_boat(directions):
     for direction in directions:
         print(f'{north_south}')
         print(f'{east_west}')
+        print(f'{boat_orientation}')
         print('------------------')
         if direction[0] == 'F':
             if boat_orientation == 'east':
@@ -45,9 +46,9 @@ def move_boat(directions):
         elif direction[0] == 'S':
             north_south -= direction[1]
         elif direction[0] == 'E':
-            north_south += direction[1]
+            east_west += direction[1]
         elif direction[0] == 'W':
-            north_south -= direction[1]
+            east_west -= direction[1]
     return abs(north_south) + abs(east_west)
 
 
