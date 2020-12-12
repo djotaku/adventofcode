@@ -1,3 +1,5 @@
+from functools import lru_cache
+
 def import_joltages(input_file):
     with open(input_file, 'r') as file:
         return [int(line) for line in file.readlines()]
@@ -14,6 +16,7 @@ def check_combinations(list_of_adapters):
     return True
 
 
+#@lru_cache()
 def adapter_combinations(jolt_list, pop_index):
     sorted_jolt_list = sorted(jolt_list)
     combinations = 1  # assume at least one combination works

@@ -24,7 +24,7 @@ def test_check_neighbors():
     assert solution_1.check_neighbors(tiles, (1, 0)) is False
 
 
-#def test_apply_seating_rules():
-#    tile_set = solution_1.create_tile_set('ref_input')
-#    assert solution_1.apply_seating_rules(tile_set) == ['#.##.##.##', '#######.##', '#.#.#..#..', '####.##.##', '#.##.##.##',
-#                                              '#.#####.##', '..#.#.....', '##########', '#.######.#', '#.#####.##']
+def test_apply_seating_rules():
+    tile_set = solution_1.create_tile_set('ref_input')
+    assert solution_1.apply_seating_rules(tile_set) == ['#.##.##.##', '#######.##', '#.#.#..#..', '####.##.##', '#.##.##.##',
+                                              '#.#####.##', '..#.#.....', '##########', '#.######.#', '#.#####.##']
