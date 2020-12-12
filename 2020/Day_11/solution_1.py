@@ -1,6 +1,8 @@
-# NOTE FOR Working on this tomorrow: to alleviate the headache of what you're doing here, isntead of using coordinate[0]
+# NOTE FOR Working on this tomorrow: In the check neighbors code: to alleviate the headache of what you're doing here, isntead of using coordinate[0]
 # and coordinate[1], just have it come in as 2 values: main_list and sub_list so that maybe it will confuse you less
-# and you can have an easier time debugging
+# and you can have an easier time debugging. Also, maybe add a field for L or # so that you're not repeating the same
+# code twice.
+
 
 def create_tile_set(input_file):
     with open(input_file, 'r') as file:
