@@ -1,3 +1,5 @@
+import copy
+
 def create_tile_set(input_file):
     with open(input_file, 'r') as file:
         initial_import = [row.rstrip() for row in file.readlines()]
@@ -120,7 +122,7 @@ def check_neighbors(tiles, main_list, sub_list):
 
 
 def apply_seating_rules(tile_set):
-    transformed_tile_set = tile_set.copy()
+    transformed_tile_set = copy.deepcopy(tile_set)
     main_list = 0
     sub_list = 0
     while True:
@@ -137,8 +139,28 @@ def apply_seating_rules(tile_set):
         if main_list == len(tile_set):
             break
     print(*tile_set)
+    print(*transformed_tile_set)
     return transformed_tile_set
 
 
+def find_stability(original_tile_set):
+    new_tile_set = apply_seating_rules(original_tile_set)
+    if new_tile_set != original_tile_set:
+        return find_stability(new_tile_set)
+    elif new_tile_set == original_tile_set:
+        return new_tile_set
+
+
+def occupied_seats_count(final_seating):
+    filled_seats = 0
+    for row in final_seating:
+        for column in row:
+            if column == '#':
+                filled_seats += 1
+    return filled_seats
+
+
 if __name__ == "__main__":
-    pass
+    original_seating = create_tile_set('input')
+    final_seating = find_stability(original_seating)
+    print(f"Filled seats: {occupied_seats_count(final_seating)}")

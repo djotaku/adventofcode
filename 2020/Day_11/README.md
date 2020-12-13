@@ -25,3 +25,6 @@ Eventually the chaos stabilizes and further applications of these rules cause no
 Applying the seating rules repeatedly until no seats change state. How many seats end up occupied?
 
 # Part 2
+
+instead of considering just the eight immediately adjacent seats, consider the first seat in each of those eight directions
+
