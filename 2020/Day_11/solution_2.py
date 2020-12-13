@@ -22,6 +22,7 @@ def check_neighbors(tiles, main_list, sub_list):
     """
     # Am I empty or filled?
     seat_status = tiles[main_list][sub_list]  # had to swap so that it goes X,Y like I thought it would
+    print('------------')
     print(f'{seat_status=}')
     print(f'{main_list},{sub_list}')
 
@@ -102,9 +103,11 @@ def check_neighbors(tiles, main_list, sub_list):
             sub_list_index = sub_list
             while sub_list_index > 0:
                 if tiles[main_list][sub_list_index - 1] == '#':
+                    print("left")
                     occupied_neighbors += 1
                     if occupied_neighbors == 5:
                         return True
+                    break
                 sub_list_index -= 1
         # check top-left neighbor
         if main_list != 0 and sub_list != 0:
@@ -112,9 +115,11 @@ def check_neighbors(tiles, main_list, sub_list):
             sub_list_index = sub_list
             while main_list_index > 0 and sub_list_index > 0:
                 if tiles[main_list_index - 1][sub_list_index - 1] == '#':
+                    print("top-left")
                     occupied_neighbors += 1
                     if occupied_neighbors == 5:
                         return True
+                    break
                 main_list_index -= 1
                 sub_list_index -= 1
         # check top neighbor
@@ -123,9 +128,11 @@ def check_neighbors(tiles, main_list, sub_list):
             main_list_index = main_list
             while main_list_index > 0:
                 if tiles[main_list_index - 1][sub_list] == '#':
+                    print("top")
                     occupied_neighbors += 1
                     if occupied_neighbors == 5:
                         return True
+                    break
                 main_list_index -= 1
         # check top-right neighbor
         # first make sure not going to go out of bounds
@@ -134,9 +141,11 @@ def check_neighbors(tiles, main_list, sub_list):
             sub_list_index = sub_list
             while main_list_index > 0 and sub_list_index < len(tiles[sub_list_index])-1:
                 if tiles[main_list_index - 1][sub_list_index + 1] == '#':
+                    print('top-right')
                     occupied_neighbors += 1
                     if occupied_neighbors == 5:
                         return True
+                    break
                 main_list_index -= 1
                 sub_list_index += 1
         # check right neighbor
@@ -145,9 +154,11 @@ def check_neighbors(tiles, main_list, sub_list):
             sub_list_index = sub_list
             while sub_list_index < len(tiles[sub_list_index]) - 1:
                 if tiles[main_list][sub_list_index + 1] == '#':
+                    print('right')
                     occupied_neighbors += 1
                     if occupied_neighbors == 5:
                         return True
+                    break
                 sub_list_index += 1
         # check bottom-right neighbor
         if main_list != len(tiles)-1 and sub_list != len(tiles[sub_list])-1:
@@ -155,9 +166,11 @@ def check_neighbors(tiles, main_list, sub_list):
             sub_list_index = sub_list
             while main_list_index < len(tiles) - 1 and sub_list_index < len(tiles[sub_list_index]) - 1:
                 if tiles[main_list_index + 1][sub_list_index + 1] == '#':
+                    print('bottom-right')
                     occupied_neighbors += 1
                     if occupied_neighbors == 5:
                         return True
+                    break
                 main_list_index += 1
                 sub_list_index += 1
         # check bottom neighbor
@@ -165,9 +178,11 @@ def check_neighbors(tiles, main_list, sub_list):
             main_list_index = main_list
             while main_list_index < len(tiles) - 1:
                 if tiles[main_list_index + 1][sub_list] == '#':
+                    print('bottom')
                     occupied_neighbors += 1
                     if occupied_neighbors == 5:
                         return True
+                    break
                 main_list_index += 1
         # check bottom-left neighbor
         if main_list != len(tiles) - 1 and sub_list != 0:
@@ -175,17 +190,21 @@ def check_neighbors(tiles, main_list, sub_list):
             sub_list_index = sub_list
             while main_list_index < len(tiles) - 1 and sub_list_index > 0:
                 if tiles[main_list_index + 1][sub_list_index - 1] == '#':
+                    print('bottom-left')
                     occupied_neighbors += 1
                     if occupied_neighbors == 5:
                         return True
+                    break
                 main_list_index += 1
                 sub_list_index -= 1
+        print(f'{occupied_neighbors=}')
         return False
     return False
 
 
 def apply_seating_rules(tile_set):
-    transformed_tile_set = copy.deepcopy(tile_set)
+    # transformed_tile_set = copy.deepcopy(tile_set)
+    transformed_tile_set = [x[:] for x in tile_set]
     main_list = 0
     sub_list = 0
     while True:
@@ -201,8 +220,8 @@ def apply_seating_rules(tile_set):
             sub_list += 1
         if main_list == len(tile_set):
             break
-    print(*tile_set)
-    print(*transformed_tile_set)
+    # print(*tile_set)
+    # print(*transformed_tile_set)
     return transformed_tile_set
 
 
@@ -227,3 +246,6 @@ if __name__ == "__main__":
     original_seating = create_tile_set('input')
     final_seating = find_stability(original_seating)
     print(f"Filled seats: {occupied_seats_count(final_seating)}")
+
+
+# 141 is too low

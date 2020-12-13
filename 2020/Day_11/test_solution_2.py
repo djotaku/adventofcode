@@ -1,8 +1,8 @@
-from . import solution_1
+from . import solution_2
 
 
 def test_create_tile_set():
-    assert solution_1.create_tile_set('ref_input') == [['L','.','L','L','.','L','L','.','L','L'],
+    assert solution_2.create_tile_set('ref_input') == [['L','.','L','L','.','L','L','.','L','L'],
                                                        ['L','L','L','L','L','L','L','.','L','L'],
                                                        ['L','.','L','.','L','.','.','L','.','.'],
                                                        ['L','L','L','L','.','L','L', '.', 'L', 'L'],
@@ -20,15 +20,14 @@ def test_check_neighbors():
              ['L','.','L','L','.','L','L','.','L','L'], ['L', '.', 'L','L','L','L','L','.','L','L'],
              ['.','.','L','.','L', '.','.','.','.','.'],['L','L','L','L','L','L','L','L','L','L'],
              ['L','.','L','L','L','L','L','L','.','L'], ['L','.','L','L','L','L','L','.','L','L']]
-    assert solution_1.check_neighbors(tiles, 0, 0) is True
-    assert solution_1.check_neighbors(tiles, 0, 1) is False
-    assert solution_1.check_neighbors(tiles, 0, 2) is True
-    assert solution_1.check_neighbors(tiles, 0, 3) is True
+    assert solution_2.check_neighbors(tiles, 0, 0) is True
+    assert solution_2.check_neighbors(tiles, 0, 1) is False
+    assert solution_2.check_neighbors(tiles, 0, 2) is True
+    assert solution_2.check_neighbors(tiles, 0, 3) is True
 
 
 def test_apply_seating_rules():
-    tile_set = solution_1.create_tile_set('ref_input')
-    assert solution_1.apply_seating_rules(tile_set) == [['#','.','#','#','.','#','#','.','#','#'],
+    tile_set =                                         [['#','.','#','#','.','#','#','.','#','#'],
                                                         ['#','#','#','#','#','#','#','.','#','#'],
                                                         ['#','.','#','.','#','.','.','#','.','.'],
                                                         ['#','#','#','#','.','#','#','.','#','#'],
@@ -38,6 +37,17 @@ def test_apply_seating_rules():
                                                         ['#','#','#','#','#','#','#','#','#','#'],
                                                         ['#','.','#','#','#','#','#','#','.','#'],
                                                         ['#','.','#','#','#','#','#','.','#','#']]
+
+    assert solution_2.apply_seating_rules(tile_set) == [['#','.','L','L','.','L','L','.','L','#'],
+                                                        ['#','L','L','L','L','L','L','.','L','L'],
+                                                        ['L','.','L','.','L','.','.','L','.','.'],
+                                                        ['L','L','L','L','.','L','L','.','L','L'],
+                                                        ['L','.','L','L','.','L','L','.','L','L'],
+                                                        ['L','.','L','L','L','L','L','.','L','L'],
+                                                        ['.','.','L','.','L','.','.','.','.','.'],
+                                                        ['L','L','L','L','L','L','L','L','L','#'],
+                                                        ['#','.','L','L','L','L','L','L','.','L'],
+                                                        ['#','.','L','L','L','L','L','.','L','#']]
 
 
 def test_find_stability():
@@ -66,4 +76,4 @@ def test_occupied_seats_count():
                                ['#','L','#','L','#','#','L','#','L','#'],
                                ['#','.','L','L','L','L','L','L','.','L'],
                                ['#','.','#','L','#','L','#','.','#','#']]
-    assert solution_1.occupied_seats_count(seats) == 37
+    assert solution_2.occupied_seats_count(seats) == 37
