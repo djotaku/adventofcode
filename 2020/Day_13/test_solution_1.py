@@ -8,3 +8,7 @@ def test_grab_timetable():
 def test_find_earliest_bus_id_timestamp():
     timetable = (939, [7, 13, 'x', 'x', 59, 'x', 31, 19])
     assert solution_1.find_earliest_bus_id_timestamp(timetable) == (59, 944)
+
+
+def test_answer_calculation():
+    assert solution_1.answer_calculation(939, (59,944)) == 295
