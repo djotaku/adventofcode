@@ -34,7 +34,10 @@ def check_neighbors(tiles, main_list, sub_list):
             sub_list_index = sub_list
             while sub_list_index > 0:
                 if tiles[main_list][sub_list_index - 1] == '#':
+                    print('left occupied')
                     return False
+                elif tiles[main_list][sub_list_index - 1] == 'L':
+                    break
                 sub_list_index -= 1
         # check top-left neighbor
         if main_list != 0 and sub_list != 0:
@@ -42,7 +45,10 @@ def check_neighbors(tiles, main_list, sub_list):
             sub_list_index = sub_list
             while main_list_index > 0 and sub_list_index > 0:
                 if tiles[main_list_index-1][sub_list_index-1] == '#':
+                    print('top-left occupied')
                     return False
+                elif tiles[main_list_index-1][sub_list_index-1] == 'L':
+                    break
                 main_list_index -= 1
                 sub_list_index -= 1
         # check top neighbor
@@ -51,7 +57,10 @@ def check_neighbors(tiles, main_list, sub_list):
             main_list_index = main_list
             while main_list_index > 0:
                 if tiles[main_list_index-1][sub_list] == '#':
+                    print('top occupied')
                     return False
+                elif tiles[main_list_index-1][sub_list] == 'L':
+                    break
                 main_list_index -= 1
         # check top-right neighbor
         # first make sure not going to go out of bounds
@@ -60,7 +69,10 @@ def check_neighbors(tiles, main_list, sub_list):
             sub_list_index = sub_list
             while main_list_index > 0 and sub_list_index < len(tiles[sub_list_index])-1:
                 if tiles[main_list_index-1][sub_list_index+1] == '#':
+                    print('top-right occupied')
                     return False
+                elif tiles[main_list_index-1][sub_list_index+1] == 'L':
+                    break
                 main_list_index -= 1
                 sub_list_index += 1
         # check right neighbor
@@ -69,7 +81,10 @@ def check_neighbors(tiles, main_list, sub_list):
             sub_list_index = sub_list
             while sub_list_index < len(tiles[sub_list_index]) - 1:
                 if tiles[main_list][sub_list_index+1] == '#':
+                    print('right occupied')
                     return False
+                elif tiles[main_list][sub_list_index+1] == 'L':
+                    break
                 sub_list_index += 1
         # check bottom-right neighbor
         if main_list != len(tiles)-1 and sub_list != len(tiles[sub_list])-1:
@@ -77,7 +92,10 @@ def check_neighbors(tiles, main_list, sub_list):
             sub_list_index = sub_list
             while main_list_index < len(tiles) - 1 and sub_list_index < len(tiles[sub_list_index]) - 1:
                 if tiles[main_list_index+1][sub_list_index+1] == '#':
+                    print('bottom-right neighbor')
                     return False
+                elif tiles[main_list_index+1][sub_list_index+1] == 'L':
+                    break
                 main_list_index += 1
                 sub_list_index += 1
         # check bottom neighbor
@@ -85,7 +103,10 @@ def check_neighbors(tiles, main_list, sub_list):
             main_list_index = main_list
             while main_list_index < len(tiles) - 1:
                 if tiles[main_list_index+1][sub_list] == '#':
+                    print('bottom occupied')
                     return False
+                elif tiles[main_list_index+1][sub_list] == 'L':
+                    break
                 main_list_index += 1
         # check bottom-left neighbor
         if main_list != len(tiles) - 1 and sub_list != 0:
@@ -93,7 +114,10 @@ def check_neighbors(tiles, main_list, sub_list):
             sub_list_index = sub_list
             while main_list_index < len(tiles) - 1 and sub_list_index > 0:
                 if tiles[main_list_index + 1][sub_list_index - 1] == '#':
+                    print('bottom-left occupied')
                     return False
+                elif tiles[main_list_index + 1][sub_list_index - 1] == 'L':
+                    break
                 main_list_index += 1
                 sub_list_index -= 1
         return True
@@ -108,6 +132,8 @@ def check_neighbors(tiles, main_list, sub_list):
                     if occupied_neighbors == 5:
                         return True
                     break
+                elif tiles[main_list][sub_list_index - 1] == 'L':
+                    break
                 sub_list_index -= 1
         # check top-left neighbor
         if main_list != 0 and sub_list != 0:
@@ -119,6 +145,8 @@ def check_neighbors(tiles, main_list, sub_list):
                     occupied_neighbors += 1
                     if occupied_neighbors == 5:
                         return True
+                    break
+                elif tiles[main_list_index - 1][sub_list_index - 1] == 'L':
                     break
                 main_list_index -= 1
                 sub_list_index -= 1
@@ -133,6 +161,8 @@ def check_neighbors(tiles, main_list, sub_list):
                     if occupied_neighbors == 5:
                         return True
                     break
+                elif tiles[main_list_index - 1][sub_list] == 'L':
+                    break
                 main_list_index -= 1
         # check top-right neighbor
         # first make sure not going to go out of bounds
@@ -145,6 +175,8 @@ def check_neighbors(tiles, main_list, sub_list):
                     occupied_neighbors += 1
                     if occupied_neighbors == 5:
                         return True
+                    break
+                elif tiles[main_list_index - 1][sub_list_index + 1] == 'L':
                     break
                 main_list_index -= 1
                 sub_list_index += 1
@@ -159,6 +191,8 @@ def check_neighbors(tiles, main_list, sub_list):
                     if occupied_neighbors == 5:
                         return True
                     break
+                elif tiles[main_list][sub_list_index + 1] == 'L':
+                    break
                 sub_list_index += 1
         # check bottom-right neighbor
         if main_list != len(tiles)-1 and sub_list != len(tiles[sub_list])-1:
@@ -170,6 +204,8 @@ def check_neighbors(tiles, main_list, sub_list):
                     occupied_neighbors += 1
                     if occupied_neighbors == 5:
                         return True
+                    break
+                elif tiles[main_list_index + 1][sub_list_index + 1] == 'L':
                     break
                 main_list_index += 1
                 sub_list_index += 1
@@ -183,6 +219,8 @@ def check_neighbors(tiles, main_list, sub_list):
                     if occupied_neighbors == 5:
                         return True
                     break
+                elif tiles[main_list_index + 1][sub_list] == 'L':
+                    break
                 main_list_index += 1
         # check bottom-left neighbor
         if main_list != len(tiles) - 1 and sub_list != 0:
@@ -194,6 +232,8 @@ def check_neighbors(tiles, main_list, sub_list):
                     occupied_neighbors += 1
                     if occupied_neighbors == 5:
                         return True
+                    break
+                elif tiles[main_list_index + 1][sub_list_index - 1] == 'L':
                     break
                 main_list_index += 1
                 sub_list_index -= 1
@@ -220,8 +260,8 @@ def apply_seating_rules(tile_set):
             sub_list += 1
         if main_list == len(tile_set):
             break
-    # print(*tile_set)
-    # print(*transformed_tile_set)
+    print(*tile_set)
+    print(*transformed_tile_set)
     return transformed_tile_set
 
 

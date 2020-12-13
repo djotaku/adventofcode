@@ -12,7 +12,8 @@ def grab_timetable(input_file):
 
 
 def find_timestamp(timetable):
-    number_to_check = 900  # starting high because I know we need to go high
+    # number_to_check = 900  # for the pytest - starting high because I know we need to go high
+    number_to_check = 100000000000000  # replacement number for the actual answer
     while True:
         denominator = 0
         all_denominators = set()
@@ -33,6 +34,5 @@ def answer_calculation(original_time, bus_id_timestamp):
 
 if __name__ == "__main__":
     the_timetable = grab_timetable('input')
-    earliest_bus_and_id = find_earliest_bus_id_timestamp(the_timetable)
-    the_answer = answer_calculation(the_timetable[0], earliest_bus_and_id)
-    print(f"The answer is {the_answer}")
+    answer = find_timestamp(the_timetable)
+    print(f"The answer is {answer}")
