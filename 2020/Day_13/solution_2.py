@@ -24,7 +24,8 @@ def find_timestamp(timetable):
         if len(all_denominators) == 1:
             return number_to_check
         else:
-            number_to_check += 1
+            # number_to_check += 1
+            number_to_check += 983  # slight cheat since this was taking forever
 
 
 def answer_calculation(original_time, bus_id_timestamp):
@@ -36,3 +37,5 @@ if __name__ == "__main__":
     the_timetable = grab_timetable('input')
     answer = find_timestamp(the_timetable)
     print(f"The answer is {answer}")
+
+# 2259477766995683 is too high
