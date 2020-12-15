@@ -1,5 +1,7 @@
 This year, apparently you're saving up money to go on vacation, the money being $(star) per solution. If you go to the "cute" entry for Day one, you'll get the story. I found out on the subreddit that it's considered bad form to share the exact problem text. So for each day I just put in the barebones so that if I come back to this repo I can remember what the problem I was trying to solve was.
 
+Part 2 sections still incomplete: [7](https://adventofcode.com/2020/day/7), [13](https://adventofcode.com/2020/day/13), [14](https://adventofcode.com/2020/day/14)
+
 ## Position in Python Discord leaderboard:
 
 As of 20201213 1911:
