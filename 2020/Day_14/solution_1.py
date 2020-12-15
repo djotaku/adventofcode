@@ -32,12 +32,8 @@ def mask_application(mask, initial_number):
     mask_as_list = [char for char in mask]
     value_as_list = [char for char in value]
     for position, mask_bit in enumerate(mask_as_list):
-        if mask_bit == '1':
-            new_value = int(value_as_list[position], 2) | 1
-            value_as_list[position] = str(new_value)
-        elif mask_bit == '0':
-            new_value = int(value_as_list[position], 2) & 0
-            value_as_list[position] = str(new_value)
+        if mask_bit in ('0','1'):
+            value_as_list[position] = mask_bit
     back_to_number = ''.join(value_as_list)
     return int(back_to_number, 2)
 
@@ -46,7 +42,7 @@ def sum_it(the_input):
     output_list = [0 for number in range(0, 3000000)]
     for instruction in the_input:
         for index in range(1, len(instruction)):
-            print(instruction[index][1])
+            #print(instruction[index][1])
             answer = mask_application(instruction[0], instruction[index][1])
             output_list[instruction[index][0]] = answer
     #print(output_list)
