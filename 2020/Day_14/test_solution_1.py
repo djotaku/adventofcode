@@ -2,7 +2,7 @@ from . import solution_1
 
 
 def test_parse_input():
-    assert solution_1.parse_input('ref_input') == ['XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X', (8, 11), (7, 101), (8, 0)]
+    assert solution_1.parse_input('ref_input') == [['XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X', (8, 11), (7, 101), (8, 0)]]
 
 
 def test_mask_application():
