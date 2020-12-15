@@ -21,8 +21,7 @@ def parse_input(input_file):
             else:
                 instruction = get_mem(line)
                 mask_and_instructions.append((int(instruction[0]), int(instruction[1])))
-        if not all_instruction:
-            all_instruction.append(mask_and_instructions)
+        all_instruction.append(mask_and_instructions)
     return all_instruction
 
 
@@ -33,9 +32,7 @@ def mask_application(mask, initial_number):
     mask_as_list = [char for char in mask]
     value_as_list = [char for char in value]
     for position, mask_bit in enumerate(mask_as_list):
-        # print(f'{mask_bit=}')
         if mask_bit == '1':
-            # print(f"There is a 1 at {position=}")
             new_value = int(value_as_list[position], 2) | 1
             value_as_list[position] = str(new_value)
         elif mask_bit == '0':
@@ -45,13 +42,21 @@ def mask_application(mask, initial_number):
     return int(back_to_number, 2)
 
 
-if __name__ == "__main__":
-    the_input = parse_input('input')
-    output_list = [0 for number in range(0, 100000)]
+def sum_it(the_input):
+    output_list = [0 for number in range(0, 3000000)]
     for instruction in the_input:
-        for index in range(1, len(instruction)-1):
+        for index in range(1, len(instruction)):
+            print(instruction[index][1])
             answer = mask_application(instruction[0], instruction[index][1])
             output_list[instruction[index][0]] = answer
-    print(sum(output_list))
+    #print(output_list)
+    return sum(output_list)
 
-#11960996660804 is too low
+
+if __name__ == "__main__":
+    the_input = parse_input('input')
+    print(sum_it(the_input))
+
+# 14925946402938 is too low
+# 14814032799489 is too low
+# 11960996660804 is too low
