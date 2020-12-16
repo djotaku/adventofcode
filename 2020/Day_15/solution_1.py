@@ -23,18 +23,16 @@ def find_2020(starting_sequence, stop_number):
     counter = stop_number - len(starting_sequence)
     sequence = starting_sequence.copy()
     previous_numbers = set(starting_sequence[:-1].copy())
-    print(sequence)
-    print(previous_numbers)
     while counter > 0:
         next_number = create_next_number(sequence, previous_numbers)
         sequence.append(next_number)
         previous_numbers.add(sequence[-2])
         counter -= 1
-    print(sequence)
     return sequence[-1]
 
 
 if __name__ == "__main__":
-    print(find_2020(puzzle_input, 2020))
+    print(f'Part one solution: {find_2020(puzzle_input, 2020)}')
+    print(f'Part two solution: {find_2020(puzzle_input, 30000000)}')
 
 

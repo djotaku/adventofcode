@@ -21,3 +21,5 @@ Here are a few more examples:
 - Given the starting numbers 3,1,2, the 2020th number spoken is 1836.
 
 # Part 2
+
+determine the 30000000th number spoken
