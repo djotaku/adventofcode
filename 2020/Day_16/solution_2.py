@@ -53,20 +53,17 @@ def keep_valid_tickets(rule_dictionary, nearby_tickets):
 
 
 def figure_out_fields(rule_dictionary, valid_tickets):
-    dictionary_of_possibilities = dict()
+    dictionary_of_not_locations = dict()
     for ticket in valid_tickets:
         numbers = ticket.split(',')
         for index in range(0, len(numbers)):
             for key, value in rule_dictionary.items():
-                temp_list = []
-                if int(numbers[index]) in value:
-                    temp_list.append(key)
-                if index not in dictionary_of_possibilities:
-                    dictionary_of_possibilities[index] = temp_list.copy()
-                else:
-                    current = dictionary_of_possibilities[index]
-                    dictionary_of_possibilities[index] = current + temp_list.copy()
-    print(*dictionary_of_possibilities.values())
+                if int(numbers[index]) not in value:
+                    if key not in dictionary_of_not_locations:
+                        dictionary_of_not_locations[key] = [index]
+                    else:
+                        dictionary_of_not_locations[key] += [index]
+    print(dictionary_of_not_locations)
     return None
 
 
