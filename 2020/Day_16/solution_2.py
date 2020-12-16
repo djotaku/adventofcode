@@ -1,6 +1,18 @@
 import re
 
 
+class TicketField:
+    def __init__(self, name, non_locations):
+        self.name = name
+        self.non_locations = non_locations
+
+    def __gt__(self, other):
+        return len(self.non_locations) < len(other.non_locations)
+
+    def __repr__(self):
+        return f"Ticket called {self.name} with {self.non_locations}"
+
+
 def parse_input(input_file):
     with open(input_file, 'r') as file:
         inputs = file.readlines()
@@ -52,6 +64,10 @@ def keep_valid_tickets(rule_dictionary, nearby_tickets):
     return valid_tickets
 
 
+def determine_number(possibility_space, do_not_put_me_here):
+    return set(possibility_space) - set(do_not_put_me_here)
+
+
 def figure_out_fields(rule_dictionary, valid_tickets):
     dictionary_of_not_locations = dict()
     for ticket in valid_tickets:
@@ -63,8 +79,22 @@ def figure_out_fields(rule_dictionary, valid_tickets):
                         dictionary_of_not_locations[key] = [index]
                     else:
                         dictionary_of_not_locations[key] += [index]
+    a_ticket = valid_tickets[0].split(',')
+    field_length = len(a_ticket)
+    possibility_field = [number for number in range(0, field_length)]
+    print(possibility_field)
     print(dictionary_of_not_locations)
-    return None
+    ticket_fields = []
+    for key, value in dictionary_of_not_locations.items():
+        ticket_fields.append(TicketField(key, value))
+    return_order = [0] * len(rule_dictionary)
+    for field in sorted(ticket_fields):
+        position = determine_number(possibility_field, field.non_locations).pop()
+        return_order[position] = field.name
+        possibility_field.remove(position)
+    last_field = (set(rule_dictionary.keys()) - set(return_order)).pop()
+    return_order[possibility_field.pop()] = last_field
+    return return_order
 
 
 def find_error_rate(invalid_numbers):
