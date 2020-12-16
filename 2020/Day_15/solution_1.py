@@ -34,5 +34,7 @@ def find_2020(starting_sequence, stop_number):
 if __name__ == "__main__":
     print(f'Part one solution: {find_2020(puzzle_input, 2020)}')
     print(f'Part two solution: {find_2020(puzzle_input, 30000000)}')
+    # if solution not there by end of night, try a dictionary where, for each number, you store its count time. That
+    # way you don't have to iterate over a list
 
 
