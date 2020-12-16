@@ -34,6 +34,24 @@ def create_rule_dictionary(rules):
     return dictionary_to_return
 
 
+def keep_valid_tickets(rule_dictionary, nearby_tickets):
+    set_to_test_against = set()
+    valid_tickets = []
+    invalid_tickets = []
+    for value in rule_dictionary.values():
+        set_to_test_against |= value
+    print(set_to_test_against)
+    for ticket in nearby_tickets:
+        numbers = ticket.split(',')
+        for number in numbers:
+            if int(number) not in set_to_test_against:
+                invalid_tickets.append(ticket)
+                break
+        if ticket not in invalid_tickets:
+            valid_tickets.append(ticket)
+    return valid_tickets
+
+
 
 def find_invalid_numbers(numbers_to_validate, set_to_test_against):
     invalid_numbers = []

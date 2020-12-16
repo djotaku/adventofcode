@@ -13,6 +13,11 @@ def test_create_rule_dictionary():
                                                          'seat: 0-13 or 16-19\n'])
     assert rule_dictionary['class'] == {0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19}
 
+
+def test_keep_valid_tickets():
+    rules, your_ticket, nearby_tickets = solution_2.parse_input('ref_input')
+    rule_dictionary = solution_2.create_rule_dictionary(rules)
+    assert solution_2.keep_valid_tickets(rule_dictionary, nearby_tickets) == ['7,3,47']
 ########################
 # old tests
 
