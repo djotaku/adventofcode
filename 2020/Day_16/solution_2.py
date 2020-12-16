@@ -52,15 +52,22 @@ def keep_valid_tickets(rule_dictionary, nearby_tickets):
     return valid_tickets
 
 
-
-def find_invalid_numbers(numbers_to_validate, set_to_test_against):
-    invalid_numbers = []
-    for number_set in numbers_to_validate:
-        numbers = number_set.split(',')
-        for number in numbers:
-            if int(number) not in set_to_test_against:
-                invalid_numbers.append(int(number))
-    return invalid_numbers
+def figure_out_fields(rule_dictionary, valid_tickets):
+    dictionary_of_possibilities = dict()
+    for ticket in valid_tickets:
+        numbers = ticket.split(',')
+        for index in range(0, len(numbers)):
+            for key, value in rule_dictionary.items():
+                temp_list = []
+                if int(numbers[index]) in value:
+                    temp_list.append(key)
+                if index not in dictionary_of_possibilities:
+                    dictionary_of_possibilities[index] = temp_list.copy()
+                else:
+                    current = dictionary_of_possibilities[index]
+                    dictionary_of_possibilities[index] = current + temp_list.copy()
+    print(*dictionary_of_possibilities.values())
+    return None
 
 
 def find_error_rate(invalid_numbers):

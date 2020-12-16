@@ -18,15 +18,16 @@ def test_keep_valid_tickets():
     rules, your_ticket, nearby_tickets = solution_2.parse_input('ref_input')
     rule_dictionary = solution_2.create_rule_dictionary(rules)
     assert solution_2.keep_valid_tickets(rule_dictionary, nearby_tickets) == ['7,3,47']
+
+
+def test_figure_out_fields():
+    rule_dictionary = solution_2.create_rule_dictionary(['class: 0-1 or 4-19\n', 'row: 0-5 or 8-19\n',
+                                                         'seat: 0-13 or 16-19\n'])
+    valid_tickets = ['3,9,18', '15,1,5', '5,14,9']
+    assert solution_2.figure_out_fields(rule_dictionary, valid_tickets) == ['row', 'class', 'seat']
+
 ########################
 # old tests
-
-#def test_find_invalid_numbers():
-#    set_to_test_against = {1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 13, 14, 15,
-#                           16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 45, 46, 47, 48, 49, 50}
-#    assert solution_2.find_invalid_numbers(['7,3,47', '40,4,50', '55,2,20', '38,6,12'], set_to_test_against) == [4, 55,
-#                                                                                                                 12]
-
 
 #def test_find_error_rate():
 #    assert solution_2.find_error_rate([4, 55, 12]) == 71
