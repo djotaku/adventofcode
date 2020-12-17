@@ -25,9 +25,3 @@ def test_figure_out_fields():
                                                          'seat: 0-13 or 16-19\n'])
     valid_tickets = ['3,9,18', '15,1,5', '5,14,9']
     assert solution_2.figure_out_fields(rule_dictionary, valid_tickets) == ['row', 'class', 'seat']
-
-########################
-# old tests
-
-#def test_find_error_rate():
-#    assert solution_2.find_error_rate([4, 55, 12]) == 71

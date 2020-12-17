@@ -52,7 +52,7 @@ def keep_valid_tickets(rule_dictionary, nearby_tickets):
     invalid_tickets = []
     for value in rule_dictionary.values():
         set_to_test_against |= value
-    print(set_to_test_against)
+    # print(set_to_test_against)
     for ticket in nearby_tickets:
         numbers = ticket.split(',')
         for number in numbers:
@@ -82,8 +82,8 @@ def figure_out_fields(rule_dictionary, valid_tickets):
     a_ticket = valid_tickets[0].split(',')
     field_length = len(a_ticket)
     possibility_field = [number for number in range(0, field_length)]
-    print(possibility_field)
-    print(dictionary_of_not_locations)
+    # print(possibility_field)
+    # print(dictionary_of_not_locations)
     ticket_fields = []
     for key, value in dictionary_of_not_locations.items():
         ticket_fields.append(TicketField(key, value))
@@ -97,12 +97,23 @@ def figure_out_fields(rule_dictionary, valid_tickets):
     return return_order
 
 
-def find_error_rate(invalid_numbers):
-    return sum(invalid_numbers)
+def get_your_ticket_indexes(fields):
+    return [fields.index(field) for field in fields if re.search(r'departure', field)]
 
 
 if __name__ == "__main__":
-    our_input = parse_input('input')
-    set_of_valid_numbers = build_set(our_input[0])
-    invalid_numbers = find_invalid_numbers(our_input[1], set_of_valid_numbers)
-    print(f'The answer is {find_error_rate(invalid_numbers)}')
+    rules, your_ticket, nearby_tickets = parse_input('input')
+    rules_dictionary = create_rule_dictionary(rules)
+    valid_tickets = keep_valid_tickets(rules_dictionary, nearby_tickets)
+    fields_in_order = figure_out_fields(rules_dictionary, valid_tickets)
+    print(fields_in_order)
+    ticket_indexes = get_your_ticket_indexes(fields_in_order)
+    print(ticket_indexes)
+    ticket_stage_1 = your_ticket.rstrip()
+    ticket_list = ticket_stage_1.split(',')
+    multiply_me = [ticket_list[item] for item in ticket_indexes]
+    print(multiply_me)
+    product = 1
+    for number in multiply_me:
+        product *= int(number)
+    print(f'The answer is {product}')
