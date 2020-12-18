@@ -9,8 +9,8 @@ def test_parse_input_simple_parenthesis():
     assert solution_2.parse_input('ref_input_3') == [['2', '*', ['3', '+', ['4', '*', '5']]]]
 
 
-#def test_parse_input_complex_parenthesis():
-#    assert solution_2.parse_input('ref_input_2') == [['1', '+', ['2', '*', '3'], '+', ['4', '*', ['5', '+', '6']]]]
+def test_parse_input_complex_parenthesis():
+   assert solution_2.parse_input('ref_input_2') == [[['1', '+', ['2', '*', '3']], '+', [['4', '*', ['5', '+', '6']]]]]
 
 
 def test_new_math_no_parens():
@@ -23,10 +23,10 @@ def test_new_math_simple_parens():
     assert solution_2.new_math(equation[0]) == 46
 
 
-#def test_new_math_nested_parens():
-#    equation = solution_2.parse_input('ref_input_2')
-#    print(equation[0])
-#    assert solution_2.new_math(equation[0]) == 51
+def test_new_math_nested_parens():
+    equation = solution_2.parse_input('ref_input_2')
+    print(equation[0])
+    assert solution_2.new_math(equation[0]) == 51
 #
 #
 # def test_examples_separately():

@@ -21,14 +21,21 @@ def evaluate_parenthesis(equation):
 
 def evaluate_plus(equation):
     """I will do a trick of adding parens around each summation"""
+    #print(f"Before: {equation}")
     for number in range(0, len(equation)):
         if equation[number] == "+":
             if equation[number-2] != "(":
-                if equation[number+1] != "(":
-                    equation.insert(number-1, '(')
-                    equation.insert(number+3, ')')
-                    equation = evaluate_plus(equation)
-    print(equation)
+                if equation[number-1] != ")":
+                    if equation[number+1] != "(":
+                        equation.insert(number-1, '(')
+                        equation.insert(number+3, ')')
+                        equation = evaluate_plus(equation)
+                elif equation[number-1] == ")":
+                    if equation[number + 1] != "(":
+                        equation.insert(number+1, '(')
+                        equation.insert(number + 3, ')')
+                        equation = evaluate_plus(equation)
+    #print(f'After {equation}')
     return equation
 
 
