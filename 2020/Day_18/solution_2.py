@@ -21,18 +21,14 @@ def evaluate_parenthesis(equation):
 
 def evaluate_plus(equation):
     """I will do a trick of adding parens around each summation"""
-    symbols = dict()
-    symbols['+'] = []
-    symbols['*'] = []
-    symbols['('] = []
-    symbols[')'] = []
     for number in range(0, len(equation)):
         if equation[number] == "+":
-            symbols['+'].append(number)
-        elif equation[number] == '(':
-            symbols['('].append(number)
-        elif equation[number] == ')':
-            symbols[')'].append(number)
+            if equation[number-2] != "(":
+                equation.insert(number-1, '(')
+                equation.insert(number+3, ')')
+                equation = evaluate_plus(equation)
+    print(equation)
+    return equation
 
 
 def parse_input(input_file):
