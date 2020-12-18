@@ -1,6 +1,6 @@
 def parse_input(input_file):
     with open(input_file, 'r') as file:
-        return [line.split() for line in file.readlines()]
+        return [[char for char in line if char != ' '] for line in file.readlines()]
 
 
 def new_math(math_stack):
