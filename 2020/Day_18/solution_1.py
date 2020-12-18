@@ -14,6 +14,7 @@ def evaluate_parenthesis(equation):
                 parenthesis_count -= 1
                 if parenthesis_count == 0:
                     equation_with_parenthesis.append(evaluate_parenthesis(equation[parenthesis_left_index[0]+1:index]))
+                    parenthesis_left_index.clear()
             if parenthesis_count == 0 and equation[index] != '(' and equation[index] != ")":
                 equation_with_parenthesis.append(equation[index])
         return equation_with_parenthesis
