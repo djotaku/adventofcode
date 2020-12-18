@@ -59,4 +59,4 @@ def new_math(math_stack):
 if __name__ == "__main__":
     my_equations = parse_input('input')
     answers = [new_math(equation) for equation in my_equations]
-    print(answers)
+    print(f"The answer is {sum(answers)}")
