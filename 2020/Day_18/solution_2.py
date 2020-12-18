@@ -24,9 +24,10 @@ def evaluate_plus(equation):
     for number in range(0, len(equation)):
         if equation[number] == "+":
             if equation[number-2] != "(":
-                equation.insert(number-1, '(')
-                equation.insert(number+3, ')')
-                equation = evaluate_plus(equation)
+                if equation[number+1] != "(":
+                    equation.insert(number-1, '(')
+                    equation.insert(number+3, ')')
+                    equation = evaluate_plus(equation)
     print(equation)
     return equation
 
@@ -34,7 +35,8 @@ def evaluate_plus(equation):
 def parse_input(input_file):
     with open(input_file, 'r') as file:
         equations = [[char for char in line if char != ' '] for line in file.readlines()]
-        handle_plus_precedence = [evaluate_plus(equation) for equation in equations]
+        parens_level_one = [evaluate_parenthesis(equation) for equation in equations]
+        handle_plus_precedence = [evaluate_plus(equation) for equation in parens_level_one]
         fixed_equations = [evaluate_parenthesis(equation) for equation in handle_plus_precedence]
         return fixed_equations
 
