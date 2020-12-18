@@ -38,7 +38,7 @@ def test_examples_separately():
     assert solution_1.new_math(equation[0]) == 13632
 
 
-#def test_a_few_inputs():
-#    my_equations = solution_1.parse_input('ref_input_4')
-#    answers = [solution_1.new_math(equation) for equation in my_equations]
-#    assert answers == [26, 437, 12240, 13632]
+def test_a_few_inputs():
+    my_equations = solution_1.parse_input('ref_input_4')
+    answers = [solution_1.new_math(equation) for equation in my_equations]
+    assert answers == [26, 437, 12240, 13632]

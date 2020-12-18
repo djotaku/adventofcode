@@ -32,10 +32,13 @@ def new_math(math_stack):
     operator = ''
     for item in math_stack:
         if isinstance(item, list):
-            paren_sum = new_math(item)
-            print(f'{left_number}{operator}{paren_sum}')
-            final_sum = eval(f'{left_number}{operator}{paren_sum}')
-            left_number = final_sum
+            if left_number == 0:
+                left_number = new_math(item)
+            else:
+                paren_sum = new_math(item)
+                print(f'{left_number}{operator}{paren_sum}')
+                final_sum = eval(f'{left_number}{operator}{paren_sum}')
+                left_number = final_sum
         elif item.isdigit():
             if left_number == 0:
                 left_number = item
