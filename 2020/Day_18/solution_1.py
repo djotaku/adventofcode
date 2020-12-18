@@ -20,23 +20,31 @@ def new_math(math_stack):
                 final_sum = eval(f'{left_number}{operator}{item}')
                 left_number = final_sum
         elif parenthesis:
-            if item != ')' and parenthesis_count == 1:
+            if item != ')' and parenthesis_count >= 1:
+                if item == '(':
+                    parenthesis_count += 1
                 parenthesis_list.append(item)
-            elif item == ')' and parenthesis_count == 1:
+                print(f'{parenthesis_list=}')
+            elif item == ')' and parenthesis_count >= 1:
+                print("end of parenthesis")
                 paren_sum = new_math(parenthesis_list.copy())
-                parenthesis_count = 0
+                print(f'{paren_sum=}')
+                print(f'{left_number=}')
+                print(f'{operator=}')
+                parenthesis_count -= 1
                 parenthesis_list.clear()
+                parenthesis = False
                 final_sum = eval(f'{left_number}{operator}{paren_sum}')
                 left_number = final_sum
         elif item == "(":
             parenthesis = True
             parenthesis_count += 1
-        elif item == ')':
-            parenthesis = False
+        #elif item == ')':
+        #    parenthesis = False
         else:
             operator = item
-        print('--------')
-        print(f'{final_sum=}')
-        print(f'{operator=}')
-        print('--------------')
+        #print('--------')
+        #print(f'{final_sum=}')
+        #print(f'{operator=}')
+        #print('--------------')
     return final_sum
