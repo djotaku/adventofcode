@@ -33,13 +33,14 @@ def new_math(math_stack):
     for item in math_stack:
         if isinstance(item, list):
             paren_sum = new_math(item)
+            print(f'{left_number}{operator}{paren_sum}')
             final_sum = eval(f'{left_number}{operator}{paren_sum}')
             left_number = final_sum
         elif item.isdigit():
             if left_number == 0:
                 left_number = item
             else:
-                print(f'{item=}')
+                #print(f'{item=}')
                 print(f'{left_number}{operator}{item}')
                 final_sum = eval(f'{left_number}{operator}{item}')
                 left_number = final_sum
@@ -50,3 +51,9 @@ def new_math(math_stack):
         #print(f'{operator=}')
         #print('--------------')
     return final_sum
+
+
+if __name__ == "__main__":
+    my_equations = parse_input('input')
+    answers = [new_math(equation) for equation in my_equations]
+    print(answers)
