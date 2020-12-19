@@ -56,6 +56,7 @@ def new_math(math_stack):
         if isinstance(item, list):
             if left_number == 0:
                 left_number = new_math(item)
+                final_sum = left_number
             else:
                 paren_sum = new_math(item)
                 print(f'{left_number}{operator}{paren_sum}')
@@ -71,10 +72,10 @@ def new_math(math_stack):
                 left_number = final_sum
         else:
             operator = item
-        #print('--------')
-        #print(f'{final_sum=}')
-        #print(f'{operator=}')
-        #print('--------------')
+        print('--------')
+        print(f'{final_sum=}')
+        print(f'{left_number=}')
+        print('--------------')
     return final_sum
 
 
