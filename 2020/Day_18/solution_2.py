@@ -43,6 +43,12 @@ def evaluate_plus(equation):
                 equation[number] = evaluate_plus(equation[number])
                 equation[number] = evaluate_parenthesis(equation[number])
                 equation[number] = evaluate_plus(equation[number])
+                equation[number] = evaluate_parenthesis(equation[number])
+                equation[number] = evaluate_plus(equation[number])
+                equation[number] = evaluate_parenthesis(equation[number])
+                equation[number] = evaluate_plus(equation[number])
+                equation[number] = evaluate_parenthesis(equation[number])
+                equation[number] = evaluate_plus(equation[number])
     #print(equation)
     return equation
 
@@ -71,7 +77,7 @@ def new_math(math_stack):
                 final_sum = left_number
             else:
                 paren_sum = new_math(item)
-                print(f'{left_number}{operator}{paren_sum}')
+                #print(f'{left_number}{operator}{paren_sum}')
                 if pocket_number == 0:
                     final_sum = eval(f'{left_number}{operator}{paren_sum}')
                 else:
@@ -88,10 +94,10 @@ def new_math(math_stack):
                 left_number = final_sum
         else:
             operator = item
-        print('--------')
-        print(f'{final_sum=}')
-        print(f'{left_number=}')
-        print('--------------')
+        #print('--------')
+        #print(f'{final_sum=}')
+        #print(f'{left_number=}')
+        #print('--------------')
     return final_sum
 
 
@@ -100,5 +106,5 @@ if __name__ == "__main__":
     answers = [new_math(equation) for equation in my_equations]
     print(f"The answer is {sum(answers)}")
 
-
+# 85261204518763 is too low
 # 54328280806251 is too low
