@@ -16,6 +16,8 @@ def evaluate_parenthesis(equation):
                     parenthesis_left_index.clear()
             if parenthesis_count == 0 and equation[index] != '(' and equation[index] != ")":
                 equation_with_parenthesis.append(equation[index])
+            if isinstance(equation[index], list):
+                equation[index] = evaluate_parenthesis(equation[index])
         return equation_with_parenthesis
 
 
@@ -34,14 +36,14 @@ def evaluate_plus(equation):
                         equation.insert(number+1, '(')
                         equation.insert(number + 3, ')')
                         equation = evaluate_plus(equation)
-
         elif isinstance(equation[number], list):
-            if len(equation[number]) == 3:
+            if len(equation[number]) == 3 or len(equation[number]) == 1:
                 pass
             else:
                 equation[number] = evaluate_plus(equation[number])
                 equation[number] = evaluate_parenthesis(equation[number])
-    print(equation)
+                equation[number] = evaluate_plus(equation[number])
+    #print(equation)
     return equation
 
 
@@ -57,16 +59,24 @@ def parse_input(input_file):
 def new_math(math_stack):
     final_sum = 0
     left_number = 0
+    pocket_number = 0
     operator = ''
     for item in math_stack:
         if isinstance(item, list):
+            if len(item) == 1:
+                if not isinstance(item[0], list):
+                    pocket_number = item[0]
             if left_number == 0:
                 left_number = new_math(item)
                 final_sum = left_number
             else:
                 paren_sum = new_math(item)
-                #print(f'{left_number}{operator}{paren_sum}')
-                final_sum = eval(f'{left_number}{operator}{paren_sum}')
+                print(f'{left_number}{operator}{paren_sum}')
+                if pocket_number == 0:
+                    final_sum = eval(f'{left_number}{operator}{paren_sum}')
+                else:
+                    final_sum = eval(f'{left_number}{operator}{paren_sum}+{pocket_number}')
+                    pocket_number = 0
                 left_number = final_sum
         elif item.isdigit():
             if left_number == 0:
@@ -78,10 +88,10 @@ def new_math(math_stack):
                 left_number = final_sum
         else:
             operator = item
-        #print('--------')
-        #print(f'{final_sum=}')
-        #print(f'{left_number=}')
-        #print('--------------')
+        print('--------')
+        print(f'{final_sum=}')
+        print(f'{left_number=}')
+        print('--------------')
     return final_sum
 
 

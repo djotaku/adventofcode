@@ -33,13 +33,13 @@ def test_examples_separately():
     equation = solution_2.parse_input('ref_input_5')
     print(equation)
     assert solution_2.new_math(equation[0]) == 1445
-#    equation = solution_2.parse_input('ref_input_6')
-#    assert solution_2.new_math(equation[0]) == 669060
-#    equation = solution_2.parse_input('ref_input_7')
-#    assert solution_2.new_math(equation[0]) == 23340
+    equation = solution_2.parse_input('ref_input_6')
+    assert solution_2.new_math(equation[0]) == 669060
+    equation = solution_2.parse_input('ref_input_7')
+    assert solution_2.new_math(equation[0]) == 23340
 
 
-#def test_a_few_inputs():
-#    my_equations = solution_2.parse_input('ref_input_4')
-#    answers = [solution_2.new_math(equation) for equation in my_equations]
-#    assert answers == [46, 1445, 669060, 23340]
+def test_a_few_inputs():
+    my_equations = solution_2.parse_input('ref_input_4')
+    answers = [solution_2.new_math(equation) for equation in my_equations]
+    assert answers == [46, 1445, 669060, 23340]
