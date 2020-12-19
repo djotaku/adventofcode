@@ -7,8 +7,8 @@ def test_parse_rules():
     assert rules_dictionary['1'] == [['2', '3'], ['3', '2']]
     assert rules_dictionary['2'] == [['4', '4'], ['5', '5']]
     assert rules_dictionary['3'] == [['4', '5'], ['5', '4']]
-    assert rules_dictionary['4'] == "a"
-    assert rules_dictionary['5'] == "b"
+    assert rules_dictionary['4'] == 'a'
+    assert rules_dictionary['5'] == 'b'
 
 
 def test_regular_expression_combinations():
