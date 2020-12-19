@@ -21,7 +21,6 @@ def evaluate_parenthesis(equation):
 
 def evaluate_plus(equation):
     """I will do a trick of adding parens around each summation"""
-    #print(f"Before: {equation}")
     for number in range(0, len(equation)):
         if equation[number] == "+":
             if equation[number-2] != "(":
@@ -35,7 +34,12 @@ def evaluate_plus(equation):
                         equation.insert(number+1, '(')
                         equation.insert(number + 3, ')')
                         equation = evaluate_plus(equation)
-    #print(f'After {equation}')
+        elif isinstance(equation[number], list):
+            if len(equation[number]) == 3:
+                pass
+            else:
+                equation[number] = evaluate_plus(equation[number])
+    print(equation)
     return equation
 
 
@@ -59,7 +63,7 @@ def new_math(math_stack):
                 final_sum = left_number
             else:
                 paren_sum = new_math(item)
-                print(f'{left_number}{operator}{paren_sum}')
+                #print(f'{left_number}{operator}{paren_sum}')
                 final_sum = eval(f'{left_number}{operator}{paren_sum}')
                 left_number = final_sum
         elif item.isdigit():
@@ -67,15 +71,15 @@ def new_math(math_stack):
                 left_number = item
             else:
                 #print(f'{item=}')
-                print(f'{left_number}{operator}{item}')
+                #print(f'{left_number}{operator}{item}')
                 final_sum = eval(f'{left_number}{operator}{item}')
                 left_number = final_sum
         else:
             operator = item
-        print('--------')
-        print(f'{final_sum=}')
-        print(f'{left_number=}')
-        print('--------------')
+        #print('--------')
+        #print(f'{final_sum=}')
+        #print(f'{left_number=}')
+        #print('--------------')
     return final_sum
 
 
@@ -83,3 +87,6 @@ if __name__ == "__main__":
     my_equations = parse_input('input')
     answers = [new_math(equation) for equation in my_equations]
     print(f"The answer is {sum(answers)}")
+
+
+# 54328280806251 is too low
