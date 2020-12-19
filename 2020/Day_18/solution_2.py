@@ -43,13 +43,7 @@ def evaluate_plus(equation):
                 equation[number] = evaluate_plus(equation[number])
                 equation[number] = evaluate_parenthesis(equation[number])
                 equation[number] = evaluate_plus(equation[number])
-                equation[number] = evaluate_parenthesis(equation[number])
-                equation[number] = evaluate_plus(equation[number])
-                equation[number] = evaluate_parenthesis(equation[number])
-                equation[number] = evaluate_plus(equation[number])
-                equation[number] = evaluate_parenthesis(equation[number])
-                equation[number] = evaluate_plus(equation[number])
-    #print(equation)
+    print(equation)
     return equation
 
 
