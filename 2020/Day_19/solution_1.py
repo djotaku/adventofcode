@@ -20,9 +20,22 @@ def parse_rules(input_file):
     return rules_dictionary
 
 
+def create_a_rule(dictionary, dictionary_input):
+    rule = ''
+    print(dictionary[dictionary_input])
+    if dictionary[dictionary_input] == 'a' or dictionary[dictionary_input] == 'b':
+        rule += dictionary[dictionary_input]
+    else:
+        if isinstance(dictionary[dictionary_input][0], list):
+            for next_rule in dictionary[dictionary_input][0]:
+                rule += create_a_rule(dictionary, next_rule)
+        else:
+            for next_rule in dictionary[dictionary_input]:
+                rule += create_a_rule(dictionary, next_rule)
+    return rule
+
+
 def regular_expression_combinations(rules_dictionary):
     combinations = []
-    for item in rules_dictionary['0']:
-        if len(rules_dictionary[item]) == 1:
-            combinations.append(rules_dictionary[item[0]])
+    combinations.append(create_a_rule(rules_dictionary, '0'))
     return combinations

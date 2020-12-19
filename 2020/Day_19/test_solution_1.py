@@ -14,4 +14,4 @@ def test_parse_rules():
 def test_regular_expression_combinations():
     rules_dictionary = solution_1.parse_rules('ref_rules')
     assert solution_1.regular_expression_combinations(rules_dictionary) == ['aaaabb', 'aaabab', 'abbabb', 'abbbab',
-                                                                           'aabaab', 'aabbbb', 'abaaab', 'ababbb']
+                                                                            'aabaab', 'aabbbb', 'abaaab', 'ababbb']
