@@ -34,11 +34,13 @@ def evaluate_plus(equation):
                         equation.insert(number+1, '(')
                         equation.insert(number + 3, ')')
                         equation = evaluate_plus(equation)
+
         elif isinstance(equation[number], list):
             if len(equation[number]) == 3:
                 pass
             else:
                 equation[number] = evaluate_plus(equation[number])
+                equation[number] = evaluate_parenthesis(equation[number])
     print(equation)
     return equation
 
