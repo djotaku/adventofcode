@@ -11,7 +11,6 @@ def test_parse_rules():
     assert rules_dictionary['5'] == 'b'
 
 
-def test_regular_expression_combinations():
+def test_create_regex():
     rules_dictionary = solution_1.parse_rules('ref_rules')
-    assert solution_1.regular_expression_combinations(rules_dictionary) == ['aaaabb', 'aaabab', 'abbabb', 'abbbab',
-                                                                            'aabaab', 'aabbbb', 'abaaab', 'ababbb']
+    assert solution_1.create_regex(rules_dictionary, ['4', '1', '5']) == 0

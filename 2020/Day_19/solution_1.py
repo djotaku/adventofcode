@@ -20,22 +20,24 @@ def parse_rules(input_file):
     return rules_dictionary
 
 
-def create_a_rule(dictionary, dictionary_input):
-    rule = ''
-    print(dictionary[dictionary_input])
-    if dictionary[dictionary_input] == 'a' or dictionary[dictionary_input] == 'b':
-        rule += dictionary[dictionary_input]
-    else:
-        if isinstance(dictionary[dictionary_input][0], list):
-            for next_rule in dictionary[dictionary_input][0]:
-                rule += create_a_rule(dictionary, next_rule)
-        else:
-            for next_rule in dictionary[dictionary_input]:
-                rule += create_a_rule(dictionary, next_rule)
-    return rule
+def create_regex(dictionary, rules):
+    regex = rules
+    for number in range(0, len(regex)):
+        if regex[number] == 'a':
+            pass
+        elif regex[number] != 'a':
+            if isinstance(regex[number], list):
+                for second_number in range(0, len(regex[number])):
+                    regex[number] = dictionary[regex[number]]
+            else:
+                regex[number] = dictionary[regex[number]]
+        elif regex[number] != 'b':
+            if isinstance(regex[number], list):
+                for second_number in range(0, len(regex[number])):
+                    regex[number] = dictionary[regex[number]]
+            else:
+                regex[number] = dictionary[regex[number]]
+    for item in regex:
+        if item != 'a' or item != 'b':
+            create_regex(dictionary, regex)
 
-
-def regular_expression_combinations(rules_dictionary):
-    combinations = []
-    combinations.append(create_a_rule(rules_dictionary, '0'))
-    return combinations
