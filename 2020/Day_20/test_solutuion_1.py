@@ -15,3 +15,13 @@ def test_parse_input():
     tiles = solution_1.parse_input('ref_input')
     assert tiles[0].name == 'Tile 2311'
     assert tiles[1].name == 'Tile 1951'
+
+
+def test_tile_transformations():
+    tile_definition = ['Tile 2311:', '..##.#..#.', '##..#.....', '#...##..#.', '####.#...#', '##.##.###.', '##...#.###',
+                       '.#.#.#..##', '..#....#..', '###...#.#.', '..###..###']
+    tile = solution_1.create_tile(tile_definition)
+    assert tile.flipped_top() == '.#..#.##..'
+    assert tile.flipped_bottom() == '###..###..'
+    assert tile.flipped_left() == '...#.##..#'  # it's what used to be the right side
+    assert tile.rotated_left() == '#..##.#...'  # it's the right side, flipped

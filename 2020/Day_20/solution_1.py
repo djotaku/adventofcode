@@ -35,6 +35,24 @@ class Tile:
             right_border += item[-1]
         return right_border
 
+    def flipped_top(self):
+        return self._natural_top_border[::-1]
+
+    def flipped_bottom(self):
+        return self._natural_bottom_border[::-1]
+
+    def flipped_right(self):
+        return self._natural_left_border
+
+    def flipped_left(self):
+        return self._natural_right_border
+
+    def rotated_left(self):
+        return self._natural_right_border[::-1]
+
+    def rotated_right(self):
+        return self._natural_left_border[::-1]
+
 
 def create_tile(tile_definition):
     return Tile(tile_definition[0], tile_definition[1:])
