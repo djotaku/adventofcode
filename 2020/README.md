@@ -4,6 +4,7 @@ Part 1 sections still incomplete:
 - [17](https://adventofcode.com/2020/day/17) - just could not figure it out because the ref output moves, making it a lot harder to see if I'm getting it right. (And killing my unit tests.)
 - [19](https://adventofcode.com/2020/day/19) - I knew what I wanted to do, but I couldn't make it work in the time I gave myself. Don't want to swallow the whole day on a problem. Bums me out a lot, but I have other responsibilities.
 - [20](https://adventofcode.com/2020/day/20) - I think I was on the right track, but I didn't have enough time to work on it around my other responsibilities today.
+- [21](https://adventofcode.com/2020/day/21) - I don't even understand how to do this manually, so I can't do it in code.
 
 Part 2 sections still incomplete: [7](https://adventofcode.com/2020/day/7), [13](https://adventofcode.com/2020/day/13),
  [14](https://adventofcode.com/2020/day/14), [15](https://adventofcode.com/2020/day/15), [17](https://adventofcode.com/2020/day/17),
