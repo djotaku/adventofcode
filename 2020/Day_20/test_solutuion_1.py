@@ -30,4 +30,11 @@ def test_tile_transformations():
 def test_are_we_neighbors():
     tiles = solution_1.parse_input('ref_input')
     solution_1.are_we_neighbors(tiles[0], tiles[1])
-    assert tiles[0].right_neighbor == tiles[1]
+    assert tiles[1].right_neighbor == tiles[0]
+
+
+def test_make_puzzle():
+    tiles = solution_1.parse_input('ref_input')
+    solution_1.make_puzzle(tiles)
+    assert tiles[1].right_neighbor == tiles[0]
+    assert tiles[1].bottom_neighbor == tiles[7]

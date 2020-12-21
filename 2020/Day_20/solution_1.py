@@ -93,6 +93,31 @@ class Tile:
         self.assembled_left_border = self.rotated_left()[::-1]
         self.assembled_right_border = self.rotated_right()[::-1]
 
+    def print_self_and_neighbors(self):
+        print(f"I am {self.name}")
+        if self.transformed is True:
+            print("I have been rotated or flipped or both")
+        else:
+            print("I am in the original orientation")
+        try:
+            print(f'Top is {self.top_neighbor.name}')
+        except AttributeError:
+            print("I have no top neighbor")
+        try:
+            print(f'Bottom is {self.bottom_neighbor.name}')
+        except AttributeError:
+            print('I have no bottom neighbor')
+        try:
+            print(f'Left is {self.left_neighbor.name}')
+        except AttributeError:
+            print("No left neighbor")
+        try:
+            print(f'Right is {self.right_neighbor.name}')
+        except AttributeError:
+            print("No right neighbor")
+
+    def __eq__(self, other):
+        return self.name == other.name
 
 def create_tile(tile_definition):
     return Tile(tile_definition[0], tile_definition[1:])
@@ -184,3 +209,14 @@ def are_we_neighbors(tile_1: Tile, tile_2: Tile):
                 tile_2.rotate_flip()
                 tile_1.right_neighbor = tile_2
                 tile_2.left_neighbor = tile_1
+
+
+def make_puzzle(tiles):
+    for number_1 in range(0, len(tiles)):
+        print('-------------')
+        tiles[number_1].print_self_and_neighbors()
+        for number_2 in range(1, len(tiles)):
+            if tiles[number_1] != tiles[number_2]:
+                are_we_neighbors(tiles[number_1], tiles[number_2])
+        tiles[number_1].print_self_and_neighbors()
+        print('---------------')
