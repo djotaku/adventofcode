@@ -94,6 +94,7 @@ class Tile:
         self.assembled_right_border = self.rotated_right()[::-1]
 
     def print_self_and_neighbors(self):
+        print('--------')
         print(f"I am {self.name}")
         if self.transformed is True:
             print("I have been rotated or flipped or both")
@@ -115,9 +116,29 @@ class Tile:
             print(f'Right is {self.right_neighbor.name}')
         except AttributeError:
             print("No right neighbor")
+        print('--------')
+
+    def am_i_a_corner(self):
+        neighbor_count = 0
+        if self.top_neighbor:
+            neighbor_count += 1
+        if self.bottom_neighbor:
+            neighbor_count += 1
+        if self.left_neighbor:
+            neighbor_count += 1
+        if self.right_neighbor:
+            neighbor_count += 1
+        if neighbor_count == 2:
+            return True
+        else:
+            return False
 
     def __eq__(self, other):
-        return self.name == other.name
+        try:
+            equal = self.name == other.name
+        except:
+            equal = False
+        return equal
 
 def create_tile(tile_definition):
     return Tile(tile_definition[0], tile_definition[1:])
@@ -141,82 +162,160 @@ def are_we_neighbors(tile_1: Tile, tile_2: Tile):
     # check all natural borders first
     if tile_1.top_neighbor is None:
         if tile_1.assembled_top_border == tile_2.assembled_bottom_border:
-            tile_1.top_neighbor = tile_2
-            tile_2.bottom_neighbor = tile_1
+            if tile_1.bottom_neighbor != tile_2:
+                tile_1.top_neighbor = tile_2
+                tile_2.bottom_neighbor = tile_1
     if tile_1.left_neighbor is None:
         if tile_1.assembled_left_border == tile_2.assembled_right_border:
-            tile_1.left_neighbor = tile_2
-            tile_2.right_neighbor = tile_1
+            if tile_1.right_neighbor != tile_2:
+                tile_1.left_neighbor = tile_2
+                tile_2.right_neighbor = tile_1
     if tile_1.bottom_neighbor is None:
         if tile_1.assembled_bottom_border == tile_2.assembled_top_border:
-            tile_1.bottom_neighbor = tile_2
-            tile_2.top_neighbor = tile_1
+            if tile_1.top_neighbor != tile_2:
+                tile_1.bottom_neighbor = tile_2
+                tile_2.top_neighbor = tile_1
     if tile_1.right_neighbor is None:
         if tile_1.assembled_right_border == tile_2.assembled_left_border:
-            tile_1.right_neighbor = tile_2
-            tile_2.left_neighbor = tile_1
+            if tile_1.left_neighbor != tile_2:
+                tile_1.right_neighbor = tile_2
+                tile_2.left_neighbor = tile_1
     # time to check the flipped and rotated borders.
     if not tile_2.transformed:  # First make sure this tile hasn't already been flipped or things could get insane
         if tile_1.top_neighbor is None:
             if tile_1.assembled_top_border == tile_2.flipped_bottom():
-                tile_2.flip_me()
-                tile_1.top_neighbor = tile_2
-                tile_2.bottom_neighbor = tile_1
+                if tile_1.bottom_neighbor != tile_2:
+                    tile_2.flip_me()
+                    tile_1.top_neighbor = tile_2
+                    tile_2.bottom_neighbor = tile_1
             elif tile_1.assembled_top_border == tile_2.rotated_bottom():
-                tile_2.rotate_me()
-                tile_1.top_neighbor = tile_2
-                tile_2.bottom_neighbor = tile_1
+                if tile_1.bottom_neighbor != tile_2:
+                    tile_2.rotate_me()
+                    tile_1.top_neighbor = tile_2
+                    tile_2.bottom_neighbor = tile_1
             elif tile_1.assembled_top_border == tile_2.rotate_and_flip_bottom():
-                tile_2.rotate_flip()
-                tile_1.top_neighbor = tile_2
-                tile_2.bottom_neighbor = tile_1
+                if tile_1.bottom_neighbor != tile_2:
+                    tile_2.rotate_flip()
+                    tile_1.top_neighbor = tile_2
+                    tile_2.bottom_neighbor = tile_1
         if tile_1.left_neighbor is None:
             if tile_1.assembled_left_border == tile_2.flipped_right():
-                tile_2.flip_me()
-                tile_1.left_neighbor = tile_2
-                tile_2.right_neighbor = tile_1
+                if tile_1.right_neighbor != tile_2:
+                    tile_2.flip_me()
+                    tile_1.left_neighbor = tile_2
+                    tile_2.right_neighbor = tile_1
             elif tile_1.assembled_left_border == tile_2.rotated_right():
-                tile_2.rotate_me()
-                tile_1.left_neighbor = tile_2
-                tile_2.right_neighbor = tile_1
+                if tile_1.right_neighbor != tile_2:
+                    tile_2.rotate_me()
+                    tile_1.left_neighbor = tile_2
+                    tile_2.right_neighbor = tile_1
             elif tile_1.assembled_left_border == tile_2.rotate_and_flip_right():
-                tile_2.rotate_flip()
-                tile_1.left_neighbor = tile_2
-                tile_2.right_neighbor = tile_1
+                if tile_1.right_neighbor != tile_2:
+                    tile_2.rotate_flip()
+                    tile_1.left_neighbor = tile_2
+                    tile_2.right_neighbor = tile_1
         if tile_1.bottom_neighbor is None:
             if tile_1.assembled_bottom_border == tile_2.flipped_top():
-                tile_2.flip_me()
-                tile_1.bottom_neighbor = tile_2
-                tile_2.top_neighbor = tile_1
+                if tile_1.top_neighbor != tile_2:
+                    tile_2.flip_me()
+                    tile_1.bottom_neighbor = tile_2
+                    tile_2.top_neighbor = tile_1
             elif tile_1.assembled_bottom_border == tile_2.rotated_top():
-                tile_2.rotate_me()
-                tile_1.bottom_neighbor = tile_2
-                tile_2.top_neighbor = tile_1
+                if tile_1.top_neighbor != tile_2:
+                    tile_2.rotate_me()
+                    tile_1.bottom_neighbor = tile_2
+                    tile_2.top_neighbor = tile_1
             elif tile_1.assembled_bottom_border == tile_2.rotate_and_flip_top():
-                tile_2.rotate_flip()
-                tile_1.bottom_neighbor = tile_2
-                tile_2.top_neighbor = tile_1
+                if tile_1.top_neighbor != tile_2:
+                    tile_2.rotate_flip()
+                    tile_1.bottom_neighbor = tile_2
+                    tile_2.top_neighbor = tile_1
         if tile_1.right_neighbor is None:
             if tile_1.assembled_right_border == tile_2.flipped_left():
-                tile_2.flip_me()
-                tile_1.right_neighbor = tile_2
-                tile_2.left_neighbor = tile_1
+                if tile_1.left_neighbor != tile_2:
+                    tile_2.flip_me()
+                    tile_1.right_neighbor = tile_2
+                    tile_2.left_neighbor = tile_1
             elif tile_1.assembled_right_border == tile_2.rotated_left():
-                tile_2.rotate_me()
-                tile_1.right_neighbor = tile_2
-                tile_2.left_neighbor = tile_1
+                if tile_1.left_neighbor != tile_2:
+                    tile_2.rotate_me()
+                    tile_1.right_neighbor = tile_2
+                    tile_2.left_neighbor = tile_1
             elif tile_1.assembled_right_border == tile_2.rotate_and_flip_left():
-                tile_2.rotate_flip()
-                tile_1.right_neighbor = tile_2
-                tile_2.left_neighbor = tile_1
+                if tile_1.left_neighbor != tile_2:
+                    tile_2.rotate_flip()
+                    tile_1.right_neighbor = tile_2
+                    tile_2.left_neighbor = tile_1
+    # maybe I need to rotate and flip myself?
+    if not tile_1.transformed:
+        if tile_1.top_neighbor is None:
+            if tile_1.flipped_top() == tile_2.assembled_bottom_border:
+                if tile_1.bottom_neighbor != tile_2:
+                    tile_1.flip_me()
+                    tile_1.top_neighbor = tile_2
+                    tile_2.bottom_neighbor = tile_1
+            elif tile_1.rotated_top() == tile_2.assembled_bottom_border:
+                if tile_1.bottom_neighbor != tile_2:
+                    tile_1.rotate_me()
+                    tile_1.top_neighbor = tile_2
+                    tile_2.bottom_neighbor = tile_1
+            elif tile_1.rotate_and_flip_top() == tile_2.assembled_bottom_border:
+                if tile_1.bottom_neighbor != tile_2:
+                    tile_1.rotate_flip()
+                    tile_1.top_neighbor = tile_2
+                    tile_2.bottom_neighbor = tile_1
+        if tile_1.left_neighbor is None:
+            if tile_1.flipped_left() == tile_2.assembled_right_border:
+                if tile_1.right_neighbor != tile_2:
+                    tile_1.flip_me()
+                    tile_1.left_neighbor = tile_2
+                    tile_2.right_neighbor = tile_1
+            elif tile_1.rotated_left() == tile_2.assembled_right_border:
+                if tile_1.right_neighbor != tile_2:
+                    tile_1.rotate_me()
+                    tile_1.left_neighbor = tile_2
+                    tile_2.right_neighbor = tile_1
+            elif tile_1.rotate_and_flip_left() == tile_2.assembled_right_border:
+                if tile_1.right_neighbor != tile_2:
+                    tile_1.rotate_flip()
+                    tile_1.left_neighbor = tile_2
+                    tile_2.right_neighbor = tile_1
+        if tile_1.bottom_neighbor is None:
+            if tile_1.flipped_bottom() == tile_2.assembled_top_border:
+                if tile_1.top_neighbor != tile_2:
+                    tile_1.flip_me()
+                    tile_1.bottom_neighbor = tile_2
+                    tile_2.top_neighbor = tile_1
+            elif tile_1.rotated_bottom() == tile_2.assembled_top_border:
+                if tile_1.top_neighbor != tile_2:
+                    tile_1.rotate_me()
+                    tile_1.bottom_neighbor = tile_2
+                    tile_2.top_neighbor = tile_1
+            elif tile_1.rotate_and_flip_bottom() == tile_2.assembled_top_border:
+                if tile_1.top_neighbor != tile_2:
+                    tile_1.rotate_flip()
+                    tile_1.bottom_neighbor = tile_2
+                    tile_2.top_neighbor = tile_1
+        if tile_1.right_neighbor is None:
+            if tile_1.flipped_right() == tile_2.assembled_left_border:
+                if tile_1.left_neighbor != tile_2:
+                    tile_1.flip_me()
+                    tile_1.right_neighbor = tile_2
+                    tile_2.left_neighbor = tile_1
+            elif tile_1.rotated_right() == tile_2.assembled_left_border:
+                if tile_1.left_neighbor != tile_2:
+                    tile_1.rotate_me()
+                    tile_1.right_neighbor = tile_2
+                    tile_2.left_neighbor = tile_1
+            elif tile_1.rotate_and_flip_right() == tile_2.assembled_left_border:
+                if tile_1.left_neighbor != tile_2:
+                    tile_1.rotate_flip()
+                    tile_1.right_neighbor = tile_2
+                    tile_2.left_neighbor = tile_1
 
 
 def make_puzzle(tiles):
     for number_1 in range(0, len(tiles)):
-        print('-------------')
-        tiles[number_1].print_self_and_neighbors()
-        for number_2 in range(1, len(tiles)):
+        for number_2 in range(0, len(tiles)):
             if tiles[number_1] != tiles[number_2]:
                 are_we_neighbors(tiles[number_1], tiles[number_2])
-        tiles[number_1].print_self_and_neighbors()
-        print('---------------')

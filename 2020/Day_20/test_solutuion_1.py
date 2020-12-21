@@ -36,5 +36,21 @@ def test_are_we_neighbors():
 def test_make_puzzle():
     tiles = solution_1.parse_input('ref_input')
     solution_1.make_puzzle(tiles)
+    for tile in tiles:
+        tile.print_self_and_neighbors()
     assert tiles[1].right_neighbor == tiles[0]
     assert tiles[1].bottom_neighbor == tiles[7]
+    assert tiles[1].top_neighbor is None
+
+
+#def test_am_i_a_corner():
+#    tiles = solution_1.parse_input('ref_input')
+#    solution_1.make_puzzle(tiles)
+#    for tile in tiles:
+#        tile.print_self_and_neighbors()
+#    assert tiles[1].am_i_a_corner()
+
+
+#def test_do_math():
+#    tiles = solution_1.parse_input('ref_input')
+#    solution_1.make_puzzle(tiles)
