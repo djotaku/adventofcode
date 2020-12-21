@@ -25,3 +25,9 @@ def test_tile_transformations():
     assert tile.flipped_bottom() == '###..###..'
     assert tile.flipped_left() == '...#.##..#'  # it's what used to be the right side
     assert tile.rotated_left() == '#..##.#...'  # it's the right side, flipped
+
+
+def test_are_we_neighbors():
+    tiles = solution_1.parse_input('ref_input')
+    solution_1.are_we_neighbors(tiles[0], tiles[1])
+    assert tiles[0].right_neighbor == tiles[1]
