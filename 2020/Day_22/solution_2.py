@@ -41,7 +41,16 @@ def play_game(player_decks):
         if player_1_card <= len(player_1_deck):
             if player_2_card <= len(player_2_deck):
                 # play Recursive combat
-                pass
+                player_1_recursive_deck = player_1_deck[0:player_1_card].copy()
+                player_2_recursive_deck = player_2_deck[0:player_2_card].copy()
+                winner_of_recursion = play_game((player_1_recursive_deck, player_2_recursive_deck))
+                # deal with winner of Recursive combat winning the round
+                if winner_of_recursion == 'player 1':
+                    player_1_deck.append(player_1_card)
+                    player_1_deck.append(player_2_card)
+                elif winner_of_recursion == 'player 2':
+                    player_2_deck.append(player_2_card)
+                    player_2_deck.append(player_1_card)
         else:
             if player_1_card > player_2_card:
                 player_1_deck.append(player_1_card)
@@ -61,5 +70,5 @@ def play_game(player_decks):
 
 
 if __name__ == "__main__":
-    game_decks = parse_input('input')
+    game_decks = parse_input('ref_input')
     play_game(game_decks)
