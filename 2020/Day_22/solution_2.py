@@ -35,6 +35,9 @@ def play_game(player_decks):
                             print(calculate_score(player_1_deck))
                             return 'player 1'
 
+        player_1_recursion_check.append(player_1_deck.copy())
+        player_2_recursion_check.append(player_2_deck.copy())
+
         player_1_card = player_1_deck.popleft()
         player_2_card = player_2_deck.popleft()
 
@@ -53,6 +56,10 @@ def play_game(player_decks):
                     player_2_deck.append(player_2_card)
                     player_2_deck.append(player_1_card)
         else:
+            print("I should be here every non-recursion round")
+            print(f'{game_round=}')
+            print(f'{player_1_card=}')
+            print(f'{player_2_card=}')
             if player_1_card > player_2_card:
                 player_1_deck.append(player_1_card)
                 player_1_deck.append(player_2_card)
@@ -68,8 +75,6 @@ def play_game(player_decks):
                 print(calculate_score(player_1_deck))
                 return 'player 1'
         game_round += 1
-        player_1_recursion_check.append(player_1_deck.copy())
-        player_2_recursion_check.append(player_2_deck.copy())
 
 
 if __name__ == "__main__":
