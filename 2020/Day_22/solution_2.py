@@ -78,5 +78,5 @@ def play_game(player_decks):
 
 
 if __name__ == "__main__":
-    game_decks = parse_input('ref_input')
+    game_decks = parse_input('input')
     play_game(game_decks)
