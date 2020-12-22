@@ -1,4 +1,5 @@
 from collections import deque
+from itertools import islice
 
 
 def parse_input(input_file):
@@ -48,8 +49,8 @@ def play_game(player_decks):
         # determine if need to play Recursive combat
         if player_1_card <= len(player_1_deck) and player_2_card <= len(player_2_deck):
             # play Recursive combat
-            player_1_recursive_deck = player_1_deck[0:player_1_card].copy()
-            player_2_recursive_deck = player_2_deck[0:player_2_card].copy()
+            player_1_recursive_deck = islice(player_1_deck, 0, player_1_card)
+            player_2_recursive_deck = islice(player_2_deck, 0, player_2_card)
             winner_of_recursion = play_game((player_1_recursive_deck, player_2_recursive_deck))
             # deal with winner of Recursive combat winning the round
             if winner_of_recursion == 'player 1':
