@@ -13,15 +13,15 @@ def find_destination_cup(cup_positions, potential_destination_cup):
         return cup_positions.index(potential_destination_cup)
     else:
         while True:
-            print(f'{potential_destination_cup=}')
-            print(f'{cup_positions}')
-            potential_destination_cup -= 1
+            #print(f'{potential_destination_cup=}')
+            #print(f'{cup_positions}')
             if potential_destination_cup == 0:
                 look_for_largest = sorted(cup_positions.copy(), reverse=True)
                 potential_destination_cup = look_for_largest[0]
                 return cup_positions.index(potential_destination_cup)
             if potential_destination_cup in cup_positions:
                 return cup_positions.index(potential_destination_cup)
+            potential_destination_cup -= 1
 
 
 def one_cup_turn(cup_positions):
@@ -47,12 +47,28 @@ def play_game(starting_cups, turns):
     turn = 1
     cups = starting_cups
     while turn < turns + 1:
+        print('------------------------')
+        print(f'{turn=}')
         print(f'{cups=}')
         cups = one_cup_turn(cups)
         rotation_deck = deque(cups)
         rotation_deck.rotate(-1)
         cups = list(rotation_deck)
+        turn += 1
+    rotation_deck = deque(cups)
+    rotation_deck.rotate()
+    cups = list(rotation_deck)
     return cups
+
+
+def obtain_final_solution(game_session):
+    game_session_deque = deque(game_session)
+    while game_session_deque[0] != 1:
+        game_session_deque.rotate()
+    let_us_make_a_string_part_1 = list(game_session_deque)
+    let_us_make_a_string_part_2 = let_us_make_a_string_part_1[1:]
+    let_us_make_a_string_part_3 = [str(number) for number in let_us_make_a_string_part_2]
+    return ''.join(let_us_make_a_string_part_3)
 
 
 if __name__ == "__main__":
