@@ -9,22 +9,19 @@ def parse_input(input_file):
 
 
 def find_destination_cup(cup_positions, potential_destination_cup):
-    try:
-        print(f'{potential_destination_cup=}')
-        if cup_positions.index(potential_destination_cup) is None:
-            check_largest_number = sorted(cup_positions.copy(), reverse=True)
-            print(f'{check_largest_number=}')
-            return find_destination_cup(cup_positions, check_largest_number[0])
-        else:
-            return cup_positions.index(potential_destination_cup)
-    except ValueError:
-        potential_destination_cup -= 1
-        if potential_destination_cup == 0:
-            check_largest_number = sorted(cup_positions.copy(), reverse=True)
-            print(f'{check_largest_number=}')
-            return find_destination_cup(cup_positions, check_largest_number[0])
-        else:
-            return find_destination_cup(cup_positions, potential_destination_cup)
+    if potential_destination_cup in cup_positions:
+        return cup_positions.index(potential_destination_cup)
+    else:
+        while True:
+            print(f'{potential_destination_cup=}')
+            print(f'{cup_positions}')
+            potential_destination_cup -= 1
+            if potential_destination_cup == 0:
+                look_for_largest = sorted(cup_positions.copy(), reverse=True)
+                potential_destination_cup = look_for_largest[0]
+                return cup_positions.index(potential_destination_cup)
+            if potential_destination_cup in cup_positions:
+                return cup_positions.index(potential_destination_cup)
 
 
 def one_cup_turn(cup_positions):
@@ -34,9 +31,9 @@ def one_cup_turn(cup_positions):
     remove_cup_3 = cup_positions.pop(1)
     #print(f'removed {remove_cup_1}, {remove_cup_2}, {remove_cup_3}')
     potential_destination = current_cup - 1
-    print(f'{potential_destination=}')
+    #print(f'{potential_destination=}')
     index_for_removed_cups = find_destination_cup(cup_positions, potential_destination)
-    print(f'{index_for_removed_cups=}')
+    #print(f'{index_for_removed_cups=}')
     index_for_removed_cups += 1
     #print(f'{index_for_removed_cups=}')
     cup_positions.insert(index_for_removed_cups, remove_cup_1)
