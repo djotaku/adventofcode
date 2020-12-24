@@ -4,8 +4,8 @@ class Tile:
         self.color = 'black'
 
     def where_am_i(self, directions_list):
-        return directions_list.count('e'), directions_list.count('se'), directions_list.count('sw'),\
-               directions_list.count('w'), directions_list.count('nw'), directions_list.count('ne')
+        return directions_list.count('e'), directions_list.count('se'), -directions_list.count('sw'),\
+               -directions_list.count('w'), -directions_list.count('nw'), directions_list.count('ne')
 
     def flip_color(self):
         if self.color == "black":
@@ -15,7 +15,7 @@ class Tile:
         return self.color
 
     def identifier(self):
-        return (self.e, self.se, self.sw, self.w, self.nw, self.ne)
+        return self.e+self.w+self.se+self.nw+self.sw+self.ne
 
 
 def parse_input(input_file):
@@ -45,16 +45,19 @@ def flip_those_tiles(tile_directions):
     set_of_all_tile_identifiers = set()
     tile_dictionary = dict()
     for tile in tile_directions:
-        print(f'{tile=}')
+        #print(f'{tile=}')
         a_tile = Tile(tile)
         print(f'{a_tile.identifier()=}')
         if a_tile.identifier() not in set_of_all_tile_identifiers:
             set_of_all_tile_identifiers.add(a_tile.identifier())
+            color = a_tile.flip_color()
+            tile_dictionary.update(key=a_tile.identifier(), value=color)
         elif a_tile.identifier() in set_of_all_tile_identifiers:
             color = a_tile.flip_color()
             tile_dictionary.update(key=a_tile.identifier(), value=color)
     blacks = 0
     for value in tile_dictionary.values():
+        print(f'{value=}')
         if value == 'black':
             blacks += 1
     return blacks
