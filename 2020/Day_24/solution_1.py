@@ -4,8 +4,12 @@ class Tile:
         self.color = 'black'
 
     def where_am_i(self, directions_list):
-        return directions_list.count('e'), directions_list.count('se'), -directions_list.count('sw'),\
-               -directions_list.count('w'), -directions_list.count('nw'), directions_list.count('ne')
+        """For reasons I don't 100% understand, need to multiply e and w by 2 to make hex coords work
+        in square coord space. Thanks, Python discord.
+        See: https://www.redblobgames.com/grids/hexagons/#coordinates-axial
+        """
+        return directions_list.count('e') * 2, directions_list.count('se'), directions_list.count('sw'),\
+               directions_list.count('w') * 2, directions_list.count('nw'), directions_list.count('ne')
 
     def flip_color(self):
         if self.color == "black":
@@ -14,8 +18,13 @@ class Tile:
             self.color = 'black'
         return self.color
 
+    def calculate_coordinate(self):
+        x = (self.e - self.w) + (self.se - self.sw) + (self.ne - self.nw)
+        y = (self.ne - self.se) + (self.nw - self.sw)
+        return x, y
+
     def identifier(self):
-        return self.e+self.w+self.se+self.nw+self.sw+self.ne
+        return self.calculate_coordinate()
 
 
 def parse_input(input_file):
@@ -41,23 +50,37 @@ def parse_input(input_file):
     return fixed_tiles
 
 
+def flip_color(color):
+    if color == "black":
+        color = 'white'
+    elif color == 'white':
+        color = 'black'
+    return color
+
+
 def flip_those_tiles(tile_directions):
-    set_of_all_tile_identifiers = set()
     tile_dictionary = dict()
     for tile in tile_directions:
         #print(f'{tile=}')
         a_tile = Tile(tile)
         print(f'{a_tile.identifier()=}')
-        if a_tile.identifier() not in set_of_all_tile_identifiers:
-            set_of_all_tile_identifiers.add(a_tile.identifier())
-            color = a_tile.flip_color()
-            tile_dictionary.update(key=a_tile.identifier(), value=color)
-        elif a_tile.identifier() in set_of_all_tile_identifiers:
-            color = a_tile.flip_color()
-            tile_dictionary.update(key=a_tile.identifier(), value=color)
+        if a_tile.identifier() not in tile_dictionary.keys():
+            color = a_tile.color
+            print(f"Color should be black. {color=}")
+            tile_dictionary[a_tile.identifier()] = color
+        else:
+            color = tile_dictionary[a_tile.identifier()]
+            color = flip_color(color)
+            print(f"Color should flip. {color=}")
+            tile_dictionary[a_tile.identifier()] = color
     blacks = 0
     for value in tile_dictionary.values():
         print(f'{value=}')
         if value == 'black':
             blacks += 1
     return blacks
+
+
+if __name__ == "__main__":
+    tile_directions = parse_input('input')
+    print(flip_those_tiles(tile_directions))

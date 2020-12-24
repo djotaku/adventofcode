@@ -11,10 +11,10 @@ def test_tile_class():
                        'se', 'w', 'sw']
     tile_1 = solution_1.Tile(tile_directions)
     assert tile_1.color == 'black'
-    assert tile_1.e == 1
+    assert tile_1.e == 2
     assert tile_1.se == 4
     assert tile_1.sw == 4
-    assert tile_1.w == 5
+    assert tile_1.w == 10
     assert tile_1.nw == 1
     assert tile_1.ne == 5
 
@@ -36,14 +36,18 @@ def test_tile_symmetry():
     tile_2 = solution_1.Tile(tile_directions_2)
     assert tile_1.identifier() == tile_2.identifier()
     tile_3 = solution_1.Tile(['nw', 'w', 'sw', 'e', 'e'])
-    assert tile_3.identifier() == 0
+    assert tile_3.identifier() == (0, 0)
 
 
 def test_tile_identifier():
     tile_directions = ['se', 'se', 'nw', 'ne', 'ne', 'ne', 'w', 'se', 'e', 'sw', 'w', 'sw', 'sw', 'w', 'ne', 'ne', 'w',
                        'se', 'w', 'sw']
     tile_1 = solution_1.Tile(tile_directions)
-    assert tile_1.identifier() == (-4, 3, -1)
+    assert tile_1.identifier() == (-4, -2)
+
+
+def test_short_run():
+    pass
 
 
 def test_flip_those_tiles():
