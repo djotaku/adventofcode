@@ -13,3 +13,12 @@ Because the tiles are hexagonal, every tile has six neighbors: east, southeast, 
 Each time a tile is identified, it flips from white to black or from black to white. Tiles might be flipped more than once. For example, a line like esew flips a tile immediately adjacent to the reference tile, and a line like nwwswee flips the reference tile itself.
 
 ## Part 2
+
+Every day, the tiles are all flipped according to the following rules:
+
+- Any black tile with zero or more than 2 black tiles immediately adjacent to it is flipped to white.
+- Any white tile with exactly 2 black tiles immediately adjacent to it is flipped to black.
+
+Here, tiles immediately adjacent means the six tiles directly touching the tile in question.
+
+The rules are applied simultaneously to every tile; put another way, it is first determined which tiles need to be flipped, then they are all flipped at the same time.
