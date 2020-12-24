@@ -80,59 +80,70 @@ def art_exhibit(tile_exhibit):
     south_east = (1, -1)
     south_west = (-1, -1)
     new_tiles_to_create = []
-    for key, value in tile_exhibit.items():
-        black_neighbors = 0
-        what_color_am_i = value
-        east_neighbor = (key[0] + east, key[1])
-        if east_neighbor in tile_exhibit.keys():
-            east_neighbor_color = tile_exhibit[east_neighbor]
-            if east_neighbor_color == 'black':
-                black_neighbors += 1
-        else:
-            new_tiles_to_create.append([east_neighbor, 'white'])
-        west_neighbor = (key[0] + west, key[1])
-        if west_neighbor in tile_exhibit.keys():
-            west_neighbor_color = tile_exhibit[west_neighbor]
-            if west_neighbor_color == 'black':
-                black_neighbors += 1
-        else:
-            new_tiles_to_create.append([west_neighbor, 'white'])
-        north_east_neighbor = (key[0] + north_east[0], key[1] + north_east[1])
-        if north_east_neighbor in tile_exhibit.keys():
-            north_east_neighbor_color = tile_exhibit[north_east_neighbor]
-            if north_east_neighbor_color == 'black':
-                black_neighbors += 1
-        else:
-            new_tiles_to_create.append([north_east_neighbor, 'white'])
-        north_west_neighbor = (key[0] + north_west[0], key[1] + north_west[1])
-        if north_west_neighbor in tile_exhibit.keys():
-            north_west_neighbor_color = tile_exhibit[north_west_neighbor]
-            if north_west_neighbor_color == 'black':
-                black_neighbors += 1
-        else:
-            new_tiles_to_create.append([north_west_neighbor, 'white'])
-        south_east_neighbor = (key[0] + south_east[0], key[1] + south_east[1])
-        if south_east_neighbor in tile_exhibit.keys():
-            south_east_neighbor_color = tile_exhibit[south_east_neighbor]
-            if south_east_neighbor_color == 'black':
-                black_neighbors += 1
-        else:
-            new_tiles_to_create.append([south_east_neighbor, 'white'])
-        south_west_neighbor = (key[0] + south_west[0], key[1] + south_west[1])
-        if south_west_neighbor in tile_exhibit.keys():
-            south_west_neighbor_color = tile_exhibit[south_west_neighbor]
-            if south_west_neighbor_color == 'black':
-                black_neighbors += 1
-        else:
-            new_tiles_to_create.append([south_west_neighbor, 'white'])
-        if what_color_am_i == 'black':
-            if black_neighbors == 0 or black_neighbors > 2:
-                tile_exhibit[key] = 'white'
-        elif what_color_am_i == 'white':
-            if black_neighbors == 2:
-                tile_exhibit[key] = 'black'
+    flip_to_black = []
+    flip_to_white = []
+    what_color_am_i = ''
+    for x in (-300, 300):
+        for y in (-300, 300):
+            black_neighbors = 0
+            if (x, y) in tile_exhibit.keys():
+                what_color_am_i = tile_exhibit[(x, y)]
+            else:
+                tile_exhibit[(x, y)] = 'white'
+            east_neighbor = (x + east, y)
+            if east_neighbor in tile_exhibit.keys():
+                east_neighbor_color = tile_exhibit[east_neighbor]
+                if east_neighbor_color == 'black':
+                    black_neighbors += 1
+            else:
+                new_tiles_to_create.append([east_neighbor, 'white'])
+            west_neighbor = (x + west, y)
+            if west_neighbor in tile_exhibit.keys():
+                west_neighbor_color = tile_exhibit[west_neighbor]
+                if west_neighbor_color == 'black':
+                    black_neighbors += 1
+            else:
+                new_tiles_to_create.append([west_neighbor, 'white'])
+            north_east_neighbor = (x + north_east[0], y + north_east[1])
+            if north_east_neighbor in tile_exhibit.keys():
+                north_east_neighbor_color = tile_exhibit[north_east_neighbor]
+                if north_east_neighbor_color == 'black':
+                    black_neighbors += 1
+            else:
+                new_tiles_to_create.append([north_east_neighbor, 'white'])
+            north_west_neighbor = (x + north_west[0], y + north_west[1])
+            if north_west_neighbor in tile_exhibit.keys():
+                north_west_neighbor_color = tile_exhibit[north_west_neighbor]
+                if north_west_neighbor_color == 'black':
+                    black_neighbors += 1
+            else:
+                new_tiles_to_create.append([north_west_neighbor, 'white'])
+            south_east_neighbor = (x + south_east[0], y + south_east[1])
+            if south_east_neighbor in tile_exhibit.keys():
+                south_east_neighbor_color = tile_exhibit[south_east_neighbor]
+                if south_east_neighbor_color == 'black':
+                    black_neighbors += 1
+            else:
+                new_tiles_to_create.append([south_east_neighbor, 'white'])
+            south_west_neighbor = (x + south_west[0], y + south_west[1])
+            if south_west_neighbor in tile_exhibit.keys():
+                south_west_neighbor_color = tile_exhibit[south_west_neighbor]
+                if south_west_neighbor_color == 'black':
+                    black_neighbors += 1
+            else:
+                new_tiles_to_create.append([south_west_neighbor, 'white'])
+            if what_color_am_i == 'black':
+                if black_neighbors == 0 or black_neighbors > 2:
+                    flip_to_white.append((x, y))
+            elif what_color_am_i == 'white':
+                if black_neighbors == 2:
+                    flip_to_black.append((x, y))
     for item in new_tiles_to_create:
         tile_exhibit[item[0]] = item[1]
+    for item in flip_to_white:
+        tile_exhibit[item] = 'white'
+    for item in flip_to_black:
+        tile_exhibit[item] = 'black'
     return tile_exhibit
 
 
@@ -152,3 +163,4 @@ if __name__ == "__main__":
     print(count_blacks(day))
 
 # 18270 is too high
+# 434 is too low
