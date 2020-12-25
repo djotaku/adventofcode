@@ -1,6 +1,6 @@
 def find_loop_size(public_key):
     value = 1
-    for number in range(1, 1000):
+    for number in range(1, 20000000):
         value = value * 7
         value = value % 20201227
         if value == public_key:
