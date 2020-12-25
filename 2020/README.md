@@ -11,8 +11,8 @@ Part 2 sections still incomplete: [7](https://adventofcode.com/2020/day/7), [13]
  [18](https://adventofcode.com/2020/day/18), [24](https://adventofcode.com/2020/day/24)
 
 Part 2 sections incomplete because of inefficient algorithms
-- [15](https://adventofcode.com/2020/day/15) - still running on day 24 without producing an answer
-- [23](https://adventofcode.com/2020/day/23) - started running day 23 at 1130...
+- [15](https://adventofcode.com/2020/day/15) - still running on day 25 without producing an answer
+- [23](https://adventofcode.com/2020/day/23) - still running on day 25 without producing an answer
 
 ## Position in Python Discord leaderboard:
 
