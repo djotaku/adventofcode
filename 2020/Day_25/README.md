@@ -20,4 +20,4 @@ If you can use the two public keys to determine each device's loop size, you wil
 
 ## Part 2
 
-d
+Not a puzzle
