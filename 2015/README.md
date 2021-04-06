@@ -14,3 +14,12 @@ My goal for the 2015 problem sets are:
 ## What I learned from Advent of Code 2015
 
 Nothing yet....I haven't started!
+
+
+## note to self
+
+using toolbox to be able to install cpan and ruby gems without mucking with system.
+
+Launch with:
+
+toolbox enter adventofcode

@@ -1,3 +1,5 @@
+To read the story-version at AoC go [here](https://adventofcode.com/2015/day/1)
+
 # Part 1
 
 An opening parenthesis, (, means he should go up one floor, and a closing parenthesis, ), means he should go down one floor.
@@ -18,3 +20,13 @@ Answer: 280
 
 # Part 2
 
+Now, given the same instructions, find the position of the first character that causes him to enter the basement (floor -1). The first character in the instructions has position 1, the second character has position 2, and so on.
+
+For example:
+
+    ) causes him to enter the basement at character position 1.
+    ()()) causes him to enter the basement at character position 5.
+
+What is the position of the character that causes him to first enter the basement?
+
+Answer: 1797
