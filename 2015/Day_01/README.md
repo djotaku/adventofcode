@@ -30,3 +30,24 @@ For example:
 What is the position of the character that causes him to first enter the basement?
 
 Answer: 1797
+
+# Lessons Learned
+
+## Python
+
+Nothing. This one was pretty easy.
+
+## Ruby
+
+- Began better understanding the .each syntax and how that works.
+- Ends can get a bit tricky. I'd prefer Python where we're using whitespace or
+Perl where we're using '{'
+- Something about the way I imported my parser means that I just use the method name
+and dont' include the filename.
+
+## Perl 
+- Ugh, a language with semicolons!
+- Just like Python there are different comparison operators for different types.
+I wasn't getting the right answer for part 1 until I changed from an == comparison to an eq comparison.
+- Did not bother setting up a parser yet because I don't know how to make
+Perl modules.
