@@ -44,7 +44,7 @@ Nothing. This one was pretty easy.
 Perl where we're using '{'
 - Something about the way I imported my parser means that I just use the method name
 and don't include the filename.
-- [an alternate solution](https://github.com/djotaku/adventofcode/blob/main/2015/Day_01/Ruby/alternate_part_1.rb) for Ruby from /u/matheusrich on /r/ruby taught me how to use reduce in a way that seems to combine it with Python's enumerate
+- [an alternate solution](https://github.com/djotaku/adventofcode/blob/main/2015/Day_01/Ruby/alternate_part_1.rb) for Ruby from /u/matheusrich on /r/ruby taught me how to use [reduce](https://docs.ruby-lang.org/en/3.0.0/Enumerable.html#method-i-reduce) in a way that seems to combine it with Python's enumerate
 
 ## Perl 
 - Ugh, a language with semicolons!
@@ -52,3 +52,4 @@ and don't include the filename.
 I wasn't getting the right answer for part 1 until I changed from an == comparison to an eq comparison.
 - Did not bother setting up a parser yet because I don't know how to make
 Perl modules.
+- For Perl part 2 I used the "last" keyword to break out of the loop. First time using that.
