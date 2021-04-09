@@ -8,3 +8,4 @@
 array.map { |string| string.to_i}
 ```
 
+- Used reduce. Although I used to hate lambdas, I actually kind of like the lamba syntax in Python a little more. Because sum seems to be an extra variable - at least the way I see it. 
