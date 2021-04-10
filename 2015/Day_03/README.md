@@ -32,7 +32,7 @@ For example:
 - "^>v<" now delivers presents to 3 houses, and Santa and Robo-Santa end up back where they started.
 - "^v^v^v^v^v" now delivers presents to 11 houses, with Santa going one direction and Robo-Santa going the other.
 
-Answer: 
+Answer: 2631
 
 
 ## Commentary
