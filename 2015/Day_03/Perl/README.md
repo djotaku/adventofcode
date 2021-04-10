@@ -6,3 +6,5 @@
 - Perl doesn't appear to have tuples so, but the sets didn't need them. Just ended up adding in the coordinates as strings - at least that's what I believe Perl was doing under the hood. I got the right answer.
 
 ## Part 2
+
+- Nothing
