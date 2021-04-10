@@ -6,3 +6,7 @@
 - sorting numerically is a lot more complicated in Perl than the other languages (see line 17)
 - Perl doesn't have reduce in the standard library
 - push is used to add to arrays
+
+## Part 2
+
+- Nothing new. Just modified part 1.
