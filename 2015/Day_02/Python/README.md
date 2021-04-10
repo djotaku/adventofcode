@@ -7,4 +7,4 @@ but that returns an iterator. Since I just wanted to add things up
   reduce was just fine. Also my first time writing a lamba function. Woohoo!
   
 ## Part 2
-
+- Nothing new compared to part 1.
