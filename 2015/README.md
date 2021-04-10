@@ -1,4 +1,4 @@
-# Advent of Code 2015
+# Advent of Code 2015 - Santa's Weather Machine
 
 Advent of Code 2015 can be found [here](https://adventofcode.com/2015).
 
@@ -11,10 +11,25 @@ My goal for the 2015 problem sets are:
 - To reacquaint myself with Perl, which I haven't used in about a decade
 - To have fun solving programming puzzles
 
+## Days I could not complete
+
+None yet....
+
 ## What I learned from Advent of Code 2015
 
-Nothing yet....I haven't started!
+Right now I think this will be a subset of what I learned from doing each problem. For a full list of what I learned, for each day the README will contain what I learned in each programming language.
 
+### Python
+
+TBF at end of 2015 problem set
+
+### Ruby
+
+TBF at end of 2015 problem set
+
+### Perl
+
+TBF at end of 2015 problem set
 
 ## note to self
 

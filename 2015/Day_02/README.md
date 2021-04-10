@@ -28,3 +28,39 @@ For example:
 How many total feet of ribbon should they order?
 
 Answer: 3812909
+
+## What I learned Roundup
+
+### Python
+
+- It's my first time using reduce. I thought I wanted to use accumulate, but that returns an iterator. Since I just wanted to add things up reduce was just fine. Also my first time writing a lamba function. Woohoo!
+
+### Ruby
+
+- Using .map(&:to_i) to change an entire array from string to int without having to explicitly loop through the array. I'm not 100% sure on the & in there. Doing a bit more googling seems to suggest that the more likely way this would appear is:
+
+```
+array.map { |string| string.to_i}
+```
+
+- Used reduce. Although I used to hate lambdas, I actually kind of like the lamba syntax in Python a little more. Because sum seems to be an extra variable - at least the way I see it. 
+
+- How do to Ruby's equivalent to Python's 
+
+```
+if __name__=="__main__":
+```
+without that, very hard to do unit testing. The answer is:
+
+```
+if $PROGRAM_NAME == __FILE__
+  foo()
+  bar()
+end 
+```
+### Perl
+
+- how to use regular expressions instead of split to get my puzzle input (see part_1.pl line 13)
+- sorting numerically is a lot more complicated in Perl than the other languages (see part_1.pl line 17)
+- Perl doesn't have reduce in the standard library
+- push is used to add to arrays
