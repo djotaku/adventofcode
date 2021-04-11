@@ -45,6 +45,17 @@ Answer: 2631
 
 ### Python
 
+Nothing new on this day
+
 ### Ruby
 
+- For separating a string I like that split works in Ruby. Had to do a for loop in Python.
+- For Ruby [need an import to use sets](https://ruby-doc.org/stdlib-2.7.1/libdoc/set/rdoc/Set.html).
+- Ruby can have lists in Sets. Python requires them to be immutables.
+- I tried to use a similar notation to what I learned about in the alternate Day 1 solution using reduce to recreate a kind of enumerate in Ruby and that didn't work. In the future I'll search and see if there's an enumerate function in the standard library.
+
 ### Perl
+
+- Perl does not have sets built in. 
+- using CPAN. Ended up using my toolbox container and installing cpan App::cpanminus as per the cpan documentation
+- Perl doesn't appear to have tuples so, but the sets didn't need them. Just ended up adding in the coordinates as strings - at least that's what I believe Perl was doing under the hood. I got the right answer.
