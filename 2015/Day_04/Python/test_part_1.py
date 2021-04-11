@@ -11,6 +11,6 @@ def test_does_it_lead():
 
 
 def test_find_special_number():
-    # assert part_1.find_special_number("abcdef") == 609043
+    assert part_1.find_special_number("abcdef") == 609043
     assert part_1.find_special_number("pqrstuv") == 1048970
 
