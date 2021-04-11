@@ -17,7 +17,9 @@ Answer: 346386
 
 ## Part 2
 
-TBD
+Now need 6 zeroes
+
+Answer: 9958218
 
 ## Commentary
 
