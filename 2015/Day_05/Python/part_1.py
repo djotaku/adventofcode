@@ -7,5 +7,17 @@ import parse_input
 def rule_one(string_to_eval):
     """Test if a string contains at least 3 vowels."""
     vowel_set = '[aeiou]'
-    vowel_re = re.compile(vowel_set)
-    return bool(vowel_re.search(string_to_eval))
+    vowel_count = re.findall(vowel_set, string_to_eval)
+    return len(vowel_count) >= 3
+
+
+def rule_two(string_to_eval):
+    """Test if at least one letter appears twice in a row."""
+    double_letter = re.compile('[a-z]{2,}')
+    return bool(re.search(double_letter, string_to_eval))
+
+
+def rule_three(string_to_eval):
+    """Test for teh naughty strings."""
+    naughties = re.compile(r'ab|cd|pq|xy')
+    return not re.search(naughties, string_to_eval)
