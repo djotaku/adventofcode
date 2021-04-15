@@ -21,7 +21,7 @@ For example:
 
 How many strings are nice?
 
-Answer:
+Answer: 255
 
 ## Part 2
 
