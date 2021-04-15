@@ -17,11 +17,7 @@ def rule_two(line_to_evaluate)
 end
 
 def rule_three(line_to_evaluate)
-    if line_to_evaluate.match?(/ab|cd|pq|xy/)
-        return false
-    else
-        return true
-    end
+    ! line_to_evaluate.match?(/ab|cd|pq|xy/)
 end
 
 def naughty_or_nice(line_to_evaluate)
