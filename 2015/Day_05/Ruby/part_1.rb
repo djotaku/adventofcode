@@ -13,5 +13,17 @@ end
 
 
 def rule_two(line_to_evaluate)
-    line_to_evaluate.match(/(.)/)
+    line_to_evaluate.match?(/(.)\1/)
+end
+
+def rule_three(line_to_evaluate)
+    if line_to_evaluate.match?(/ab|cd|pq|xy/)
+        return false
+    else
+        return true
+    end
+end
+
+def naughty_or_nice(line_to_evaluate)
+    !! rule_one(line_to_evaluate) and rule_two(line_to_evaluate) and rule_three(line_to_evaluate)
 end
