@@ -6,8 +6,6 @@
 	- if I want to force a bool, I could return !! expression or I could use .match? <- adding the question mark
 	- Or should use assert instead of assert_equal(true, exp)
 	- AND getting #<MatchData "aa" 1:"a"> was not an error, but the unit test telling me I'd succeeded
-- something
 
 ## Part 2
-- very annoying that it doesn't have findall()
-- 
+- very annoying that it doesn't have findall(), but turned out not to eventually be necessary.
