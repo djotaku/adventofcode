@@ -10,8 +10,10 @@ my @naughty_or_nice_list = <NAUGHTY_OR_NICE>;
 my $nice_count = 0;
 
 for my $line (@naughty_or_nice_list){
-    if (scalar @matches = $line =~ m/[aeiou]/g) >= 3 && $line =~ /(.)\1/ && $line =~ !/ab|cd|pq|xy/)
+    if (my @matches = $line =~ m/[aeiou]/g >= 3 && $line =~ /(.)\1/ && $line =~ !/ab|cd|pq|xy/)
     {
-        say "I found it!";
+	    $nice_count++;
     }
 }
+
+say "Santa has $nice_count nice kids to deliver presents to."
