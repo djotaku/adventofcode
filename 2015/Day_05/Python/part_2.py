@@ -11,9 +11,9 @@ def rule_one(string_to_eval):
 
 
 def rule_two(string_to_eval):
-    """Test if at least one letter appears twice in a row."""
-    double_letter = re.compile(r'(.)\1')
-    return bool(re.search(double_letter, string_to_eval))
+    """Test if a letter is repeated with exactly one letter between them."""
+    regex = re.compile(r'(\w).\1')
+    return bool(re.search(regex, string_to_eval))
 
 
 def naughty_or_nice(string_to_eval):
