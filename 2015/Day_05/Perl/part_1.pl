@@ -17,8 +17,8 @@ for my $line (@naughty_or_nice_list){
     {
         $vowel_count++;
     }
-
-    if ($vowel_count >= 3 && $line =~ /(.)\1/ && $line =~ !/ab|cd|pq|xy/)
+    
+    if ($vowel_count >= 3 && $line =~ /(.)\1/ && $line !~ /ab|cd|pq|xy/)
     {
     	$nice_count++;
     }
