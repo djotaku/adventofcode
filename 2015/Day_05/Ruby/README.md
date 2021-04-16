@@ -7,3 +7,7 @@
 	- Or should use assert instead of assert_equal(true, exp)
 	- AND getting #<MatchData "aa" 1:"a"> was not an error, but the unit test telling me I'd succeeded
 - something
+
+## Part 2
+- very annoying that it doesn't have findall()
+- 
