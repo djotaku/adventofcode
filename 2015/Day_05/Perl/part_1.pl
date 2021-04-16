@@ -10,9 +10,16 @@ my @naughty_or_nice_list = <NAUGHTY_OR_NICE>;
 my $nice_count = 0;
 
 for my $line (@naughty_or_nice_list){
-    if (my @matches = $line =~ m/[aeiou]/g >= 3 && $line =~ /(.)\1/ && $line =~ !/ab|cd|pq|xy/)
+    
+    my $vowel_count = 0;
+    
+    while ($line =~ m/[aeiou]/g)
     {
-	    say scalar @matches; # this outputs 1.....
+        $vowel_count++;
+    }
+
+    if ($vowel_count >= 3 && $line =~ /(.)\1/ && $line =~ !/ab|cd|pq|xy/)
+    {
     	$nice_count++;
     }
 }
