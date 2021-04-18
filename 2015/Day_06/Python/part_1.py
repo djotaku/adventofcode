@@ -24,5 +24,27 @@ def parse_instructions(instruction):
     return verb, (int(starting_x), int(starting_y)), (int(final_x), int(final_y))
 
 
+def run_the_light_show(instructions):
+    """Take in an instruction line and make the necessary mods to the light show."""
+    lights = {}
+    for instruction_line in instructions:
+        verb, first_coordinate, second_coordinate = parse_instructions(instruction_line)
+        coordinates_to_change = generate_coordinates(first_coordinate, second_coordinate)
+        for coordinate in coordinates_to_change:
+            if verb == "turn on":
+                lights[coordinate] = 1
+            elif verb == "turn off":
+                lights[coordinate] = 0
+            elif verb == "toggle":
+                if coordinate in lights:
+                    lights[coordinate] ^= lights[coordinate]
+                else:
+                    lights[coordinate] = 1
+    return sum([value for value in lights.values()])
+
+
 if __name__ == "__main__":
-    pass
+    light_instructions = parse_input.input_per_line('../input.txt')
+    print(run_the_light_show(light_instructions))
+
+# 274540 is too low
