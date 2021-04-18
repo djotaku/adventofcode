@@ -23,3 +23,6 @@ def test_run_light_show():
     assert part_1.run_the_light_show(instructions) == 1000000
     instructions = ['toggle 0,0 through 2,2']
     assert part_1.run_the_light_show(instructions) == 9
+    instructions = ['turn on 0,0 through 2,2', 'turn off 0,0 through 2,2', 'toggle 0,0 through 2,2']
+    assert part_1.run_the_light_show(instructions) == 9
+

@@ -28,7 +28,6 @@ def run_the_light_show(instructions):
     """Take in an instruction line and make the necessary mods to the light show."""
     lights = {}
     for instruction_line in instructions:
-        print(instruction_line)
         verb, first_coordinate, second_coordinate = parse_instructions(instruction_line)
         coordinates_to_change = generate_coordinates(first_coordinate, second_coordinate)
         for coordinate in coordinates_to_change:
@@ -38,9 +37,11 @@ def run_the_light_show(instructions):
                 lights[coordinate] = 0
             elif verb == "toggle":
                 if coordinate in lights:
-                    lights[coordinate] ^= lights[coordinate]
+                    lights[coordinate] ^= 1
                 else:
                     lights[coordinate] = 1
+            else:
+                print("I am not supposed to be here today!")
     return sum(lights.values())
 
 
