@@ -10,3 +10,16 @@ def test_generate_coordinates():
 def test_parse_instructions():
     assert part_1.parse_instructions('turn on 887,9 through 959,629') == ("turn on", (887, 9), (959, 629))
     assert part_1.parse_instructions('toggle 720,196 through 897,994') == ("toggle", (720, 196), (897, 994))
+
+
+def test_run_light_show():
+    instructions = ['turn on 0,0 through 2,2', 'toggle 1,1 through 2,2']
+    assert part_1.run_the_light_show(instructions) == 5
+    instructions = ['toggle 1,1 through 2,2']
+    assert part_1.run_the_light_show(instructions) == 4
+    instructions = ['turn on 0,0 through 2,2', 'turn off 0,0 through 2,2']
+    assert part_1.run_the_light_show(instructions) == 0
+    instructions = ['turn on 0,0 through 999,999']
+    assert part_1.run_the_light_show(instructions) == 1000000
+    instructions = ['toggle 0,0 through 2,2']
+    assert part_1.run_the_light_show(instructions) == 9

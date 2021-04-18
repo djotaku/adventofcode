@@ -28,6 +28,7 @@ def run_the_light_show(instructions):
     """Take in an instruction line and make the necessary mods to the light show."""
     lights = {}
     for instruction_line in instructions:
+        print(instruction_line)
         verb, first_coordinate, second_coordinate = parse_instructions(instruction_line)
         coordinates_to_change = generate_coordinates(first_coordinate, second_coordinate)
         for coordinate in coordinates_to_change:
@@ -40,7 +41,7 @@ def run_the_light_show(instructions):
                     lights[coordinate] ^= lights[coordinate]
                 else:
                     lights[coordinate] = 1
-    return sum([value for value in lights.values()])
+    return sum(lights.values())
 
 
 if __name__ == "__main__":
