@@ -6,7 +6,7 @@
 	- if I want to force a bool, I could return !! expression or I could use .match? <- adding the question mark
 	- Or should use assert instead of assert_equal(true, exp)
 	- AND getting #<MatchData "aa" 1:"a"> was not an error, but the unit test telling me I'd succeeded
-        - a few days later, user 442401 showed me a more Ruby-ish way to do Rule 2. You can see my that [here](https://github.com/djotaku/adventofcode/blob/main/2015/Day_05/Ruby/part_1_more_rubyish_rule_two.rb). He also had a great explanation of how it works:
+        - a few days later, user 442401 showed me a more Ruby-ish way to do Rules 1 and 2. You can see that [here](https://github.com/djotaku/adventofcode/blob/main/2015/Day_05/Ruby/part_1_more_rubyish.rb). He also had a great explanation of how the Rule 2 mod works:
         
         ```ruby
         string.chars                # returns an Array of characters, ['f', 'o', 'o', 'b', 'a', 'r']
