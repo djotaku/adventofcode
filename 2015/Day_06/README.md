@@ -1,5 +1,8 @@
 # Day 6: Probably a Fire Hazard
 
+Out of respect for the author's wishes, I only put as much of the problem text as necessary to understand the problem.
+
+Visit the version with all the story elements [here](https://adventofcode.com/2015/day/6).
 ## Part 1
 
 You've decided to deploy one million lights in a 1000x1000 grid.
