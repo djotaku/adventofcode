@@ -6,9 +6,9 @@ I am coming to the 2015 problem set after having first done the 2020 problem set
 
 My goal for the 2015 problem sets are:
 
-- Continue to reinforce my knowledge of idiomatic Python and solving common algorithms
-- To solidify my knowledge of Ruby, which I began learning last year
-- To reacquaint myself with Perl, which I haven't used in about a decade
+- Continue to reinforce my knowledge of idiomatic Python and solving common algorithms (ranked #2 on Github 2021Q1)
+- To solidify my knowledge of Ruby, which I began learning last year (ranked #5 on Github 2021Q1)
+- To reacquaint myself with Perl, which I haven't used in about a decade (ranked #21 on Github 2021Q1)
 - To have fun solving programming puzzles
 
 ## Days I could not complete
