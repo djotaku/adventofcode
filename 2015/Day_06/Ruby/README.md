@@ -10,3 +10,4 @@
 - once more practice with array.reduce
 
 ## Part 2
+- Nothing
