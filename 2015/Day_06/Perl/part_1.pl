@@ -56,4 +56,4 @@ for my $value (values %lights)
     $active_lights += $value;
 }
 
-say "Santa has asked me to turn on $active_lights lights."
+say "Santa has asked me to turn on $active_lights lights.";
