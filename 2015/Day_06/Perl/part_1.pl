@@ -2,6 +2,7 @@
 
 use v5.14;
 use warnings;
+use List::Util qw(sum);
 
 open(LIGHTING, <"../input.txt">) || die "Couldn't get lighting instructions!";
 
@@ -13,7 +14,7 @@ for my $instruction (@lighting_instructions){
 
     my ($verb, $starting_x, $starting_y, $through, $end_x, $end_y) = $instruction =~ /([a-z]* [a-z]*|[a-z]*) (\d*),(\d*)/g;
     
-    my @coordinates = [];
+    my @coordinates;
     
     for (my $x = $starting_x; $x < $end_x + 1; $x++)
     {
@@ -50,10 +51,6 @@ for my $instruction (@lighting_instructions){
     }
 }
 
-my $active_lights = 0;
-for my $value (values %lights)
-{
-    $active_lights += $value;
-}
+my $active_lights = sum(values %lights);
 
 say "Santa has asked me to turn on $active_lights lights.";
