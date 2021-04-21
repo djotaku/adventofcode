@@ -27,3 +27,6 @@ def test_find_value_on_line():
     assert part_1.find_value_on_line(wire_dictionary, 'y') == 456
     assert part_1.find_value_on_line(wire_dictionary, 'd') == 72
     assert part_1.find_value_on_line(wire_dictionary, 'e') == 507
+    assert part_1.find_value_on_line(wire_dictionary, 'f') == 492
+    assert part_1.find_value_on_line(wire_dictionary, 'g') == 114
+    assert part_1.find_value_on_line(wire_dictionary, 'h') == 65412

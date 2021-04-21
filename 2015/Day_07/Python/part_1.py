@@ -1,4 +1,7 @@
 import re
+import sys
+sys.path.insert(0, '../../input_parsing')
+import parse_input
 
 
 def create_dictionary(instructions):
@@ -17,14 +20,16 @@ def create_dictionary(instructions):
 
 def break_up_equation(equation):
     """Figure out the operand(s) and operation and return them."""
-    two_operand_regex = re.compile(r'([a-z]+) ([A-Z]*) (\w)')
+    two_operand_regex = re.compile(r'(\w+) ([A-Z]*) (\w+)')
     one_operand_regex = re.compile('([A-Z]*) ([a-z]+)')
     if re.match(two_operand_regex, equation):
         result = re.findall(two_operand_regex, equation)
         return result[0][0], result[0][1], result[0][2]
-    else:
+    elif re.match(one_operand_regex, equation):
         result = re.findall(one_operand_regex, equation)
         return result[0][0], result[0][1]
+    else:
+        return equation
 
 
 def find_value_on_line(all_wires, wire_to_find):
@@ -34,8 +39,14 @@ def find_value_on_line(all_wires, wire_to_find):
     else:
         equation = break_up_equation(all_wires[wire_to_find])
         if len(equation) == 3:
-            operand_left = find_value_on_line(all_wires, equation[0])
-            operand_right = find_value_on_line(all_wires, equation[2])
+            if equation[0].isnumeric():
+                operand_left = int(equation[0])
+            else:
+                operand_left = find_value_on_line(all_wires, equation[0])
+            if equation[2].isnumeric():
+                operand_right = int(equation[2])
+            else:
+                operand_right = find_value_on_line(all_wires, equation[2])
             operation = equation[1]
             if operation == "AND":
                 return operand_left & operand_right
@@ -45,5 +56,16 @@ def find_value_on_line(all_wires, wire_to_find):
                 return operand_left | operand_right
             elif operation == "RSHIFT":
                 return operand_left >> operand_right
-        else:
+        elif len(equation) == 2:
             return ~ find_value_on_line(all_wires, equation[1])
+        else:
+            return find_value_on_line(all_wires, equation)
+
+
+if __name__ == "__main__":
+    bobby_instructions = parse_input.input_per_line('../input.txt')
+    bobby_wire_dictionary = create_dictionary(bobby_instructions)
+    wire_a = find_value_on_line(bobby_wire_dictionary, 'a')
+    print(f"The value on wire a is {wire_a}")
+
+# the answer is not -7074
