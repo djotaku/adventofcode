@@ -1,3 +1,4 @@
+from datetime import datetime
 import re
 import sys
 sys.path.insert(0, '../../input_parsing')
@@ -29,43 +30,47 @@ def break_up_equation(equation):
         result = re.findall(one_operand_regex, equation)
         return result[0][0], result[0][1]
     else:
-        return equation
+        print(f"{equation=}")
+        return [equation]
 
 
 def find_value_on_line(all_wires, wire_to_find):
     """Figure out what the final value is on a wire."""
     if all_wires[wire_to_find].isnumeric():
         return int(all_wires[wire_to_find])
-    else:
-        equation = break_up_equation(all_wires[wire_to_find])
-        if len(equation) == 3:
-            if equation[0].isnumeric():
-                operand_left = int(equation[0])
-            else:
-                operand_left = find_value_on_line(all_wires, equation[0])
-            if equation[2].isnumeric():
-                operand_right = int(equation[2])
-            else:
-                operand_right = find_value_on_line(all_wires, equation[2])
-            operation = equation[1]
-            if operation == "AND":
-                return operand_left & operand_right
-            elif operation == "LSHIFT":
-                return operand_left << operand_right
-            elif operation == "OR":
-                return operand_left | operand_right
-            elif operation == "RSHIFT":
-                return operand_left >> operand_right
-        elif len(equation) == 2:
-            return ~ find_value_on_line(all_wires, equation[1])
+    equation = break_up_equation(all_wires[wire_to_find])
+    if len(equation) == 3:
+        if equation[0].isnumeric():
+            operand_left = int(equation[0])
         else:
-            return find_value_on_line(all_wires, equation)
+            operand_left = find_value_on_line(all_wires, equation[0])
+        if equation[2].isnumeric():
+            operand_right = int(equation[2])
+        else:
+            operand_right = find_value_on_line(all_wires, equation[2])
+        operation = equation[1]
+        if operation == "AND":
+            return operand_left & operand_right
+        elif operation == "LSHIFT":
+            return operand_left << operand_right
+        elif operation == "OR":
+            return operand_left | operand_right
+        elif operation == "RSHIFT":
+            return operand_left >> operand_right
+    elif len(equation) == 2:
+        return find_value_on_line(all_wires, equation[1]) ^ 65535
+    else:
+        print("one went straight through")
+        return find_value_on_line(all_wires, equation[0])
 
 
 if __name__ == "__main__":
+    print(f"Starting at {datetime.now().strftime('%d-%b-%Y %H:%M:%S')}")
     bobby_instructions = parse_input.input_per_line('../input.txt')
     bobby_wire_dictionary = create_dictionary(bobby_instructions)
     wire_a = find_value_on_line(bobby_wire_dictionary, 'a')
     print(f"The value on wire a is {wire_a}")
+    print(f"Ended at {datetime.now().strftime('%d-%b-%Y %H:%M:%S')}")
 
 # the answer is not -7074
+# 58462 is too high
