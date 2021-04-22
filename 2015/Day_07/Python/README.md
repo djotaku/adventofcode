@@ -17,3 +17,5 @@ Ended at 22-Apr-2021 18:19:07
 ```
 
 ## Part 2
+
+- Easy once I figured out what it was asking me to do.

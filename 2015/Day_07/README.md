@@ -48,6 +48,10 @@ Answer: 956
 
 ## Part 2
 
+Now, take the signal you got on wire a, override wire b to that signal, and reset the other wires (including wire a). What new signal is ultimately provided to wire a?
+
+Answer: 40149
+
 ## Commentary/Initial Strategies
 - Put into dictionary with the key being whatever comes after ->
 - Then we need a recursive function
@@ -66,9 +70,14 @@ Answer: 956
 ## What I learned
 
 ### Python
+The solution you want to look at (the one that actually completes) is [part_1_memoization.py](https://github.com/djotaku/adventofcode/blob/main/2015/Day_07/Python/part_1_memoization.py)
+
+- If your version of Python can't use cytpes.ushort, then to make sure the number is 16 bits like an unsigned short, you need to XOR it with 65535 for "~"
+- You almost certainly want to be consistent with your return types. It seems I was getting an error with my break_up_equation function because in the case of a straight through eg lx -> b I wasn't returning it as a list-type or some kind of iterable, so it was making the if/else on the find_value_on_line no go all the way through.
+- THE IMPORTANCE OF MEMOIZATION - see the README.md in Python for more details, but went from not completing within 24 hours to finishing instantly.
 
 ### Ruby
-Until/unless I figure out how to get my Python solution to complete in < 13 hours, I'm not going to reimplement in Ruby. I think the issue is the algorithm.
+I will attempt to implement memoization/caching in Ruby. We will see if I can succeed.
 
 ### Perl
-Until/unless I get to the section in Perl about subroutines (their version of functions) I'm not going to attempt the solution that requires recursion.
+Until I get to the section in Perl Programing about subroutines (their version of functions) I'm not going to attempt to solve the problem since the solution requires recursion. I'll also have to figure out how to do memoization/caching.
