@@ -14,7 +14,7 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
     - To figure out the number for a letter, pull out what’s in that letter.
         - If it has a binary operator, try to figure out what each of those are
         - Unary - just try to figure out that one
-    - Base base is the dictionary value being a number - then unwind the recursion
+    - Base case is the dictionary value being a number - then unwind the recursion
 - Helper function for recursive function -> parse the instruction (or maybe it’s easier for this to be in recursion - will have to test)
     - Need to figure out if it’s unary or binary - one thing that might help with regex is that all the commands are uppercase and the wires are all lowercase
         - I think first you look for uppercase
@@ -28,5 +28,7 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 ### Python
 
 ### Ruby
+Until/unless I figure out how to get my Python solution to complete in < 13 hours, I'm not going to reimplement in Ruby. I think the issue is the algorithm.
 
 ### Perl
+Until/unless I get to the section in Perl about subroutines (their version of functions) I'm not going to attempt the solution that requires recursion.
