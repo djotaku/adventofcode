@@ -53,13 +53,14 @@ def for_cache(wire_to_find)
             #puts "Now operand_right is #{operand_right}"
         end
         operation = equation[1]
-        if operation == "AND"
+        case operation
+        when "AND"
             return operand_left & operand_right
-        elsif operation == "LSHIFT"
+        when "LSHIFT"
             return operand_left << operand_right
-        elsif operation == "OR"
+        when "OR"
             return operand_left | operand_right
-        elsif operation == "RSHIFT"
+        when "RSHIFT"
             return operand_left >> operand_right
         end
     elsif equation.length() == 2
