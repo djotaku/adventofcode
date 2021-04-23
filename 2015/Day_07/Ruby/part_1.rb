@@ -25,11 +25,12 @@ end
 
 @all_wires = Hash.new
 
-def find_value_on_line(wire_to_find)
+def for_cache(wire_to_find)
     if Integer(@all_wires[wire_to_find], exception: false)
         return @all_wires[wire_to_find].to_i
     end
     equation = break_up_equation(@all_wires[wire_to_find])
+    puts "equation is #{equation[0]} #{equation[1]} #{equation[2]}"
     if equation.length() == 3
         if Integer(equation[0], exception: false)
             operand_left = equation[0].to_i
@@ -47,6 +48,7 @@ def find_value_on_line(wire_to_find)
         elsif operation == "LHIFT"
             return operand_left << operand_right
         elsif operation == "OR"
+            puts "We are doing #{operand_left} #{operation} #{operand_right}"
             return operand_left | operand_right
         elsif operation == "RSHIFT"
             return operand_left >> operand_right
@@ -54,14 +56,21 @@ def find_value_on_line(wire_to_find)
     elsif equation.length() == 2
         return find_value_on_line(equation[1]) ^ 65535
     else
+        puts "Equation[0] = #{equation[0]}"
         return find_value_on_line(equation[0])
     end
 end
 
+def find_value_on_line(wire_to_find)
+    @cache ||= {}
+    @cache[wire_to_find] ||= for_cache(wire_to_find)
+end
+
 
 if $PROGRAM_NAME == __FILE__
-    instructions = ['123 -> x', '456 -> y', 'x AND y -> d', 'x OR y -> e', 'x LSHIFT 2 -> f', 'y RSHIFT 2 -> g','NOT x -> h', 'NOT y -> i']
+    instructions = input_per_line('../input.txt')
+    # instructions = ['123 -> x', '456 -> y', 'x AND y -> d', 'x OR y -> e', 'x LSHIFT 2 -> f', 'y RSHIFT 2 -> g','NOT x -> h', 'NOT y -> i']
     @all_wires = create_dictionary(instructions)
-    answer = find_value_on_line('d')
+    answer = find_value_on_line('a')
     puts answer
 end
