@@ -14,7 +14,7 @@ def test_break_up_equation():
     equation = "x AND y"
     assert part_1.break_up_equation(equation) == ('x', 'AND', 'y')
     equation = "x LSHIFT 2"
-    assert part_1.break_up_equation(equation) == ('x', "LSHIFT", '2')
+    assert part_1.break_up_equation(equaretion) == ('x', "LSHIFT", '2')
     equation = "NOT x"
     assert part_1.break_up_equation(equation) == ("NOT", 'x')
 
