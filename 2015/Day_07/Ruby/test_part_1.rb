@@ -29,6 +29,7 @@ class TestWireKit < Test::Unit::TestCase
     def test_find_value_on_line
         instructions = ['123 -> x', '456 -> y', 'x AND y -> d', 'x OR y -> e', 'x LSHIFT 2 -> f', 'y RSHIFT 2 -> g',
                     'NOT x -> h', 'NOT y -> i']
+        @cache = Hash.new
         @all_wires = create_dictionary(instructions)
         assert_equal(123, find_value_on_line('x'))
         assert_equal(72, find_value_on_line('d'))
