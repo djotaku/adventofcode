@@ -24,6 +24,7 @@ def break_up_equation(equation)
 end
 
 @all_wires = Hash.new
+@cache = {}
 
 def for_cache(wire_to_find)
     if Integer(@all_wires[wire_to_find], exception: false)
@@ -62,7 +63,6 @@ def for_cache(wire_to_find)
 end
 
 def find_value_on_line(wire_to_find)
-    @cache ||= {}
     @cache[wire_to_find] ||= for_cache(wire_to_find)
 end
 
