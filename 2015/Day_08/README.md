@@ -23,4 +23,14 @@ Disregarding the whitespace in the file, what is the number of characters of cod
 
 For example, given the four strings above, the total number of characters of string code (2 + 5 + 10 + 6 = 23) minus the total number of characters in memory for string values (0 + 3 + 7 + 1 = 11) is 23 - 11 = 12.
 
-Answer: 
+Answer: 1342
+
+## Part 2
+
+## What I learned in Each Language
+
+### Python
+
+### Ruby
+
+### Perl

@@ -13,10 +13,19 @@ def in_memory_strings(line: str) -> int:
     subtraction_count = 2  # start with 2 for the quotes
     line_length = len(line)
     line = line[1:-1]
-    regex_backspaces = re.compile(r'(\\\\)|(\\["])')
+    regex = re.compile(r'(\\\\)|(\\["])|(\\x[0-9a-f]{2})')
+    regex_backspace = re.compile(r'(\\\\)|(\\["])')
     regex_unicode = re.compile(r'\\x[0-9a-f]{2}')
-    backspace_count = len(re.findall(regex_backspaces, line))
-    unicode_count = len(re.findall(regex_unicode, line)) * 3
+    regex_matches = re.findall(regex, line)
+    backspace_count = 0
+    unicode_count = 0
+    for match in regex_matches:
+        for item in match:
+            if re.match(regex_unicode, item):
+                unicode_count += 1
+            elif re.match(regex_backspace, item):
+                backspace_count += 1
+    unicode_count *= 3
     subtraction_count += backspace_count + unicode_count
     return line_length - subtraction_count
 
