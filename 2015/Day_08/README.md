@@ -43,6 +43,7 @@ Answer: 2074.
 ## What I learned in Each Language
 
 ### Python
+- Nothing
 
 ### Ruby
 
