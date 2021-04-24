@@ -77,7 +77,10 @@ The solution you want to look at (the one that actually completes) is [part_1_me
 - THE IMPORTANCE OF MEMOIZATION - see the README.md in Python for more details, but went from not completing within 24 hours to finishing instantly.
 
 ### Ruby
-I will attempt to implement memoization/caching in Ruby. We will see if I can succeed.
+- To find out if a string is numeric - Integer(variable_to_test, exception: false)
+- use an "@" to make a variable available to everyone
+- case/when statement
+- how to do a cache in Ruby
 
 ### Perl
 Until I get to the section in Perl Programing about subroutines (their version of functions) I'm not going to attempt to solve the problem since the solution requires recursion. I'll also have to figure out how to do memoization/caching.
