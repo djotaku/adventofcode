@@ -11,25 +11,13 @@ def string_code_length(line: str) -> int:
 
 def in_memory_strings(line: str) -> int:
     subtraction_count = 2  # start with 2 for the quotes
-    print(f"{line=}")
     line_length = len(line)
     line = line[1:-1]
-    print(f"Stripped line is {line}")
-    #regex_double_back = re.compile(r'\\\\')
-    #regex_quote = re.compile(r'\\["]')
     regex_backspaces = re.compile(r'(\\\\)|(\\["])')
     regex_unicode = re.compile(r'\\x[0-9a-f]{2}')
-    #double_back_count = len(re.findall(regex_double_back, line))
-    #quote_count = len(re.findall(regex_quote, line))
     backspace_count = len(re.findall(regex_backspaces, line))
     unicode_count = len(re.findall(regex_unicode, line)) * 3
-    #subtraction_count += double_back_count + quote_count + unicode_count
     subtraction_count += backspace_count + unicode_count
-    print(f"{line_length=}")
-    #print(f"{quote_count=}")
-    #print(f"{double_back_count=}")
-    print(f"{unicode_count=}")
-    print(f"{subtraction_count=}")
     return line_length - subtraction_count
 
 

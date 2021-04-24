@@ -6,6 +6,7 @@ def test_string_code_length():
     assert part_1.string_code_length(r'"abc"') == 5
     assert part_1.string_code_length(r'"aaa\"aaa"') == 10
     assert part_1.string_code_length(r'"\x27"') == 6
+    assert part_1.string_code_length(r'"\xff\xca"') == 10
 
 
 def test_in_memory_strings():
@@ -28,3 +29,7 @@ def test_in_memory_strings():
     assert part_1.in_memory_strings(r'"\\\\\\\"') == 4
     assert part_1.in_memory_strings(r'"\"\""') == 2
     assert part_1.in_memory_strings(r'"\\"\""') == 3
+    assert part_1.in_memory_strings(r'"\x\\"') == 3
+    assert part_1.in_memory_strings(r'"\x3\\"') == 4
+    assert part_1.in_memory_strings(r'"\x34\\"') == 2
+    assert part_1.in_memory_strings(r'"\\x34\\"') == 5
