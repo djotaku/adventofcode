@@ -6,3 +6,4 @@
 - Other than that, mostly just continuing with what I learned in previous days. 
 
 ## Part 2
+- how to use string.count - you do string.count 'xyz' where x, y, and z (or more) are characters to look for and count. If you do (what was more intuitive to me) string.count 'x', 'y', 'z' then it looks for the intersection of those characters and you will not get the answer you expect.
