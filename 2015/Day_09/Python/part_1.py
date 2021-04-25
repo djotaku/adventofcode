@@ -1,43 +1,43 @@
-from dataclasses import dataclass
+"""Attempt a Hamilton Walk-based solution."""
+
+import re
+from collections import defaultdict
 
 
-@dataclass
-class Edge:
-    """Stores an Edge"""
-    vertex_1: str
-    vertex_2: str
-    distance: int
-
-    def get_edge(self):
-        return self.vertex_1, self.vertex_2, self.distance
-
-
-class Graph:
-    def __init__(self, edges):
-        self.edges = [Edge(vert_1, vert_2, distance) for vert_1, vert_2, distance in edges]
-        self.vertices = set()
-        for edge in self.edges:
-            self.vertices.add(edge.vertex_1)
-            self.vertices.add(edge.vertex_2)
-
-    @property
-    def neighbours(self):
-        neighbours = {vertex: set() for vertex in self.vertices}
-        for edge in self.edges:
-            neighbours[edge.vertex_1].add((edge.vertex_2, edge.distance))
-
-        return neighbours
+def hamilton_walk(graph, starting_point):
+    """Expects a graph that is a dictionary where the key is a city and value is a list of connected cities."""
+    size = len(graph)
+    cities_to_visit = [None, starting_point]   # the none is here to end the upcoming while loop
+    path = []
+    while cities_to_visit:
+        current_city = cities_to_visit.pop()
+        if current_city:
+            path.append(current_city)
+            if len(path) == size:
+                break
+        for remaining_city in set(graph[current_city]) - set(path):
+            cities_to_visit.append(None)
+            cities_to_visit.append(remaining_city)
+        else:
+            pass  # I think this breaks on circular routes?
+            #path.pop()
+    return path
 
 
-def find_shortest_route_to_all_destinations(graph: Graph) -> int:
-    routes = []
-    vertex_dict = graph.neighbours
-    for vertex in graph.vertices:
-        need_to_visit = graph.vertices.pop(vertex)
+def parse_connections(lines):
+    regex = re.compile(r'(\w+) to (\w+) = (\d+)')
+    hamilton_dict = defaultdict(list)
+    for line in lines:
+        destinations = re.findall(regex, line)
+        value = {destinations[0][1]: destinations[0][2]}
+        if destinations[0][0] not in hamilton_dict:
+            hamilton_dict[destinations[0][0]] = [value]
+        else:
+            hamilton_dict[destinations[0][0]].append(value)
+    return hamilton_dict
 
 
 if __name__ == "__main__":
-    graph = Graph([("London", "Dublin", 464), ("London", "Belfast", 548), ("Dublin", "Belfast", 141)])
-    neighbors = graph.neighbours
-    print(neighbors["London"])
-    print(neighbors["Dublin"])
+    flight_connections = {"London": ["Dublin", "Belfast"], "Dublin": ["Belfast", "London"],
+                          "Belfast": ["London", "Dublin"]}
+    print(hamilton_walk(flight_connections, "London"))
