@@ -24,6 +24,15 @@ def hamilton_walk(graph, starting_point):
     return path
 
 
+def all_visits(graph, starting_point):
+    """Expects a graph that is a dictionary where the key is a city and value is a list of connected cities."""
+    all_cities = set(graph)
+    paths = []
+
+
+
+
+
 def parse_connections(lines):
     regex = re.compile(r'(\w+) to (\w+) = (\d+)')
     hamilton_dict = defaultdict(list)
@@ -40,4 +49,5 @@ def parse_connections(lines):
 if __name__ == "__main__":
     flight_connections = {"London": ["Dublin", "Belfast"], "Dublin": ["Belfast", "London"],
                           "Belfast": ["London", "Dublin"]}
-    print(hamilton_walk(flight_connections, "London"))
+    #print(hamilton_walk(flight_connections, "London"))
+    print(all_visits(flight_connections, "London"))
