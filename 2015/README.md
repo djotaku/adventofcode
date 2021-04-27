@@ -13,11 +13,22 @@ My goal for the 2015 problem sets are:
 
 ## Days I could not complete
 
-None yet....
+### Language Specific
+
+#### Perl
+Day 7 - Because I was using recursion and I had not yet relearned how to do subroutines (Perl functions)
 
 ## What I learned from Advent of Code 2015
 
-Right now I think this will be a subset of what I learned from doing each problem. For a full list of what I learned, for each day the README will contain what I learned in each programming language.
+A distillation of what I learned this year.
+
+- Perhaps this year I’m having a bit of hammer/nail disease, but having finally understood regex at the relatively simple level needed for AoC, I find that it makes nearly every problem infinitely easier compared to the way I did it in 2020 (mostly iterating over characters and keeping track of indexes, if needed)
+- Confirmation of what I learned in 2020 - the right data structure is almost always the dictionary/hash. Nothing else is as performant.
+- If you have recursion, you’ll probably have to do a cache to pass with the input given
+- Looking like each year there’s at least one variant of Conway’s Game of Life - so learn the algorithm
+
+
+For a full list of what I learned, for each day the README will contain what I learned in each programming language.
 
 ### Python
 

@@ -1,18 +1,29 @@
+# Advent of Code 2020 - You've Earned a Vacation
+
 This year, apparently you're saving up money to go on vacation, the money being $(star) per solution. If you go to the "cute" entry for Day one, you'll get the story. I found out on the subreddit that it's considered bad form to share the exact problem text. So for each day I just put in the barebones so that if I come back to this repo I can remember what the problem I was trying to solve was.
 
-Part 1 sections still incomplete: 
+## Days I could Not Complete
+
+I may come back and attempt to solve these later
+
+### Part 1 sections still incomplete: 
 - [17](https://adventofcode.com/2020/day/17) - just could not figure it out because the ref output moves, making it a lot harder to see if I'm getting it right. (And killing my unit tests.)
 - [19](https://adventofcode.com/2020/day/19) - I knew what I wanted to do, but I couldn't make it work in the time I gave myself. Don't want to swallow the whole day on a problem. Bums me out a lot, but I have other responsibilities.
 - [20](https://adventofcode.com/2020/day/20) - I think I was on the right track, but I didn't have enough time to work on it around my other responsibilities today.
 - [21](https://adventofcode.com/2020/day/21) - I don't even understand how to do this manually, so I can't do it in code.
 
-Part 2 sections still incomplete: [7](https://adventofcode.com/2020/day/7), [13](https://adventofcode.com/2020/day/13),
+### Part 2 sections still incomplete: [7](https://adventofcode.com/2020/day/7), [13](https://adventofcode.com/2020/day/13),
  [14](https://adventofcode.com/2020/day/14), [17](https://adventofcode.com/2020/day/17),
  [18](https://adventofcode.com/2020/day/18), [24](https://adventofcode.com/2020/day/24)
 
-Part 2 sections incomplete because of inefficient algorithms
+### Part 2 sections incomplete because of inefficient algorithms
 - [15](https://adventofcode.com/2020/day/15) - ran until day 25 without producing an answer
 - [23](https://adventofcode.com/2020/day/23) - ran until day 25 without producing an answer
+
+### Completed After AoC 2020
+These will have the year I solve the problem as part of the filename. eg: part_1_2021.py
+
+- Nothing yet
 
 ## Things I learned during this year's Advent of Code
 - The right datatype for part 2 (usually involving recursion) is almost always a dictionary. Lists and dequeues are not performant.
