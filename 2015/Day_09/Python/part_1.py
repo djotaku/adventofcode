@@ -3,7 +3,9 @@
 
 from itertools import permutations
 import re
-from sys import maxsize
+from sys import maxsize, path
+path.insert(0, '../../input_parsing')
+import parse_input
 
 
 def parse_connections(lines):
@@ -76,4 +78,9 @@ def travelling_salesman_problem(graph, starting_city: int, number_of_cities):
 
 
 if __name__ == "__main__":
-    pass
+    city_list = parse_input.input_per_line('../input.txt')
+    city_connections = parse_connections(city_list)
+    city_matrix = create_matrix(city_connections)
+    starting_city = 0
+    distance = travelling_salesman_problem(city_matrix, starting_city, len(city_matrix))
+    print(f"The distance of the shortest route is {distance}")
