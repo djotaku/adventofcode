@@ -4,4 +4,7 @@
 - Getting really familiar with Ruby has functions
 - a really neat little function - if you have an array you have the method - each_with_index (eg array.each_with_index) and if used as part of a for loop can be like Python's enumerate. 
 - [array.permutation method](https://www.rubydoc.info/stdlib/core/Array:permutation)
-- 
+- the min method on an array
+
+## Part 2
+- the max method on an array

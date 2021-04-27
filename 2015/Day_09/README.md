@@ -46,7 +46,13 @@ Dijkstra's algorithm. Now, could I find a site that could explain it in a way th
 ## What I learned from Each Language
 
 ### Python
+- What a Hamilton Path is, what the Traveling Salesperson problem is (to be perfectly honest, I learned this in undergrad, but I couldn't remember ANYTHING about it). That the shortest Hamilton Path is a Traveling Salesman that never goes back home. To find it you create a fake city with 0 distance to all other cities.
+- By the way, there is a Python package that will do this all for you: https://pypi.org/project/python-tsp/ you just need to supply it with a matrix
 
 ### Ruby
+- Getting really familiar with Ruby has functions
+- a really neat little function - if you have an array you have the method - each_with_index (eg array.each_with_index) and if used as part of a for loop can be like Python's enumerate. 
+- [array.permutation method](https://www.rubydoc.info/stdlib/core/Array:permutation)
+- the min and max methods on arrays
 
 ### Perl
