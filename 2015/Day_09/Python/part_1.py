@@ -1,7 +1,6 @@
 """Shortest Hamiltonian Walk aka Traveling Salesman who never goes back home."""
 
 
-from collections import defaultdict
 from itertools import permutations
 import re
 from sys import maxsize
@@ -25,10 +24,10 @@ def create_matrix(city_dict):
     # first create a number to city_dict for making the graph
     index_dictionary = {index: key for index, key in enumerate(city_dict.keys())}
     matrix = []
-    for number in range(0, len(index_dictionary)):
+    for number in range(len(index_dictionary)):
         temp_internal_list = []
         current_city = index_dictionary[number]
-        for another_number in range(0, len(index_dictionary)):
+        for another_number in range(len(index_dictionary)):
             if another_number == number:
                 temp_internal_list.append(0)
             else:

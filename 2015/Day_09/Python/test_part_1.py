@@ -17,7 +17,8 @@ def test_traveling_salesman():
                                     [518, 141, 0, 0],
                                     [0, 0, 0, 0]]
     starting_city = 0
-    assert(part_1.travelling_salesman_problem(advent_of_code_example_graph, starting_city, 4)) == 605
+    assert(part_1.travelling_salesman_problem(advent_of_code_example_graph, starting_city,
+                                              len(advent_of_code_example_graph))) == 605
     website_example_graph = [[0, 10, 15, 20], [10, 0, 35, 25], [15, 35, 0, 30], [20, 25, 30, 0]]
     assert(part_1.travelling_salesman_problem(website_example_graph, 0, 4)) == 80
 
