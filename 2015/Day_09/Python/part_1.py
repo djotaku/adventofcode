@@ -17,6 +17,19 @@ def parse_connections(lines):
     return hamilton_dict
 
 
+def create_matrix(city_dict):
+    # first create a number to city_dict for making the graph
+    index_dictionary = {index: key for index, key in city_dict.key()}
+    matrix = []
+    for number in range(0, len(index_dictionary)):
+        temp_internal_list = []
+        current_city = index_dictionary[number]
+        for another_number in range(0, len(index_dictionary)):
+            if another_number == number:
+                temp_internal_list.append(0)
+            else:
+
+
 # implementation of traveling Salesman Problem
 # adapted from https://www.geeksforgeeks.org/traveling-salesman-problem-tsp-implementation/
 def travelling_salesman_problem(graph, starting_city: int, number_of_cities):
