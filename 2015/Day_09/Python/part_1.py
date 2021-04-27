@@ -9,11 +9,15 @@ from sys import maxsize
 
 def parse_connections(lines):
     regex = re.compile(r'(\w+) to (\w+) = (\d+)')
-    hamilton_dict = defaultdict(list)
+    hamilton_dict = {}
     for line in lines:
         destinations = re.findall(regex, line)
-        hamilton_dict[destinations[0][0]].append({destinations[0][1]: destinations[0][2]})
-        hamilton_dict[destinations[0][1]].append({destinations[0][0]: destinations[0][2]})
+        if destinations[0][0] not in hamilton_dict:
+            hamilton_dict[destinations[0][0]] = {}
+        hamilton_dict[destinations[0][0]][destinations[0][1]] = destinations[0][2]
+        if destinations[0][1] not in hamilton_dict:
+            hamilton_dict[destinations[0][1]] = {}
+        hamilton_dict[destinations[0][1]][destinations[0][0]] = destinations[0][2]
     return hamilton_dict
 
 
@@ -28,6 +32,7 @@ def create_matrix(city_dict):
             if another_number == number:
                 temp_internal_list.append(0)
             else:
+                pass
 
 
 # implementation of traveling Salesman Problem

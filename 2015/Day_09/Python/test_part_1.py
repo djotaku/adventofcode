@@ -4,8 +4,11 @@ from . import part_1
 def test_parse_connections():
     one_set = ["London to Dublin = 464"]
     connection_dict = part_1.parse_connections(one_set)
-    assert connection_dict["London"] == [{'Dublin': "464"}]
-    assert connection_dict["Dublin"] == [{'London': "464"}]
+    assert connection_dict["London"] == {'Dublin': "464"}
+    assert connection_dict["Dublin"] == {'London': "464"}
+    full_set = ["London to Dublin = 464", "London to Belfast = 518", "Dublin to Belfast = 141"]
+    connection_dict = part_1.parse_connections(full_set)
+    assert connection_dict["London"] == {'Dublin': "464", "Belfast": "518"}
 
 
 def test_traveling_salesman():
