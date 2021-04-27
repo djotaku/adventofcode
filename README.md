@@ -9,7 +9,7 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
 - 2015 
     - Second Year of Participation
     - Solved with Python, Ruby, and Perl
-    - 16 Stars Collected So Far
+    - 18 Stars Collected So Far
 - 2020
     - First Year of Participation
     - Solved with Python (initially, when I’m all caught up I may go back and add more languages)
