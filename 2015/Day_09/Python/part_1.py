@@ -23,7 +23,7 @@ def parse_connections(lines):
 
 def create_matrix(city_dict):
     # first create a number to city_dict for making the graph
-    index_dictionary = {index: key for index, key in city_dict.key()}
+    index_dictionary = {index: key for index, key in enumerate(city_dict.keys())}
     matrix = []
     for number in range(0, len(index_dictionary)):
         temp_internal_list = []
@@ -32,7 +32,12 @@ def create_matrix(city_dict):
             if another_number == number:
                 temp_internal_list.append(0)
             else:
-                pass
+                temp_internal_list.append(int(city_dict[current_city][index_dictionary[another_number]]))
+        temp_internal_list.append(0)
+        matrix.append(temp_internal_list)
+    final_zeroes = [0] * (len(index_dictionary) + 1)
+    matrix.append(final_zeroes)
+    return matrix
 
 
 # implementation of traveling Salesman Problem
