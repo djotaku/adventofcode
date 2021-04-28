@@ -3,6 +3,7 @@
 use v5.20;
 use warnings;
 use Algorithm::Permute;
+use List::Util qw(min);
 
 sub parse_connections {
 
@@ -71,22 +72,40 @@ sub traveling_salesman{
     my $starting_city = $_[1];
     my $number_of_cities = $_[2];
     
-    my @vertex = (0..$number_of_cities);
+    my @vertex = (0..($number_of_cities-1));
     
     my $min_path = 1000000000000; # arbitrarily large number
     
-    # to continue with permutations - see https://stackoverflow.com/questions/635768/how-can-i-generate-all-permutations-of-an-array-in-perl and https://metacpan.org/pod/Algorithm::Permute
-    # looks like instead of a for loop like you have in Python/Ruby you want to do a while loop as in the stackoverflow
-    # then use @perm where you'd use the permutation variable in Python. 
-
+    my $vertix_iterator = Algorithm::Permute->new(\@vertex);
+    
+    while (my @perm = $vertix_iterator->next)
+    {
+        my $current_path_weight = 0;
+        
+        # compute path weight
+        my $outer_array_index = $starting_city;
+        
+        for my $inner_array_index (@perm)
+        {
+            $current_path_weight += $$graph[$outer_array_index][$inner_array_index];
+            $outer_array_index = $inner_array_index;
+        }
+        $current_path_weight += $$graph[$outer_array_index][$starting_city];
+        
+        $min_path = min($min_path, $current_path_weight);
+    
+    }
+    return $min_path;
 }
 
-my @full_set = ("London to Dublin = 464", "London to Belfast = 518", "Dublin to Belfast = 141");
+# my @full_set = ("London to Dublin = 464", "London to Belfast = 518", "Dublin to Belfast = 141");  # for debugging
+# say $city_connection_hash{"London"}{"Dublin"};
 
+open(CITYCONNECTIONS, "../input.txt") || die "Couldn't find it!!!";
+
+my @full_set = <CITYCONNECTIONS>;
 my %city_connection_hash = &parse_connections(\@full_set);
-
-say $city_connection_hash{"London"}{"Dublin"};
-
 my @city_matrix = create_matrix(\%city_connection_hash);
-
-traveling_salesman(\@city_matrix, 0, 4);
+my $city_matrix_size = @city_matrix;
+my $distance_traveled = traveling_salesman(\@city_matrix, 0, $city_matrix_size);
+say "Santa traveled $distance_traveled miles to visit each city only once in the shortest distance possible.";
