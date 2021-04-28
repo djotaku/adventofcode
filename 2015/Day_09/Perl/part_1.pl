@@ -5,17 +5,21 @@ use warnings;
 
 sub parse_connections {
 
-    my @lines = @_[0];   # just doing this for a friendly name
-    my %hamilton_dict = {};
-    foreach my $line (@lines){
+    my $lines = @_[0];   # just doing this for a friendly name
+    my %hamilton_dict;
+    foreach my $line (@$lines){
     
     my @destinations = $line =~ m/(\w+) to (\w+) = (\d+)/g;
     
-    # just for test below
-    say @destinations;
+    $hamilton_dict{$destinations[0]}{$destinations[1]} = $destinations[2];
+    $hamilton_dict{$destinations[1]}{$destinations[0]} = $destinations[2];
     }
+    
+    return %hamilton_dict;
 }
 
-my @full_set = ["London to Dublin = 464", "London to Belfast = 518", "Dublin to Belfast = 141"];
+my @full_set = ("London to Dublin = 464", "London to Belfast = 518", "Dublin to Belfast = 141");
 
-parse_connections(@full_set);
+my %city_connection_hash = &parse_connections(\@full_set);
+
+say $city_connection_hash{"London"}{"Dublin"};
