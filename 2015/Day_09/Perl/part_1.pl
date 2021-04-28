@@ -64,6 +64,12 @@ sub create_matrix{
 }
 
 
+sub traveling_salesman{
+
+    
+
+}
+
 my @full_set = ("London to Dublin = 464", "London to Belfast = 518", "Dublin to Belfast = 141");
 
 my %city_connection_hash = &parse_connections(\@full_set);
