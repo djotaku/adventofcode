@@ -3,7 +3,7 @@
 use v5.20;
 use warnings;
 use Algorithm::Permute;
-use List::Util qw(min);
+use List::Util qw(max);
 
 sub parse_connections {
 
@@ -81,7 +81,7 @@ sub traveling_salesman{
     }
     
     
-    my $min_path = 1000000000000; # arbitrarily large number
+    my $max_path = 0;
     
     my $vertix_iterator = Algorithm::Permute->new(\@vertex);
     
@@ -99,10 +99,10 @@ sub traveling_salesman{
         }
         $current_path_weight += $$graph[$outer_array_index][$starting_city];
         
-        $min_path = min($min_path, $current_path_weight);
+        $max_path = max($max_path, $current_path_weight);
     
     }
-    return $min_path;
+    return $max_path;
 }
 
 # my @full_set = ("London to Dublin = 464", "London to Belfast = 518", "Dublin to Belfast = 141");  # for debugging
@@ -115,4 +115,4 @@ my %city_connection_hash = &parse_connections(\@full_set);
 my @city_matrix = create_matrix(\%city_connection_hash);
 my $city_matrix_size = @city_matrix;
 my $distance_traveled = traveling_salesman(\@city_matrix, 0, $city_matrix_size);
-say "Santa traveled $distance_traveled miles to visit each city only once in the shortest distance possible.";
+say "Santa traveled $distance_traveled miles to visit each city only once in the longest distance possible.";
