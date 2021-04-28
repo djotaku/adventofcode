@@ -68,9 +68,7 @@ sub create_matrix{
 
 sub traveling_salesman{
 
-    my $graph = $_[0];  # later need to refer to as @$graph
-    my $starting_city = $_[1];
-    my $number_of_cities = $_[2];
+    my ($graph, $starting_city, $number_of_cities) = @_;  # later need to refer to $graph as @$graph or $$graph for a single value
     
     my @vertex;
     
