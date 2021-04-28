@@ -9,3 +9,7 @@
 - ```my %index_dictionary = %city_dict_keys[0..$#city_dict_keys];``` aka Perl slices - requires v5.20
 - Permutations (and, by extension, generators) in Perl
 - Note to self: Requires toolbox as it makes use of an installed CPAN module [Algorithm::Permute](https://metacpan.org/pod/Algorithm::Permute)
+- use List::Util qw(min); and qw(max)
+
+## Part 2
+- Nothing
