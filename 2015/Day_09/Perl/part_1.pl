@@ -2,6 +2,7 @@
 
 use v5.20;
 use warnings;
+use Algorithm::Permute;
 
 sub parse_connections {
 
@@ -66,7 +67,17 @@ sub create_matrix{
 
 sub traveling_salesman{
 
+    my $graph = $_[0];  # later need to refer to as @$graph
+    my $starting_city = $_[1];
+    my $number_of_cities = $_[2];
     
+    my @vertex = (0..$number_of_cities);
+    
+    my $min_path = 1000000000000; # arbitrarily large number
+    
+    # to continue with permutations - see https://stackoverflow.com/questions/635768/how-can-i-generate-all-permutations-of-an-array-in-perl and https://metacpan.org/pod/Algorithm::Permute
+    # looks like instead of a for loop like you have in Python/Ruby you want to do a while loop as in the stackoverflow
+    # then use @perm where you'd use the permutation variable in Python. 
 
 }
 
@@ -78,3 +89,4 @@ say $city_connection_hash{"London"}{"Dublin"};
 
 my @city_matrix = create_matrix(\%city_connection_hash);
 
+traveling_salesman(\@city_matrix, 0, 4);
