@@ -1,5 +1,10 @@
 # Day 9: All in a Single Night
 
+Out of respect for the author's wishes, I only put as much of the problem text as necessary to understand the problem.
+
+Visit the version with all the story elements [here](https://adventofcode.com/2015/day/9).
+
+
 ## Part 1
 
 He can start and end at any two (different) locations he wants, but he must visit each location exactly once. What is the shortest distance he can travel to achieve this?
