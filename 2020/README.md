@@ -40,18 +40,18 @@ As of 20201224 1548:
 ```
  136 | Eric Mesa                 | 12537 | (21, 13)
  ```
-12/24 - 140
-12/23 - 142
-12/22 - 145
-12/20 - 155
-12/19 - 151 - drop is about to start as I haven't been able to complete the last couple days
-12/16 - 156 - rise is slowing as I have trouble with later days. Gave up on 17 and 19.
-12/13 - 168
-12/10 - 197 - I thought my horrible Day 7 performance would have hurt me more
-12/06 - 210
-12/05 - 201
-12/04 - 233
-12/03 - 247
+- 12/24 - 140
+- 12/23 - 142
+- 12/22 - 145
+- 12/20 - 155
+- 12/19 - 151 - drop is about to start as I haven't been able to complete the last couple days
+- 12/16 - 156 - rise is slowing as I have trouble with later days. Gave up on 17 and 19.
+- 12/13 - 168
+- 12/10 - 197 - I thought my horrible Day 7 performance would have hurt me more
+- 12/06 - 210
+- 12/05 - 201
+- 12/04 - 233
+- 12/03 - 247
 
  Full Leaderboard:
  ```
