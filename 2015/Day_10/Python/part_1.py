@@ -33,5 +33,6 @@ if __name__ == "__main__":
     while loop_count < 40:
         puzzle_output = recombine(create_number_lists(puzzle_input))
         puzzle_input = puzzle_output
+        loop_count += 1
     print(f"The length of puzzle_output ({puzzle_output}) is {len(puzzle_output)}")
 

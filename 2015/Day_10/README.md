@@ -22,7 +22,7 @@ Starting with the digits in your puzzle input, apply this process 40 times. What
 
 Your puzzle input is 1321131112.
 
-Answer:
+Answer: 492982
 
 ## Part 2
 
