@@ -24,11 +24,16 @@ Your puzzle input is 1321131112.
 
 Answer: 492982
 
+## Commentary
+I originally wanted to tackle this with a regex. But that turned out not to work the way I wanted. Apparently there's a command
+in Haskell that could have done this problem very easily. After a couple false starts, I arrived at a good method.
+
 ## Part 2
 
 ## What I Learned for Each Language
 
 ### Python
+- Nothing
 
 ### Ruby
 
