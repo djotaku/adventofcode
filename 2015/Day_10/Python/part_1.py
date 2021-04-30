@@ -3,20 +3,35 @@ import copy
 
 
 def create_number_lists(game_input):
-    number_list = []
-    temp_list = []
     current_number = 0
+    number_count = 0
+    return_list = []
     for number in game_input:
         if len(game_input) == 1:
-            return [[1]]
+            return [(1, int(number))]
+        if int(number) != current_number:
+            if number_count != 0:
+                return_list.append((number_count, int(current_number)))
+            current_number = int(number)
+            number_count = 1
         else:
-            if int(number) == current_number:
-                temp_list.append(int(number))
-            else:
-                if temp_list:
-                    list_to_insert = copy.deepcopy(temp_list)
-                    number_list.append(list_to_insert)
-                current_number = int(number)
-                temp_list.append(int(number))
-    number_list.append(temp_list)
-    return number_list
+            number_count += 1
+    return_list.append((number_count, int(current_number)))
+    return return_list
+
+
+def recombine(number_list):
+    return "".join(
+        str(number) for num_tuple in number_list for number in num_tuple
+    )
+
+
+if __name__ == "__main__":
+    puzzle_input = '1321131112'
+    loop_count = 0
+    puzzle_output = ""
+    while loop_count < 40:
+        puzzle_output = recombine(create_number_lists(puzzle_input))
+        puzzle_input = puzzle_output
+    print(f"The length of puzzle_output ({puzzle_output}) is {len(puzzle_output)}")
+
