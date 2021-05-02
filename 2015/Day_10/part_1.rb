@@ -8,6 +8,12 @@ end
 
 if $PROGRAM_NAME == __FILE__
     input = "1321131112"
-    puts "#{look_and_say_round(input)}"
+    loop_count = 0
+    until loop_count == 40
+        puzzle_output = look_and_say_round(input)
+        input = puzzle_output
+        loop_count += 1
+    end
+    puts "Length of output after 40 roundes of look and say is #{puzzle_output.length}"
 end
 
