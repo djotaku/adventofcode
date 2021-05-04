@@ -28,6 +28,8 @@ Answer: 492982
 I originally wanted to tackle this with a regex. But that turned out not to work the way I wanted. Apparently there's a command
 in Haskell that could have done this problem very easily. After a couple false starts, I arrived at a good method.
 
+I'm pretty sure I was supposed to somehow make use of the algorithm on the Wikipedia page because this takes a good 45 seconds or so to run.
+
 ## Part 2
 
 ## What I Learned for Each Language
@@ -39,3 +41,5 @@ in Haskell that could have done this problem very easily. After a couple false s
 - Learned about chunk and how it's basically what I had read existed in Haskell (in Haskell it’s the group function). In Ruby chunk_while is actually a little more flexible than group (at least as presented in Learn You A Haskell for Great Good!) and can be used to group together sequential items in a list based on all kinds of boolean expressions. However, if with the a == b boolean, we get a list that keeps getting new items as long as they equal the previous one .After that it was a matter of putting the size of the list into the output to create the look-and-say pattern. Much easier than Python.
     
 ### Perl
+
+- Using [Array::Groupby](https://metacpan.org/pod/Array::GroupBy) to achieve the same result as `chunk_while` in Ruby.
