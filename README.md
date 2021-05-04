@@ -7,16 +7,16 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
 ## Event Years
 
 - 2015 
-    - Second Year of Participation
+    - Second Problem Set Tackled (April - TBD 2021)
     - Solved with Python, Ruby, and Perl
-    - 18 Stars Collected So Far
+    - 20 Stars Collected So Far
 - 2020
-    - First Year of Participation
+    - First Year of Participation (Live Dec 2020)
     - Solved with Python (initially, when I’m all caught up I may go back and add more languages)
     - 34 Stars Collected So Far
     
 ### Lessons learned from all my years of doing this
-“A distillation of what I learned each year. (which is itself a distillation of what I learned daily”
+“A distillation of what I learned each year. (which is itself a distillation of what I learned daily)
 
 - Learn algorithms for Conway’s Game of Life
 - Learn Recursion and Memoization (Caching)
