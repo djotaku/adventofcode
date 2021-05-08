@@ -24,6 +24,18 @@ sub rule_one{
     return 0;
 }
 
+sub rule_two{
+
+    my $password = $_[0];
+    
+    $password !~ m/[iol]/
+}
+
 # Testing examples:
-say "TRUE!" if rule_one("hijklmmn");
-say "TRUE!" if rule_one("abbceffg");
+# Rule 1:
+# say "TRUE!" if rule_one("hijklmmn");
+# say "TRUE!" if rule_one("abbceffg");  # should be false
+
+# Rule 2:
+say "TRUE!" if rule_two("hijklmmn"); # should be false
+say "TRUE!" if rule_two("abbcegjk");
