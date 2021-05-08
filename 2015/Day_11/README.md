@@ -50,4 +50,6 @@ In general, the second password took a while - along the order of a minute or so
 - Got more practice with chunk_while
 - Used filter for the first time (as in the sequence: map, filter, reduce)
 ### Perl
--
+- practiced what I learned in _Programming Perl_ where, as in Ruby, the last expression in a Perl subroutine is automatically returned
+- returned with 1 and 0 since Perl does not have True/False primitives
+- Overall, solution was similar to Ruby solution.
