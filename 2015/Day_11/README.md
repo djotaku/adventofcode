@@ -40,9 +40,14 @@ Answer: hxcaabcc
 
 ## What I Learned for Each Language
 
+In general, the second password took a while - along the order of a minute or so. So there's probably some efficient algorithm I'm not taking advantage of here.
+
 ### Python
 - using ord() to get the ASCII value for a letter and then using that to advance to the next letter
 
 ### Ruby
-
+- when it comes to password incrementing - Ruby naturally does the right thing. eg "az".next => "ba"
+- Got more practice with chunk_while
+- Used filter for the first time (as in the sequence: map, filter, reduce)
 ### Perl
+-
