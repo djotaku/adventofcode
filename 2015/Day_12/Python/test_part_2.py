@@ -6,7 +6,7 @@ def test_find_numbers():
     assert part_2.find_numbers('[1,{"c":"red","b":2},3]') == [1, 3]
     assert part_2.find_numbers('{"d":"red","e":[1,2,3,4],"f":5}') == []
     assert part_2.find_numbers('[1,"red",5]') == [1, 5]
-    # I think I need to make a test where I have something :["red"] because I think that's not supposed to count.
+    assert part_2.find_numbers('{"d":["red", 4, 6]}') == [4, 6]  # should this test be passing?
 
 
 def test_sum_number_list():

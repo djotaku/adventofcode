@@ -5,10 +5,9 @@ import parse_input
 
 
 def find_numbers(line: str):
-    regex = re.compile(r'(-*\d+)*,*({[a-z0-9\",:\[\]-]*"red"[a-z0-9\",:\[\]-]*})*,*(-*\d+)*')
+    regex = re.compile(r'(-*\d+)*,*({[a-z0-9\",\[\]:-]*"red"[a-z0-9\",:\[\]-]*})*,*(-*\d+)*')
     numbers = re.findall(regex, line)
-    return [int(number) for regex_tuple in numbers for number in regex_tuple if '{' not in number and '' != number
-            and '}' not in number]
+    return [int(number) for regex_tuple in numbers for number in regex_tuple if '{' not in number and '' != number]
 
 
 def sum_number_list(number_list: list[int]) -> int:
