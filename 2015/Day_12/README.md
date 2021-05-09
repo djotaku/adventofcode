@@ -14,7 +14,7 @@ You will not encounter any strings containing numbers.
 
 What is the sum of all numbers in the document?
 
-Answer: 
+Answer: 156366
 
 ## Part 2
 
