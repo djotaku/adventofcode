@@ -17,12 +17,9 @@ for my $line (@lines){
 
 my $total = 0;
 
-for my $number_array (@numbers)
+for my $number (@numbers)
 {
-    for my $number (@{$number_array})
-    {
         $total += $number;
-    }
 }
 
 say "The number total is $total";
