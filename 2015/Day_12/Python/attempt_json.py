@@ -6,16 +6,12 @@ import parse_input
 
 
 def find_numbers(json_data):
-    regex = re.compile(r'(-*\d+)')
+    regex = re.compile(r'[.*"red".*]')
     number_list = []
     for json_list in json_data:
         if isinstance(json_list, dict):
             if "red" not in json_list.values():
                 print("For penultimate test I am here?")
-            else:
-                print("we see red?")
-        elif isinstance(json_list, list):
-            print("finally here?") 
         else:
             if isinstance(json_list, int):
                 number_list.append(json_list)
