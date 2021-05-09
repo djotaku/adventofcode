@@ -5,7 +5,7 @@ import parse_input
 
 
 def find_numbers(line: str):
-    regex = re.compile(r'(-*\d+)*,*({[a-z0-9\",\[\]:-]*"red"[a-z0-9\",:\[\]-]*})*,*(-*\d+)*')
+    regex = re.compile(r'(-*\d+)*,*({[a-z0-9\",\[\]:-]+:\[*"red"[a-z0-9\",:\[\]-]*})*,*(-*\d+)*')
     numbers = re.findall(regex, line)
     return [int(number) for regex_tuple in numbers for number in regex_tuple if '{' not in number and '' != number]
 
@@ -23,3 +23,5 @@ if __name__ == "__main__":
 # 1049 is too low
 # 142062 is too high
 # 129639 is not the answer
+# 138826 is not the answer
+# 134100 is not the answer
