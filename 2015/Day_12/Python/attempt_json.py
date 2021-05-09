@@ -10,8 +10,21 @@ def find_numbers(json_data):
     number_list = []
     for json_list in json_data:
         if isinstance(json_list, dict):
-            if "red" not in json_list.values():
-                print("For penultimate test I am here?")
+            temp_list = []
+            for value in json_list.values():
+                if value == "red":
+                    temp_list.append("red")
+                else:
+                    if isinstance(value, int):
+                        temp_list.append(value)
+            if "red" in temp_list:
+                print("i'm here")
+                print(temp_list)
+                pass
+            else:
+                for number in temp_list:
+                    number_list.append(number)
+
         else:
             if isinstance(json_list, int):
                 number_list.append(json_list)
