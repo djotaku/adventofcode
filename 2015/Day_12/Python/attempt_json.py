@@ -11,27 +11,15 @@ def find_numbers(json_data):
     for json_list in json_data:
         if isinstance(json_list, dict):
             if "red" not in json_list.values():
-                for value in json_list.values():
-                    if isinstance(value, dict):
-                        find_numbers(value)
-                    elif isinstance(value, str):
-                        if regex.match(value):
-                            number_list.append(int(value))
-                    elif isinstance(value, list):
-                        for char in value:
-                            print(f"upper: {char=}")
-                            if regex.match(str(char)):
-                                number_list.append(int(char))
+                print("For penultimate test I am here?")
+            else:
+                print("we see red?")
+        elif isinstance(json_list, list):
+            print("finally here?") 
         else:
-            for inner_list in json_list:
-                if isinstance(inner_list, dict):
-                    find_numbers(inner_list)
-                else:
-                    for char in inner_list:
-                        print(f"lower: {char=}")
-                        if regex.match(char):
-                            number_list.append(int(char))
-    #print(number_list)
+            if isinstance(json_list, int):
+                number_list.append(json_list)
+    return number_list
 
 
 lines = parse_input.input_per_line('../input.txt')
