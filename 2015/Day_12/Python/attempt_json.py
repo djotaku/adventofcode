@@ -6,17 +6,23 @@ import parse_input
 
 
 def find_numbers(json_data):
-    regex = re.compile(r'[.*"red".*]')
+    regex = re.compile(r'(-*\d+)')
     number_list = []
     for json_list in json_data:
         if isinstance(json_list, dict):
             temp_list = []
             for value in json_list.values():
+                print(f"{value=}")
                 if value == "red":
                     temp_list.append("red")
                 else:
                     if isinstance(value, int):
                         temp_list.append(value)
+                    else:
+                        print(value)
+                        numbers_in_array = re.findall(regex, value)
+                        for number in numbers_in_array:
+                            temp_list.append(number)
             if "red" in temp_list:
                 print("i'm here")
                 print(temp_list)
@@ -24,13 +30,13 @@ def find_numbers(json_data):
             else:
                 for number in temp_list:
                     number_list.append(number)
-
         else:
+            print(f"{json_list=}")
             if isinstance(json_list, int):
                 number_list.append(json_list)
     return number_list
 
 
-lines = parse_input.input_per_line('../input.txt')
-elf_json = json.loads(lines[0])
-find_numbers(elf_json)
+#lines = parse_input.input_per_line('../input.txt')
+#elf_json = json.loads(lines[0])
+#find_numbers(elf_json)
