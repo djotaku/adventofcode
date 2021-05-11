@@ -18,7 +18,7 @@ def find_numbers(elf_json):
             if "red" in elf_json.values():
                 return 0
             elif isinstance(value, int):
-                return value
+                summation += value
             elif isinstance(value, list):
                 summation += find_numbers(value)
             elif isinstance(value, dict):
