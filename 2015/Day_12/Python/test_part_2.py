@@ -15,3 +15,8 @@ def test_find_numbers():
     assert part_2.find_numbers(elf_json) == sum([4, 6])
     elf_json = json.loads('{"c": 42, "a": "blue", "b": "red"}')
     assert part_2.find_numbers(elf_json) == sum([])
+    elf_json = json.loads('{"c": "red", "a": 140, "b": 25}')
+    assert part_2.find_numbers(elf_json) == sum([])
+    elf_json = json.loads('{"c": "red", "a": "violet", "b": 168}')
+    assert part_2.find_numbers(elf_json) == sum([])
+
