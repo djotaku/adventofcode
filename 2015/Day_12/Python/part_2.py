@@ -24,7 +24,8 @@ def find_numbers(elf_json):
             elif isinstance(value, dict):
                 summation += find_numbers(value)
             else:
-                print(f"Dict value is a color: {value=}")
+                # this is a color string
+                return 0  # this used to be a print statement
     return summation
 
 
