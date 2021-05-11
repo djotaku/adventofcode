@@ -18,7 +18,7 @@ def find_numbers(elf_json):
             if "red" in elf_json.values():
                 return 0
             elif isinstance(value, int):
-                return summation + value
+                return value
             elif isinstance(value, list):
                 summation += find_numbers(value)
             elif isinstance(value, dict):
@@ -43,3 +43,4 @@ if __name__ == "__main__":
 # 24486 is not the answer
 # 15364 is not the answer
 # 28792 is not the answer
+# 22863 is not the answer
