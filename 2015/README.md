@@ -9,6 +9,7 @@ My goal for the 2015 problem sets are:
 - Continue to reinforce my knowledge of idiomatic Python and solving common algorithms (ranked #2 on Github 2021Q1)
 - To solidify my knowledge of Ruby, which I began learning last year (ranked #5 on Github 2021Q1)
 - To reacquaint myself with Perl, which I haven't used in about a decade (ranked #21 on Github 2021Q1)
+- In general my aim is to get more and more idiomatic with each language as the days go by.
 - To have fun solving programming puzzles
 
 ## Days I could not complete
