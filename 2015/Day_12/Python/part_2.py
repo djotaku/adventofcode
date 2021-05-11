@@ -1,4 +1,4 @@
-import re
+import json
 from sys import path
 path.insert(0, '../../input_parsing')
 import parse_input
@@ -22,18 +22,19 @@ def find_numbers(elf_json):
             elif value is None:
                 pass
             elif isinstance(value, list):
-                summation += find_numbers(value)
+                find_numbers(value)
+                # summation += find_numbers(value)
             elif isinstance(value, dict):
                 find_numbers(value)
             else:
-                print("Probably shouldn't be here?")
+                print(f"Dict value is a color: {value=}")
     return summation
 
 
 if __name__ == "__main__":
-    lines = parse_input.input_per_line('../input.txt')
-    total = sum([sum_number_list(find_numbers(line)) for line in lines])
-    print(f"The sum of all numbers in the document (unless it's got a red property) is {total}")
+    json_string = parse_input.input_per_line('../input.txt')
+    total = json.loads(json_string[0])
+    print(f"The sum of all numbers in the document (unless it's got a red property) is {find_numbers(total)}")
 
 # 144587 is too high
 # 1049 is too low
@@ -41,4 +42,5 @@ if __name__ == "__main__":
 # 129639 is not the answer
 # 138826 is not the answer
 # 134100 is not the answer
-# 142186 is not the asnwer
+# 142186 is not the answer
+# 24486 is not the answer
