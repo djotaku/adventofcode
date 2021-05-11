@@ -4,4 +4,4 @@
 - Nothing
 
 ## Part 2
-- Nothing
+- Thanks to helpful folks on the subreddit (grnngr and NeilNjae), they confirmed I should use json. Then they helped me with my recursion issues by providing some more unit test cases.
