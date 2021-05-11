@@ -25,7 +25,7 @@ def find_numbers(elf_json):
                 summation += find_numbers(value)
             else:
                 # this is a color string
-                return 0  # this used to be a print statement
+                summation += 0  # this used to be a print statement
     return summation
 
 
@@ -45,3 +45,4 @@ if __name__ == "__main__":
 # 15364 is not the answer
 # 28792 is not the answer
 # 22863 is not the answer
+# 15209 is not the answer
