@@ -13,4 +13,4 @@ def test_find_numbers():
     assert attempt_json.find_numbers(elf_json) == [1, 5]
     elf_json = json.loads('{"d":["red", 4, 6]}')
     assert attempt_json.find_numbers(elf_json) == [4, 6]
-    assert part_2.find_numbers('{"c": 42, "a": "blue", "b": "red"}') == []
+    assert attempt_json.find_numbers('{"c": 42, "a": "blue", "b": "red"}') == []

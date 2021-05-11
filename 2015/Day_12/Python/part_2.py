@@ -1,21 +1,33 @@
 import re
-from sys import maxsize, path
+from sys import path
 path.insert(0, '../../input_parsing')
 import parse_input
 
 
-def find_numbers(line: str):
-    regex = re.compile(r'(-*\d+)*,*({[a-z0-9",\[\]:-]+:"red"[a-z0-9",:\[\]-]*})*,*(-*\d+)*')
-    # regex = re.compile(r'((?!:"red")-*\d+)|({[a-z0-9",\[\]:-]+:"red"[a-z0-9",:\[\]-]*})')
-    # regex = re.compile(r'(-*\d+)|({.*:"red".*})')
-    # regex = re.compile(r'({.*})')
-    # regex = re.compile(r'({[a-z0-9",\[\]:-]})')
-    numbers = re.findall(regex, line)
-    return [int(number) for regex_tuple in numbers for number in regex_tuple if '{' not in number and '' != number]
-
-
-def sum_number_list(number_list: list[int]) -> int:
-    return sum(number_list)
+def find_numbers(elf_json):
+    summation = 0
+    if isinstance(elf_json, list):
+        for item in elf_json:
+            summation += find_numbers(item)
+    elif isinstance(elf_json, int):
+        return summation + elf_json
+    elif isinstance(elf_json, str):
+        return summation
+    else:
+        for key, value in elf_json.items():
+            if "red" in elf_json.values():
+                return 0
+            elif isinstance(value, int):
+                return summation + value
+            elif value is None:
+                pass
+            elif isinstance(value, list):
+                summation += find_numbers(value)
+            elif isinstance(value, dict):
+                find_numbers(value)
+            else:
+                print("Probably shouldn't be here?")
+    return summation
 
 
 if __name__ == "__main__":

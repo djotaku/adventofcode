@@ -1,18 +1,18 @@
 from . import part_2
+import json
 
 
 def test_find_numbers():
-    assert part_2.find_numbers("[1,2,3]") == [1, 2, 3]
-    assert part_2.find_numbers('[1,{"c":"red","b":2},3]') == [1, 3]
-    assert part_2.find_numbers('{"d":"red","e":[1,2,3,4],"f":5}') == []
-    assert part_2.find_numbers('[1,"red",5]') == [1, 5]
-    assert part_2.find_numbers('{"d":["red", 4, 6]}') == [4, 6]
-    assert part_2.find_numbers('{"c": 42, "a": "blue", "b": "red"}') == []
-
-
-def test_sum_number_list():
-    assert part_2.sum_number_list([1, 2, 3]) == 6
-    assert part_2.sum_number_list([2, 4]) == 6
-    assert part_2.sum_number_list([3]) == 3
-    assert part_2.sum_number_list([4, -1]) == 3
-    assert part_2.sum_number_list([]) == 0
+    elf_json = json.loads("[1,2,3]")
+    assert part_2.find_numbers(elf_json) == sum([1, 2, 3])
+    elf_json = json.loads('[1,{"c":"red","b":2},3]')
+    assert part_2.find_numbers(elf_json) == sum([1, 3])
+    elf_json = json.loads('{"d":"red","e":[1,2,3,4],"f":5}')
+    assert part_2.find_numbers(elf_json) == sum([])
+    elf_json = json.loads('[1,"red",5]')
+    assert part_2.find_numbers(elf_json) == sum([1, 5])
+    elf_json = json.loads('{"d":["red", 4, 6]}')
+    assert part_2.find_numbers(elf_json) == sum([4, 6])
+    elf_json = json.loads('{"c": 42, "a": "blue", "b": "red"}')
+    print("final")
+    assert part_2.find_numbers(elf_json) == sum([])
