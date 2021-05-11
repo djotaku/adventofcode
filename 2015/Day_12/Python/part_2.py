@@ -22,10 +22,9 @@ def find_numbers(elf_json):
             elif value is None:
                 pass
             elif isinstance(value, list):
-                find_numbers(value)
-                # summation += find_numbers(value)
+                summation += find_numbers(value)
             elif isinstance(value, dict):
-                find_numbers(value)
+                summation += find_numbers(value)
             else:
                 print(f"Dict value is a color: {value=}")
     return summation
@@ -44,3 +43,5 @@ if __name__ == "__main__":
 # 134100 is not the answer
 # 142186 is not the answer
 # 24486 is not the answer
+# 15364 is not the answer
+# wait until 8:40pm
