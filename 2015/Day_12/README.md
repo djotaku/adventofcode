@@ -32,7 +32,13 @@ Answer: 96852
 ## What I learned in each Language
 
 ### Python
-
+- Thanks to helpful folks on the subreddit (grnngr and NeilNjae), they confirmed I should use json. Then they helped me with my recursion issues by providing some more unit test cases.
 ### Ruby
+- each_pair for Hashes - equivalent to Python's dict.values()
 
 ### Perl
+- use Scalar::Util qw(looks_like_number) to figure out if something is a number
+- using ref($scalar) eq "ARRAY" or ref($scalar) eq "HASH" to tell if they are hashes
+- Apparently there's no way to tell if something is a string. If it's not a number, hash, or array - it's a string. So I ended up eliminating the string check that I had in Ruby and Python because it wasn't working well. 
+- the same way that you can do (keys %hash), you can also do (values %hash)
+- the JSON::PP library (which is built-in)
