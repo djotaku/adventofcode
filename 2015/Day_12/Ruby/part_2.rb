@@ -1,4 +1,6 @@
 require 'json'
+require "../../input_parsing/parse_input"
+
 
 def json_sums(json_item)
     summation = 0
@@ -26,4 +28,11 @@ def json_sums(json_item)
         end
     end
     return summation
+end
+
+if $PROGRAM_NAME == __FILE__
+    elf_json = input_per_line('../input.txt')
+    parsed_elf_json = JSON.parse(elf_json[0])
+    total = json_sums(parsed_elf_json)
+    puts "The sum is #{total}"
 end
