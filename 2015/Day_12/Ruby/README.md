@@ -4,3 +4,4 @@
 - Nothing
 
 ## Part 2
+- each_pair for Hashes - equivalent to Python's dict.values()
