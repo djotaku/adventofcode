@@ -1,7 +1,7 @@
 require "../../input_parsing/parse_input"
 
 def find_numbers(line)
-    numbers = line.scan(/(-*\d+)/).flat_map {|e| e}
+  line.scan(/(-*\d+)/).flat_map {|e| e}
 end
 
 def sum_numbers(numbers)
