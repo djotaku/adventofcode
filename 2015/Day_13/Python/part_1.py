@@ -49,6 +49,7 @@ def happy_seating_genetic_algorithm(seating_matrix, starting_person, number_of_p
             current_happiness += seating_matrix[inner_array_index][outer_array_index]
             outer_array_index = inner_array_index
         current_happiness += seating_matrix[outer_array_index][starting_person]
+        current_happiness += seating_matrix[starting_person][outer_array_index]
 
         max_happiness = max(max_happiness, current_happiness)
 
