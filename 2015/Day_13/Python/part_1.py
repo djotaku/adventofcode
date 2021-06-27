@@ -27,10 +27,10 @@ def happy_seating_genetic_algorithm(seating_matrix, starting_person, number_of_p
 
 
 def create_dictionary(sentence):
-    regex = re.compile(r'(\w+).+(gain|lose) (\d+).+(\w+)\.')
+    regex = re.compile(r'(\w+) would (gain|lose) (\d+) happiness units by sitting next to (\w+)\.')
     # regex = re.compile(r'(\w+)')
     # regex = re.compile(r'(gain|lose)')
     matches = re.findall(regex, sentence)
     print(f'{matches=}')
-    number = -matches[0][2] if matches[0][1] == "lose" else matches[0][2]
+    number = f'-{matches[0][2]}' if matches[0][1] == "lose" else matches[0][2]
     return {matches[0][0]: {matches[0][3]: number}}

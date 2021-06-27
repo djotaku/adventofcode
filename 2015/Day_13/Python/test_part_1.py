@@ -14,7 +14,7 @@ def test_happy_seating_genetic_algorithm():
 def test_create_dictionary():
     sentence = "Alice would gain 54 happiness units by sitting next to Bob."
     dictionary = part_1.create_dictionary(sentence)
-    assert dictionary["Alice"]["Bob"] == 54
+    assert dictionary["Alice"]["Bob"] == '54'
     sentence = "Alice would lose 79 happiness units by sitting next to Carol."
     dictionary = part_1.create_dictionary(sentence)
-    assert dictionary["Alice"]["Carol"] == -79
+    assert dictionary["Alice"]["Carol"] == '-79'
