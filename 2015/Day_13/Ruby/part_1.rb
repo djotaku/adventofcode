@@ -7,7 +7,8 @@ def create_guest_hash(lines)
         if !guest_hash.has_key?(people_and_values[0][0])
             guest_hash[people_and_values[0][0]] = {}
         end
-        number = "-{people_and_values[0][2]}" if people_and_values[0][1] == "lose" else people_and_values[0][2]
+        number = people_and_values[0][1] == "lose" ? "-#{people_and_values[0][2]}" : "#{people_and_values[0][2]}"
         guest_hash[people_and_values[0][0]][people_and_values[0][3]] = number
     end
+    guest_hash
 end
