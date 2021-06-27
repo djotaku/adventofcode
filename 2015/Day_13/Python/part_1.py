@@ -1,6 +1,6 @@
 from itertools import permutations
 import re
-from sys import maxsize, path
+from sys import path
 path.insert(0, '../../input_parsing')
 import parse_input
 
