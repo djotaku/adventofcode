@@ -41,12 +41,17 @@ What is the total change in happiness for the optimal seating arrangement of the
 Answer: 709.
 
 ## Part 2
+So, add yourself to the list, and give all happiness relationships that involve you a score of 0.
+
+What is the total change in happiness for the optimal seating arrangement that actually includes yourself?
+
+Answer: 668
 
 ## What I learned in each Language
 
 ### Python
 - Didn't particularly learn anything related to Python, but I did figure out how to adapt Day 9 for different values in each direction.
-
+- Added back in the 0s that I had to do for the Shortest Hamiltonian on Day 9
 ### Ruby
 
 ### Perl
