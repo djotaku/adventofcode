@@ -45,7 +45,7 @@ Answer: 709.
 ## What I learned in each Language
 
 ### Python
-
+- Didn't particularly learn anything related to Python, but I did figure out how to adapt Day 9 for different values in each direction.
 
 ### Ruby
 
