@@ -38,6 +38,8 @@ After trying every other seating arrangement in this hypothetical scenario, you 
 
 What is the total change in happiness for the optimal seating arrangement of the actual guest list?
 
+Answer: 709.
+
 ## Part 2
 
 ## What I learned in each Language

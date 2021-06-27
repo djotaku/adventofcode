@@ -32,7 +32,8 @@ def create_dictionary(sentences):
     for sentence in sentences:
         matches = re.findall(regex, sentence)
         number = f'-{matches[0][2]}' if matches[0][1] == "lose" else matches[0][2]
-        seating_dictionary[matches[0][0]] = {}
+        if matches[0][0] not in seating_dictionary:
+            seating_dictionary[matches[0][0]] = {}
         seating_dictionary[matches[0][0]][matches[0][3]] = number
     return seating_dictionary
 
@@ -50,3 +51,11 @@ def create_graph(input_dictionary):
                 temp_internal_list.append(int(input_dictionary[person][index_dictionary[another_number]]))
         matrix.append(temp_internal_list)
     return matrix
+
+
+if __name__ == "__main__":
+    guest_list = parse_input.input_per_line('../input.txt')
+    guest_dictionary = create_dictionary(guest_list)
+    guest_matrix = create_graph(guest_dictionary)
+    final_happiness_level = happy_seating_genetic_algorithm(guest_matrix, 0, len(guest_matrix))
+    print(f"The greatest happiness level with the best seating arrangement is {final_happiness_level}")
