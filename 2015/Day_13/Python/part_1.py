@@ -26,11 +26,27 @@ def happy_seating_genetic_algorithm(seating_matrix, starting_person, number_of_p
     return max_happiness
 
 
-def create_dictionary(sentence):
+def create_dictionary(sentences):
     regex = re.compile(r'(\w+) would (gain|lose) (\d+) happiness units by sitting next to (\w+)\.')
-    # regex = re.compile(r'(\w+)')
-    # regex = re.compile(r'(gain|lose)')
-    matches = re.findall(regex, sentence)
-    print(f'{matches=}')
-    number = f'-{matches[0][2]}' if matches[0][1] == "lose" else matches[0][2]
-    return {matches[0][0]: {matches[0][3]: number}}
+    seating_dictionary = {}
+    for sentence in sentences:
+        matches = re.findall(regex, sentence)
+        number = f'-{matches[0][2]}' if matches[0][1] == "lose" else matches[0][2]
+        seating_dictionary[matches[0][0]] = {}
+        seating_dictionary[matches[0][0]][matches[0][3]] = number
+    return seating_dictionary
+
+
+def create_graph(input_dictionary):
+    index_dictionary = {index: key for index, key in enumerate(input_dictionary.keys())}
+    matrix = []
+    for number in range(len(index_dictionary)):
+        temp_internal_list = []
+        person = index_dictionary[number]
+        for another_number in range(len(index_dictionary)):
+            if another_number == number:
+                temp_internal_list.append(0)
+            else:
+                temp_internal_list.append(int(input_dictionary[person][index_dictionary[another_number]]))
+        matrix.append(temp_internal_list)
+    return matrix
