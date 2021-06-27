@@ -51,9 +51,11 @@ def perfect_seating(happiness_graph, starting_person, number_of_people)
         outer_array_index = starting_person
         permutation.each do |inner_array_index|
             current_happiness_weight += happiness_graph[outer_array_index][inner_array_index]
+            current_happiness_weight += happiness_graph[inner_array_index][outer_array_index]
             outer_array_index = inner_array_index
         end
         current_happiness_weight += happiness_graph[outer_array_index][starting_person]
+        current_happiness_weight += happiness_graph[starting_person][outer_array_index]
         
         max_happiness = [max_happiness, current_happiness_weight].max
     end
