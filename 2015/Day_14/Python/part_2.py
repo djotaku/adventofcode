@@ -4,26 +4,28 @@ path.insert(0, '../../input_parsing')
 import parse_input
 
 
-def reindeer_distance(speed, flying_time, resting_time, total_time):
-    remaining_time = total_time
-    flown_distance = 0
-    distance_over_time = []
-    original_flying_time = flying_time
-    original_resting_time = resting_time
-    while remaining_time > 0:
-        if flying_time > 0:
-            flown_distance += speed
-            remaining_time -= 1
-            flying_time -= 1
-            distance_over_time.append(flown_distance)
-        elif resting_time > 0:
-            resting_time -= 1
-            remaining_time -= 1
-            distance_over_time.append(flown_distance)
+class Reindeer:
+    def __init__(self, speed, flying_time, resting_time):
+        self.speed = speed
+        self.flying_time = flying_time
+        self.original_flying_time = flying_time
+        self.resting_time = resting_time
+        self.original_resting_time = resting_time
+        self.total_distance = 0
+        self.points = 0
+
+    def move(self):
+        if self.flying_time > 0:
+            self.total_distance += self.speed
+            self.flying_time -= 1
+        elif self.resting_time > 0:
+            self.resting_time -= 1
         else:
-            flying_time = original_flying_time
-            resting_time = original_resting_time
-    return distance_over_time
+            self.flying_time = self.original_flying_time
+            self.resting_time = self.original_resting_time
+
+    def __gt__(self, other):
+        return self.total_distance > other.total_distance
 
 
 def figure_out_reindeer_specs(line):
@@ -33,13 +35,39 @@ def figure_out_reindeer_specs(line):
     return reindeer_name, int(speed), int(fly_time), int(rest_time)
 
 
-if __name__ == "__main__":
-    reindeer_list = parse_input.input_per_line('../input.txt')
-    top_score = 0
-    reindeer_dictionary = {}
-    for reindeer in reindeer_list:
+def create_reindeer_list(attribute_list):
+    reindeer_list = []
+    for reindeer in attribute_list:
         reindeer_name, speed, fly_time, rest_time = figure_out_reindeer_specs(reindeer)
-        distance_flown = reindeer_distance(speed, fly_time, rest_time, 2503)
-        reindeer_dictionary[reindeer_name] = {"distance": distance_flown, "score": 0}
-    print(reindeer_dictionary.keys())
-    print(f"The top-flying reindeer flew {top_score} km.")
+        reindeer_list.append(Reindeer(speed, fly_time, rest_time))
+    return reindeer_list
+
+
+def move_and_assign_points(list_of_reindeer, total_seconds):
+    while total_seconds >= 0:
+        for reindeer in list_of_reindeer:
+            reindeer.move()
+        list_of_reindeer = sorted(list_of_reindeer)
+        list_of_reindeer[-1].points += 1
+        print("----------")
+        for reindeer in list_of_reindeer:
+            print(f"{total_seconds}")
+            print(f"{reindeer.total_distance=}")
+            print(f"{reindeer.points=}")
+        print("----------")
+
+        total_seconds -= 1
+
+
+if __name__ == "__main__":
+    reindeer_attributes = parse_input.input_per_line('../input.txt')
+    all_reindeer = create_reindeer_list(reindeer_attributes)
+    move_and_assign_points(all_reindeer, 2503)
+    highest_points = 0
+    for reindeer in all_reindeer:
+        if reindeer.points > highest_points:
+            highest_points = reindeer.points
+    print(f"The highest-scoring reindeer got {highest_points} points.")
+
+
+# 1355 is too high
