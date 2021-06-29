@@ -15,14 +15,14 @@ class Reindeer:
         self.points = 0
 
     def move(self):
+        if self.resting_time == 0:
+            self.flying_time = self.original_flying_time
+            self.resting_time = self.original_resting_time
         if self.flying_time > 0:
             self.total_distance += self.speed
             self.flying_time -= 1
         elif self.resting_time > 0:
             self.resting_time -= 1
-        else:
-            self.flying_time = self.original_flying_time
-            self.resting_time = self.original_resting_time
 
     def __gt__(self, other):
         return self.total_distance > other.total_distance
@@ -44,17 +44,18 @@ def create_reindeer_list(attribute_list):
 
 
 def move_and_assign_points(list_of_reindeer, total_seconds):
-    while total_seconds >= 0:
+    while total_seconds > 0:
         for reindeer in list_of_reindeer:
             reindeer.move()
         list_of_reindeer = sorted(list_of_reindeer)
         list_of_reindeer[-1].points += 1
-        print("----------")
+        # print("----------")
         for reindeer in list_of_reindeer:
-            print(f"{total_seconds}")
-            print(f"{reindeer.total_distance=}")
-            print(f"{reindeer.points=}")
-        print("----------")
+            # print(f"{total_seconds}")
+            # print(f"{reindeer.total_distance=}")
+            # print(f"{reindeer.points=}")
+            pass
+        # print("----------")
 
         total_seconds -= 1
 
@@ -71,3 +72,4 @@ if __name__ == "__main__":
 
 
 # 1355 is too high
+# 1251 is too low
