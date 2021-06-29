@@ -49,14 +49,9 @@ def move_and_assign_points(list_of_reindeer, total_seconds):
             reindeer.move()
         list_of_reindeer = sorted(list_of_reindeer)
         list_of_reindeer[-1].points += 1
-        # print("----------")
-        for reindeer in list_of_reindeer:
-            # print(f"{total_seconds}")
-            # print(f"{reindeer.total_distance=}")
-            # print(f"{reindeer.points=}")
-            pass
-        # print("----------")
-
+        for index, reindeer in enumerate(list_of_reindeer, start=-2):
+            if reindeer is not list_of_reindeer[-1] and reindeer == list_of_reindeer[-1]:
+                reindeer.points += 1
         total_seconds -= 1
 
 
