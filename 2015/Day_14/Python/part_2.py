@@ -44,15 +44,16 @@ def create_reindeer_list(attribute_list):
 
 
 def move_and_assign_points(list_of_reindeer, total_seconds):
-    while total_seconds > 0:
+    time = 0
+    while time < total_seconds + 1:
         for reindeer in list_of_reindeer:
             reindeer.move()
         list_of_reindeer = sorted(list_of_reindeer)
-        list_of_reindeer[-1].points += 1
-        for index, reindeer in enumerate(list_of_reindeer, start=-2):
-            if reindeer is not list_of_reindeer[-1] and reindeer == list_of_reindeer[-1]:
+        current_top_distance = list_of_reindeer[-1].total_distance
+        for reindeer in list_of_reindeer:
+            if reindeer.total_distance == current_top_distance:
                 reindeer.points += 1
-        total_seconds -= 1
+        time += 1
 
 
 if __name__ == "__main__":

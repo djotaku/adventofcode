@@ -32,11 +32,12 @@ After the 1000th second, Dancer has accumulated 689 points, while poor Comet, ou
 
 Again given the descriptions of each reindeer (in your puzzle input), after exactly 2503 seconds, how many points does the winning reindeer have?
 
-Answer: 
+Answer: 1256
 
 ## What I learned in each Language
 
 ### Python
+- For part 2: I am pretty sure I over-thought this. However, what's most interesting is that this is one of those times where I couldn't get the unit test to work and yet was able to get the right answer.
 
 ### Ruby
 
