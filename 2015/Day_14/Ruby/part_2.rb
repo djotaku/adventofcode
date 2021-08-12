@@ -30,7 +30,24 @@ def get_reindeer_specs(line)
   line.scan(/(\w+) can fly (\d+) km\/s for (\d+) seconds, but then must rest for (\d+) seconds./)
 end
 
+
+def move_and_assign_points(list_of_reindeer, total_seconds)
+  time = 0
+  while time < total_seconds + 1
+    list_of_reindeer.each do | reindeer|
+      reindeer.move()
+    end
+    list_of_reindeer = sort { |reindeer|[reindeer.total_distance]  } # continue from here
+  end
+end
+
+
 if $PROGRAM_NAME == __FILE__
   reindeer_lineup = input_per_line('../input.txt')
-
+  reindeer_list = []
+  reindeer_lineup.each do |reindeer|
+    reindeer_info = get_reindeer_specs(reindeer)
+    reindeer_list.append(Reindeer.new(reindeer_info[0][1].to_i, reindeer_info[0][2].to_i, reindeer_info[0][3].to_i))
+  end
+  move_and_assign_points(reindeer_list, 2503)
 end
