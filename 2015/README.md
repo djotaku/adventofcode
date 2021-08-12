@@ -17,7 +17,8 @@ My goal for the 2015 problem sets are:
 ### Language Specific
 
 #### Perl
-Day 7 - Because I was using recursion and I had not yet relearned how to do subroutines (Perl functions)
+- Day 7 - Because I was using recursion and I had not yet relearned how to do subroutines (Perl functions)
+- Day 14 - Because I didn't want to bother with classes in Perl
 
 ## What I learned from Advent of Code 2015
 
