@@ -19,6 +19,10 @@ class Reindeer
     @points += 1
   end
 
+  def points
+    @points
+  end
+
   def move
     if @resting_time == 0
       @flying_time = @original_flying_time
@@ -52,6 +56,7 @@ def move_and_assign_points(list_of_reindeer, total_seconds)
         reindeer.add_a_point
       end
     end
+    time += 1
   end
 end
 
@@ -64,4 +69,11 @@ if $PROGRAM_NAME == __FILE__
     reindeer_list.append(Reindeer.new(reindeer_info[0][1].to_i, reindeer_info[0][2].to_i, reindeer_info[0][3].to_i))
   end
   move_and_assign_points(reindeer_list, 2503)
+  highest_points = 0
+  reindeer_list.each do |reindeer|
+    if reindeer.points > highest_points
+      highest_points = reindeer.points
+    end
+  end
+  puts "The highest scoring reindeer got #{highest_points} points."
 end
