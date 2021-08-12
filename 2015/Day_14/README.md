@@ -40,5 +40,8 @@ Answer: 1256
 - For part 2: I am pretty sure I over-thought this. However, what's most interesting is that this is one of those times where I couldn't get the unit test to work and yet was able to get the right answer.
 
 ### Ruby
+- Ruby classes and how to initialize them
+- using sort to sort by custom variables in a class
+- It appears you cannot just access variables in a Ruby class, you have to have a method to return the value. (At least that's what it seemed like when I tried to access it.)
 
 ### Perl
