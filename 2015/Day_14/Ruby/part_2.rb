@@ -11,6 +11,14 @@ class Reindeer
     @points = 0
   end
 
+  def total_distance
+    @total_distance
+  end
+
+  def add_a_point
+    @points += 1
+  end
+
   def move
     if @resting_time == 0
       @flying_time = @original_flying_time
@@ -37,7 +45,13 @@ def move_and_assign_points(list_of_reindeer, total_seconds)
     list_of_reindeer.each do | reindeer|
       reindeer.move()
     end
-    list_of_reindeer = sort { |reindeer|[reindeer.total_distance]  } # continue from here
+    list_of_reindeer = list_of_reindeer.sort { |a, b| a.total_distance <=> b.total_distance }
+    current_top_distance = list_of_reindeer[-1].total_distance
+    list_of_reindeer.each do | reindeer|
+      if reindeer.total_distance == current_top_distance
+        reindeer.add_a_point
+      end
+    end
   end
 end
 
