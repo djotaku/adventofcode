@@ -1,0 +1,22 @@
+# Title of Problem
+
+ut of respect for the author's wishes, I only put as much of the problem text as necessary to understand the problem.
+
+Visit the version with all the story elements [here](https://adventofcode.com/2015/day/3). (NOTE REMEMBER TO CHANGE THE YEAR AND DAY NUMBER)
+
+## Part 1
+
+## Part 2
+
+## Commentary / Approach to the Problem
+
+## What I Learned
+
+### Generic
+
+### Python
+
+### Ruby
+
+### Perl
+
