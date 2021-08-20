@@ -5,3 +5,6 @@ sudo dnf install perl -y
 
 echo "Install CPAN Minus"
 sudo cpan App:cpanminus
+
+echo "Install The Haskell Platform"
+sudo dnf install haskell-platform -y
