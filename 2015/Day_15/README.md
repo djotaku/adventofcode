@@ -42,9 +42,27 @@ For example, given the ingredients above, if you had instead selected 40 teaspoo
 
 Given the ingredients in your kitchen and their properties, what is the total score of the highest-scoring cookie you can make with a calorie total of 500?
 
+Answer: 1766400
+
+## Commentary
+
+What I was intending as my original approach before someone on AoC told me it was easy to brute force since it wasn't too many values:
+
+- Each cookie is a dict of dicts or named tuple -> All we care about is the final, multiplied number. Might be easier to just have a list of lists. Each sublist represents one of the ingredients. Then we can multiply by the list and use zip (or something…) to add together the ingredients that go together.
+- Looking at each ingredient in my list shows that each one has one property that would lead to a score of 0 because it’s either 0 or negative
+  -Therefore start with 25 of each 
+  - Store current score
+  - For each ingredient, increase it at the cost of the others (how exactly? Which one do I subtract from?)
+  - If I get to a score of 0 (which will happen because each one has negative numbers):
+      - Go back one
+      - Compare current score with stored score. If higher: replace score and ingredient composition with current if new high score
+  - Go on to the next ingredient (but do I start from 25 again or from where I’m at now?) And repeat
+
 ## What I learned in each language
 
 ### Python
+- How to do permutations where you need all the elements to sum to a specific number.
+- A little more practice with the zip function
 
 ### Ruby
 
