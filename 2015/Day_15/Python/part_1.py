@@ -1,4 +1,5 @@
 from sys import path
+from itertools import permutations
 import re
 path.insert(0, '../../input_parsing')
 import parse_input
@@ -16,7 +17,8 @@ def ingredient_score(teaspoon_list, ingredient_list):
     final_score = 1
     property_count = 1  # this is to ignore calories for part 1
     for cookie_property in properties:
-        final_score *= sum(cookie_property)
+        if sum(cookie_property) > 0:
+            final_score *= sum(cookie_property)
         property_count += 1
         if property_count == 5:
             break
@@ -26,3 +28,25 @@ def ingredient_score(teaspoon_list, ingredient_list):
 def parse_ingredients(ingredient_inputs):
     pattern = re.compile(r'(-*\d)')
     return [re.findall(pattern, ingredient) for ingredient in ingredient_inputs]
+
+
+#def maximize_cookie_score(ingredient_list):
+#    starting_point = 110 / len(ingredient_list)
+#    score = 0
+#    original_teaspoons = [starting_point for ingredient in ingredient_list]
+#    teaspoons = original_teaspoons.copy()
+#    amount_to_increase = len(ingredient_list) - 1
+#    for x in range(0, len(teaspoons)-1):
+#        while teaspoons[x] <= 100:
+#            teaspoons[x] += amount_to_increase
+#            for y in range()
+
+
+def brute_force_cookie_score(ingredient_list):
+    ingredient_combos = [[x, 100-x] for x in range(100)]
+    score = 0
+    for ingredient_combination in ingredient_combos:
+        combo_score = ingredient_score(ingredient_combination, ingredient_list)
+        if combo_score > score:
+            score = combo_score
+    return score

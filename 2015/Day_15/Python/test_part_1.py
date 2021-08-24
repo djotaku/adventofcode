@@ -14,3 +14,9 @@ def test_parse_ingredients():
     ingredient_inputs = ["Butterscotch: capacity -1, durability -2, flavor 6, texture 3, calories 8",
                          "Cinnamon: capacity 2, durability 3, flavor -2, texture -1, calories 3"]
     assert part_1.parse_ingredients(ingredient_inputs) == [butterscotch, cinnamon]
+
+
+def test_brute_force_cookie_score():
+    butterscotch = ['-1', '-2', '6', '3', '8']
+    cinnamon = ['2', '3', '-2', '-1', '3']
+    assert part_1.brute_force_cookie_score([butterscotch, cinnamon]) == 62842880
