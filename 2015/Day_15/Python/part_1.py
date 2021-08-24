@@ -45,7 +45,7 @@ def parse_ingredients(ingredient_inputs):
 def brute_force_cookie_score(ingredient_list):
     ingredient_combos = [
         element
-        for element in combinations_with_replacement(
+        for element in permutations(
             range(1, 100), len(ingredient_list)
         )
         if sum(element) == 100
