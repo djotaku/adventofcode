@@ -32,6 +32,8 @@ Multiplying these together (68 * 80 * 152 * 76, ignoring calories for now) resul
 
 Given the ingredients in your kitchen and their properties, what is the total score of the highest-scoring cookie you can make?
 
+Answer: 21367368
+
 ## Part 2
 
 ## What I learned in each language

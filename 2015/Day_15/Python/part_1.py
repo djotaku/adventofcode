@@ -50,7 +50,6 @@ def brute_force_cookie_score(ingredient_list):
         )
         if sum(element) == 100
     ]
-    print(ingredient_combos)
     score = 0
     for ingredient_combination in ingredient_combos:
         combo_score = ingredient_score(ingredient_combination, ingredient_list)
