@@ -27,6 +27,7 @@ A distillation of what I learned each year. (which is itself a distillation of w
 
 - Learn algorithms for Conway’s Game of Life
 - Learn Recursion and Memoization (Caching)
+- Often (maybe always, but not in my limited experience) the answer comes down to: map, filter, reduce
 - Use Unit Tests to keep from going mad
 - Solving programming puzzles is addictive
 - From doing the problems in more than one language:
