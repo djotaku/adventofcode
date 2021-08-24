@@ -7,9 +7,16 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
 ## Event Years
 
 - 2015 
-    - Second Problem Set Tackled (April - TBD 2021)
-    - Solved with Python, Ruby, and Perl
-    - 28 Stars Collected So Far
+    - Second Problem Set Tackled (April 2021 - TBD)
+    - Originally solved with Python, Ruby, and Perl (other languages may be used in the future)
+    - 29 Stars Collected So Far
+- 2016
+  - Third Problem Set Tackled (TBD)
+  - Planned to solve with Python, Ruby, Perl, Haskell, and Go
+  - 0 stars Collected so Far
+- 2017
+  - Fourth Problem Set Tackled (MAYBE? I'll probably do 2021 live first; TBD)
+  - Unknown which languages will be added. Considering Rust, Java, Kotlin, Javascript
 - 2020
     - First Year of Participation (Live Dec 2020)
     - Solved with Python (initially, when I’m all caught up I may go back and add more languages)
