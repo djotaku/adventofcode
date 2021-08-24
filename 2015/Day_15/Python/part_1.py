@@ -1,5 +1,5 @@
 from sys import path
-from itertools import permutations
+from itertools import permutations, combinations_with_replacement
 import re
 path.insert(0, '../../input_parsing')
 import parse_input
@@ -43,7 +43,14 @@ def parse_ingredients(ingredient_inputs):
 
 
 def brute_force_cookie_score(ingredient_list):
-    ingredient_combos = [[x, 100-x] for x in range(100)]
+    ingredient_combos = [
+        element
+        for element in combinations_with_replacement(
+            range(1, 100), len(ingredient_list)
+        )
+        if sum(element) == 100
+    ]
+
     score = 0
     for ingredient_combination in ingredient_combos:
         combo_score = ingredient_score(ingredient_combination, ingredient_list)
