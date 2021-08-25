@@ -27,3 +27,6 @@ puts spoon_counts.lazy
 And I had some questions about *scores and he added:
 
 "|*scores, calories| means _put the last argument into calories and all the preceding arguments into an array called scores. Since the block is given an array, this is about equivalent to { |arguments| scores = arguments[...-1]; calories = arguments[-1]; ... }. In this case the whole array goes into arguments first. It's just an easier (and arguably more readable) way of doing that, though how Ruby handles passing array arguments to blocks might seem a little magical at first."
+
+## Part 2
+- .select is faster than .map.compact

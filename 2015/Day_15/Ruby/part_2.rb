@@ -24,7 +24,7 @@ def ingredient_score(multipliers, cookies)
 end
 
 def count_calories(teaspoon_list, ingredient_list)
-  (0..ingredient_list.length).map{|index| teaspoon_list[index] * ingredient_list[index][-1].to_i}.sum
+  (0..(ingredient_list.length-1)).map{|index| teaspoon_list[index] * ingredient_list[index][-1].to_i}.sum
 end
 
 def parse_ingredients(ingredient_input)
