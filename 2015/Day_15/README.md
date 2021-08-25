@@ -65,5 +65,9 @@ What I was intending as my original approach before someone on AoC told me it wa
 - A little more practice with the zip function
 
 ### Ruby
+- Permutations in Ruby, along with how to filter them
+- A better understanding of Enumerators in Ruby being like Iterators in Python and how to make them go faster - see the Ruby specific readme.md for today to see my learning process for this
+- array.transpose
+- array.select
 
 ### Perl
