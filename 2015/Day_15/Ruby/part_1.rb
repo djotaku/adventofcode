@@ -28,7 +28,10 @@ def parse_ingredients(ingredient_input)
 end
 
 def brute_force_cooke_score(ingredient_list)
-  (1..100).to_a.permutation(ingredient_list.size).lazy.map { |p| p.sum == 100 ? 0 : ingredient_score(p, ingredient_list) }.max
+  (1..100).to_a
+          .permutation(ingredient_list.length)
+          .filter_map{|x| ingredient_score(x, ingredient_list) if x.sum == 100}
+          .max
 end
 
 if $PROGRAM_NAME == __FILE__
