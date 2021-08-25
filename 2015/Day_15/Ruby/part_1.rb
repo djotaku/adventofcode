@@ -28,15 +28,7 @@ def parse_ingredients(ingredient_input)
 end
 
 def brute_force_cooke_score(ingredient_list)
-  ingredient_combos = (1..100).to_a.permutation(ingredient_list.length).map{|x| x if x.sum == 100}.compact
-  score = 0
-  ingredient_combos.each do |ingredient_combination|
-    combo_score = ingredient_score(ingredient_combination, ingredient_list)
-    if combo_score > score
-      score = combo_score
-    end
-  end
-  score
+  (1..100).to_a.permutation(ingredient_list.size).lazy.map { |p| p.sum == 100 ? 0 : ingredient_score(p, ingredient_list) }.max
 end
 
 if $PROGRAM_NAME == __FILE__

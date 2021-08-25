@@ -21,6 +21,8 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
     - First Year of Participation (1st attempt: Live Dec 2020; Trying to get all 50 stars: TBD)
     - Solved with Python (initially, when I’m all caught up I may go back and add more languages)
     - 34 Stars Collected So Far
+
+After I'm all caught up, I may try my hand at some visualizations.
     
 ### Lessons learned from all my years of doing this
 A distillation of what I learned each year. (which is itself a distillation of what I learned daily)
