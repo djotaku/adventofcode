@@ -1,0 +1,7 @@
+cpanm Set::Object
+cpanm Digest::MD5
+cpanm List::Util
+cpanm Algorithm::Permute
+cpanm Array::GroupBy
+cpanm Array::Transpose
+
