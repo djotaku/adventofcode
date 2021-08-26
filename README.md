@@ -16,7 +16,10 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
   - 0 stars Collected so Far
 - 2017
   - Fourth Problem Set Tackled (MAYBE? I'll probably do 2021 live first; TBD)
-  - Unknown which languages will be added. Considering Rust, Java, Kotlin, Javascript
+  - Unknown which languages will be added. 
+	- Considering Rust, Java, Kotlin, Javascript, C, C#, C++, Scala, R, Julia, Typescript, F#, Lisp, Clojure, Erlang
+	- Top 3 Current Contenders: Rust (been wanting to learn it for a while), Javascript (needed for nearly any web programming), C# (Unity games are in C#)
+
 - 2020
     - First Year of Participation (1st attempt: Live Dec 2020; Trying to get all 50 stars: TBD)
     - Solved with Python (initially, when I’m all caught up I may go back and add more languages)
