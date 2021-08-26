@@ -28,5 +28,52 @@ And I had some questions about *scores and he added:
 
 "|*scores, calories| means _put the last argument into calories and all the preceding arguments into an array called scores. Since the block is given an array, this is about equivalent to { |arguments| scores = arguments[...-1]; calories = arguments[-1]; ... }. In this case the whole array goes into arguments first. It's just an easier (and arguably more readable) way of doing that, though how Ruby handles passing array arguments to blocks might seem a little magical at first."
 
+Another really awesome solution from the subreddit (this time by mjgiarlo):
+
+```ruby
+
+# frozen_string_literal: true
+
+TEASPOONS_MAX = 100
+
+def ingredient_score(multipliers, cookies)
+  final_score = 1
+  property_count = 1 
+  multipliers 
+    .zip(cookies) 
+    .map { |multiplication_item| multiplication_item.last.map { |x| multiplication_item.first * x } } 
+    .transpose 
+    .each do |cookie_property| 
+      final_score *= cookie_property.sum if cookie_property.sum.positive?
+      property_count += 1 
+      return final_score if property_count == 5 
+    end 
+ end
+
+def brute_force_cookie_score(ingredient_list)
+  (1..TEASPOONS_MAX) 
+    .to_a 
+    .permutation(ingredient_list.length) 
+    .filter_map { |combo| ingredient_score(combo, ingredient_list) if combo.sum == TEASPOONS_MAX } 
+    .max
+end
+
+def parse_ingredients(path) 
+  File.new(path).map do |line| 
+    line 
+      .match(/.+: capacity ([\d-]+), durability ([\d-]+), flavor ([\d-]+), texture ([\d-]+), calories ([\d-]+)/) 
+      .captures 
+      .map(&:to_i) 
+  end 
+end
+
+if $PROGRAM_NAME == FILE 
+  ingredients = parse_ingredients('../input.txt') 
+  cookie_score = brute_force_cookie_score(ingredients) 
+  puts "The cookie score is #{cookie_score}" 
+end
+
+```
+
 ## Part 2
 - .select is faster than .map.compact
