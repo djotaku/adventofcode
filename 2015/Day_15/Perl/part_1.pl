@@ -44,14 +44,14 @@ sub ingredient_score{
     $new_ingredient_list[1][1] = @$teaspoon_list[1]*$ingredient_list[0][1][1];
     $new_ingredient_list[1][2] = @$teaspoon_list[1]*$ingredient_list[0][1][2];
     $new_ingredient_list[1][3] = @$teaspoon_list[1]*$ingredient_list[0][1][3];
-    $new_ingredient_list[2][0] = @$teaspoon_list[0]*$ingredient_list[0][2][0];
-    $new_ingredient_list[2][1] = @$teaspoon_list[0]*$ingredient_list[0][2][1];
-    $new_ingredient_list[2][2] = @$teaspoon_list[0]*$ingredient_list[0][2][2];
-    $new_ingredient_list[2][3] = @$teaspoon_list[0]*$ingredient_list[0][2][3];
-    $new_ingredient_list[3][0] = @$teaspoon_list[0]*$ingredient_list[0][3][0];
-    $new_ingredient_list[3][1] = @$teaspoon_list[0]*$ingredient_list[0][3][1];
-    $new_ingredient_list[3][2] = @$teaspoon_list[0]*$ingredient_list[0][3][2];
-    $new_ingredient_list[3][3] = @$teaspoon_list[0]*$ingredient_list[0][3][3];
+    #$new_ingredient_list[2][0] = @$teaspoon_list[2]*$ingredient_list[0][2][0];
+    #$new_ingredient_list[2][1] = @$teaspoon_list[2]*$ingredient_list[0][2][1];
+    #$new_ingredient_list[2][2] = @$teaspoon_list[2]*$ingredient_list[0][2][2];
+    #$new_ingredient_list[2][3] = @$teaspoon_list[2]*$ingredient_list[0][2][3];
+    #$new_ingredient_list[3][0] = @$teaspoon_list[3]*$ingredient_list[0][3][0];
+    #$new_ingredient_list[3][1] = @$teaspoon_list[3]*$ingredient_list[0][3][1];
+    #$new_ingredient_list[3][2] = @$teaspoon_list[3]*$ingredient_list[0][3][2];
+    #$new_ingredient_list[3][3] = @$teaspoon_list[3]*$ingredient_list[0][3][3];
     
     my $final_score = 1;
     my $property_count = 1;
@@ -62,10 +62,16 @@ sub ingredient_score{
     dump(@properties);
     foreach(@properties)
     {
-        if(sum($_) > 0)
+        dump($_);
+        if(sum( @$_) > 0)
         {
+            say "Am I in the first sum?";
+            say (sum @$_);
             if($property_count < 5)
-            {$final_score *= sum($_);}
+            {
+                say "Am I in the second sum?";
+                $final_score *= sum(@$_);
+            }
         }
         $property_count += 1;
     }
@@ -108,11 +114,12 @@ my @parsed_ingredients = parse_ingredients(\@cookie_list);
 
 # Test score
 #ingredient_score([1,2,3], [[1,2,3],[4,5,6]]);
-#say ingredient_score([44,56], [[-1, -2, 6,3,8],[2,3,-2,-1,3]]);
+# the sample input
+say ingredient_score([44,56], [[-1, -2, 6,3,8],[2,3,-2,-1,3]]);
 
 
-my $cookie_score = brute_force_cookie_score(\@parsed_ingredients);
+#my $cookie_score = brute_force_cookie_score(\@parsed_ingredients);
 #my $cookie_score = brute_force_cookie_score([[-1, -2, 6,3,8],[2,3,-2,-1,3]]);
 
-say "The cookie score is.....";
-say $cookie_score;
+#say "The cookie score is.....";
+#say $cookie_score;
