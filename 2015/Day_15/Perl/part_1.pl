@@ -31,30 +31,31 @@ sub ingredient_score{
     my $teaspoon_list = $_[0];
     my @ingredient_list = $_[1];
     
-    #dump(@ingredient_list);
-    #dump($teaspoon_list);
+    # dump(@ingredient_list);
+    # dump($teaspoon_list);
     # ungeneralizing because arrays of arrays in Perl is a real PITA
-    #say "Ingredient list at 0,0: $ingredient_list[0][0][0]";
-    $ingredient_list[0][0][0] = @$teaspoon_list[0]*$ingredient_list[0][0][0];
-    $ingredient_list[0][0][1] = @$teaspoon_list[0]*$ingredient_list[0][0][1];
-    $ingredient_list[0][0][2] = @$teaspoon_list[0]*$ingredient_list[0][0][2];
-    $ingredient_list[0][0][3] = @$teaspoon_list[0]*$ingredient_list[0][0][3];
-    $ingredient_list[0][1][0] = @$teaspoon_list[1]*$ingredient_list[0][1][0];
-    $ingredient_list[0][1][1] = @$teaspoon_list[1]*$ingredient_list[0][1][1];
-    $ingredient_list[0][1][2] = @$teaspoon_list[1]*$ingredient_list[0][1][2];
-    $ingredient_list[0][1][3] = @$teaspoon_list[1]*$ingredient_list[0][1][3];
-    $ingredient_list[0][2][0] = @$teaspoon_list[0]*$ingredient_list[0][2][0];
-    $ingredient_list[0][2][1] = @$teaspoon_list[0]*$ingredient_list[0][2][1];
-    $ingredient_list[0][2][2] = @$teaspoon_list[0]*$ingredient_list[0][2][2];
-    $ingredient_list[0][2][3] = @$teaspoon_list[0]*$ingredient_list[0][2][3];
-    $ingredient_list[0][3][0] = @$teaspoon_list[0]*$ingredient_list[0][3][0];
-    $ingredient_list[0][3][1] = @$teaspoon_list[0]*$ingredient_list[0][3][1];
-    $ingredient_list[0][3][2] = @$teaspoon_list[0]*$ingredient_list[0][3][2];
-    $ingredient_list[0][3][3] = @$teaspoon_list[0]*$ingredient_list[0][3][3];
+    # say "Ingredient list at 0,0: $ingredient_list[0][0]";
+    my @new_ingredient_list;
+    $new_ingredient_list[0][0] = @$teaspoon_list[0]*$ingredient_list[0][0][0];
+    $new_ingredient_list[0][1] = @$teaspoon_list[0]*$ingredient_list[0][0][1];
+    $new_ingredient_list[0][2] = @$teaspoon_list[0]*$ingredient_list[0][0][2];
+    $new_ingredient_list[0][3] = @$teaspoon_list[0]*$ingredient_list[0][0][3];
+    $new_ingredient_list[1][0] = @$teaspoon_list[1]*$ingredient_list[0][1][0];
+    $new_ingredient_list[1][1] = @$teaspoon_list[1]*$ingredient_list[0][1][1];
+    $new_ingredient_list[1][2] = @$teaspoon_list[1]*$ingredient_list[0][1][2];
+    $new_ingredient_list[1][3] = @$teaspoon_list[1]*$ingredient_list[0][1][3];
+    $new_ingredient_list[2][0] = @$teaspoon_list[0]*$ingredient_list[0][2][0];
+    $new_ingredient_list[2][1] = @$teaspoon_list[0]*$ingredient_list[0][2][1];
+    $new_ingredient_list[2][2] = @$teaspoon_list[0]*$ingredient_list[0][2][2];
+    $new_ingredient_list[2][3] = @$teaspoon_list[0]*$ingredient_list[0][2][3];
+    $new_ingredient_list[3][0] = @$teaspoon_list[0]*$ingredient_list[0][3][0];
+    $new_ingredient_list[3][1] = @$teaspoon_list[0]*$ingredient_list[0][3][1];
+    $new_ingredient_list[3][2] = @$teaspoon_list[0]*$ingredient_list[0][3][2];
+    $new_ingredient_list[3][3] = @$teaspoon_list[0]*$ingredient_list[0][3][3];
     
     my $final_score = 1;
     my $property_count = 1;
-    my @properties = transpose(\@ingredient_list);
+    my @properties = transpose(\@new_ingredient_list);
     foreach(@properties)
     {
         if(sum($_) > 0)
