@@ -33,7 +33,7 @@ sub ingredient_score{
     
     #dump($ingredient_list);
     
-    my $x = 0;
+    my $x = 0; # probably need to ungeneralize
     foreach my $teaspoon (@$teaspoon_list)
     {
         foreach my $ingredient (@$ingredient_list)
