@@ -55,7 +55,11 @@ sub ingredient_score{
     
     my $final_score = 1;
     my $property_count = 1;
-    my @properties = transpose(\@new_ingredient_list);
+    my @properties = transpose(\@new_ingredient_list); 
+    say "New ingredient list:";
+    dump(@new_ingredient_list);
+    say "Transposed";
+    dump(@properties);
     foreach(@properties)
     {
         if(sum($_) > 0)
@@ -104,8 +108,11 @@ my @parsed_ingredients = parse_ingredients(\@cookie_list);
 
 # Test score
 #ingredient_score([1,2,3], [[1,2,3],[4,5,6]]);
+#say ingredient_score([44,56], [[-1, -2, 6,3,8],[2,3,-2,-1,3]]);
+
 
 my $cookie_score = brute_force_cookie_score(\@parsed_ingredients);
+#my $cookie_score = brute_force_cookie_score([[-1, -2, 6,3,8],[2,3,-2,-1,3]]);
 
 say "The cookie score is.....";
 say $cookie_score;
