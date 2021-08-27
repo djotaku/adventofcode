@@ -29,24 +29,17 @@ sub parse_ingredients{
 sub ingredient_score{
 
     my $teaspoon_list = $_[0];
-    my $ingredient_list = $_[1];
+    my @ingredient_list = $_[1];
     
-    #dump($ingredient_list);
-    
-    my $x = 0; # probably need to ungeneralize
-    foreach my $teaspoon (@$teaspoon_list)
-    {
-        foreach my $ingredient (@$ingredient_list)
-        {
-            say "Dumping ingredient";
-            dump($ingredient);
-            $ingredient *= $teaspoon;
-        }
-        $x += 1;
-    }
+    #dump(@ingredient_list);
+    #dump($teaspoon_list);
+    # ungeneralizing because arrays of arrays in Perl is a real PITA
+    #say "Ingredient list at 0,0: $ingredient_list[0][0][0]";
+    say @$teaspoon_list[0]*$ingredient_list[0][0][0];
+
     my $final_score = 1;
     my $property_count = 1;
-    my @properties = transpose(\@$ingredient_list);
+    my @properties = transpose(\@ingredient_list);
     foreach(@properties)
     {
         if(sum($_) > 0)
@@ -94,7 +87,10 @@ my @parsed_ingredients = parse_ingredients(\@cookie_list);
 #say "Testing ingredient parsing!";
 #dump(@parsed_ingredients);
 
-my $cookie_score = brute_force_cookie_score(\@parsed_ingredients);
+# Test score
+#ingredient_score([1,2,3], [[1,2,3],[4,5,6]]);
 
-say "The cookie score is.....";
-say $cookie_score;
+#my $cookie_score = brute_force_cookie_score(\@parsed_ingredients);
+
+#say "The cookie score is.....";
+#say $cookie_score;
