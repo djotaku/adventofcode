@@ -39,6 +39,13 @@ Aunt Sue 40
 
 ## Part 2
 
+The output from the machine isn't exact values - some of them indicate ranges.
+
+In particular, the cats and trees readings indicates that there are greater than that many (due to the unpredictable nuclear decay of cat dander and tree pollen), while the pomeranians and goldfish readings indicate that there are fewer than that many (due to the modial interaction of magnetoreluctance).
+
+What is the number of the real Aunt Sue?
+
+Answer: 241
 ## Commentary / Approach to the Problem
 
 ## What I Learned
