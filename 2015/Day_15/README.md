@@ -71,3 +71,4 @@ What I was intending as my original approach before someone on AoC told me it wa
 - array.select
 
 ### Perl
+- How much I hate arrays and how they're used in Perl
