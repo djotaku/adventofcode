@@ -1,0 +1,11 @@
+from sys import path
+from itertools import combinations
+path.insert(0, '../../input_parsing')
+import parse_input
+
+if __name__ == "__main__":
+    container_sizes = parse_input.input_per_line('../input.txt')
+    container_sizes = [int(x) for x in container_sizes]
+    all_ways = [element for size in range(1, len(container_sizes))
+                for element in combinations(container_sizes, size) if sum(element) == 150]
+    print(f"The number of combinations for using my containers is {len(all_ways)}")

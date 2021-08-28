@@ -1,4 +1,4 @@
-# Title of Problem
+# Day 16: Aunt Sue
 
 ut of respect for the author's wishes, I only put as much of the problem text as necessary to understand the problem.
 
@@ -48,6 +48,8 @@ What is the number of the real Aunt Sue?
 Answer: 241
 ## Commentary / Approach to the Problem
 
+I'm pretty sure I didn't do the most efficient algorithm. Looking back on it, I think I should have created a function that returned whether or not a particular key should be deleted. (At least for Python and Ruby) 
+
 ## What I Learned
 
 ### Generic
@@ -57,4 +59,5 @@ Answer: 241
 ### Ruby
 - Although I'm sure I did this in a horribly inefficient way (the fact that I'm repeating over and over would seem to indicate this), I learned about Hash#keep_if - very neat!
 ### Perl
+- Mostly applied the lessons I learned for part 2 in Python and Ruby to get the right order for checking things. In Perl I had to do this in part 1 and check for existence of the key before testing the value of the key.
 
