@@ -19,43 +19,43 @@ foreach(@aunt_list)
 
 foreach my $key (keys %aunts)
 {
-    if($aunts{$key}{"children"} and $aunts{$key}{"children"} != 3 )
+    if(exists $aunts{$key}{"children"} and $aunts{$key}{"children"} != 3 )
     {
         delete $aunts{$key};
     }
-    elsif($aunts{$key}{"cats"} and $aunts{$key}{"cats"} <= 7 )
+    elsif(exists $aunts{$key}{"cats"} and $aunts{$key}{"cats"} <= 7 )
     {
         delete $aunts{$key};
     }
-    elsif($aunts{$key}{"samoyeds"} and $aunts{$key}{"samoyeds"} != 2 )
+    elsif(exists $aunts{$key}{"samoyeds"} and $aunts{$key}{"samoyeds"} != 2 )
     {
         delete $aunts{$key};
     }
-    elsif($aunts{$key}{"pomeranians"} and $aunts{$key}{"pomeranians"} >= 3 )
+    elsif(exists $aunts{$key}{"pomeranians"} and $aunts{$key}{"pomeranians"} >= 3 )
     {
         delete $aunts{$key};
     }
-    elsif($aunts{$key}{"akitas"} and $aunts{$key}{"akitas"} != 0 )
+    elsif(exists $aunts{$key}{"akitas"} and $aunts{$key}{"akitas"} != 0 )
     {
         delete $aunts{$key};
     }
-    elsif($aunts{$key}{"vizslas"} and $aunts{$key}{"vizslas"} != 0 )
+    elsif(exists $aunts{$key}{"vizslas"} and $aunts{$key}{"vizslas"} != 0 )
     {
         delete $aunts{$key};
     }
-    elsif($aunts{$key}{"goldfish"} and $aunts{$key}{"goldfish"} >= 5 )
+    elsif(exists $aunts{$key}{"goldfish"} and $aunts{$key}{"goldfish"} >= 5 )
     {
         delete $aunts{$key};
     }
-    elsif($aunts{$key}{"trees"} and $aunts{$key}{"trees"} <= 3 )
+    elsif(exists $aunts{$key}{"trees"} and $aunts{$key}{"trees"} <= 3 )
     {
         delete $aunts{$key};
     }
-    elsif($aunts{$key}{"cars"} and $aunts{$key}{"cars"} != 2 )
+    elsif(exists $aunts{$key}{"cars"} and $aunts{$key}{"cars"} != 2 )
     {
         delete $aunts{$key};
     }
-    elsif($aunts{$key}{"perfumes"} and $aunts{$key}{"perfumes"} != 1 )
+    elsif(exists $aunts{$key}{"perfumes"} and $aunts{$key}{"perfumes"} != 1 )
     {
         delete $aunts{$key};
     }
