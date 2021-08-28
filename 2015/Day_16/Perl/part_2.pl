@@ -2,7 +2,6 @@
 
 use v5.20;
 use warnings;
-use Switch;
 use  Data::Dump qw/dump/;
 
 
@@ -63,3 +62,8 @@ foreach my $key (keys %aunts)
 }
 
 dump(%aunts);
+
+foreach my $key (keys %aunts)
+{
+    say $key;
+}
