@@ -14,13 +14,13 @@ if $PROGRAM_NAME == __FILE__
   sue_list = input_per_line('../input.txt')
   sue_hash = create_sue_hash(sue_list)
   sue_hash.keep_if{|key, value| value["children"] == '3' or value["children"] == nil}
-  sue_hash.keep_if{|key, value| value["cats"] == '7' or value["cats"] == nil }
+  sue_hash.keep_if{|key, value| value["cats"] == nil or value["cats"].to_i > 7 }
   sue_hash.keep_if{|key, value| value["samoyeds"] == '2' or value["samoyeds"] == nil }
-  sue_hash.keep_if{|key, value| value["pomeranians"] == '3' or value["pomeranians"] == nil }
+  sue_hash.keep_if{|key, value| value["pomeranians"] == nil or value["pomeranians"].to_i < 3}
   sue_hash.keep_if{|key, value| value["akitas"] == '0' or value["akitas"] == nil }
   sue_hash.keep_if{|key, value| value["vizslas"] == '0' or value["vizslas"] == nil }
-  sue_hash.keep_if{|key, value| value["goldfish"] == '5' or value["goldfish"] == nil }
-  sue_hash.keep_if{|key, value| value["trees"] == '3' or value["trees"] == nil }
+  sue_hash.keep_if{|key, value| value["goldfish"] == nil or value["goldfish"].to_i < 5 }
+  sue_hash.keep_if{|key, value| value["trees"] == nil or value["trees"].to_i > 3}
   sue_hash.keep_if{|key, value| value["cars"] == '2' or value["cars"] == nil }
   sue_hash.keep_if{|key, value| value["perfumes"] == '3' or value["perfumes"] == nil }
   puts sue_hash
