@@ -53,8 +53,8 @@ Answer: 241
 ### Generic
 
 ### Python
-- - On lines where I was doing the less than comparison it was failing if it was a None value. So I had to make use of the fact order in which truthiness is evaluated in Python to make the order go away. I had to check for None and THEN check numerically.
+- On lines where I was doing the less than comparison it was failing if it was a None value. So I had to make use of the fact order in which truthiness is evaluated in Python to make the order go away. I had to check for None and THEN check numerically.
 ### Ruby
-
+- Although I'm sure I did this in a horribly inefficient way (the fact that I'm repeating over and over would seem to indicate this), I learned about Hash#keep_if - very neat!
 ### Perl
 
