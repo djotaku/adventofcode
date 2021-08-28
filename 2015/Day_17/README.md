@@ -35,6 +35,8 @@ I came to the problem with what I'd learned on Day 15 about using combinations o
 ### Python
 - Nothing
 ### Ruby
-
+- reject(&:empty?) - I needed this for some reason because compact on its own wasn't working
+- flatten(1) - to get to just one level of arrays instead of nested arrays
+- .min helped me really write something much more compact than in Python
 ### Perl
 
