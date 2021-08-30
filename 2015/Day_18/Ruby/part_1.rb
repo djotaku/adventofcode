@@ -10,12 +10,12 @@ def initialize_board(list_of_rows)
       end
     end
   end
-  return board
+  board
 end
 
 def new_status(coordinate, board)
   live_neighbors = 0
-  alive = board[coordinate]
+  alive = board[coordinate] == 1 ? true : false
   if board[[coordinate[0]-1, coordinate[1]-1]] == 1
     live_neighbors += 1
   end
@@ -49,13 +49,15 @@ def new_status(coordinate, board)
   end
   if not alive and live_neighbors == 3
     1
+  else
+    0
   end
 end
 
 def play_round(grid_size, board)
   new_board = Hash.new
-  (0..grid_size).each do |x|
-    (0..grid_size).each do |y|
+  (0...grid_size).each do |x|
+    (0...grid_size).each do |y|
       new_board[[x, y]] = new_status([x,y], board)
     end
   end
@@ -66,6 +68,6 @@ if $PROGRAM_NAME == __FILE__
   day_18_input = input_per_line('../input.txt')
   initial_board = initialize_board(day_18_input)
   board = initial_board.compact
-  (1..100).each {board = play_round(100, board)}
-  puts "There are  lights #{board.values.sum} on."
+  (1..100).each {board = play_round(100, board).compact}
+  puts "There are #{board.values.sum} lights on."
 end
