@@ -15,13 +15,19 @@ my $size_all_ways = scalar @container_sizes;
 
 foreach my $number (1.. $size_all_ways)
 {
+	say $number;
 	my $permutations = Algorithm::Permute->new(\@container_sizes, $number);
 	while (my @combination = $permutations->next)
 	{
+		say "A combination";
+		dump(@combination);
 		if(sum(@combination) == 150)
 		{
-			push @all_ways, @combination;
+			push @all_ways, \@combination;
 		}	
+	dump(@all_ways);
+	say "size " . scalar @all_ways;
+	say "----------";
 	}
 }
 my $combo_numbers = scalar @all_ways;
