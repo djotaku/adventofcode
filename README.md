@@ -9,7 +9,7 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
 - 2015 
     - Second Problem Set Tackled (April 2021 - TBD)
     - Originally solved with Python, Ruby, and Perl (other languages may be used in the future)
-    - 35 Stars Collected So Far
+    - 36 Stars Collected So Far
       - 20210828 - Reached 34 stars without skipping any Days/Parts. This put me in a tie with my score at the end of 2020 when I was doing it live Dec 2020.
 - 2016
   - Third Problem Set Tackled (TBD)
@@ -25,6 +25,8 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
     - First Year of Participation (1st attempt: Live Dec 2020; Trying to get all 50 stars: TBD)
     - Solved with Python (initially, when I’m all caught up I may go back and add more languages)
     - 34 Stars Collected So Far
+
+Total Stars Over All Years: 70
 
 After I'm all caught up, I may try my hand at some visualizations.
     
