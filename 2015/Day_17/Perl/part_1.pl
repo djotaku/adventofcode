@@ -27,7 +27,7 @@ foreach my $number (1.. $size_all_ways)
 		{
 			push @all_ways, \@combination;
 		}	
-	dump(@all_ways);
+	#dump(@all_ways);
 	say "size " . scalar @all_ways;
 	say "----------";
 	}
