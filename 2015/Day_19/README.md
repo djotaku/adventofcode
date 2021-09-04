@@ -55,6 +55,7 @@ How long will it take to make the medicine? Given the available replacements and
 
 Answer: 
 ## Commentary / Approach to the Problem
+Part 1 wasn't too hard to figure out. It mostly involved checking the Python libraries to see how to get the positions in the string for the matches. But on the first day that I read part 2, I had no idea whatsoever how to begin.
 
 ## What I Learned
 
