@@ -28,8 +28,32 @@ So, in the example above, there are 4 distinct molecules (not five, because HOOH
 The machine replaces without regard for the surrounding characters. For example, given the string H2O, the transition H => OO would result in OO2O.
 
 Your puzzle input describes all of the possible replacements and, at the bottom, the medicine molecule for which you need to calibrate the machine. How many distinct molecules can be created after all the different ways you can do one replacement on the medicine molecule?
+
+Answer: 535
+
 ## Part 2
 
+Molecule fabrication always begins with just a single electron, e, and applying replacements one at a time, just like the ones during calibration.
+
+For example, suppose you have the following replacements:
+
+- e => H
+- e => O
+- H => HO
+- H => OH
+- O => HH
+
+If you'd like to make HOH, you start with e, and then make the following replacements:
+
+- e => O to get O
+- O => HH to get HH
+- H => OH (on the second H) to get HOH
+
+So, you could make HOH after 3 steps. Santa's favorite molecule, HOHOHO, can be made in 6 steps.
+
+How long will it take to make the medicine? Given the available replacements and the medicine molecule in your puzzle input, what is the fewest number of steps to go from e to the medicine molecule?
+
+Answer: 
 ## Commentary / Approach to the Problem
 
 ## What I Learned
