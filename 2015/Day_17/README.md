@@ -39,4 +39,5 @@ I came to the problem with what I'd learned on Day 15 about using combinations o
 - flatten(1) - to get to just one level of arrays instead of nested arrays
 - .min helped me really write something much more compact than in Python
 ### Perl
-
+- Had to go from Algorithm::Permute to Algorithm::Combinatorics qw(combinations) because it was otherwise double-counting.
+- Combinatorics runs faster than Permute. (Or at least appears to)
