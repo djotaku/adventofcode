@@ -23,14 +23,18 @@ while(my ($row_index, $row) = each @initial_board)
     }
 }
 
-# print dump(%initial_board);
+#dump(%initial_board);
+#my $initial_total = sum(values %initial_board);
+#say "Initial total: $initial_total";
 
 sub new_status
 {
 
     my $x = $_[0];
     my $y = $_[1];
-    my %board = $_[2];
+    my %board = @_;
+    
+    #dump(%board);
 
     my $live_neighbors = 0;
     my $alive = $board{"($x, $y)"};
@@ -92,11 +96,38 @@ sub new_status
     }
 }
 
-## Test for when I return to this
-my $number_as_string = 1;
-say $number_as_string;
-say "$number_as_string";
-say "$number_as_string" + 1;
-my $coordinates = "(0, 2)";
-my ($x, $y) = $coordinates =~ /(\d+), (\d+)/g;  # <- use this to pull out the coords for the coord math in new_status sub
-say "x is $x and y is $y";
+sub play_round
+{
+    my %original_board = @_;
+    
+    #dump(%original_board);
+    
+    my %new_board;
+    foreach my $x (0.. 99)
+    {
+        foreach my $y (0.. 99)
+        {
+            $new_board{"($x, $y)"} = new_status($x, $y, %original_board);
+        }
+    }
+    return %new_board;
+}
+
+my %final_board = %initial_board;
+
+#say "-----------------";
+#dump(%final_board);
+#say "-----------------";
+
+foreach my $round (0..99)
+{
+    %final_board = play_round(%final_board);
+}
+
+#say "-----------------";
+#dump(%final_board);
+#say "-----------------";
+
+my $total = sum(values %final_board);
+
+say "There are $total lights on.";
