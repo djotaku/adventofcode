@@ -38,6 +38,7 @@ sub new_status
 
     my $live_neighbors = 0;
     my $alive = $board{"($x, $y)"};
+    # say "Alive: $alive";
     my $minus_x = $x - 1;
     my $plus_x = $x + 1;
     my $minux_y = $y -1;
@@ -66,7 +67,7 @@ sub new_status
     {
         $live_neighbors += 1;
     }
-    if ($board{"($minus_x, $minux_y)"})
+    if ($board{"($minus_x, $plus_y)"})
     {
         $live_neighbors += 1;
     }
@@ -76,18 +77,20 @@ sub new_status
     }
     if ($alive)
     {
+        # say "Alive is: $alive which meant true!"; 
         if (2<= $live_neighbors <=3)
         {
+        # say "Live neighbors: $live_neighbors and is between 2 and 3?";
             return 1;
         }
         else
         {
             return 0;
         }
-        
     }
     if (not $alive and $live_neighbors == 3)
     {
+        # say "Alive is: $alive which meant false! and live_neighbors=$live_neighbors"; 
         return 1;
     }
     else
@@ -103,9 +106,9 @@ sub play_round
     #dump(%original_board);
     
     my %new_board;
-    foreach my $x (0.. 99)
+    foreach my $x (0..99)
     {
-        foreach my $y (0.. 99)
+        foreach my $y (0..99)
         {
             $new_board{"($x, $y)"} = new_status($x, $y, %original_board);
         }
@@ -121,6 +124,7 @@ my %final_board = %initial_board;
 
 foreach my $round (0..99)
 {
+    say "Round: $round";
     %final_board = play_round(%final_board);
 }
 
