@@ -62,8 +62,10 @@ Part 1 wasn't too hard to figure out. It mostly involved checking the Python lib
 ### Generic
 
 ### Python
+- The existence of re.finditer to find out where in a string your match occurred.
 
 ### Ruby
-
+- getting better at using map (in this case map!) to do the equivalent of Python's list comprehensions. It took me a while, but I'm particularly proud of how the generate_molecule_tuple turned out.
+- using str.to_enum(:scan, regular expression).map { Regexp.last_match} to do the equivalent of Python's re.finditer
 ### Perl
 
