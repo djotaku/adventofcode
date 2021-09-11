@@ -7,8 +7,8 @@ def generate_molecule_tuple(list_of_molecules)
 end
 
 def generate_replacements(string_to_replace, replace_with_string, molecule)
-  matches = molecule.to_enum(:scan, string_to_replace).map { Regexp.last_match}
-  matches.map{|molecule_match| molecule_match.pre_match + replace_with_string + molecule_match.post_match}
+  molecule.to_enum(:scan, string_to_replace).map { Regexp.last_match}
+          .map{|molecule_match| molecule_match.pre_match + replace_with_string + molecule_match.post_match}
 end
 
 if $PROGRAM_NAME == __FILE__
@@ -18,5 +18,7 @@ if $PROGRAM_NAME == __FILE__
   molecule_tuples = generate_molecule_tuple(list_of_molecules)
   list_of_potential_replacements = molecule_tuples.map {|item| generate_replacements(item[0], item[1],
                                                                                       molecule_to_change)}
-  print list_of_potential_replacements
+                                                  .flatten
+  distinct_molecules = Set.new(list_of_potential_replacements).keep_if { |item| not item.empty?}
+  puts "We have #{distinct_molecules.length} distinct molecules."
 end
