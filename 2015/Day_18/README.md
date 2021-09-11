@@ -61,6 +61,9 @@ Depending on what I learn doing this, I will come back here and update this sect
 - A reminder (I've had to relearn this a few times) that if there isn't a space in your string, you need to use a list comprehension to split it into a list of characters.
 
 ### Ruby
+- If you want to do x<=y<=z you would do (x..z).cover? y
+- Interesting that, by default, the Hash just returns nil instead of erroring out if I try to access a key that doesn't exist. Easier than Python's having to to use "get".
 
 ### Perl
-
+- a reminder that each is like enumerate
+- Passing the hashes around was a little annoying - you pass it like an array and then have that convert to hash
