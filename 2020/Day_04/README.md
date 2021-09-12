@@ -1,6 +1,10 @@
-[Cute Version](https://adventofcode.com/2020/day/4)
+# Day 4: Passport Processing
 
-# Problem 1
+Out of respect for the author's wishes, I only put as much of the problem text as necessary to understand the problem.
+
+Visit the version with all the story elements [here](https://adventofcode.com/2020/day/4).
+
+## Part 1
 
 The expected fields are as follows:
 
@@ -15,7 +19,9 @@ The expected fields are as follows:
 
 Count the number of valid entries - those that have all required fields. Treat cid as optional.
 
-# Problem 2
+Answer: 
+
+## Part 2
 
 You can continue to ignore the cid field, but each other field has strict rules about what values are valid for automatic validation:
 
@@ -31,3 +37,20 @@ You can continue to ignore the cid field, but each other field has strict rules 
     cid (Country ID) - ignored, missing or not.
 
 Your job is to count the inputs where all required fields are both present and valid according to the above rules.
+
+Answer: 
+
+## Commentary / Approach to the Problem
+I recently watched a video in which the Kotlin devs solved this problem in Kotlin. On the plus side, my solution wasn't too far off from theirs. But I'm definitely making this slightly more complex than it has to be by involving sets. Still, I'm relatively proud of myself for this solution. 
+
+## What I Learned
+
+### Generic
+
+### Python
+- Nothing
+
+### Ruby
+
+### Perl
+
