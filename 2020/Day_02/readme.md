@@ -1,6 +1,10 @@
-[Cute Version](https://adventofcode.com/2020/day/2)
+# Day 2: Password Philosophy
 
-# Part 1
+Out of respect for the author's wishes, I only put as much of the problem text as necessary to understand the problem.
+
+Visit the version with all the story elements [here](https://adventofcode.com/2020/day/2).
+
+## Part 1
 
 Suppose you have the following list:
 
@@ -14,7 +18,9 @@ In the above example, 2 passwords are valid. The middle password, cdefg, is not;
 
 How many passwords are valid according to their policies?
 
-# Part 2
+Answer: 586
+
+## Part 2
 
 Each policy actually describes two positions in the password, where 1 means the first character, 2 means the second character, and so on. (Be careful; Toboggan Corporate Policies have no concept of "index zero"!) Exactly one of these positions must contain the given letter. Other occurrences of the letter are irrelevant for the purposes of policy enforcement.
 
@@ -25,3 +31,22 @@ Given the same example list from above:
     2-9 c: ccccccccc is invalid: both position 2 and position 9 contain c.
 
 How many passwords are valid according to the new interpretation of the policies?
+
+Answer: 352
+
+## Commentary / Approach to the Problem
+When I first worked on this problem in Python in 2020 (during AoC), I merely used Python built-ins for part 1. I used split to create lists with the policy, min, and max. It worked just fine and the input wasn't too computationally complex. I think if I were working the problem in 2021, I'd use a regex to grab the values and have a less complex set of lists.
+
+I think most of what I did for part 2 with Python makes sense but might have been easier to follow if I'd started with a simpler part 1.
+
+## What I Learned
+
+### Generic
+
+### Python
+- Nothing
+
+### Ruby
+
+### Perl
+
