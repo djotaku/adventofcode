@@ -44,4 +44,14 @@ def sum_of_divisors(list_of_prime_factors):
 
 
 if __name__ == "__main__":
-    sum_of_divisors([2,2,3,5])
+    house_number = 2
+    PUZZLE_INPUT = 34000000
+    presents_delivered = 0
+    while presents_delivered < 34000000:
+        print(house_number)
+        presents_delivered = sum_of_divisors(prime_factors(house_number)) * 10
+        print(f"{presents_delivered=}")
+        house_number += 1
+    print(f"The lowest house number is {house_number-1}")
+
+# 786241 is too high
