@@ -26,7 +26,9 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
     - Solved with Python (initially, when I’m all caught up I may go back and add more languages)
     - 34 Stars Collected So Far
 
-Total Stars Over All Years: 70
+![total stars](https://github.com/djotaku/adventofcode/blob/main/screenshots/total_star_count_20210913.png)
+
+Total Stars Over All Years: 72
 
 After I'm all caught up, I may try my hand at some visualizations.
     
