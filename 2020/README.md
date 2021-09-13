@@ -2,6 +2,9 @@
 
 This year, apparently you're saving up money to go on vacation, the money being $(star) per solution. If you go to the "cute" entry for Day one, you'll get the story. I found out on the subreddit that it's considered bad form to share the exact problem text. So for each day I just put in the barebones so that if I come back to this repo I can remember what the problem I was trying to solve was.
 
+
+![2020 ascii art](https://github.com/djotaku/adventofcode/blob/main/screenshots/2020_ascii_art_20210913.png)
+
 ## Days I could Not Complete
 
 I may come back and attempt to solve these later

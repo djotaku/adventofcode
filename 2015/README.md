@@ -12,6 +12,8 @@ My goal for the 2015 problem sets are:
 - In general my aim is to get more and more idiomatic with each language as the days go by.
 - To have fun solving programming puzzles
 
+![2015 ascii art](https://github.com/djotaku/adventofcode/blob/main/screenshots/2015_acii_art_20210913.png)
+
 ## Days I could not complete
 
 ### Language Specific
