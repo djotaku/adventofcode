@@ -36,6 +36,11 @@ Your puzzle input is 34000000.
 Answer: 786240
 
 ## Part 2
+Instead, each Elf will stop after delivering presents to 50 houses. To make up for it, they decide to deliver presents equal to eleven times their number at each house.
+
+With these changes, what is the new lowest house number of the house to get at least as many presents as the number in your puzzle input?
+
+Answer: 831600
 
 ## Commentary / Approach to the Problem
 ### Part 1
@@ -45,7 +50,7 @@ Did some non-AoC research (that is to say, I didn't look at anyone's solutions) 
 
 Rather than simply reason out how to find prime factors, I decided to adapt the code I found at [this site](https://www.geeksforgeeks.org/print-all-prime-factors-of-a-given-number/) and have it save the factors instead of printing them. This is definitely a problem that will make heavy use of unit testing to keep me sane. 
 ### Part 2
-
+This one took me a little while and a ["shower thought"](https://www.urbandictionary.com/define.php?term=showerthought) to reason through, but once I did that it wasn't too hard. This time we needed to find all the factors, not just the prime factors. That way we could determine which elves (the elf number = one of the factors of the house number) were no longer on the job. Took about 30-60 minutes to run on my 6 core AMD that's a few years old. Wish on either part 1 or part 2 that I'd figured out how to shortcut myself to be in the vicinity of the right answer. Although I bet I could have sped either one up by dividing the puzzle input by 10 in the first and 11 in the second to arrive at an answer sooner. (Maybe? I'll have to think a bit more to see if that logic holds up.) 
 
 ## What I Learned
 
