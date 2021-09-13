@@ -33,23 +33,27 @@ What is the lowest house number of the house to get at least as many presents as
 
 Your puzzle input is 34000000.
 
-Answer: 
+Answer: 786240
 
 ## Part 2
 
 ## Commentary / Approach to the Problem
+### Part 1
 Started off with the guess that: For any house the formula is -> Sum(F1*10+F2*10…..FN*10) where F is a factor of the number.  I think this means you can factor out the 10 and divide 10 from the number they give us. 
 
 Did some non-AoC research (that is to say, I didn't look at anyone's solutions) and I think that meant I needed to compute the sum of divisors. [Here](https://mathschallenge.net/library/number/sum_of_divisors) is a site that explains that. Basically I need to find the prime factors of a number.
 
 Rather than simply reason out how to find prime factors, I decided to adapt the code I found at [this site](https://www.geeksforgeeks.org/print-all-prime-factors-of-a-given-number/) and have it save the factors instead of printing them. This is definitely a problem that will make heavy use of unit testing to keep me sane. 
+### Part 2
+
 
 ## What I Learned
 
 ### Generic
+How to calculate prime numbers and how to calculate the sum of divisors. 
 
 ### Python
-
+- Nothing in particular, just putting together lots of skills I've learned before like using Counter and using math.prod to reduce the answer while multiplying.
 ### Ruby
 
 ### Perl
