@@ -15,6 +15,10 @@ My goal for the 2015 problem sets are:
 ![2015 ascii art](https://github.com/djotaku/adventofcode/blob/main/screenshots/2015_acii_art_20210913.png)
 
 ## Days I could not complete
+### Part 1 Sections Still incomplete:
+
+### Part 2 Sections Still incomplete:
+- [Day 19 on AoC site](https://adventofcode.com/2015/day/19)|[Day 19 in my repo](https://github.com/djotaku/adventofcode/tree/main/2015/Day_19) - at this time I have no idea how to even begin to work on this.
 
 ### Language Specific
 

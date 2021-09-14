@@ -68,4 +68,6 @@ Part 1 wasn't too hard to figure out. It mostly involved checking the Python lib
 - getting better at using map (in this case map!) to do the equivalent of Python's list comprehensions. It took me a while, but I'm particularly proud of how the generate_molecule_tuple turned out.
 - using str.to_enum(:scan, regular expression).map { Regexp.last_match} to do the equivalent of Python's re.finditer
 ### Perl
-
+- using substr to replace parts of a string - although tricky - you don't actually want the result you want the original string. This is why I had to have the variable $change_me to be changed so I could preserve the original molecule
+- The existence of the $-[0] and $+[0] after you do a regex match. They return the start and end of a match, respectively. (I think + give you the index after the last character of the match)
+- the Set::Scalar module. Previously I'd used Set::Object, but as I was just holding scalars this time (text) I figured I'd use this one. 
