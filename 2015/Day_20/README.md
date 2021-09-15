@@ -52,6 +52,12 @@ Rather than simply reason out how to find prime factors, I decided to adapt the 
 ### Part 2
 This one took me a little while and a ["shower thought"](https://www.urbandictionary.com/define.php?term=showerthought) to reason through, but once I did that it wasn't too hard. This time we needed to find all the factors, not just the prime factors. That way we could determine which elves (the elf number = one of the factors of the house number) were no longer on the job. Took about 30-60 minutes to run on my 6 core AMD that's a few years old. Wish on either part 1 or part 2 that I'd figured out how to shortcut myself to be in the vicinity of the right answer. Although I bet I could have sped either one up by dividing the puzzle input by 10 in the first and 11 in the second to arrive at an answer sooner. (Maybe? I'll have to think a bit more to see if that logic holds up.) 
 
+### Optimization
+After the terrible performance of my code, especially part 2, I [took to reddit to find a faster solution.](https://www.reddit.com/r/adventofcode/comments/po1zel/2015_day_20_there_must_be_a_more_efficient_way_to/?utm_source=share&utm_medium=web2x&context=3) The solution at [Python/part_2_optimized.py](https://github.com/djotaku/adventofcode/blob/77a4bf46514479adb7a37c39d243c1cb8c5480cd/2015/Day_20/Python/part_2_optimized.py) was a brilliant understanding of the math behind the elves who quit at 50 houses. It dropped my solution time from an hour to 2 seconds. Thank you reddit user ssnoyes for that one.
+
+For part 1, the first thing I tried was a suggestion by user 2008p1990 which was supposed to run in 1-2 seconds. It seemed to run just as fast as my original part 1 so I did something that many folks do when "upping the ante" in AoC, I ran a profiler.  
+
+
 ## What I Learned
 
 ### Generic

@@ -48,9 +48,9 @@ if __name__ == "__main__":
     PUZZLE_INPUT = 34000000
     presents_delivered = 0
     while presents_delivered < 34000000:
-        print(house_number)
+        # print(house_number)
         presents_delivered = sum_of_divisors(prime_factors(house_number)) * 10
-        print(f"{presents_delivered=}")
+        # print(f"{presents_delivered=}")
         house_number += 1
     print(f"The lowest house number is {house_number-1}")
 
