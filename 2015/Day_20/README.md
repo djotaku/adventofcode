@@ -57,6 +57,8 @@ After the terrible performance of my code, especially part 2, I [took to reddit 
 
 For part 1, the first thing I tried was a suggestion by user 2008p1990 which was supposed to run in 1-2 seconds. It seemed to run just as fast as my original part 1 so I did something that many folks do when "upping the ante" in AoC, I ran a profiler.  
 
+- My original part 1 profiled
+- This supposed optimization profiled
 
 ## What I Learned
 
