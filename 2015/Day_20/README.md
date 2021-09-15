@@ -57,8 +57,8 @@ After the terrible performance of my code, especially part 2, I [took to reddit 
 
 For part 1, the first thing I tried was a suggestion by user 2008p1990 which was supposed to run in 1-2 seconds. It seemed to run just as fast as my original part 1 so I did something that many folks do when "upping the ante" in AoC, I ran a profiler.  
 
-- My original part 1 profiled
-- This supposed optimization profiled
+- [My original part 1 profiled](
+- [This supposed optimization profiled])https://github.com/djotaku/adventofcode/blob/c629d671305d44069888a8cb724d9a9278e229c7/2015/Day_20/Python/part_1_supposedly_optimized_profile.txt) - finishes in 35 seconds
 
 ## What I Learned
 
