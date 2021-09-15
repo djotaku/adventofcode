@@ -62,7 +62,10 @@ For part 1, the first thing I tried was a suggestion by user 2008p1990 which was
 
 I took another look and it turns out that THIS....THIS is the ONE TIME that lists turn out to be better than dictionaries. Guess it shows that programming is like the rest of life - there are no ASBOLUTE rules just guidelines.
 
+- [Actual Optimized Code](https://github.com/djotaku/adventofcode/blob/f5f0fd4d15736b266a2688f1f9873a3abf5af7b5/2015/Day_20/Python/part_1_supposedly_optimized_list.py)
+- [Profile for Actual Optimized Code](https://github.com/djotaku/adventofcode/blob/f5f0fd4d15736b266a2688f1f9873a3abf5af7b5/2015/Day_20/Python/part_1_supposedly_optimized_list.txt) - 5 seconds. Yeah.... that's a LOT better!!
 
+At this point (when I'm first writing this 20210914T2052) - I'm not sure I understand the math behind this optimization. Need to sleep on it and take another look tomorrow. (Or maybe print out some numbers while it runs to understand what's going on.)
 
 ## What I Learned
 
