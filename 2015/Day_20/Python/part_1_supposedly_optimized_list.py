@@ -11,5 +11,5 @@ for i in range(1, (PRESENTS_DELIVERED//10)):
 
 for house in house_list:
     if house >= PRESENTS_DELIVERED:
-        print(f"House is {house}")
+        print(f"House is {house_list.index(house)}")
         break
