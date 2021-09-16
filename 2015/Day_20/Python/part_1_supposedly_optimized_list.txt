@@ -1,13 +1,12 @@
 House is 786240
-         5 function calls in 28.106 seconds
+         4 function calls in 25.261 seconds
 
    Ordered by: standard name
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-        1   28.020   28.020   28.106   28.106 part_1_supposedly_optimized_list.py:1(<module>)
-        1    0.000    0.000   28.106   28.106 {built-in method builtins.exec}
+        1   25.261   25.261   25.261   25.261 part_1_supposedly_optimized_list.py:1(<module>)
+        1    0.000    0.000   25.261   25.261 {built-in method builtins.exec}
         1    0.000    0.000    0.000    0.000 {built-in method builtins.print}
         1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
-        1    0.086    0.086    0.086    0.086 {method 'index' of 'list' objects}
 
 

@@ -9,7 +9,7 @@ for i in range(1, (PRESENTS_DELIVERED//10)):
         else:
             house_list[j] += i * 10
 
-for house in house_list:
+for house_number, house in enumerate(house_list):
     if house >= PRESENTS_DELIVERED:
-        print(f"House is {house_list.index(house)}")
+        print(f"House is {house_number}")
         break

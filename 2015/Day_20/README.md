@@ -67,7 +67,12 @@ I took another look and it turns out that THIS....THIS is the ONE TIME that list
 
 After thinking about it for a day, basically it seems the math is essentially just doing the factors brute force rather than pre-calculating them or finding prime factors.
 
+When I was working on the Ruby solution I realized that I had actually messed up in my zeal to profile and actually, this is the solution that produces the right answer:
 
+- [Optimized Code](https://github.com/djotaku/adventofcode/blob/f4127acb8fc241fc65eb26c98979bf81c19e71a2/2015/Day_20/Python/part_1_supposedly_optimized_list.py)
+- [Profile for this working Optimized Code](https://github.com/djotaku/adventofcode/blob/f4127acb8fc241fc65eb26c98979bf81c19e71a2/2015/Day_20/Python/part_1_supposedly_optimized_list.txt) - 28 seconds
+
+Unfortunately, these results are nowhere as impressive. So I'm wondering I've done something wrong here?
 
 ## What I Learned
 
