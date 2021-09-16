@@ -52,6 +52,8 @@ I spent a lot of time thinking about how to work this one. I thought about how t
 
 Eventually what I ended up doing was coming up with dictionaries (also called maps or hashes in other languages) to hold the weapon, armor, and ring data. Then I used itertools Product to combine them into groups I could test. I think the biggest innovation I had was to create NoMail and NoRing to represent not wearing armor or rings. And to have rings go into product twice to handle it being one or both hands. 
 
+I decided to do everyting out of dictionaries (including the player and boss) rather than classes to make it easy to do this in any programming language. 
+
 ## What I Learned
 
 ### Generic
