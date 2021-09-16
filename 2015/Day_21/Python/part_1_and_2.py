@@ -1,8 +1,4 @@
 from itertools import product
-from sys import path
-
-path.insert(0, '../../input_parsing')
-import parse_input
 
 WEAPONS = {"Dagger": {"cost": 8, "damage": 4, "armor": 0},
            "Shortsword": {"cost": 10, "damage": 5, "armor": 0},
@@ -43,7 +39,7 @@ def battle_sim(player: dict, enemy: dict) -> bool:
         if player["hit_points"] <= 0:
             break
         # debug
-        print(f"Player: {player['hit_points']}; Enemy: {enemy['hit_points']}")
+        # print(f"Player: {player['hit_points']}; Enemy: {enemy['hit_points']}")
     return player['hit_points'] > 0
 
 
@@ -80,10 +76,21 @@ if __name__ == "__main__":
         player = equip_player(combination)
         BOSS['hit_points'] = 100
         # debug
-        print(player)
+        # print(player)
         if battle_sim(player, BOSS):
             if player['cost'] < cost_to_win:
                 cost_to_win = player['cost']
+    print("----------------------------------------------------------")
+    print("-------------------- Part 1 ------------------------------")
     print(f"The least gold that can be spent to win is {cost_to_win}.")
-
-# 8 is not the answer
+    print("----------------------------------------------------------")
+    cost_to_lose = 0
+    for combination in all_battle_combinations:
+        player = equip_player(combination)
+        print(player)
+        BOSS['hit_points'] = 100
+        if not battle_sim(player, BOSS):
+            if player['cost'] > cost_to_lose:
+                cost_to_lose = player['cost']
+    print("-------------------- Part 2 -------------------------------------")
+    print(f"The most gold that can be spent and still lose is {cost_to_lose}.")
