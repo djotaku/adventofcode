@@ -39,10 +39,13 @@ You must buy exactly one weapon; no dual-wielding. Armor is optional, but you ca
 
 You have 100 hit points. The boss's actual stats are in your puzzle input. What is the least amount of gold you can spend and still win the fight?
 
-Answer: 
+Answer: 91
 
 
 ## Part 2
+What is the most amount of gold you can spend and still lose the fight? 
+
+Answer: 
 
 ## Commentary / Approach to the Problem
 
