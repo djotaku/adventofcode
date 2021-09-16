@@ -65,7 +65,9 @@ I took another look and it turns out that THIS....THIS is the ONE TIME that list
 - [Actual Optimized Code](https://github.com/djotaku/adventofcode/blob/f5f0fd4d15736b266a2688f1f9873a3abf5af7b5/2015/Day_20/Python/part_1_supposedly_optimized_list.py)
 - [Profile for Actual Optimized Code](https://github.com/djotaku/adventofcode/blob/f5f0fd4d15736b266a2688f1f9873a3abf5af7b5/2015/Day_20/Python/part_1_supposedly_optimized_list.txt) - 5 seconds. Yeah.... that's a LOT better!!
 
-At this point (when I'm first writing this 20210914T2052) - I'm not sure I understand the math behind this optimization. Need to sleep on it and take another look tomorrow. (Or maybe print out some numbers while it runs to understand what's going on.)
+After thinking about it for a day, basically it seems the math is essentially just doing the factors brute force rather than pre-calculating them or finding prime factors.
+
+
 
 ## What I Learned
 
