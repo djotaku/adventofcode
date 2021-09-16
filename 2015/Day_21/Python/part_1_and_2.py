@@ -72,6 +72,7 @@ BOSS = {'hit_points': 100, 'damage': 8, 'armor': 2}
 
 if __name__ == "__main__":
     cost_to_win = 1000000000000000
+    cost_to_lose = 0
     for combination in all_battle_combinations:
         player = equip_player(combination)
         BOSS['hit_points'] = 100
@@ -80,17 +81,13 @@ if __name__ == "__main__":
         if battle_sim(player, BOSS):
             if player['cost'] < cost_to_win:
                 cost_to_win = player['cost']
-    print("----------------------------------------------------------")
-    print("-------------------- Part 1 ------------------------------")
-    print(f"The least gold that can be spent to win is {cost_to_win}.")
-    print("----------------------------------------------------------")
-    cost_to_lose = 0
-    for combination in all_battle_combinations:
-        player = equip_player(combination)
-        print(player)
-        BOSS['hit_points'] = 100
-        if not battle_sim(player, BOSS):
+        else:
             if player['cost'] > cost_to_lose:
                 cost_to_lose = player['cost']
+    print("-----------------------------------------------------------------")
+    print("-------------------- Part 1 -------------------------------------")
+    print(f"The least gold that can be spent to win is {cost_to_win}.")
+    print("-----------------------------------------------------------------")
     print("-------------------- Part 2 -------------------------------------")
     print(f"The most gold that can be spent and still lose is {cost_to_lose}.")
+    print("-----------------------------------------------------------------")

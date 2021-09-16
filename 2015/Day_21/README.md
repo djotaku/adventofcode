@@ -57,7 +57,8 @@ Eventually what I ended up doing was coming up with dictionaries (also called ma
 ### Generic
 
 ### Python
-
+- How to use itertools Product to make combinations from different lists
+- A reminder the generators are consumed
 ### Ruby
 
 ### Perl

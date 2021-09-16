@@ -9,7 +9,7 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
 - 2015 
     - Second Problem Set Tackled (April 2021 - TBD)
     - Originally solved with Python, Ruby, and Perl (other languages may be used in the future)
-    - 39 Stars Collected So Far
+    - 41 Stars Collected So Far
       - 20210828 - Reached 34 stars without skipping any Days/Parts. This put me in a tie with my score at the end of 2020 when I was doing it live Dec 2020.
 - 2016
   - Third Problem Set Tackled (TBD)
@@ -28,7 +28,7 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
 
 ![total stars](https://github.com/djotaku/adventofcode/blob/main/screenshots/total_star_count_20210913.png)
 
-Total Stars Over All Years: 72
+Total Stars Over All Years: 75
 
 After I'm all caught up, I may try my hand at some visualizations.
     

@@ -3,3 +3,4 @@
 ## Part 1
 - How to use itertools Product to make combinations from different lists
 ## Part 2
+- A reminder the generators are consumed
