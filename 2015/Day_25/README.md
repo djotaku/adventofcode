@@ -37,6 +37,7 @@ So, to find the second code (which ends up in row 2, column 1), start with the p
 
 Answer: 19980801
 ## Part 2
+Nothing to do, it's a gimme once you have 49 stars...
 
 ## Commentary / Approach to the Problem
 One obvious way to do this would be to brute force it. Would still need to figure out the algorithm for the row/column. 
