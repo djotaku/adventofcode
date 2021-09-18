@@ -72,12 +72,14 @@ def battle_sim():
     """Simulate a battle and return true if the player wins."""
     mana_spent = 0
     while True:
-        # player turn
+        print("--player turn--")
         run_timer_spells()
         mana_spent += cast_spell(decide_spell())
         if wizard["mana_points"] <= 0:
             break
+        print(f"Wizard: HP: {wizard['hit_points']}, Mana: {wizard['mana_points']}; Boss: {boss['hit_points']}")
         # boss turn
+        print("--boss turn--")
         run_timer_spells()
         wizard['hit_points'] = wizard['hit_points'] - (boss['damage'] - wizard['armor'])
         if boss["hit_points"] <= 0:
