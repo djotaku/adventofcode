@@ -34,6 +34,7 @@ O => OTi
 P => CaP
 P => PTi
 P => SiRnFAr
+P => SiRnFAr
 Si => CaSi
 Th => ThCa
 Ti => BP

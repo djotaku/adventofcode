@@ -34,6 +34,7 @@ A distillation of what I learned this year.
 - Confirmation of what I learned in 2020 - the right data structure is almost always the dictionary/hash. Nothing else is as performant.
 - If you have recursion, you’ll probably have to do a cache to pass with the input given
 - Looking like each year there’s at least one variant of Conway’s Game of Life - so learn the algorithm
+- This year was a permutation/combination heavy year - many problems depended on knowing how to do that in your programming language
 
 
 For a full list of what I learned, for each day the README will contain what I learned in each programming language.

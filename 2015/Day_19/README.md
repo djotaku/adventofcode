@@ -57,6 +57,8 @@ Answer:
 ## Commentary / Approach to the Problem
 Part 1 wasn't too hard to figure out. It mostly involved checking the Python libraries to see how to get the positions in the string for the matches. But on the first day that I read part 2, I had no idea whatsoever how to begin.
 
+I did some Googling and it turns out this one is a real puzzle that either involves understanding something about a [different way of looking at the transformations](https://www.reddit.com/r/adventofcode/comments/3xflz8/day_19_solutions/cy4etju?utm_source=share&utm_medium=web2x&context=3) or working backwards (literally flipping the molecule), or CYK algorithms. Wasl himself said it wasn't brute-forceable unless you happened to get lucky.  Since this is one of those that I just can't understand, what I decided would be a legit solution for me is to take the solution I linked above and solve that in the various languages using regex. 
+
 ## What I Learned
 
 ### Generic
