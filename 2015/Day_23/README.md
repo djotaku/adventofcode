@@ -27,14 +27,17 @@ For example, this program sets a to 2, because the jio instruction causes it to 
 
 What is the value in register b when the program in your puzzle input is finished executing?
 
-Answer: 
+Answer: 307
 
 ## Part 2
+what is the value in register b after the program is finished executing if register a starts as 1 instead?
+
+Answer: 160
 
 ## Commentary / Approach to the Problem
 This is a relatively simple assembly language sim. There was also at least one of these problems in the 2020 problem set. Unless I'm missing something key about part 1 it should be as simple as moving along a list, running commands.
 
-
+I went back and forth on whether to use regular expressions or split methods. In the end the complexity seemed similar no matter which I chose, so I went with splits. Very easy solution for both parts 1 and 2. I think Wastl was trying to give folks a break.
 ## What I Learned
 
 ### Generic
