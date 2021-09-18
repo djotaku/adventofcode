@@ -11,19 +11,19 @@ boss = {"hit_points": 55, "damage": 8}
 
 def decide_spell():
     """Figure out which spell to cast."""
-    if wizard["hit_points"] == 2 and shield["timer"] == 0:
+    if wizard["hit_points"] == 2 and shield["timer"] == 0 and wizard["mana_points"] >= shield["cost"]:
         # debug
         print("chose shield")
         return "shield"
-    elif wizard["hit_points"] == 1:
+    elif wizard["hit_points"] == 1 and wizard["mana_points"] >= drain["cost"]:
         # debug
         print("chose drain")
         return "drain"
-    elif wizard["mana_points"] == 229 and recharge['time'] == 0:
+    elif (229+53) >= wizard["mana_points"] >= 229 and recharge['timer'] == 0:
         # debug
         print("chose recharge")
         return "recharge"
-    elif poison["timer"] == 0:
+    elif poison["timer"] == 0 and wizard["mana_points"] >= poison["cost"]:
         # debug
         print("chose poison")
         return "poison"
@@ -87,6 +87,7 @@ def battle_sim():
         # debug
         print(f"Wizard: HP: {wizard['hit_points']}, Mana: {wizard['mana_points']}; Boss: {boss['hit_points']}")
     # return wizard['hit_points'] > 0 and wizard["mana_points"] > 0
+    print("battle sim ended. Final tallies:\n")
     print(f"Wizard: HP: {wizard['hit_points']}, Mana: {wizard['mana_points']}; Boss: {boss['hit_points']}")
     return mana_spent
 
