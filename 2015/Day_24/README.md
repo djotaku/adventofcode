@@ -16,6 +16,10 @@ What is the quantum entanglement of the first group of packages in the ideal con
 Answer: 11846773891
 
 ## Part 2
+Balance the sleigh again, but this time, separate the packages into four groups instead of three. The other constraints still apply.
+
+Answer: 80393059
+
 
 ## Commentary / Approach to the Problem
 Seems like a more elaborate version of [Day 17](https://adventofcode.com/2015/day/17) 
