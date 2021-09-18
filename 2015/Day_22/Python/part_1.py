@@ -34,13 +34,24 @@ def decide_spell():
 
 def run_timer_spells():
     if shield["timer"] > 0:
+        print("Shield active")
         shield["timer"] -= 1
+        print(f'Shield timer drops to {shield["timer"]}')
+        if shield["timer"] == 0:
+            print("Shield has expired, lowering wizard armor")
+            wizard["armor"] -= shield["armor"]
     if poison["timer"] > 0:
+        print("Poison active")
         boss["hit_points"] -= poison["damage"]
+        print(f"Poison attacks boss for {poison['damage']}")
         poison["timer"] -= 1
+        print(f'Poison timer drops to {poison["timer"]}')
     if recharge["timer"] > 0:
+        print("Recharge active")
         wizard["mana_points"] += recharge["mana_refill"]
+        print(f"Mana refilled by +{recharge['mana_refill']}")
         recharge["timer"] -= 1
+        print(f"Recharge drops to {recharge['timer']}")
 
 
 def cast_spell(spell_name: str):
