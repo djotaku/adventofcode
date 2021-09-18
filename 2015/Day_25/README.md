@@ -35,10 +35,11 @@ So, to find the second code (which ends up in row 2, column 1), start with the p
 
 "Now remember", the voice continues, "that's not even all of the first few numbers; for example, you're missing the one at 7,1 that would come before 6,2.
 
-Answer: 
+Answer: 19980801
 ## Part 2
 
 ## Commentary / Approach to the Problem
+One obvious way to do this would be to brute force it. Would still need to figure out the algorithm for the row/column. 
 
 ## What I Learned
 
