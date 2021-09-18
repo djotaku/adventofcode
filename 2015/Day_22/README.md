@@ -19,6 +19,16 @@ Effects all work the same way. Effects apply at the start of both the player's t
 ## Part 2
 
 ## Commentary / Approach to the Problem
+- Important that no matter the amount of defense, always at least 1 HP is taken away per attack
+- Also, there are 2 lose conditions - 0 HP and 0 MP
+- I *think* the best strategy is to have some guards running - you can’t lose too much HP OR mana. So, need to make sure that if you only have 229 left that you cast Recharge. Also, figure out when to do shield or drain. Finally, when do you do Magic Missile or Poison? 
+
+  - If reach 2 HP cast shield
+  - If reach 1 HP cast Drain
+  - If 229 MP left, cast Recharge (or at start like in example?)
+  - If none of these needed, Poison
+  - If poison already in effect, Magic Missile
+  - Also a check to make sure don’t cast anything already running -> have Bools related to each spell running -> put it into the dict for the spell?
 
 ## What I Learned
 
