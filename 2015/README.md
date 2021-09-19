@@ -12,17 +12,16 @@ My goal for the 2015 problem sets are:
 - In general my aim is to get more and more idiomatic with each language as the days go by.
 - To have fun solving programming puzzles
 
-![2015 ascii art](https://github.com/djotaku/adventofcode/blob/main/screenshots/2015_acii_art_20210913.png)
+![2015 ascii art](https://github.com/djotaku/adventofcode/blob/main/screenshots/2015_ascii_art_20210919.png)
 
 ## Days I could not complete
 ### Part 1 Sections Still incomplete:
 ### Part 2 Sections Still incomplete:
-- [Day 22 on AoC Site](https://adventofcode.com/2015/day/22) | [Day 22 in my repo](https://github.com/djotaku/adventofcode/tree/main/2015/Day_22) 
 
 ### Language Specific
 
 #### Perl
-- Day 7 - Because I was using recursion and I had not yet relearned how to do subroutines (Perl functions)
+- Day 7 - Because I was using recursion, and I had not yet relearned how to do subroutines (Perl functions)
 - Day 14 - Because I didn't want to bother with classes in Perl
 
 ## What I learned from Advent of Code 2015
