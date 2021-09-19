@@ -13,25 +13,29 @@ boss = {"hit_points": 55, "damage": 8}
 
 def decide_spell():
     """Figure out which spell to cast."""
-    if wizard["hit_points"] == 2 and shield["timer"] == 0 and wizard["mana_points"] >= shield["cost"]:
-        # debug
-        print("chose shield")
-        return "shield"
-    elif wizard["hit_points"] == 1 and wizard["mana_points"] >= drain["cost"]:
-        # debug
-        print("chose drain")
-        return "drain"
-    elif (229+53) >= wizard["mana_points"] >= 229 and recharge['timer'] == 0:
-        # debug
-        print("chose recharge")
-        return "recharge"
-    elif poison["timer"] == 0 and wizard["mana_points"] >= poison["cost"]:
-        # debug
-        print("chose poison")
-        return "poison"
-    else:
-        print("chose magic missile")
-        return "magic_missile"
+    spell_list = ["shield", "drain", "recharge", "poison", "magic_missile"]
+    while True:
+        cast_this_spell = choice(spell_list)
+        if cast_this_spell == "shield":
+            if shield["timer"] == 0 and wizard["mana_points"] >= shield["cost"]:
+                print("chose shield")
+                return "shield"
+        elif cast_this_spell == "drain":
+            if wizard["mana_points"] >= drain["cost"]:
+                print("chose drain")
+                return "drain"
+        elif cast_this_spell == "recharge":
+            if wizard["mana_points"] >= 229 and recharge['timer'] == 0:
+                print("chose recharge")
+                return "recharge"
+        elif cast_this_spell == "poison":
+            if poison["timer"] == 0 and wizard["mana_points"] >= poison["cost"]:
+                print("chose poison")
+                return "poison"
+        elif cast_this_spell == "magic_missile":
+            if wizard["mana_points"] >= magic_missile["cost"]:
+                print("chose magic missile")
+                return "magic_missile"
 
 
 def run_timer_spells():
@@ -85,13 +89,12 @@ def battle_sim():
     """Simulate a battle and return true if the player wins."""
     player_wins = False
     mana_spent = 0
-    spell_list = ["shield", "drain", "recharge", "poison", "magic_missile"]
     while True:
         print("--player turn--")
         run_timer_spells()
-        # mana_spent += cast_spell(decide_spell())
-        mana_spent += cast_spell(choice(spell_list))
-        if wizard["mana_points"] <= 0:
+        mana_spent += cast_spell(decide_spell())
+        # mana_spent += cast_spell(choice(spell_list))
+        if wizard["mana_points"] <= 53:
             return player_wins, mana_spent
         print(f"Wizard: HP: {wizard['hit_points']}, Mana: {wizard['mana_points']}; Boss: {boss['hit_points']}")
         # boss turn
@@ -105,25 +108,22 @@ def battle_sim():
             return player_wins, mana_spent
         # debug
         print(f"Wizard: HP: {wizard['hit_points']}, Mana: {wizard['mana_points']}; Boss: {boss['hit_points']}")
-    # return wizard['hit_points'] > 0 and wizard["mana_points"] > 0
-    print("battle sim ended. Final tallies:\n")
-    print(f"Wizard: HP: {wizard['hit_points']}, Mana: {wizard['mana_points']}; Boss: {boss['hit_points']}")
-    return player_wins, mana_spent
 
 
 if __name__ == "__main__":
-    mana_spent = 10000000000000000000
-    player_wins = False
-    for trial in range(1000000):
+    mana_spent_to_win = 10000000000000000000
+    for trial in range(100000000):
+        print(f"{trial=}")
         wizard = {"hit_points": 50, "mana_points": 500, "armor": 0}
         boss = {"hit_points": 55, "damage": 8}
-        player_wins, mana_spent_this_time = battle_sim()
-        if player_wins:
-            if mana_spent_this_time < mana_spent:
-                mana_spent = mana_spent_this_time
-    print(f"To win required {mana_spent} mana.")
+        did_player_win, mana_spent_this_time = battle_sim()
+        if did_player_win:
+            if mana_spent_this_time < mana_spent_to_win:
+                mana_spent_to_win = mana_spent_this_time
+    print(f"To win required {mana_spent_to_win} mana.")
 
 
 # 551 is too low
 # 4741 is too high
 # 2414 is too high
+# it's not 1113
