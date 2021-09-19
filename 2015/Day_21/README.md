@@ -62,6 +62,7 @@ I decided to do everyting out of dictionaries (including the player and boss) ra
 - How to use itertools Product to make combinations from different lists
 - A reminder the generators are consumed
 ### Ruby
+- a reminder about array#min and array#max rather than the if statements to determine the value to keep. May be
 
 ### Perl
 
