@@ -7,9 +7,9 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
 ## Event Years
 
 - 2015 
-    - Second Problem Set Tackled (April 2021 - TBD)
+    - Second Problem Set Tackled (April 2021 - Sept 2021)
     - Originally solved with Python, Ruby, and Perl (other languages may be used in the future)
-    - 50 Stars Collected So Far
+    - 50 Stars Collected
       - 20210828 - Reached 34 stars without skipping any Days/Parts. This put me in a tie with my score at the end of 2020 when I was doing it live Dec 2020.
       - 20210919 - Finished my first ever Advent of Code with all 50 stars!!!! (Still need to do a few more days in Perl/Ruby)
 - 2016
