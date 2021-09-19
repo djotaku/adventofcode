@@ -16,8 +16,8 @@ My goal for the 2015 problem sets are:
 
 ## Days I could not complete
 ### Part 1 Sections Still incomplete:
-- [Day 22 on AoC Site](https://adventofcode.com/2015/day/22) | [Day 22 in my repo](https://github.com/djotaku/adventofcode/tree/main/2015/Day_22) - having trouble figuring out a spell determination algorithm that doesn't result in failure.
 ### Part 2 Sections Still incomplete:
+- [Day 22 on AoC Site](https://adventofcode.com/2015/day/22) | [Day 22 in my repo](https://github.com/djotaku/adventofcode/tree/main/2015/Day_22) 
 
 ### Language Specific
 
