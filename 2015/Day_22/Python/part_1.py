@@ -1,3 +1,5 @@
+from random import choice
+
 # Spells
 magic_missile = {"cost": 53, "damage": 4}
 drain = {"cost": 73, "damage": 2, "heal": 2}
@@ -81,33 +83,47 @@ def cast_spell(spell_name: str):
 
 def battle_sim():
     """Simulate a battle and return true if the player wins."""
+    player_wins = False
     mana_spent = 0
+    spell_list = ["shield", "drain", "recharge", "poison", "magic_missile"]
     while True:
         print("--player turn--")
         run_timer_spells()
-        mana_spent += cast_spell(decide_spell())
+        # mana_spent += cast_spell(decide_spell())
+        mana_spent += cast_spell(choice(spell_list))
         if wizard["mana_points"] <= 0:
-            break
+            return player_wins, mana_spent
         print(f"Wizard: HP: {wizard['hit_points']}, Mana: {wizard['mana_points']}; Boss: {boss['hit_points']}")
         # boss turn
         print("--boss turn--")
         run_timer_spells()
         wizard['hit_points'] = wizard['hit_points'] - (boss['damage'] - wizard['armor'])
         if boss["hit_points"] <= 0:
-            break
+            player_wins = True
+            return player_wins, mana_spent
         if wizard["hit_points"] <= 0:
-            break
+            return player_wins, mana_spent
         # debug
         print(f"Wizard: HP: {wizard['hit_points']}, Mana: {wizard['mana_points']}; Boss: {boss['hit_points']}")
     # return wizard['hit_points'] > 0 and wizard["mana_points"] > 0
     print("battle sim ended. Final tallies:\n")
     print(f"Wizard: HP: {wizard['hit_points']}, Mana: {wizard['mana_points']}; Boss: {boss['hit_points']}")
-    return mana_spent
+    return player_wins, mana_spent
 
 
 if __name__ == "__main__":
-    mana_spent = battle_sim()
+    mana_spent = 10000000000000000000
+    player_wins = False
+    for trial in range(1000000):
+        wizard = {"hit_points": 50, "mana_points": 500, "armor": 0}
+        boss = {"hit_points": 55, "damage": 8}
+        player_wins, mana_spent_this_time = battle_sim()
+        if player_wins:
+            if mana_spent_this_time < mana_spent:
+                mana_spent = mana_spent_this_time
     print(f"To win required {mana_spent} mana.")
 
 
 # 551 is too low
+# 4741 is too high
+# 2414 is too high
