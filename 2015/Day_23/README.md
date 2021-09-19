@@ -46,6 +46,6 @@ I went back and forth on whether to use regular expressions or split methods. In
 - Nothing
 
 ### Ruby
-
+- practiced with case statements. They can get a little dodgy when they're nested. Also had to be careful with the insistence on an "else"
 ### Perl
 

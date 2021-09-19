@@ -2,7 +2,7 @@ require "../../input_parsing/parse_input"
 
 assembly = input_per_line('../input.txt')
 pointer = 0
-register_a = 0
+register_a = 1
 register_b = 0
 while pointer < assembly.length
   current_instruction = assembly[pointer].split
