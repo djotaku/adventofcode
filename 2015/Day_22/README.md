@@ -16,6 +16,11 @@ On each of your turns, you must select one of your spells to cast. If you cannot
 - Recharge costs 229 mana. It starts an effect that lasts for 5 turns. At the start of each turn while it is active, it gives you 101 new mana.
 
 Effects all work the same way. Effects apply at the start of both the player's turns and the boss' turns. Effects are created with a timer (the number of turns they last); at the start of each turn, after they apply any effect they have, their timer is decreased by one. If this decreases the timer to zero, the effect ends. You cannot cast a spell that would start an effect which is already active. However, effects can be started on the same turn they end.
+
+What is the least amount of mana you can use and still win the fight: 
+
+Answer: 953
+
 ## Part 2
 
 ## Commentary / Approach to the Problem
@@ -30,6 +35,7 @@ Effects all work the same way. Effects apply at the start of both the player's t
   - If poison already in effect, Magic Missile
   - Also a check to make sure don’t cast anything already running -> have Bools related to each spell running -> put it into the dict for the spell?
 
+Ended up having to abandon any kind of  
 ## What I Learned
 
 ### Generic

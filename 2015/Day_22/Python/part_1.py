@@ -7,9 +7,6 @@ shield = {"cost": 113, "armor": 7, "effect_length": 6, "timer": 0}
 poison = {"cost": 173, "damage": 3, "effect_length": 6, "timer": 0}
 recharge = {"cost": 229, "mana_refill": 101, "effect_length": 5, "timer": 0}
 
-wizard = {"hit_points": 50, "mana_points": 500, "armor": 0}
-boss = {"hit_points": 55, "damage": 8}
-
 
 def decide_spell():
     """Figure out which spell to cast."""
@@ -25,7 +22,7 @@ def decide_spell():
                 print("chose drain")
                 return "drain"
         elif cast_this_spell == "recharge":
-            if wizard["mana_points"] >= 229 and recharge['timer'] == 0:
+            if wizard["mana_points"] >= recharge["cost"] and recharge['timer'] == 0:
                 print("chose recharge")
                 return "recharge"
         elif cast_this_spell == "poison":
@@ -61,20 +58,15 @@ def run_timer_spells():
 
 
 def cast_spell(spell_name: str):
-    if spell_name == "magic_missile":
-        wizard["mana_points"] -= magic_missile["cost"]
-        boss["hit_points"] -= magic_missile["damage"]
-        return magic_missile["cost"]
-    elif spell_name == "drain":
+    if spell_name == "drain":
         wizard["mana_points"] -= drain["cost"]
         wizard["hit_points"] += drain["heal"]
         boss["hit_points"] -= drain["damage"]
         return drain["cost"]
-    elif spell_name == "shield":
-        wizard["mana_points"] -= shield["cost"]
-        wizard["armor"] += shield["armor"]
-        shield["timer"] = shield["effect_length"]
-        return shield["cost"]
+    elif spell_name == "magic_missile":
+        wizard["mana_points"] -= magic_missile["cost"]
+        boss["hit_points"] -= magic_missile["damage"]
+        return magic_missile["cost"]
     elif spell_name == "poison":
         wizard["mana_points"] -= poison["cost"]
         poison["timer"] = poison["effect_length"]
@@ -83,47 +75,63 @@ def cast_spell(spell_name: str):
         wizard["mana_points"] -= recharge["cost"]
         recharge["timer"] = recharge["effect_length"]
         return recharge["cost"]
+    elif spell_name == "shield":
+        wizard["mana_points"] -= shield["cost"]
+        wizard["armor"] += shield["armor"]
+        shield["timer"] = shield["effect_length"]
+        return shield["cost"]
 
 
 def battle_sim():
     """Simulate a battle and return true if the player wins."""
-    player_wins = False
     mana_spent = 0
     while True:
         print("--player turn--")
-        run_timer_spells()
-        mana_spent += cast_spell(decide_spell())
-        # mana_spent += cast_spell(choice(spell_list))
-        if wizard["mana_points"] <= 53:
-            return player_wins, mana_spent
         print(f"Wizard: HP: {wizard['hit_points']}, Mana: {wizard['mana_points']}; Boss: {boss['hit_points']}")
+        run_timer_spells()
+        if wizard["mana_points"] <= 53 or wizard["hit_points"] <= 0:
+            return False, mana_spent
+        mana_spent += cast_spell(decide_spell())
         # boss turn
         print("--boss turn--")
-        run_timer_spells()
-        wizard['hit_points'] = wizard['hit_points'] - (boss['damage'] - wizard['armor'])
-        if boss["hit_points"] <= 0:
-            player_wins = True
-            return player_wins, mana_spent
-        if wizard["hit_points"] <= 0:
-            return player_wins, mana_spent
-        # debug
         print(f"Wizard: HP: {wizard['hit_points']}, Mana: {wizard['mana_points']}; Boss: {boss['hit_points']}")
+        run_timer_spells()
+        print("Boss attacks 8")
+        if boss["hit_points"] <= 0:
+            # boss is dead
+            return True, mana_spent
+        wizard['hit_points'] = wizard['hit_points'] - (boss['damage'] - wizard['armor'])
+        if wizard["hit_points"] <= 0:
+            # wizard is dead
+            return False, mana_spent
 
 
 if __name__ == "__main__":
     mana_spent_to_win = 10000000000000000000
-    for trial in range(100000000):
+    for trial in range(100000):
         print(f"{trial=}")
+        # set/reset wizard adn boss stats
         wizard = {"hit_points": 50, "mana_points": 500, "armor": 0}
         boss = {"hit_points": 55, "damage": 8}
+        # set/reset spell timers
+        shield["timer"] = 0
+        poison["timer"] = 0
+        recharge["timer"] = 0
         did_player_win, mana_spent_this_time = battle_sim()
         if did_player_win:
+            print(f"Player won spent {mana_spent_this_time} mana")
             if mana_spent_this_time < mana_spent_to_win:
                 mana_spent_to_win = mana_spent_this_time
+        else:
+            print(f"Player lost, spent {mana_spent_this_time} mana")
     print(f"To win required {mana_spent_to_win} mana.")
 
 
+# for certain we know between 551 and 2414
 # 551 is too low
 # 4741 is too high
 # 2414 is too high
 # it's not 1113
+# not 697
+# not 491 - so there's a bug in my code somewhere
+# not 1501
