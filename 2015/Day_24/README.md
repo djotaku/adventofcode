@@ -31,8 +31,8 @@ Seems like a more elaborate version of [Day 17](https://adventofcode.com/2015/da
 ### Generic
 
 ### Python
-
+- existence of mean function in the statistics module. Turns out I didn't want that, though. Had the wrong solution in mind when I did that.
 ### Ruby
-
+- I finally achieved the Ruby equivalent of a list comprehension in that I didn't have to have an append to the array. It took me nearly the entire 50 problems, but I'm getting better at chaining the map, compact, each, etc commands together.
 ### Perl
 
