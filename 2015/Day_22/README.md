@@ -48,6 +48,6 @@ Ended up having to abandon any kind of algorithm to win. After spending quite a 
 ### Python
 
 ### Ruby
-
+- array#sample to get the randomized spell
 ### Perl
 
