@@ -90,18 +90,19 @@ def battle_sim
     run_timer_spells
     return [false, mana_spent] if WIZARD["mana_points"] <= 53 or WIZARD["hit_points"] <= 0
     mana_spent += cast_spell(decide_spell)
+    # puts mana_spent
     # boss turn
     #puts "boss turn"
     run_timer_spells
-    return [true, mana_spent] if BOSS["hit_points"] == 0
+    return [true, mana_spent] if BOSS["hit_points"] <= 0
     WIZARD['hit_points'] = WIZARD['hit_points'] - (BOSS['damage'] - WIZARD['armor'])
     return [false, mana_spent] if WIZARD["hit_points"] <= 0
   end
 end
 
 mana_spent_to_win = 10000000000000000000
-(1..300000).each do |trial|
-  puts trial
+(1..100000).each do |trial|
+  # puts trial
   WIZARD = {"hit_points"=> 50, "mana_points"=> 500, "armor"=> 0}
   BOSS = {"hit_points"=> 55, "damage"=> 8}
   SHIELD["timer"] = 0
@@ -109,7 +110,10 @@ mana_spent_to_win = 10000000000000000000
   RECHARGE["timer"] = 0
   did_player_win, mana_spent_this_time = battle_sim
   if did_player_win
+    puts "player wins with #{mana_spent_this_time}"
     mana_spent_to_win = [mana_spent_to_win, mana_spent_this_time].min
+  else
+    puts "Player lost with #{mana_spent_this_time}"
   end
 end
 puts "Player spent #{mana_spent_to_win} mana to win."
