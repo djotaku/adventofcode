@@ -47,8 +47,8 @@ One obvious way to do this would be to brute force it. Would still need to figur
 ### Generic
 
 ### Python
-
+- Nothing
 ### Ruby
-
+- this code ran BLAZINGLY fast in Ruby
 ### Perl
 
