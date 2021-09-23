@@ -9,13 +9,15 @@ use  Data::Dump qw/dump/;
 my %magic_missile = (cost=>53, damage=>4);
 my %drain = (cost=>73, damage=>2, heal=>2);
 my %shield = (cost=>113, armor=>7, effect_length=>6, timer=>0);
-my %poison = (cost=>173, damager=>3, effect_length=>6, timer=>0);
+my %poison = (cost=>173, damage=>3, effect_length=>6, timer=>0);
 my %recharge = (cost=>229, mana_refill=>101, effect_length=>5, timer=>0);
 
 my @spell_list = ("shield", "drain", "recharge", "poison", "magic_missile");
 
-my %wizard = (hit_points=>50, mana_points=>500, armor=>0);
-my %boss = (hit_points=>55, damage=>8);
+#my %wizard = (hit_points=>50, mana_points=>500, armor=>0);
+my %wizard;
+#my %boss = (hit_points=>55, damage=>8);
+my %boss;
 
 sub decide_spell
 {
@@ -105,7 +107,6 @@ sub run_timer_spells
 sub cast_spell
 {
     my $spell_name = @_[0];
-    say "spell name: $spell_name";
     switch($spell_name)
     {
         case "drain"
@@ -154,28 +155,37 @@ sub battle_sim
     while (1)
     {
         #player turn
+        say "-----Wizard turn-----";
+        print "Wizard:\n";
+        dump %wizard;
         run_timer_spells;
-        if ($wizard{mana_points} <= 53 or $wizard{hit_points} <= 0)
+        if ($wizard{mana_points} < 53)
         {
+            say "Wizard lost from lack of mana";
             return (0, $mana_spent);
         }
         $mana_spent += cast_spell(decide_spell);
         # boss turn
+        say "----boss turn----";
+        print "boss:\n";
+        dump %boss;
         run_timer_spells;
         if ($boss{hit_points} <= 0)
         {
+            say "Wizard has actually won!";
             return (1, $mana_spent);
         }
-        $wizard{hit_points} = $wizard{hit_points} - ($boss{damage} - $wizard{shield});
+        $wizard{hit_points} = $wizard{hit_points} - ($boss{damage} - $wizard{armor});
         if ($wizard{hit_points} <= 0)
         {
+            say "Wizard lost from lack of HP";
             return (0, $mana_spent);
         }
     }
 }
 
 my $mana_spent_to_win = 10000000000000000000;
-foreach my $trial (1..1000000)
+foreach my $trial (1..10000)
 {
     say "Trial: $trial";
     # set/reset player stats
@@ -186,7 +196,7 @@ foreach my $trial (1..1000000)
     $poison{timer} = 0;
     $recharge{timer} = 0;
     my @battle_results = battle_sim;
-    dump @battle_results;
+    # dump @battle_results;
     say "Result: $battle_results[0]";
     say "Mana spent: $battle_results[1]";
     if ($battle_results[0])
