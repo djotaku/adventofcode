@@ -65,4 +65,7 @@ I decided to do everyting out of dictionaries (including the player and boss) ra
 - a reminder about array#min and array#max rather than the if statements to determine the value to keep. May be
 
 ### Perl
+- using Math::Cartesian::Product
+- more experience with hashes
+- more practice using last to break out of a loop in Perl
 
