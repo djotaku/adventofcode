@@ -5,5 +5,5 @@ cpanm Algorithm::Permute
 cpanm Array::GroupBy
 cpanm Array::Transpose
 cpanm Set::Scalar
-
+cpanm Math::Cartesian::Product
 
