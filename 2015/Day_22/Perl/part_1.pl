@@ -19,7 +19,6 @@ my %boss = (hit_points=>55, damage=>8);
 
 sub decide_spell
 {
-    say "Deciding spell....";
     while (1)
     {
         my $cast_this_spell = sample 1, @spell_list;
@@ -105,11 +104,13 @@ sub run_timer_spells
 
 sub cast_spell
 {
-    my $spell_name = $_;
+    my $spell_name = @_[0];
+    say "spell name: $spell_name";
     switch($spell_name)
     {
         case "drain"
         {
+            say "casting drain";
             $wizard{mana_points} -= $drain{cost};
             $wizard{hit_points} += $drain{heal};
             $boss{hit_points} -= $drain{damage};
@@ -117,24 +118,28 @@ sub cast_spell
         }
         case "magic_missile"
         {
+            say "casting magic missile";
             $wizard{mana_points} -= $magic_missile{cost};
             $boss{hit_points} -= $magic_missile{damage};
             return $magic_missile{cost};
         }
         case "poison"
         {
+            say "cast poison";
             $wizard{mana_points} -= $poison{cost};
             $poison{timer} = $poison{effect_length};
             return $poison{cost};
         }
         case "recharge"
         {
+            say "cast recharge";
             $wizard{mana_points} -= $recharge{cost};
             $recharge{timer} = $recharge{effect_length};
             return $recharge{cost};
         }
         case "shield"
         {
+            say "cast shield";
             $wizard{mana_points} -= $shield{cost};
             $wizard{armor} += $shield{armor};
             $shield{timer} = $shield{effect_length};
@@ -155,7 +160,6 @@ sub battle_sim
             return (0, $mana_spent);
         }
         $mana_spent += cast_spell(decide_spell);
-        
         # boss turn
         run_timer_spells;
         if ($boss{hit_points} <= 0)
@@ -171,7 +175,7 @@ sub battle_sim
 }
 
 my $mana_spent_to_win = 10000000000000000000;
-foreach my $trial (1..100000)
+foreach my $trial (1..1000000)
 {
     say "Trial: $trial";
     # set/reset player stats
@@ -182,7 +186,9 @@ foreach my $trial (1..100000)
     $poison{timer} = 0;
     $recharge{timer} = 0;
     my @battle_results = battle_sim;
+    dump @battle_results;
     say "Result: $battle_results[0]";
+    say "Mana spent: $battle_results[1]";
     if ($battle_results[0])
     {
         say "Player won";
