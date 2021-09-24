@@ -39,15 +39,41 @@ For a full list of what I learned, for each day the README will contain what I l
 
 ### Python
 
-TBF at end of 2015 problem set
+- Got a lot more practice with regular expressions including learning when to use search vs match
+- After struggling with it last December, I finally understand memoization
+- using ord() to get the ASCII value for a letter and then using that to advance to the next letter
+- How to do permutations where you need all the elements to sum to a specific number.
+- How to use itertools Product to make combinations from different lists
+
 
 ### Ruby
 
-TBF at end of 2015 problem set
+- Creating files to import
+- Using iterable#each to do idiomatic for loops
+- map(&:to_i) to change an entire array from string to int without having to explicitly loop through the array.
+- if $PROGRAM_NAME == __FILE__ to do Python’s equivalent of if __name__  == “__main__”
+- How to do unit testing
+- memoization/caching
+- blocks in Ruby don't need something like pass, so I was just able to do if backspace_or_unicode == nil and keep going.
+- string.delete_prefix and string.delete_suffix are the equivalent of lstrip and rstrip in Python
+- Chunk and chunk_while - which made Day 10 so easy!
+- Ruby classes and how to initialize them
+- using sort to sort by custom variables in a class
+- It appears you cannot just access variables in a Ruby class, you have to have a method to return the value. 
+- How to do permutations where you need all the elements to sum to a specific number.
+- array#flatten to reduce an array of arrays into an array
+- by default, the Hash just returns nil instead of erroring out if I try to access a key that doesn't exist. Easier having to use get in Python.
+
 
 ### Perl
 
-TBF at end of 2015 problem set
+- Push instead of append to add to arrays
+- sorting numerically is a lot more complicated in Perl than the other languages 
+- using CPAN.
+- Perl does not have True/False primitives
+- Apparently there's no way to tell if something is a string. If it's not a number, hash, or array - it's a string
+- The existence of the $-[0] and $+[0] after you do a regex match. They return the start and end of a match, respectively. 
+
 
 ## note to self
 
