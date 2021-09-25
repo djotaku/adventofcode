@@ -12,6 +12,11 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
     - 50 Stars Collected
       - 20210828 - Reached 34 stars without skipping any Days/Parts. This put me in a tie with my score at the end of 2020 when I was doing it live Dec 2020.
       - 20210919 - Finished my first ever Advent of Code with all 50 stars!!!! (Still need to do a few more days in Perl/Ruby)
+    - Nerdy tidbit: At end of 2015 repo code was split as follows:
+      - 63.6% Python
+      - 18.7% Ruby
+      - 17.6% Perl
+      - 0.1% Shell
 - 2016
   - Third Problem Set Tackled (TBD)
   - Planned to solve with Python, Ruby, Perl, Haskell, and Go
