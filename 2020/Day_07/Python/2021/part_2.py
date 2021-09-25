@@ -2,6 +2,8 @@ from functools import lru_cache
 import re
 import parse_input
 
+bag_dict = {}
+
 
 def create_bag_dictionary(list_of_bag_attributes: list) -> dict:
     """Take in a list of bag attributes, for example:
@@ -23,6 +25,9 @@ def create_bag_dictionary(list_of_bag_attributes: list) -> dict:
 def gold_bag_tardis(bag_key: str) -> int:
     """Figure out how many bags must be inside a shiny gold bag."""
     bag_count = 0
+    if bag_key == "shiny gold":
+        for bag_tuple in bag_dict[bag_key]:
+            bag_count += int(bag_tuple[0])
     for bag_tuple in bag_dict[bag_key]:
         if bag_tuple[1] == "no other":
             bag_count = 1
@@ -32,7 +37,6 @@ def gold_bag_tardis(bag_key: str) -> int:
 
 
 if __name__ == "__main__":
-    bag_dict = {}
     #bag_guidelines = parse_input.input_per_line("../input")
     # bag_guidelines = ["shiny gold bags contain 2 dark red bags.",
 #                   "dark red bags contain 2 dark orange bags.",
@@ -41,10 +45,17 @@ if __name__ == "__main__":
 #                   "dark green bags contain 2 dark blue bags.",
 #                   "dark blue bags contain 2 dark violet bags.",
 #                   "dark violet bags contain no other bags."]
+
+#this passes
+#    bag_guidelines = ["shiny gold bags contain 2 dark red bags.",
+#                      "dark red bags contain 2 dark orange bags.",
+#                      "dark orange bags contain no other bags."]
+
     bag_guidelines = ["shiny gold bags contain 2 dark red bags.",
                       "dark red bags contain 2 dark orange bags.",
                       "dark orange bags contain 2 dark yellow bags.",
-                     "dark yellow bags contain no other bags."]
+                      "dark yellow bags contain no other bags."]
+
     bag_dict = create_bag_dictionary(bag_guidelines)
     bags_inside_gold = gold_bag_tardis("shiny gold")
     print(f"{bags_inside_gold} bags must be inside a shiny gold bag.")

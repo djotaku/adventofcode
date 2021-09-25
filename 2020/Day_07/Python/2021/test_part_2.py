@@ -13,7 +13,6 @@ bag_rules = ["light red bags contain 1 bright white bag, 2 muted yellow bags.",
 
 
 def test_create_bag_dictionary():
-    part_2.bag_dict = {}
     bag_dict = part_2.create_bag_dictionary(bag_rules)
     assert bag_dict["light red"] == [("1", "bright white"), ("2", "muted yellow")]
     assert bag_dict["bright white"] == [('1', 'shiny gold')]
