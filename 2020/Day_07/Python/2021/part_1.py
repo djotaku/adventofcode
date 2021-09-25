@@ -1,3 +1,4 @@
+from functools import lru_cache
 import re
 import parse_input
 
@@ -20,16 +21,26 @@ def create_bag_dictionary(list_of_bag_attributes: list) -> dict:
     return bag_dict
 
 
+@lru_cache()
 def find_gold_bag_carriers(bag_key: str) -> int:
     """Take a dictionary of bag rules and figure out if it can eventually hold a gold bag.
     Return how many can eventually contain a gold bag.
     """
-    print(bag_key)
+    shiny_count = 0
     for bag_tuple in bag_dict[bag_key]:
-        print(bag_tuple)
         if bag_tuple[1] == "shiny gold":
-            return 1
+            shiny_count = 1
         elif bag_tuple[1] == "no other":
-            return 0
+            shiny_count += 0
         else:
-            return find_gold_bag_carriers(bag_tuple[1])
+            shiny_count += find_gold_bag_carriers(bag_tuple[1])
+            if shiny_count > 0:
+                break
+    return shiny_count
+
+
+if __name__ == "__main__":
+    bag_guidelines = parse_input.input_per_line("../input")
+    bag_dict = create_bag_dictionary(bag_guidelines)
+    gold_bag_carrier_count = sum(find_gold_bag_carriers(bag) for bag in bag_dict.keys())
+    print(f"{gold_bag_carrier_count} bags eventually can contain at least one shiny gold bag")
