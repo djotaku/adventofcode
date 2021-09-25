@@ -28,8 +28,8 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
     - Top 3 Current Contenders: Rust (been wanting to learn it for a while), Javascript (needed for nearly any web programming), C# (Unity games are in C#)
 
 - 2020
-    - First Year of Participation (1st attempt: Live Dec 2020; Trying to get all 50 stars: TBD)
-    - Solved with Python (initially, when I’m all caught up I may go back and add more languages)
+    - First Year of Participation (1st attempt: Live Dec 2020; Trying to get all 50 stars: Sept 2021)
+    - Solved with Python only during AoC
     - 34 Stars Collected So Far
 
 ![total stars](https://github.com/djotaku/adventofcode/blob/main/screenshots/total_star_count_20210919.png)
