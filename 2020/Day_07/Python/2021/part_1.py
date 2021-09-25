@@ -1,6 +1,8 @@
 import re
 import parse_input
 
+bag_dict = {}
+
 
 def create_bag_dictionary(list_of_bag_attributes: list) -> dict:
     """Take in a list of bag attributes, for example:
@@ -10,23 +12,25 @@ def create_bag_dictionary(list_of_bag_attributes: list) -> dict:
 
     and create a dictionary to represent the relationship between bags.
     """
-    bag_dict = {}
     for bag in list_of_bag_attributes:
         regex = re.compile(r'(\d)* *(\w+ \w+) bags*')
         bag_adjectives = re.findall(regex, bag)
         bag_key = bag_adjectives.pop(0)[1]
-        print(bag_key)
         bag_dict[bag_key] = bag_adjectives
     return bag_dict
 
 
-def find_gold_bags(bag_dictionary: dict) -> int:
+def find_gold_bag_carriers(bag_key: str) -> int:
     """Take a dictionary of bag rules and figure out if it can eventually hold a gold bag.
     Return how many can eventually contain a gold bag.
     """
     bag_count = 0
-    for key in bag_dictionary.keys():
-        if bag_dictionary[key].contains("shiny gold"):
-            bag_count += 1
-        else:
+    for bag_tuple in bag_dict[bag_key]:
+        print(bag_tuple)
+        if bag_tuple[1] == "shiny gold":
+            bag_count = 1
+        elif bag_tuple[1] == "no other":
             pass
+        else:
+            bag_count += find_gold_bag_carriers(bag_tuple[1])
+    return bag_count
