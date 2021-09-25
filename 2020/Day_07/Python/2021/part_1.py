@@ -24,13 +24,12 @@ def find_gold_bag_carriers(bag_key: str) -> int:
     """Take a dictionary of bag rules and figure out if it can eventually hold a gold bag.
     Return how many can eventually contain a gold bag.
     """
-    bag_count = 0
+    print(bag_key)
     for bag_tuple in bag_dict[bag_key]:
         print(bag_tuple)
         if bag_tuple[1] == "shiny gold":
-            bag_count = 1
+            return 1
         elif bag_tuple[1] == "no other":
-            pass
+            return 0
         else:
-            bag_count += find_gold_bag_carriers(bag_tuple[1])
-    return bag_count
+            return find_gold_bag_carriers(bag_tuple[1])
