@@ -1,0 +1,17 @@
+1068781
+         1068787 function calls in 0.847 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.847    0.847 part_2.py:1(<module>)
+        1    0.714    0.714    0.847    0.847 part_2.py:1(find_consecutive_leave_time)
+   152683    0.026    0.000    0.026    0.000 {built-in method builtins.all}
+        1    0.000    0.000    0.847    0.847 {built-in method builtins.exec}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+   763415    0.088    0.000    0.088    0.000 {method 'append' of 'list' objects}
+   152683    0.019    0.000    0.019    0.000 {method 'clear' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+
+
