@@ -1,6 +1,10 @@
-[Cute Version](https://adventofcode.com/2020/day/7)
+# Day 7: Handy Haversacks
 
-# Part 1
+Out of respect for the author's wishes, I only put as much of the problem text as necessary to understand the problem.
+
+Visit the version with all the story elements [here](https://adventofcode.com/2020/day/7)
+
+## Part 1
 
 consider the following rules:
 
@@ -29,7 +33,9 @@ So, in this example, the number of bag colors that can eventually contain at lea
 
 How many bag colors can eventually contain at least one shiny gold bag?
 
-# Part 2
+Answer: 119
+
+## Part 2
 
 Consider again your shiny gold bag and the rules from the above example:
 
@@ -54,4 +60,27 @@ dark violet bags contain no other bags.
 
 In this example, a single shiny gold bag must contain 126 other bags.
 
-How many individual bags are required inside your single shiny gold bag
+How many individual bags are required inside your single shiny gold bag?
+
+Answer: 155802
+
+## Commentary / Approach to the Problem
+### 2020
+#### Part 1
+#### Part 2
+
+### 2021
+#### Part 1
+#### Part 2
+
+### Comparison of cProfile/Runtime 2020 vs 2021 Part 1
+## What I Learned
+
+### Generic
+
+### Python
+
+### Ruby
+
+### Perl
+

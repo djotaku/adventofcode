@@ -26,37 +26,22 @@ def gold_bag_tardis(bag_key: str) -> int:
     """Figure out how many bags must be inside a shiny gold bag."""
     bag_count = 0
     for bag_tuple in bag_dict[bag_key]:
-        if bag_dict[bag_tuple[1]][0][1] == "no other":
-            bag_count = 1 * int(bag_tuple[0]) + int(bag_tuple[0])
+        if bag_tuple[1] == "no other":
+            bag_count = 0
         else:
-            bag_count += int(bag_tuple[0]) * gold_bag_tardis(bag_tuple[1])
+            print(f"There are {bag_tuple[0]} of {bag_tuple[1]} inside {bag_key}")
+            bag_count += int(bag_tuple[0])
+            inner_bag_count = gold_bag_tardis(bag_tuple[1])
+            bag_count += int(bag_tuple[0]) * inner_bag_count
     return bag_count
 
 
 if __name__ == "__main__":
     bag_guidelines = parse_input.input_per_line("../input")
-#    bag_guidelines = ["shiny gold bags contain 2 dark red bags.",
-#                    "dark red bags contain 2 dark orange bags.",
-#                    "dark orange bags contain 2 dark yellow bags.",
-#                    "dark yellow bags contain 2 dark green bags.",
-#                    "dark green bags contain 2 dark blue bags.",
-#                    "dark blue bags contain 2 dark violet bags.",
-#                    "dark violet bags contain no other bags."]
-
-# this passes - answer is 6
-#    bag_guidelines = ["shiny gold bags contain 2 dark red bags.",
-#                      "dark red bags contain 2 dark orange bags.",
-#                      "dark orange bags contain no other bags."]
-
-# this should be 14, currently getting 16
-#    bag_guidelines = ["shiny gold bags contain 2 dark red bags.",
-#                      "dark red bags contain 2 dark orange bags.",
-#                      "dark orange bags contain 2 dark yellow bags.",
-#                      "dark yellow bags contain no other bags."]
-
     bag_dict = create_bag_dictionary(bag_guidelines)
     bags_inside_gold = gold_bag_tardis("shiny gold")
     print(f"{bags_inside_gold} bags must be inside a shiny gold bag.")
 
 
 # 142100 is too low
+# 190655 is too high
