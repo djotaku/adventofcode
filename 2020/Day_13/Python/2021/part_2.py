@@ -4,7 +4,7 @@ def find_consecutive_leave_time(bus_table: str, testing: bool = False) -> int:
     departure_time_for_first_bus = 0 if testing else 100000000000000
     seek_departure_time = False
     while not seek_departure_time:
-        departure_time_for_first_bus += 1
+        departure_time_for_first_bus += int(bus_table_list[0])
         temp_list = []
         for bus_index, bus in enumerate(bus_table_list):
             if bus != "x":
