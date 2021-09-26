@@ -30,7 +30,7 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
 - 2020
     - First Year of Participation (1st attempt: Live Dec 2020; Trying to get all 50 stars: Sept 2021)
     - Solved with Python only during AoC
-    - 34 Stars Collected So Far
+    - 35 Stars Collected So Far
 
 ![total stars](https://github.com/djotaku/adventofcode/blob/main/screenshots/total_star_count_20210919.png)
 

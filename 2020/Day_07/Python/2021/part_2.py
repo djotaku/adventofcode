@@ -21,65 +21,26 @@ def create_bag_dictionary(list_of_bag_attributes: list) -> dict:
     return bag_dict
 
 
-catcher_array = []
-
-
 @lru_cache()
 def gold_bag_tardis(bag_key: str) -> int:
     """Figure out how many bags must be inside a shiny gold bag."""
     bag_count = 0
-    if bag_key == "shiny gold":
-        for bag_tuple in bag_dict[bag_key]:
-            bag_count += int(bag_tuple[0])
     for bag_tuple in bag_dict[bag_key]:
         if bag_tuple[1] == "no other":
-            bag_count = 1
+            bag_count = 0
         else:
-            bag_count += (int(bag_tuple[0]) * gold_bag_tardis(bag_tuple[1]))
-            print(f"{bag_tuple[0]} * {gold_bag_tardis(bag_tuple[1])}")
-            catcher_array.append((int(bag_tuple[0]) * gold_bag_tardis(bag_tuple[1])))
+            print(f"There are {bag_tuple[0]} of {bag_tuple[1]} inside {bag_key}")
+            bag_count += int(bag_tuple[0])
+            inner_bag_count = gold_bag_tardis(bag_tuple[1])
+            bag_count += int(bag_tuple[0]) * inner_bag_count
     return bag_count
 
 
 if __name__ == "__main__":
-#    bag_guidelines = parse_input.input_per_line("../input")
-
-# wrong answer given for first examples
-#    bag_guidelines = ["light red bags contain 1 bright white bag, 2 muted yellow bags.",
-#             "dark orange bags contain 3 bright white bags, 4 muted yellow bags.",
-#             "bright white bags contain 1 shiny gold bag.",
-#             "muted yellow bags contain 2 shiny gold bags, 9 faded blue bags.",
-#             "shiny gold bags contain 1 dark olive bag, 2 vibrant plum bags.",
-#             "dark olive bags contain 3 faded blue bags, 4 dotted black bags.",
-#             "vibrant plum bags contain 5 faded blue bags, 6 dotted black bags.",
-#             "faded blue bags contain no other bags.",
-#             "dotted black bags contain no other bags."]
-
-
-# passes this 126
-#    bag_guidelines = ["shiny gold bags contain 2 dark red bags.",
-#                   "dark red bags contain 2 dark orange bags.",
-#                   "dark orange bags contain 2 dark yellow bags.",
-#                   "dark yellow bags contain 2 dark green bags.",
-#                   "dark green bags contain 2 dark blue bags.",
-#                   "dark blue bags contain 2 dark violet bags.",
-#                   "dark violet bags contain no other bags."]
-
-#this passes answer is 6
-#    bag_guidelines = ["shiny gold bags contain 2 dark red bags.",
-#                      "dark red bags contain 2 dark orange bags.",
-#                      "dark orange bags contain no other bags."]
-
-    # should be 14 passes if you look at actual_bag Number
-#    bag_guidelines = ["shiny gold bags contain 2 dark red bags.",
-#                      "dark red bags contain 2 dark orange bags.",
-#                      "dark orange bags contain 2 dark yellow bags.",
-#                      "dark yellow bags contain no other bags."]
-
+    bag_guidelines = parse_input.input_per_line("../input")
     bag_dict = create_bag_dictionary(bag_guidelines)
     bags_inside_gold = gold_bag_tardis("shiny gold")
-    actual_bag_number = sum(catcher_array)
-    print(f"{actual_bag_number} bags must be inside a shiny gold bag.")
+    print(f"{bags_inside_gold} bags must be inside a shiny gold bag.")
 
 
 # 142100 is too low
