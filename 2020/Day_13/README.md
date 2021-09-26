@@ -48,6 +48,12 @@ I started off with the following idea for solving it:
 "I think this involves Greatest Common Multiple or something like that. Or maybe greatest Common Multiple PLUS 1 for each index distance from the first bus."
 
 That didn't yield results so I decided to try and brute-force it.
+
+- [My first attempt too a long time, even with the pytest input.](https://github.com/djotaku/adventofcode/blob/2e71688de9f467534714e4de4519c76778f9c916/2020/Day_13/Python/2021/part_2.py)
+- [My second attempt was blazing fast in pytest, but still slow for main input](https://github.com/djotaku/adventofcode/blob/bdc91a7d4f640f66b4a246abcf8532e54718093b/2020/Day_13/Python/2021/part_2.py)
+
+I kept trying variations on GCD and LCM, but I couldn't find anything that would modulo cleanly with the answer for the unit test. This would give me a faster way to count up than by the first number. (Counting up by the largest number didn't work.)
+
 ## What I Learned
 
 ### Generic
