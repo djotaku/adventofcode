@@ -67,13 +67,24 @@ Answer: 155802
 ## Commentary / Approach to the Problem
 ### 2020
 #### Part 1
+This is quite a mess. 105 lines of code vs my 2021 solution in 47. I create a CLASS for my bags to hold parents and children. This was very over-engineered. Because I wasn't any good at regular expressions, I've got this crazy function for finding the adjective color. My main for loop is also nuts. I've evolved quite a big with Python in the past year.
 #### Part 2
+Continues the mess from part 1 and never was able to get the right answer. 
 
 ### 2021
 #### Part 1
+The solution was incredibly easy given how comfortable I've become with regular expressions. It was very easy to use re.findall to find all instances of the pattern on the bag descriptions. This spared me from my initial inclination of splitting the container bag and also having conditionals on whether there were commas. 
+
+After that it was very easy to write a recursive algorithm to count bags that had a gold bag somewhere inside them.
 #### Part 2
+In 2020 I was never able to write a working solution. In 2021 I was able to make better use of my understanding of dictionaries and caching to write a solution that finishes incredibly quickly. 
+
+It was nice to finally solve this problem. 
 
 ### Comparison of cProfile/Runtime 2020 vs 2021 Part 1
+- 2020 completion time - 0.632 seconds
+- 2021 completion time - 0.023 seconds
+
 ## What I Learned
 
 ### Generic

@@ -15,8 +15,7 @@ I may come back and attempt to solve these later
 - [Day 20 on AoC Site](https://adventofcode.com/2020/day/20) | [Day 20 in my repo](https://github.com/djotaku/adventofcode/tree/main/2020/Day_20) - I think I was on the right track, but I didn't have enough time to work on it around my other responsibilities today.
 - [Day 21 on AoC Site](https://adventofcode.com/2020/day/21) | [Day 21 in my repo](https://github.com/djotaku/adventofcode/tree/main/2020/Day_21) - I don't even understand how to do this manually, so I can't do it in code.
 
-### Part 2 sections still incomplete: 
-- [Day 7 on AoC Site](https://adventofcode.com/2020/day/7) | [Day 7 in my repo](https://github.com/djotaku/adventofcode/tree/main/2020/Day_07)
+### Part 2 sections still incomplete:
 - [Day 13 on AoC Site](https://adventofcode.com/2020/day/13) | [Day 13 in my repo](https://github.com/djotaku/adventofcode/tree/main/2020/Day_13)
 - [Day 14 on AoC Site](https://adventofcode.com/2020/day/14) | | [Day 14 in my repo](https://github.com/djotaku/adventofcode/tree/main/2020/Day_14)
 - [Day 18 on AoC Site](https://adventofcode.com/2020/day/18) | [Day 18 in my repo](https://github.com/djotaku/adventofcode/tree/main/2020/Day_18)
@@ -27,9 +26,8 @@ I may come back and attempt to solve these later
 - [Day 23 on AoC Site](https://adventofcode.com/2020/day/23) | [Day 23 in my repo](https://github.com/djotaku/adventofcode/tree/main/2020/Day_23) - ran until day 25 without producing an answer
 
 ### Completed After AoC 2020
-These will have the year I solve the problem as part of the filename. eg: part_1_2021.py
 
-- Nothing yet
+- [Day 7 Part 2](https://github.com/djotaku/adventofcode/tree/main/2020/Day_07) (solved 20210925) - [Solution here](https://github.com/djotaku/adventofcode/blob/bd62c37674e3a4b2284fb91b7a9f8d3dbf73d022/2020/Day_07/Python/2021/part_2.py) 
 
 ## Things I learned during this year's Advent of Code
 - The right datatype for part 2 (usually involving recursion) is almost always a dictionary. Lists and dequeues are not performant.
