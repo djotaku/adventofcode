@@ -43,7 +43,7 @@ def gold_bag_tardis(bag_key: str) -> int:
 
 if __name__ == "__main__":
 #    bag_guidelines = parse_input.input_per_line("../input")
-    # bag_guidelines = ["shiny gold bags contain 2 dark red bags.",
+#    bag_guidelines = ["shiny gold bags contain 2 dark red bags.",
 #                   "dark red bags contain 2 dark orange bags.",
 #                   "dark orange bags contain 2 dark yellow bags.",
 #                   "dark yellow bags contain 2 dark green bags.",
