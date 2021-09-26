@@ -54,6 +54,10 @@ That didn't yield results so I decided to try and brute-force it.
 
 I kept trying variations on GCD and LCM, but I couldn't find anything that would modulo cleanly with the answer for the unit test. This would give me a faster way to count up than by the first number. (Counting up by the largest number didn't work.)
 
+While waiting for it to solve, I looked at AoC and remembered being told about Chinese Remainder Theorem and how I just couldn't make heads or tails of any of the examples I found online. 
+
+But I did see someone say there was a day to split it up so that you're only considering 2 busses at a time.
+
 ## What I Learned
 
 ### Generic
