@@ -46,7 +46,7 @@ if __name__ == "__main__":
 #                   "dark blue bags contain 2 dark violet bags.",
 #                   "dark violet bags contain no other bags."]
 
-#this passes
+#this passes answer is 6
 #    bag_guidelines = ["shiny gold bags contain 2 dark red bags.",
 #                      "dark red bags contain 2 dark orange bags.",
 #                      "dark orange bags contain no other bags."]
