@@ -5,6 +5,7 @@ def find_consecutive_leave_time(bus_table_list: list, departure_time, interval) 
     seek_departure_time = False
     while not seek_departure_time:
         departure_time_for_first_bus += interval
+        #  print(departure_time_for_first_bus)
         seek_departure_time = all(((departure_time_for_first_bus + bus[0]) % bus[1] == 0) for bus in bus_table_list)
     return departure_time_for_first_bus
 
@@ -12,23 +13,26 @@ def find_consecutive_leave_time(bus_table_list: list, departure_time, interval) 
 def create_useful_bus_list(bus_table: str):
     bus_table_list = bus_table.split(',')
     return [
-        (bus_index, int(bus))
+        [bus_index, int(bus)]
         for bus_index, bus in enumerate(bus_table_list)
         if bus != 'x'
     ]
 
 
 def solve_two_busses_at_a_time(bus_table_list: list):
-    solution = 0
+    solution = 7
     interval = bus_table_list[0][1]
     while bus_table_list:
         print(f"{bus_table_list=}")
         position_for_next_go = bus_table_list[1][0]
         print(f"{position_for_next_go=}")
-        solution = find_consecutive_leave_time([bus_table_list.pop(0), bus_table_list.pop(0)], 0, interval)
+        first_bus = bus_table_list.pop(0)
+        second_bus = bus_table_list.pop(0)
+        solution = find_consecutive_leave_time([first_bus, second_bus], solution, solution)
         print(f"{solution=}")
         if bus_table_list:
-            bus_table_list.insert(0, (0, solution))
+            bus_table_list.insert(0, [0, solution])
+            interval = solution
     return solution
 
 
