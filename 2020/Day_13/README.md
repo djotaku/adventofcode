@@ -35,7 +35,7 @@ This means you are looking for the earliest timestamp (called t) such that:
 - Bus ID 31 departs six minutes after timestamp t.
 - Bus ID 19 departs seven minutes after timestamp t.
 
-Answer: 
+Answer: 1010182346291467 
 
 ## Commentary / Approach to the Problem
 ### 2020
@@ -54,6 +54,7 @@ That didn't yield results so I decided to try and brute-force it.
 
 I kept trying variations on GCD and LCM, but I couldn't find anything that would modulo cleanly with the answer for the unit test. This would give me a faster way to count up than by the first number. (Counting up by the largest number didn't work.)
 
+Boy, what a wild ride this has been!
 ## What I Learned
 
 ### Generic
