@@ -48,6 +48,10 @@ I started off with the following idea for solving it:
 "I think this involves Greatest Common Multiple or something like that. Or maybe greatest Common Multiple PLUS 1 for each index distance from the first bus."
 
 That didn't yield results so I decided to try and brute-force it.
+
+Answer: 1010182346291467
+
+Boy, what a wild ride this has been!
 ## What I Learned
 
 ### Generic
