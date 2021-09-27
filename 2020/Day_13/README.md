@@ -54,6 +54,12 @@ That didn't yield results so I decided to try and brute-force it.
 
 I kept trying variations on GCD and LCM, but I couldn't find anything that would modulo cleanly with the answer for the unit test. This would give me a faster way to count up than by the first number. (Counting up by the largest number didn't work.)
 
+[Eventually I found an attempt that was very fast for the sample input, but wouldn't complete for the given input.]()
+
+
+
+
+
 Boy, what a wild ride this has been!
 ## What I Learned
 
