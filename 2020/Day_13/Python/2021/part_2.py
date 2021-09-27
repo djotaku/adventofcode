@@ -19,16 +19,12 @@ def create_useful_bus_list(bus_table: str):
 
 
 def solve_two_busses_at_a_time(bus_table_list: list):
-    solution = 0
+    solution = 7
     interval = bus_table_list[0][1]
-    while bus_table_list:
-        print(f"{bus_table_list=}")
-        position_for_next_go = bus_table_list[1][0]
-        print(f"{position_for_next_go=}")
-        solution = find_consecutive_leave_time([bus_table_list.pop(0), bus_table_list.pop(0)], 0, interval)
+    for index in range(len(bus_table_list)-1):
+        solution = find_consecutive_leave_time([bus_table_list[index], bus_table_list[index+1]], solution, solution)
+        interval = bus_table_list[index+1][1]
         print(f"{solution=}")
-        if bus_table_list:
-            bus_table_list.insert(0, (0, solution))
     return solution
 
 

@@ -9,6 +9,7 @@ def test_find_consecutive_leave_time():
     leave_time = part_2.solve_two_busses_at_a_time(bus_table)
     #leave_time = part_2.find_consecutive_leave_time(bus_table, True)
     assert leave_time == 3417
-    #bus_table = "67,7,59,61"
+    bus_table = part_2.create_useful_bus_list("67,7,59,61")
+    leave_time = part_2.solve_two_busses_at_a_time(bus_table)
     #leave_time = part_2.find_consecutive_leave_time(bus_table, True)
-    #assert leave_time == 754018
+    assert leave_time == 754018
