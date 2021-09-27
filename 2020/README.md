@@ -16,7 +16,6 @@ I may come back and attempt to solve these later
 - [Day 21 on AoC Site](https://adventofcode.com/2020/day/21) | [Day 21 in my repo](https://github.com/djotaku/adventofcode/tree/main/2020/Day_21) - I don't even understand how to do this manually, so I can't do it in code.
 
 ### Part 2 sections still incomplete:
-- [Day 13 on AoC Site](https://adventofcode.com/2020/day/13) | [Day 13 in my repo](https://github.com/djotaku/adventofcode/tree/main/2020/Day_13)
 - [Day 14 on AoC Site](https://adventofcode.com/2020/day/14) | | [Day 14 in my repo](https://github.com/djotaku/adventofcode/tree/main/2020/Day_14)
 - [Day 18 on AoC Site](https://adventofcode.com/2020/day/18) | [Day 18 in my repo](https://github.com/djotaku/adventofcode/tree/main/2020/Day_18)
 - [Day 24 on AoC Site](https://adventofcode.com/2020/day/24) | [Day 24 in my repo](https://github.com/djotaku/adventofcode/tree/main/2020/Day_24)
@@ -28,7 +27,7 @@ I may come back and attempt to solve these later
 ### Completed After AoC 2020
 
 - [Day 7 Part 2](https://github.com/djotaku/adventofcode/tree/main/2020/Day_07) (solved 20210925) - [Solution here](https://github.com/djotaku/adventofcode/blob/bd62c37674e3a4b2284fb91b7a9f8d3dbf73d022/2020/Day_07/Python/2021/part_2.py) 
-
+- [Day 13 in my repo](https://github.com/djotaku/adventofcode/tree/main/2020/Day_13) (soleved 20210927) - [Solution here](https://github.com/djotaku/adventofcode/blob/2a2f3c6e61cbbadfc37cf7dde7c7d14740c85381/2020/Day_13/Python/2021/part_2.py)
 ## Things I learned during this year's Advent of Code
 - The right datatype for part 2 (usually involving recursion) is almost always a dictionary. Lists and dequeues are not performant.
 - Unit testing is crucial for making sure each little chunk of the example works. That said:

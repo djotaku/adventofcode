@@ -54,13 +54,12 @@ That didn't yield results so I decided to try and brute-force it.
 
 I kept trying variations on GCD and LCM, but I couldn't find anything that would modulo cleanly with the answer for the unit test. This would give me a faster way to count up than by the first number. (Counting up by the largest number didn't work.)
 
-[Eventually I found an attempt that was very fast for the sample input, but wouldn't complete for the given input.]()
+[Eventually I found an attempt that was very fast for the sample input, but wouldn't complete for the given input.](https://github.com/djotaku/adventofcode/blob/2a2f3c6e61cbbadfc37cf7dde7c7d14740c85381/2020/Day_13/Python/2021/part_2_good_and_fast_for_sample_would_not_finishi.py)
 
+The history has been lost to git because I had to backtrack to get to a point where I could branch off and follow what I found [here](https://www.reddit.com/r/adventofcode/comments/kc4njx/comment/gktms17/?utm_source=share&utm_medium=web2x&context=3).
+This guy did what I'd been trying to figure out all afternoon before I went off on a few different tangents (including one guy who didn't realize it, but he'd reinvented Chineese Remainder Theorem.)
 
-
-
-
-Boy, what a wild ride this has been!
+Boy, what a wild ride this has been! I need to go back after some sleep and make sure I properly understand the code.
 ## What I Learned
 
 ### Generic

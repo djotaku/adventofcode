@@ -2,13 +2,10 @@ from collections import defaultdict
 
 
 def while_loop_answer(bus_table_list, departure_time_for_first_bus):
-    for bus_index, bus in enumerate(bus_table_list):
-        if (
+    return not any((
                 bus != "x"
                 and (departure_time_for_first_bus + bus_index) % int(bus) != 0
-        ):
-            return False
-    return True
+        ) for bus_index, bus in enumerate(bus_table_list))
 
 
 def buses_in_a_row(bus_table_list, departure_time_for_first_bus):
@@ -34,7 +31,8 @@ def determine_interval(bus_table_list, departure_time_for_first_bus, interval_di
     if len(interval_dictionary[how_many_busses_in_a_row]) > 1:
         proposed_interval = interval_dictionary[how_many_busses_in_a_row][-1] - interval_dictionary[how_many_busses_in_a_row][-2]
         interval = max(proposed_interval, interval)
-    return  interval
+    return interval
+
 
 def find_consecutive_leave_time(bus_table: str, testing: bool = False) -> int:
     """Find the time at which each bus leaves one minute after the bus before it."""
