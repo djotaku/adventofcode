@@ -39,6 +39,7 @@ Answer: 1010182346291467
 
 ## Commentary / Approach to the Problem
 ### 2020
+Overall a simple, if relatively inefficient search to find the earliest bus to take me to the airport. 
 
 ### 2021
 For 2021 I decided to simply approach part 2 of the problem. This didn't seem like one where the second answer was going to really depend all too much on the solution to the first one.
@@ -56,10 +57,14 @@ I kept trying variations on GCD and LCM, but I couldn't find anything that would
 
 [Eventually I found an attempt that was very fast for the sample input, but wouldn't complete for the given input.](https://github.com/djotaku/adventofcode/blob/2a2f3c6e61cbbadfc37cf7dde7c7d14740c85381/2020/Day_13/Python/2021/part_2_good_and_fast_for_sample_would_not_finishi.py)
 
-The history has been lost to git because I had to backtrack to get to a point where I could branch off and follow what I found [here](https://www.reddit.com/r/adventofcode/comments/kc4njx/comment/gktms17/?utm_source=share&utm_medium=web2x&context=3).
-This guy did what I'd been trying to figure out all afternoon before I went off on a few different tangents (including one guy who didn't realize it, but he'd reinvented Chineese Remainder Theorem.)
+I had to copy the above solution, which I was very proud of (using all(), for example), into a new file because I wanted to get back to the blazing fast code (second link here in part 2) to get to the an adaptation of the code I found [here](https://www.reddit.com/r/adventofcode/comments/kc4njx/comment/gktms17/?utm_source=share&utm_medium=web2x&context=3).  Once I had reached this point and realized that my code would never finish, I was trying to figure out how to increase my increments as I solved the for successive buses, but I couldn't figure out how to do it.
 
-Boy, what a wild ride this has been! I need to go back after some sleep and make sure I properly understand the code.
+So I went onto the AoC subreddit and learned a few things, including the fact that most folks recommended using Chinese Remainder Theorem. I didn't understand it in 2020 or now in 2021. I did come across a really funny post where someone said they came up with a solution because they couldn't understand CRT and someone pointed out he'd actually just reinvented CRT from first principles. I also tried to merge buses for a while after seeing that as a solution, but I was never able to make that work. 
+
+The things that I see as key for the solution that I adapted from the code linked above is that:
+- I had to move the code out into a function so that I could better have it be a condition for the while loop while being outside the while loop
+- the determine_interval function which was the key piece of the puzzle for me. It's how he tracked and implemented the ability to increase the interval. It ends up causing the solution to be solved nearly instantaneously on my computer.  
+
 ## What I Learned
 
 ### Generic
