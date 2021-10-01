@@ -20,3 +20,6 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 
 ### Perl
 
+### Go (Golang)
+
+### Haskell
