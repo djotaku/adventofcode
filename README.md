@@ -18,7 +18,7 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
       - 17.6% Perl
       - 0.1% Shell
 - 2016
-  - Third Problem Set Tackled (TBD)
+  - Third Problem Set Tackled (Oct 2021)
   - Planned to solve with Python, Ruby, Perl, Haskell, and Go
   - 0 stars Collected so Far
 - 2017
