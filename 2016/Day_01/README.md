@@ -26,7 +26,7 @@ For example, if your instructions are R8, R4, R4, R8, the first location you vis
 
 How many blocks away is the first location you visit twice?
 
-Answer: 
+Answer: 131
 
 ## Commentary / Approach to the Problem
 ### Part 1
@@ -42,12 +42,13 @@ Alas, that was not right either.
 
 Then I had an epiphany, I think I had to keep track of my coordinates along the way, not just where I stop at the end of a direction. In other words for a north 4, I should see if I have previously stopped at (0,1), (0,2), (0,3), or (0, 4).
 
+And that turned out to be the right answer. 
 ## What I Learned
 
 ### Generic
 
 ### Python
-
+- Nothing
 ### Ruby
 
 ### Perl

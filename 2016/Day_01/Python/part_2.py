@@ -35,10 +35,21 @@ def direction(current_direction: str, rotation: str) -> str:
             return "N"
 
 
+where_have_i_been = set()
+
+
 def move_in_direction(coordinate: list, instructed_direction: str, distance: int):
     """Take current coordinate, direction, and distance and give me new coordinate and direction."""
-    vector = [directions[instructed_direction][0] * distance, directions[instructed_direction][1] * distance]
-    return [coordinate[0]+vector[0], coordinate[1]+vector[1]], instructed_direction
+    vector = [0, 0]
+    for step in range(1, int(distance)+1):
+        vector = [directions[instructed_direction][0] * step, directions[instructed_direction][1] * step]
+        text_representation = f"({coordinate[0]+vector[0]}, {coordinate[1]+vector[1]})"
+        print(f"{text_representation=}")
+        if text_representation in where_have_i_been:
+            return [coordinate[0]+vector[0], coordinate[1]+vector[1]], instructed_direction, True
+        else:
+            where_have_i_been.add(text_representation)
+    return [coordinate[0]+vector[0], coordinate[1]+vector[1]], instructed_direction, False
 
 
 def follow_list_of_directions(list_of_directions: str) -> int:
@@ -46,21 +57,17 @@ def follow_list_of_directions(list_of_directions: str) -> int:
     discrete_directions = list_of_directions.split(',')
     my_coordinate = [0, 0]
     my_orientation = "N"
-    locations_visited = {"(0,0)"}
+    found_it = False
     for this_direction in discrete_directions:
+        print(this_direction)
         pattern = re.compile(r'(\w)(\d+)')
         direction_pattern = re.findall(pattern, this_direction)
-        for step in range(int(direction_pattern[0][1])):
-            my_coordinate, my_orientation = move_in_direction(my_coordinate,
-                                                              direction(my_orientation,
-                                                                        direction_pattern[0][0]), step)
-            text_representation = f"({my_coordinate[0]}, {my_coordinate[1]})"
-            print(f"{text_representation=}, {my_orientation=}")
-            if text_representation in locations_visited:
-                print(f"Answer: {text_representation=}, {my_orientation=}")
-                return abs(my_coordinate[0]) + abs(my_coordinate[1])
-            else:
-                locations_visited.add(text_representation)
+        my_coordinate, my_orientation, found_it = move_in_direction(my_coordinate,
+                                                                    direction(my_orientation,
+                                                                              direction_pattern[0][0]),
+                                                                    direction_pattern[0][1])
+        if found_it:
+            return abs(my_coordinate[0]) + abs(my_coordinate[1])
 
 
 if __name__ == "__main__":
@@ -71,3 +78,4 @@ if __name__ == "__main__":
 # 184 is too high
 # 9 is not right
 # 4 is not right
+# 11 is not right
