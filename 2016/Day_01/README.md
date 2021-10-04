@@ -33,6 +33,14 @@ Answer:
 I knew the key was in his link. That took me to the taxicab distance. So I only had to solve for: (p1,p2) and (q1,q2)= |p1-q1| + |p2-q2| 
 
 The most important part was keeping track of which direction I was facing.
+### Part 2
+[First I decided to store the coordinates in a set](https://github.com/djotaku/adventofcode/blob/e6c22e5425d60cbdd3f6dc21102469723d1d3f59/2016/Day_01/Python/part_2.py). But that didn't pass the example code.
+
+[So I tried to do it based on magnitude, because that seemed to be the right answer.](https://github.com/djotaku/adventofcode/blob/dc15484945244957ff2c347d561c242b906fae22/2016/Day_01/Python/part_2.py)
+
+Alas, that was not right either.
+
+Then I had an epiphany, I think I had to keep track of my coordinates along the way, not just where I stop at the end of a direction. In other words for a north 4, I should see if I have previously stopped at (0,1), (0,2), (0,3), or (0, 4).
 
 ## What I Learned
 

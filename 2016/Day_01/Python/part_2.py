@@ -46,18 +46,21 @@ def follow_list_of_directions(list_of_directions: str) -> int:
     discrete_directions = list_of_directions.split(',')
     my_coordinate = [0, 0]
     my_orientation = "N"
-    locations_visited = {0}
+    locations_visited = {"(0,0)"}
     for this_direction in discrete_directions:
         pattern = re.compile(r'(\w)(\d+)')
         direction_pattern = re.findall(pattern, this_direction)
-        my_coordinate, my_orientation = move_in_direction(my_coordinate,
-                                                          direction(my_orientation, direction_pattern[0][0]),
-                                                          int(direction_pattern[0][1]))
-        current_distance = abs(my_coordinate[0]) + abs(my_coordinate[1])
-        if current_distance in locations_visited:
-            return current_distance
-        else:
-            locations_visited.add(current_distance)
+        for step in range(int(direction_pattern[0][1])):
+            my_coordinate, my_orientation = move_in_direction(my_coordinate,
+                                                              direction(my_orientation,
+                                                                        direction_pattern[0][0]), step)
+            text_representation = f"({my_coordinate[0]}, {my_coordinate[1]})"
+            print(f"{text_representation=}, {my_orientation=}")
+            if text_representation in locations_visited:
+                print(f"Answer: {text_representation=}, {my_orientation=}")
+                return abs(my_coordinate[0]) + abs(my_coordinate[1])
+            else:
+                locations_visited.add(text_representation)
 
 
 if __name__ == "__main__":
@@ -66,4 +69,5 @@ if __name__ == "__main__":
 
 
 # 184 is too high
-# 9 is not the right answer
+# 9 is not right
+# 4 is not right

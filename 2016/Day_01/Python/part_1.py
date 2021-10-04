@@ -50,8 +50,8 @@ def follow_list_of_directions(list_of_directions: str) -> int:
         pattern = re.compile(r'(\w)(\d+)')
         direction_pattern = re.findall(pattern, this_direction)
         my_coordinate, my_orientation = move_in_direction(my_coordinate,
-                                          direction(my_orientation, direction_pattern[0][0]),
-                                          int(direction_pattern[0][1]))
+                                                          direction(my_orientation, direction_pattern[0][0]),
+                                                          int(direction_pattern[0][1]))
     return abs(my_coordinate[0]) + abs(my_coordinate[1])
 
 

@@ -15,3 +15,5 @@ def test_move_in_direction():
 
 def test_follow_list_of_directions():
     assert part_1.follow_list_of_directions("R2, L3") == 5
+    assert part_1.follow_list_of_directions("R2, R2, R2") == 2
+    assert part_1.follow_list_of_directions("R5, L5, R5, R3") == 12
