@@ -44,7 +44,6 @@ def move_in_direction(coordinate: list, instructed_direction: str, distance: int
     for step in range(1, int(distance)+1):
         vector = [directions[instructed_direction][0] * step, directions[instructed_direction][1] * step]
         text_representation = f"({coordinate[0]+vector[0]}, {coordinate[1]+vector[1]})"
-        print(f"{text_representation=}")
         if text_representation in where_have_i_been:
             return [coordinate[0]+vector[0], coordinate[1]+vector[1]], instructed_direction, True
         else:
@@ -59,7 +58,6 @@ def follow_list_of_directions(list_of_directions: str) -> int:
     my_orientation = "N"
     found_it = False
     for this_direction in discrete_directions:
-        print(this_direction)
         pattern = re.compile(r'(\w)(\d+)')
         direction_pattern = re.findall(pattern, this_direction)
         my_coordinate, my_orientation, found_it = move_in_direction(my_coordinate,

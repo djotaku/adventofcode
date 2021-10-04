@@ -42,7 +42,10 @@ Alas, that was not right either.
 
 Then I had an epiphany, I think I had to keep track of my coordinates along the way, not just where I stop at the end of a direction. In other words for a north 4, I should see if I have previously stopped at (0,1), (0,2), (0,3), or (0, 4).
 
-And that turned out to be the right answer. 
+And [that turned out to be the right answer.](https://github.com/djotaku/adventofcode/blob/98c267c0ddbaafd4c057960b946fec9412621693/2016/Day_01/Python/part_2.py) However, my code was a bit messy. I'd like to see if I can clean things up a bit when I do the problem in the other languages.
+
+I know the answer was in the careful reading of the problem, but boy was that one much trickier than it seemed to be at first!
+
 ## What I Learned
 
 ### Generic
