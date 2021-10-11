@@ -46,14 +46,19 @@ And [that turned out to be the right answer.](https://github.com/djotaku/advento
 
 I know the answer was in the careful reading of the problem, but boy was that one much trickier than it seemed to be at first!
 
+### Post-Python
+
+I knew intuitively that this needed to be simpler than tracking orientation. Something with polar coordinates. Since Haskell doesn’t track state, I was looking at AoC on reddit to see if there was someone who could explain how to do this without keeping state and found [this post](https://www.reddit.com/r/adventofcode/comments/5fur6q/comment/dangjvv/?utm_source=share&utm_medium=web2x&context=3). That’s it! Using complex numbers should make this work. So I decided to not look at that answer again, but use the idea of complex numbers in the Ruby, Perl, Go, and Haskell solutions. Also to maybe design with part 2 in mind. And that's how I did the Ruby solution. For my first Ruby attempt, I tried to use coordinates rather than complex numbers based on the following from Wikipedia: (a+bi) * i = ai + b(i^2) = -b + ai but I couldn't get the right answer. Then it turned out that I was doing something slightly wrong in my regex check, so I may try to use that principle again in Perl, Go, and/or Haskell rather than relying on Complex numbers. That said, it wasn't the end of the world to use complex numbers. 
+
 ## What I Learned
 
 ### Generic
+- Using complex numbers when there's an AoC problem involving rotating on the cardinal directions.
 
 ### Python
 - Nothing
 ### Ruby
-
+- How to use Complex numbers in Ruby
 ### Perl
 
 ### Go (Golang)
