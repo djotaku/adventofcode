@@ -3,7 +3,7 @@ import shutil
 
 HOME = os.getenv('HOME')
 YEAR = 2016
-PROGRAMMING_LANGUAGES = ["Python", "Ruby", "Perl", "Haskel", "Go"]
+PROGRAMMING_LANGUAGES = ["Python", "Ruby", "Perl", "Haskell", "Go"]
 
 
 def create_advent_of_code_setup():
