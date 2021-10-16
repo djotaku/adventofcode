@@ -14,7 +14,7 @@ func main() {
 
 	direction := [2]int{0, 1}
 	myLocation := [2]int{0, 0}
-	var visitedLocations [][]int
+	visitedLocations := map[string]float64{"0,0": 1}
 	var partTwoLocation [2]int
 	continueToLookForDuplicates := true
 
@@ -23,12 +23,9 @@ func main() {
 		print(err)
 	}
 	directions := strings.Split(directionInput, ",")
-	fmt.Println(directions)
 	for _, value := range directions {
-		fmt.Println(value)
 		re := regexp.MustCompile(`(\w)(\d+)`)
 		matches := re.FindStringSubmatch(value)
-		fmt.Printf("matches: %v\n", matches)
 		if matches[1] == "L" {
 			tempX := direction[0]
 			direction[0] = -direction[1]
@@ -42,12 +39,13 @@ func main() {
 		for step := 0; step < distanceToTravel; step++ {
 			myLocation[0] += direction[0]
 			myLocation[1] += direction[1]
-			if visitedLocations[myLocation[0]][myLocation[1]] == 0 && continueToLookForDuplicates {
+			locationAsString := strconv.Itoa(myLocation[0]) + "," + strconv.Itoa(myLocation[1])
+			if visitedLocations[locationAsString] == 1 && continueToLookForDuplicates {
 				partTwoLocation[0] = myLocation[0]
 				partTwoLocation[1] = myLocation[1]
 				continueToLookForDuplicates = false
 			} else {
-				visitedLocations[myLocation[0]][myLocation[1]] = 1
+				visitedLocations[locationAsString] = 1
 			}
 		}
 	}

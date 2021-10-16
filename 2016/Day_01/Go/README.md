@@ -5,4 +5,5 @@
 - Learned how to use arrays and slices
 - how to do regular expressions in Go. For the compile want to use back-tick
 - strconv.Atoi to make strings into integers
+- strconv.Itoa to make ints into strings!
 ## Part 2
