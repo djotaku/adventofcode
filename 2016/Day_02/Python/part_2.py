@@ -4,7 +4,7 @@ def input_per_line(file: str):
         return [line.rstrip() for line in input_file.readlines()]
 
 
-KEYPAD = [[1], [2, 3, 4], [5, 6, 7, 8, 9], ["A", "B", "C"], ["D"]]
+KEYPAD = [[0, 0, 1, 0, 0], [0, 2, 3, 4, 0], [5, 6, 7, 8, 9], [0, "A", "B", "C", 0], [0, 0, "D", 0, 0]]
 
 
 def figure_out_button(starting_keypad_y, starting_keypad_x, this_key_directions):
@@ -16,16 +16,16 @@ def figure_out_button(starting_keypad_y, starting_keypad_x, this_key_directions)
     for key_direction in this_key_directions:
         if key_y == 0 and key_direction == "D":
             key_y += 1
-            key_x += 1
+            #key_x += 1
         elif key_y == 1:
-            if key_direction == "U" and key_x == 1:
+            if key_direction == "U" and key_x == 2:
                 key_y -= 1
-                key_x -= 1
+                #key_x -= 1
             elif key_direction == "D":
                 key_y += 1
             elif key_direction == "L" and key_x != 0:
                 key_x -= 1
-            elif key_direction == "R" and key_x != 2:
+            elif key_direction == "R" and key_x != 3:
                 key_x += 1
         elif key_y == 2:
             if key_direction == "U" and 0 < key_x < 4:
@@ -39,7 +39,7 @@ def figure_out_button(starting_keypad_y, starting_keypad_x, this_key_directions)
         elif key_y == 3:
             if key_direction == "U":
                 key_y -= 1
-            elif key_direction == "D" and key_x == 1:
+            elif key_direction == "D" and key_x == 2:
                 key_y += 1
             elif key_direction == "L" and key_x != 0:
                 key_x -= 1
