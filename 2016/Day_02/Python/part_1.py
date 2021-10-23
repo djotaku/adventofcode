@@ -1,3 +1,9 @@
+def input_per_line(file: str):
+    """This is for when each line is an input to the puzzle. The newline character is stripped."""
+    with open(file, 'r') as input_file:
+        return [line.rstrip() for line in input_file.readlines()]
+
+
 KEYPAD = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 
@@ -19,8 +25,13 @@ def figure_out_button(starting_keypad_y, starting_keypad_x, this_key_directions)
     return KEYPAD[key_y][key_x], key_y, key_x
 
 
-
 if __name__ == "__main__":
+    combo = ""
     keypad_y = 1
     keypad_x = 1
-
+    combo_instructions = input_per_line("../input.txt")
+    for line in combo_instructions:
+        get_to_this_key = [letter for letter in line]
+        number, keypad_y, keypad_x = figure_out_button(keypad_y, keypad_x, get_to_this_key)
+        combo += str(number)
+    print(f"The bathroom combo is: {combo}")

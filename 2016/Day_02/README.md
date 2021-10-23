@@ -22,7 +22,11 @@ So, in this example, the bathroom code is 1985.
 ## Part 2
 
 ## Commentary / Approach to the Problem
+### Part 1 ###
+The problem was very simple in Python. I created a multidimensional array to hold the keypad and then a simple helper function to figure out where we were in the array. 
 
+### Part 2 ###
+For part 2, I decided to go with some slightly tortured logic and stick to the array. If that gets too unwieldly, I'll try a different approach. 
 ## What I Learned
 
 ### Generic
