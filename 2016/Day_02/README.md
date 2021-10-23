@@ -19,7 +19,23 @@ The document goes on to explain that each button to be pressed can be found by s
 
 So, in this example, the bathroom code is 1985.
 
+Your puzzle input is the instructions from the document you found at the front desk. What is the bathroom code?
+
+Answer: 69642
+
 ## Part 2
+...the keypad is not at all like you imagined it. Instead, you are confronted with the result of hundreds of man-hours of bathroom-keypad-design meetings:
+
+      1
+    2 3 4
+  5 6 7 8 9
+    A B C
+      D
+
+Using the same instructions in your puzzle input, what is the correct bathroom code?
+
+Answer: 8CB23
+
 
 ## Commentary / Approach to the Problem
 ### Part 1 ###
@@ -27,12 +43,15 @@ The problem was very simple in Python. I created a multidimensional array to hol
 
 ### Part 2 ###
 For part 2, I decided to go with some slightly tortured logic and stick to the array. If that gets too unwieldly, I'll try a different approach. 
+
+And it did indeed get [too unweildly](https://github.com/djotaku/adventofcode/blob/c57c1367ff5b35b0b0a003aacf99c938c0c2c783/2016/Day_02/Python/part_2.py). So I came up with an idea that could be generalizable to create a solution that works for both parts 1 and 2. I created a set with valid coordinates and then only changed the key_y and key_x values if the new coordinate was in the set of valid coordinates.
+
 ## What I Learned
 
 ### Generic
 
 ### Python
-
+- Nothing new this time around. 
 ### Ruby
 
 ### Perl

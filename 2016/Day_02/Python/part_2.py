@@ -4,7 +4,18 @@ def input_per_line(file: str):
         return [line.rstrip() for line in input_file.readlines()]
 
 
-KEYPAD = [[0, 0, 1, 0, 0], [0, 2, 3, 4, 0], [5, 6, 7, 8, 9], [0, "A", "B", "C", 0], [0, 0, "D", 0, 0]]
+KEYPAD = [[0, 0, 1, 0, 0],
+          [0, 2, 3, 4, 0],
+          [5, 6, 7, 8, 9],
+          [0, "A", "B", "C", 0],
+          [0, 0, "D", 0, 0]]
+
+
+VALID_KEY_COORDINATES = {(0, 2),
+                         (1, 1), (1, 2), (1, 3),
+                         (2, 0), (2, 1), (2, 2), (2, 3), (2, 4),
+                         (3, 1), (3, 2), (3, 3),
+                         (4, 2)}
 
 
 def figure_out_button(starting_keypad_y, starting_keypad_x, this_key_directions):
@@ -14,40 +25,18 @@ def figure_out_button(starting_keypad_y, starting_keypad_x, this_key_directions)
     key_y = starting_keypad_y
     key_x = starting_keypad_x
     for key_direction in this_key_directions:
-        if key_y == 0 and key_direction == "D":
-            key_y += 1
-            #key_x += 1
-        elif key_y == 1:
-            if key_direction == "U" and key_x == 2:
+        if key_direction == "U":
+            if (key_y-1, key_x) in VALID_KEY_COORDINATES:
                 key_y -= 1
-                #key_x -= 1
-            elif key_direction == "D":
+        elif key_direction == "D":
+            if (key_y+1, key_x) in VALID_KEY_COORDINATES:
                 key_y += 1
-            elif key_direction == "L" and key_x != 0:
+        elif key_direction == "L":
+            if (key_y, key_x-1) in VALID_KEY_COORDINATES:
                 key_x -= 1
-            elif key_direction == "R" and key_x != 3:
+        elif key_direction == "R":
+            if (key_y, key_x+1) in VALID_KEY_COORDINATES:
                 key_x += 1
-        elif key_y == 2:
-            if key_direction == "U" and 0 < key_x < 4:
-                key_y -= 1
-            elif key_direction == "D" and 0 < key_x < 4:
-                key_y += 1
-            elif key_direction == "L" and key_x != 0:
-                key_x -= 1
-            elif key_direction == "R" and key_x != 4:
-                key_x += 1
-        elif key_y == 3:
-            if key_direction == "U":
-                key_y -= 1
-            elif key_direction == "D" and key_x == 2:
-                key_y += 1
-            elif key_direction == "L" and key_x != 0:
-                key_x -= 1
-            elif key_direction == "R" and key_x != 2:
-                key_x += 1
-        elif key_y == 4:
-            if key_direction == "U":
-                key_y -= 1
     return KEYPAD[key_y][key_x], key_y, key_x
 
 

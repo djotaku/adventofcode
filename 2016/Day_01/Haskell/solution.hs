@@ -18,5 +18,7 @@ splitStringOnCommas x = map T.unpack (map T.strip (T.split (==',') (T.pack x)))
 getComplexDirections :: Num a => String -> [(Complex a, Float)]
 getComplexDirections x = map figureOutDirection (map fixString ((map splitDirDistance (splitStringOnCommas x))))
 
+move :: Num b => (b, b) -> (b, b) -> (b, b)
+move (current_direction, location) (rotate, distance) = (current_direction * rotate, location + (current_direction * distance))
 
-finalAnswer j = scanl (\x (y, z) -> (x * y), z) (0:+1) (getComplexDirections j)
+--finalAnswer j = scanl move (0:+1, 0:+0) (getComplexDirections j)
