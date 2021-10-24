@@ -19,7 +19,7 @@ getComplexDirections :: Num a => String -> [(Complex a, Float)]
 getComplexDirections x = map figureOutDirection (map fixString ((map splitDirDistance (splitStringOnCommas x))))
 
 move :: Num b => (b, b) -> (b, b) -> (b, b)
-move (current_direction, location) (rotate, distance) = (current_direction * rotate, location + (current_direction * distance))
+move (current_direction, location) (rotate, distance) = (current_direction * rotate, location + (current_direction * rotate * distance))
 
 --finalAnswer j = scanl move (0:+1, 0:+0) (getComplexDirections j)
 
