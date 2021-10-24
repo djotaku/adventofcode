@@ -32,7 +32,7 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
     - Solved with Python only during AoC
     - 36 Stars Collected So Far
 
-![total stars](https://github.com/djotaku/adventofcode/blob/main/screenshots/total_star_count_20210919.png)
+![total stars](https://github.com/djotaku/adventofcode/blob/main/screenshots/total_star_count_20211023.png)
 
 Total Stars Over All Years: 88
 
