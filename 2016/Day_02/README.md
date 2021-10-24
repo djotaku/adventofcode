@@ -53,7 +53,7 @@ And it did indeed get [too unweildly](https://github.com/djotaku/adventofcode/bl
 ### Python
 - Nothing new this time around. 
 ### Ruby
-
+- Nothing new this time around.
 ### Perl
 
 ### Go (Golang)
