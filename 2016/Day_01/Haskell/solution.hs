@@ -22,3 +22,6 @@ move :: Num b => (b, b) -> (b, b) -> (b, b)
 move (current_direction, location) (rotate, distance) = (current_direction * rotate, location + (current_direction * distance))
 
 --finalAnswer j = scanl move (0:+1, 0:+0) (getComplexDirections j)
+
+--for later
+-- abs (realPart (3.0 :+ 2.0)) + abs (imagPart (3.0:+2.0))
