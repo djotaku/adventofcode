@@ -70,7 +70,7 @@ With Perl I made it work without using Complex numbers. Key was the realization 
 - strconv.Atoi to make strings into integers
 - strconv.Itoa to make ints into strings!
 ### Haskell
-SO, SO MUCH!!
+SO, SO MUCH!! Thanks to a lot of patient help from /u/rabuf and /u/semi225599 on the AoC Subreddit
 - Writing functions in Haskell
 - using head and tail to split an array
 - using fst and snd to get the first and second items in an array or tuple
