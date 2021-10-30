@@ -55,7 +55,7 @@ And it did indeed get [too unweildly](https://github.com/djotaku/adventofcode/bl
 ### Ruby
 - Nothing new this time around.
 ### Perl
-
+- Nothing really, but did get a bit better at arrays in Perl
 ### Go (Golang)
 - global variables
 - using the sets package someone else created
