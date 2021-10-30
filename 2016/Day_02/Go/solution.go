@@ -2,6 +2,7 @@
 package main
 
 import (
+	"adventofcode/2016/aocinputs"
 	"fmt"
 	"github.com/deckarep/golang-set"
 	"strconv"
@@ -109,12 +110,12 @@ func main() {
 	validKeysPart2.Add("3,2")
 	validKeysPart2.Add("3,3")
 	validKeysPart2.Add("4,2")
-	/*
-		keypadInstructions, err := aocinputs.MultipleLines("/home/ermesa/Programming Projects/adventofcode/2016/Day_02/input.txt")
-		if err != nil {
-			print(err)
-		}*/
-	keypadInstructions := []string{"ULL", "RRDDD", "LURDL", "UUUD"}
+
+	keypadInstructions, err := aocinputs.MultipleLines("/home/ermesa/Programming Projects/adventofcode/2016/Day_02/input.txt")
+	if err != nil {
+		print(err)
+	}
+	//keypadInstructions := []string{"ULL", "RRDDD", "LURDL", "UUUD"}
 	partOneInnerMatrix := 1
 	partOneOuterMatrix := 1
 	var partOneCode string
