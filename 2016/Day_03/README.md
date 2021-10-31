@@ -36,7 +36,7 @@ That worked out just fine. Part 2 was about figuring out the best way to manipul
 ### Python
 - Nothing
 ### Ruby
-
+- Array.transpose
 ### Perl
 
 ### Go (Golang)
