@@ -38,7 +38,7 @@ That worked out just fine. Part 2 was about figuring out the best way to manipul
 ### Ruby
 - Array.transpose
 ### Perl
-
+- Nothing
 ### Go (Golang)
-
+- Using string.Fields to get space-separated text from a string
 ### Haskell
