@@ -19,4 +19,21 @@ if __name__ == "__main__":
         numeric_triples = [int(number) for number in triple.split()]
         count += is_this_a_triangle(numeric_triples[0], numeric_triples[1], numeric_triples[2])
     print(f"There are {count} triangles in the list when viewed as rows.")
+    part_two_count = 0
+    column_one = []
+    column_two = []
+    column_three = []
+    for triple in list_of_triples:
+        numeric_triples = [int(number) for number in triple.split()]
+        column_one.append(numeric_triples[0])
+        column_two.append(numeric_triples[1])
+        column_three.append(numeric_triples[2])
+    for index in range(0, len(column_one), 3):
+        part_two_count += is_this_a_triangle(column_one[index], column_one[index+1], column_one[index+2])
+        part_two_count += is_this_a_triangle(column_two[index], column_two[index+1], column_two[index+2])
+        part_two_count += is_this_a_triangle(column_three[index], column_three[index+1], column_three[index+2])
+    print(f"There are {part_two_count} triangles in the list when viewed as columns.")
 
+# 4174 is too high
+# 0 is not answer
+# 1918 is too low

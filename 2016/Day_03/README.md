@@ -24,17 +24,17 @@ For example, given the following specification, numbers with the same hundreds d
 
 In your puzzle input, and instead reading by columns, how many of the listed triangles are possible?
 
-Answer: 
+Answer: 1921
 ## Commentary / Approach to the Problem
 I went into part 1 with the attitude/belief: Seems easy as valid_triangle function that evaluates the numbers, summing all the pairs and returning false if any is < the length of the third one.
 
-That worked out just fine. Part 2 was about figuring out the best way to manipulate the input.
+That worked out just fine. Part 2 was about figuring out the best way to manipulate the input. It wasn't too bad, although I think I wasn't as efficient as I could have been.
 ## What I Learned
 
 ### Generic
 
 ### Python
-
+- Nothing
 ### Ruby
 
 ### Perl
