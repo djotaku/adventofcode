@@ -1,15 +1,28 @@
-# Title of Problem
+# Day 4: Security Through Obscurity
 
 Out of respect for the author's wishes, I only put as much of the problem text as necessary to understand the problem.
 
-Visit the version with all the story elements [here](https://adventofcode.com/2015/day/3). (NOTE REMEMBER TO CHANGE THE YEAR AND DAY NUMBER)
+Visit the version with all the story elements [here](https://adventofcode.com/2016/day/4).
 
 ## Part 1
+Each room consists of an encrypted name (lowercase letters separated by dashes) followed by a dash, a sector ID, and a checksum in square brackets.
 
+A room is real (not a decoy) if the checksum is the five most common letters in the encrypted name, in order, with ties broken by alphabetization. For example:
+
+- aaaaa-bbb-z-y-x-123[abxyz] is a real room because the most common letters are a (5), b (3), and then a tie between x, y, and z, which are listed alphabetically.
+- a-b-c-d-e-f-g-h-987[abcde] is a real room because although the letters are all tied (1 of each), the first five are listed alphabetically.
+- not-a-real-room-404[oarel] is a real room.
+- totally-real-room-200[decoy] is not.
+
+Of the real rooms from the list above, the sum of their sector IDs is 1514.
+
+What is the sum of the sector IDs of the real rooms?
+
+Answer: 
 ## Part 2
 
 ## Commentary / Approach to the Problem
-
+Seems like regex followed by similar technique as used in 2015 Day 5 with the rules in which you’re counting letters. (At least the Ruby solution there might help with the Ruby solution). There are some Python tools in itertools or somewhere that might help with the counting. Will also need to keep track of the sector IDs of the winners. Alphabetical check for ties may involve chr/ord (and similar functions in various languages) to make sure they’re in the proper order. This one is going to be relatively complex because there’s a lot to check per room in the directory.
 ## What I Learned
 
 ### Generic
