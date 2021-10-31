@@ -1,4 +1,4 @@
-# Title of Problem
+# Day 2: Bathroom Security
 
 Out of respect for the author's wishes, I only put as much of the problem text as necessary to understand the problem.
 
