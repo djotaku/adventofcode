@@ -11,6 +11,7 @@ def input_per_line(file: str):
 def create_checksum_check(the_counter):
     """Takes in a counter and sorts by amount and then alphabetical in case of a tie."""
     sorted_counter = sorted(the_counter.most_common(), key=lambda x: (-x[1], x[0]))
+    # print(f"{sorted_counter=}")
     return [letter_pair[0] for letter_pair in sorted_counter]
 
 
@@ -29,9 +30,13 @@ def is_real_room(room_data: str) -> int:
     checksum = [letter for letter in sector_and_checksum_results[0][1]]
     # encrypted_letters_in_order = [letter_pair[0] for letter_pair in encryption_counter.most_common()]  # need to change this to be alphabetical in case of ties
     encrypted_letters_in_order = create_checksum_check(encryption_counter)
+    # print(f"{encrypted_letters_in_order=}")
+    # print(f"{checksum=}")
     # time to check if the checksum is right
-    is_it_valid = [True for index in range(5) if checksum[index] == encrypted_letters_in_order[index]]
+    is_it_valid = [True if checksum[index] == encrypted_letters_in_order[index] else False for index in range(5)]
+    # print(f"{is_it_valid=}")
     if all(is_it_valid):
+        # print(f"{sector_and_checksum_results[0][0]=}")
         return int(sector_and_checksum_results[0][0])
     else:
         return 0
@@ -41,6 +46,7 @@ if __name__ == "__main__":
     sector_id_sum = 0
     rooms_to_check = input_per_line("../input.txt")
     for room in rooms_to_check:
+        # print(f"{room=}")
         sector_id_sum += is_real_room(room)
     print(f"The sum of sector ids for real rooms is {sector_id_sum}")
 
