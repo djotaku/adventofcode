@@ -18,9 +18,17 @@ Of the real rooms from the list above, the sum of their sector IDs is 1514.
 
 What is the sum of the sector IDs of the real rooms?
 
-Answer: 
+Answer: 245102
 ## Part 2
+The room names are encrypted by a state-of-the-art [shift cipher](https://en.wikipedia.org/wiki/Caesar_cipher), which is nearly unbreakable without the right software.
 
+To decrypt a room name, rotate each letter forward through the alphabet a number of times equal to the room's sector ID. A becomes B, B becomes C, Z becomes A, and so on. Dashes become spaces.
+
+For example, the real name for qzmt-zixmtkozy-ivhz-343 is very encrypted name.
+
+What is the sector ID of the room where North Pole objects are stored?
+
+Answer: 
 ## Commentary / Approach to the Problem
 Seems like regex followed by similar technique as used in 2015 Day 5 with the rules in which you’re counting letters. (At least the Ruby solution there might help with the Ruby solution). There are some Python tools in itertools or somewhere that might help with the counting. Will also need to keep track of the sector IDs of the winners. Alphabetical check for ties may involve chr/ord (and similar functions in various languages) to make sure they’re in the proper order. This one is going to be relatively complex because there’s a lot to check per room in the directory.
 ## What I Learned

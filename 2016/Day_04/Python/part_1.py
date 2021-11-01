@@ -28,12 +28,15 @@ def is_real_room(room_data: str) -> int:
             encryption_counter[letter] += 1
     # create checksum list
     checksum = [letter for letter in sector_and_checksum_results[0][1]]
-    # encrypted_letters_in_order = [letter_pair[0] for letter_pair in encryption_counter.most_common()]  # need to change this to be alphabetical in case of ties
     encrypted_letters_in_order = create_checksum_check(encryption_counter)
     # print(f"{encrypted_letters_in_order=}")
     # print(f"{checksum=}")
     # time to check if the checksum is right
-    is_it_valid = [True if checksum[index] == encrypted_letters_in_order[index] else False for index in range(5)]
+    is_it_valid = [
+        checksum[index] == encrypted_letters_in_order[index]
+        for index in range(5)
+    ]
+
     # print(f"{is_it_valid=}")
     if all(is_it_valid):
         # print(f"{sector_and_checksum_results[0][0]=}")
