@@ -28,15 +28,19 @@ For example, the real name for qzmt-zixmtkozy-ivhz-343 is very encrypted name.
 
 What is the sector ID of the room where North Pole objects are stored?
 
-Answer: 
+Answer: 324
 ## Commentary / Approach to the Problem
+### Part 1
 Seems like regex followed by similar technique as used in 2015 Day 5 with the rules in which you’re counting letters. (At least the Ruby solution there might help with the Ruby solution). There are some Python tools in itertools or somewhere that might help with the counting. Will also need to keep track of the sector IDs of the winners. Alphabetical check for ties may involve chr/ord (and similar functions in various languages) to make sure they’re in the proper order. This one is going to be relatively complex because there’s a lot to check per room in the directory.
+### Part 2
+I wasn't sure what to do because I assumed that Eric Wastl would make it obvious what I wanted to look for in the decrypted string. Apparently it wasn't and you were supposed to just look at some 300-odd output strings. Or at least that's what folks on the subreddit said. I still think that's not right, but I *was* able to get the right answer.
 ## What I Learned
 
 ### Generic
 
 ### Python
-
+- all([]) is True (unintuitively!)
+- using string.ascii_lowercase to get the alphabet!
 ### Ruby
 
 ### Perl
