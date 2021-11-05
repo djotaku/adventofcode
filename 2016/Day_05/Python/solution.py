@@ -33,4 +33,4 @@ if __name__ == "__main__":
     answer = door_password(puzzle_input)
     print(f"The number to add is {answer}")
 
-# 836bc9123 is not right nor is 836bc912
+# Part 1: 836bc9123 is not right nor is 836bc912
