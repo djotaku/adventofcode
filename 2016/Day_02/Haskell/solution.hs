@@ -2,6 +2,7 @@ import Data.List
 import qualified Data.Text as T
 
 -- given a number and a direction, give back the new number
+findNextNumber :: (Eq a, Num a, Num p) => a -> Char -> p
 findNextNumber number direction
     | (number == 1) && (direction == 'U') = 1
     | (number == 1) && (direction == 'D') = 4
@@ -42,13 +43,26 @@ findNextNumber number direction
 
 
 -- take an array of instructions and a starting number and find the final number
+findNumberRow :: (Foldable t, Eq a, Num a) => a -> t Char -> a
 findNumberRow number directionList = foldl findNextNumber number directionList
 
 --puting it all together
+almostFinalAnswer :: (Foldable t, Eq b, Num b) => [t Char] -> [b]
 almostFinalAnswer aocinput = scanl findNumberRow 5 aocinput
 
 -- get rid of that extra first number
+finalAnswer :: (Foldable t, Eq a, Num a) => [t Char] -> [a]
 finalAnswer aocinput = tail (almostFinalAnswer aocinput)
 
 --make it one string
+stringFinalAnswer :: Foldable t => [t Char] -> [Char]
 stringFinalAnswer aocinput = concat (map show (finalAnswer aocinput))
+
+--read from a file and put array where each line is an element. Point free.
+readLines :: FilePath -> IO [String]
+readLines = fmap lines . readFile 
+
+main = do
+    ourInput <- readLines "../input.txt"
+    print "The answer to part 1 is:"
+    print (stringFinalAnswer ourInput)
