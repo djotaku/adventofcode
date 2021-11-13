@@ -1,24 +1,21 @@
 import Data.List
-import qualified Data.Text as T
+
+--read from a file and put array where each line is an element. Point free.
+readLines :: FilePath -> IO [String]
+readLines = fmap lines . readFile 
 
 -- given a number and a direction, give back the new number
-findNextNumber :: (Eq a, Num a, Num p) => a -> Char -> p
+findNextNumber :: (Eq p, Num p) => p -> Char -> p
 findNextNumber number direction
-    | (number == 1) && (direction == 'U') = 1
     | (number == 1) && (direction == 'D') = 4
-    | (number == 1) && (direction == 'L') = 1
     | (number == 1) && (direction == 'R') = 2
-    | (number == 2) && (direction == 'U') = 2
     | (number == 2) && (direction == 'D') = 5
     | (number == 2) && (direction == 'L') = 1
     | (number == 2) && (direction == 'R') = 3
-    | (number == 3) && (direction == 'U') = 3
     | (number == 3) && (direction == 'D') = 6
     | (number == 3) && (direction == 'L') = 2
-    | (number == 3) && (direction == 'R') = 3
     | (number == 4) && (direction == 'U') = 1
     | (number == 4) && (direction == 'D') = 7
-    | (number == 4) && (direction == 'L') = 4
     | (number == 4) && (direction == 'R') = 5
     | (number == 5) && (direction == 'U') = 2
     | (number == 5) && (direction == 'D') = 8
@@ -27,19 +24,14 @@ findNextNumber number direction
     | (number == 6) && (direction == 'U') = 3
     | (number == 6) && (direction == 'D') = 9
     | (number == 6) && (direction == 'L') = 5
-    | (number == 6) && (direction == 'R') = 6
     | (number == 7) && (direction == 'U') = 4
-    | (number == 7) && (direction == 'D') = 7
-    | (number == 7) && (direction == 'L') = 7
     | (number == 7) && (direction == 'R') = 8
     | (number == 8) && (direction == 'U') = 5
-    | (number == 8) && (direction == 'D') = 8
     | (number == 8) && (direction == 'L') = 7
     | (number == 8) && (direction == 'R') = 9
     | (number == 9) && (direction == 'U') = 6
-    | (number == 9) && (direction == 'D') = 9
     | (number == 9) && (direction == 'L') = 8
-    | (number == 9) && (direction == 'R') = 9
+    | otherwise = number
 
 
 -- takes in a character for a keypad button and returns the next one based on direction
@@ -96,13 +88,11 @@ finalAnswer aocinput = tail (almostFinalAnswer aocinput)
 stringFinalAnswer :: Foldable t => [t Char] -> [Char]
 stringFinalAnswer aocinput = concat (map show (finalAnswer aocinput))
 
---read from a file and put array where each line is an element. Point free.
-readLines :: FilePath -> IO [String]
-readLines = fmap lines . readFile 
-
+-- same as findNumberRow but for part 2
+partTwoFindKeyPadRow :: Foldable t => Char -> t Char -> Char
 partTwoFindKeyPadRow keypadButton directionList = foldl findNextKeypadPartTwo keypadButton directionList
 
---partTwoFinalAnswer aocInput = concat (tail (scanl (partTwoFindKeyPadRow 5 aocInput)))
+partTwoFinalAnswer :: Foldable t => [t Char] -> [Char]
 partTwoFinalAnswer aocInput = tail (scanl partTwoFindKeyPadRow '5' aocInput)
 
 main = do
