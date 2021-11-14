@@ -18,19 +18,19 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
       - 17.6% Perl
       - 0.1% Shell
 - 2016
-  - Third Problem Set Tackled (Oct 2021)
+  - Third Problem Set Tackled (Oct 2021 - )
   - Originally solved with Python, Ruby, Perl, Haskell, and Go
   - 10 stars Collected so Far
 - 2017
-  - Fourth Problem Set Tackled (MAYBE? I'll probably do 2021 live first; TBD)
-  - Unknown which languages will be added. 
-    - Considering Rust, Java, Kotlin, Javascript, C, C#, C++, Scala, R, Julia, Typescript, F#, Lisp, Clojure, Erlang
-    - Top 3 Current Contenders: Rust (been wanting to learn it for a while), Javascript (needed for nearly any web programming), C# (Unity games are in C#)
-
+  - Fifth Problem Set Tackled (TBD)
+  - Languages: Rust and Julia (“One hard one and one easy one”)
 - 2020
-    - First Year of Participation (1st attempt: Live Dec 2020; Trying to get all 50 stars: Sept 2021)
+    - First Year of Participation (1st attempt: Live Dec 2020; Trying to get all 50 stars: Sept 2021 -)
     - Solved with Python only during AoC
     - 36 Stars Collected So Far
+- 2021
+  - Fourth Problem Set/Second Year Participating Live
+  - Will only solve with Python during December
 
 ![total stars](https://github.com/djotaku/adventofcode/blob/main/screenshots/total_star_count_20211023.png)
 
