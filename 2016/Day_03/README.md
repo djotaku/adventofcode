@@ -42,3 +42,4 @@ That worked out just fine. Part 2 was about figuring out the best way to manipul
 ### Go (Golang)
 - Using string.Fields to get space-separated text from a string
 ### Haskell
+- How to do a read to a list so that I can turn a list of numbers into Ints instead of Strings

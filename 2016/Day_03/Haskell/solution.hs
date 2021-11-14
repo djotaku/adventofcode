@@ -1,3 +1,5 @@
+import Data.List
+
 --read from a file and put array where each line is an element. Point free.
 readLines :: FilePath -> IO [String]
 readLines = fmap lines . readFile 
@@ -13,9 +15,10 @@ evaluateTriple :: Num p => String -> p
 evaluateTriple triple = validateTriangle (map (read::String->Int) (words triple))
 
 checkAllPart1Triples :: Num b => [String] -> b
-checkAllPart1Triples triples = foldr (+) 0 (map evaluateTriple triples)
+checkAllPart1Triples triples = sum (map evaluateTriple triples)
 
 main = do
     ourInput <- readLines "../input.txt"
     print "The answer to part 1 is:"
     print (checkAllPart1Triples ourInput)
+    --print (map words ourInput)
