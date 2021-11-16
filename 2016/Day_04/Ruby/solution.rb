@@ -20,3 +20,16 @@ encrypted_rooms.each do |room|
 end
 
 puts "The sum of the sector IDs of the real rooms: #{sector_id_sum}"
+
+#for part 2
+#  test = "abc".chars.each.map{|letter| letter.next}.join
+#  better
+#  test = "abc".chars.map{|letter| letter.next}.join
+irb(main):053:1* def lettermove(letter, number)
+irb(main):054:2*   (0..number).each do 
+irb(main):055:2*     letter = letter.next
+irb(main):056:1*   end
+irb(main):057:1*   letter
+irb(main):058:0> end
+
+
