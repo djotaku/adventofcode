@@ -42,7 +42,8 @@ I wasn't sure what to do because I assumed that Eric Wastl would make it obvious
 - all([]) is True (unintuitively!)
 - using string.ascii_lowercase to get the alphabet!
 ### Ruby
-
+- tally to count based on scan (giving a regex-like set to count)
+- sort_by and how to sort by more than one attribute
 ### Perl
 
 ### Go (Golang)
