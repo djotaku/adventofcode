@@ -8,6 +8,22 @@ def valid_sector_id(character_count, checksum)
   character_count.map.with_index { |character, index| character[0] == checksum[index]}.all?
 end
 
+def letter_mover(letter, number)
+  (0..number).each do
+    if letter == "z"
+      letter = "a"
+    else
+      letter = letter.next
+    end
+  end
+  letter
+end
+
+def decryptor(encrypted_room, sector_id)
+  shift_amount = sector_id.to_i % 26
+  encrypted_room.chars.map{|letter| letter_mover(letter, shift_amount)}.join
+end
+
 encrypted_rooms = input_per_line("../input.txt")
 sector_id_sum = 0
 encrypted_rooms.each do |room|
@@ -20,16 +36,5 @@ encrypted_rooms.each do |room|
 end
 
 puts "The sum of the sector IDs of the real rooms: #{sector_id_sum}"
-
-#for part 2
-#  test = "abc".chars.each.map{|letter| letter.next}.join
-#  better
-#  test = "abc".chars.map{|letter| letter.next}.join
-irb(main):053:1* def lettermove(letter, number)
-irb(main):054:2*   (0..number).each do 
-irb(main):055:2*     letter = letter.next
-irb(main):056:1*   end
-irb(main):057:1*   letter
-irb(main):058:0> end
 
 
