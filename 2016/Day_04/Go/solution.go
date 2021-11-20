@@ -15,12 +15,42 @@ type characterFrequency struct {
 	frequency int
 }
 
+func decryptCharacter(character string, shift int) string {
+	for i := -0; i < shift; i++ {
+		if character == "z" {
+			character = "a"
+		} else if character == "-" {
+			character = " "
+		} else if character == " " {
+			character = " "
+		} else {
+			runeValue := []rune(character)[0]
+			character = string(runeValue + 1)
+		}
+	}
+	return character
+}
+
+func findNorthPoleRoom(encryptedRoom string, sectorID int) bool {
+	cipherShift := sectorID % 26
+	var decryptedRoomName string
+	encryptedRoomChars := strings.Split(encryptedRoom, "")
+	for _, encryptedChar := range encryptedRoomChars {
+		decryptedRoomName += decryptCharacter(encryptedChar, cipherShift)
+	}
+	//roomMustHave := regexp.MustCompile(`northpoleobjectstorage`)
+	fmt.Printf("decrypted string: %s\n", decryptedRoomName)
+	roomMustHave, _ := regexp.MatchString(`northpole object storage`, decryptedRoomName)
+	return roomMustHave
+}
+
 func main() {
 	roomList, err := aocinputs.MultipleLines("/home/ermesa/Programming Projects/adventofcode/2016/Day_04/input.txt")
 	if err != nil {
 		print(err)
 	}
 	sectorSum := 0
+	var partTwoAnswer int
 	for _, room := range roomList {
 		sectorAndChecksumRegExp := regexp.MustCompile(`(\d+)\[(\w+)]`)
 		encryptedRegExp := regexp.MustCompile(`(\w+)-`)
@@ -57,7 +87,13 @@ func main() {
 		}
 		if checksumEval == 5 {
 			sectorSum += sector
+			if findNorthPoleRoom(encryptedRoom, sector) {
+				print("true!!!!!\n")
+				partTwoAnswer = sector
+				print(partTwoAnswer)
+			}
 		}
 	}
-	fmt.Printf("The sum of all valid sectors is %d", sectorSum)
+	fmt.Printf("The sum of all valid sectors is %d\n", sectorSum)
+	fmt.Printf("The North Pole Objects are stored in sector %d", partTwoAnswer)
 }
