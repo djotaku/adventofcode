@@ -49,5 +49,6 @@ I wasn't sure what to do because I assumed that Eric Wastl would make it obvious
 - Multi-level sorting in Perl
 
 ### Go (Golang)
-
+- using structs for the first time
+- sort.SliceStable - even if I don't 100% understand the syntax
 ### Haskell
