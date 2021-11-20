@@ -45,6 +45,8 @@ I wasn't sure what to do because I assumed that Eric Wastl would make it obvious
 - tally to count based on scan (giving a regex-like set to count)
 - sort_by and how to sort by more than one attribute
 ### Perl
+- Reminder of the perl join function and its syntax
+- Multi-level sorting in Perl
 
 ### Go (Golang)
 
