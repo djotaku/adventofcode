@@ -49,7 +49,7 @@ foreach my $encrypted_room (@encrypted_rooms){
             $decrypted_room .= $character;
         }
         #say "$decrypted_room";
-        if (index($decrypted_room, "object" != -1)){
+        if ($decrypted_room eq "northpoleobjectstorage"){
             $part_two_answer = $sector;
         }
     }
