@@ -53,7 +53,8 @@ Answer: f2c730e5
 ### Ruby
 
 ### Perl
-
+- Very easy, just required remembering substr function.
+- using defined keyword to check if a variable is undefined.
 ### Go (Golang)
 
 ### Haskell
