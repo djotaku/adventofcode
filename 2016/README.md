@@ -1,5 +1,7 @@
 # Advent of Code 2016 - Saving Christmas From the Easter Bunny
 
+The Easter Bunny has stolen the stars that power Santa's sleigh. You head to Easter Bunny HQ to get them back.
+
 Advent of Code 2016 can be found [here](https://adventofcode.com/2016).
 
 My third Advent of Code Problem Set
