@@ -1,5 +1,7 @@
 # Advent of Code 2015 - Santa's Weather Machine
 
+Santa's weather machine is broken, so there isn't any snow for Christmas. Help Santa collect 50 stars to get the weather machien going.
+
 Advent of Code 2015 can be found [here](https://adventofcode.com/2015).
 
 I am coming to the 2015 problem set after having first done the 2020 problem set as my first year.
