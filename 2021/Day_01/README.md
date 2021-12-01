@@ -1,28 +1,66 @@
+# Day 1: Sonar Sweep
 
-    
-    # Title of Problem
+Out of respect for the author's wishes, I only put as much of the problem text as necessary to understand the problem.
 
-    Out of respect for the author's wishes, I only put as much of the problem text as necessary to understand the problem.
+Visit the version with all the story elements [here](https://adventofcode.com/2021/day/1).
 
-    Visit the version with all the story elements [here](https://adventofcode.com/2021/day/1).
+## Part 1
+...[your puzzle input] appears: each line is a measurement of the sea floor depth as the sweep looks further and further away from the submarine.
 
-    ## Part 1
+For example, suppose you had the following report:
 
-    ## Part 2
+    199
+    200
+    208
+    210
+    200
+    207
+    240
+    269
+    260
+    263
 
-    ## Commentary / Approach to the Problem
+This report indicates that, scanning outward from the submarine, the sonar sweep found depths of 199, 200, 208, 210, and so on.
 
-    ## What I Learned
+The first order of business is to figure out how quickly the depth increases
 
-    ### Generic
+count the number of times a depth measurement increases from the previous measurement
 
-    ### Python
+In the example above, the changes are as follows:
 
-    ### Ruby
+    199 (N/A - no previous measurement)
+    200 (increased)
+    208 (increased)
+    210 (increased)
+    200 (decreased)
+    207 (increased)
+    240 (increased)
+    269 (increased)
+    260 (decreased)
+    263 (increased)
 
-    ### Perl
+In this example, there are 7 measurements that are larger than the previous measurement.
 
-    ### Go (Golang)
+How many measurements are larger than the previous measurement?
 
-    ### Haskell
+Answer:
+
+
+## Part 2
+
+## Commentary / Approach to the Problem
+
+## What I Learned
+
+### Generic
+
+### Python
+
+### Ruby
+
+### Perl
+
+### Go (Golang)
+
+### Haskell
     

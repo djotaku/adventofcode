@@ -15,9 +15,9 @@ def parse_args():
 def create_language_readme_template(language: str, year: int, day: int):
     output_string = f"""# What I learned about {language} from this day's problem
     
-    ## Part 1
+## Part 1
     
-    ## Part 2
+## Part 2
     """
     with open(f"{HOME}/Programming Projects/adventofcode/{year}/Day_{day:02d}/{language}/README.md", "w") as file:
         file.write(output_string)
@@ -26,31 +26,31 @@ def create_language_readme_template(language: str, year: int, day: int):
 def create_daily_template(year: int, day: int):
     output_string = f"""
     
-    # Title of Problem
+# Title of Problem
 
-    Out of respect for the author's wishes, I only put as much of the problem text as necessary to understand the problem.
+Out of respect for the author's wishes, I only put as much of the problem text as necessary to understand the problem.
 
-    Visit the version with all the story elements [here](https://adventofcode.com/{year}/day/{day}).
+Visit the version with all the story elements [here](https://adventofcode.com/{year}/day/{day}).
 
-    ## Part 1
+## Part 1
 
-    ## Part 2
+## Part 2
 
-    ## Commentary / Approach to the Problem
+## Commentary / Approach to the Problem
 
-    ## What I Learned
+## What I Learned
 
-    ### Generic
+### Generic
 
-    ### Python
+### Python
 
-    ### Ruby
+### Ruby
 
-    ### Perl
+### Perl
 
-    ### Go (Golang)
+### Go (Golang)
 
-    ### Haskell
+### Haskell
     """
     with open(f"{HOME}/Programming Projects/adventofcode/{year}/Day_{day:02d}/README.md", "w") as file:
         file.write(output_string)

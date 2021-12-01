@@ -1,6 +1,6 @@
 # Advent of Code 2021 - 
 
-framing device description
+The keys to Santa's sleigh has fallen into the ocean. The stars power the antenna to find it.
 
 My fourth Advent of Code Problem set and the second one I'm doing live.
 
