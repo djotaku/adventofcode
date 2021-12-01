@@ -21,3 +21,21 @@ func OneLine(fileName string)(string, error){
 	}
 	return inputLine, nil
 }
+
+//MultipleLines returns the input file if it contains multiple lines of text
+func MultipleLines(fileName string)([]string, error){
+	inputSlice := make([]string, 0)
+	file, err := os.Open(fileName)
+	if err != nil{
+		return inputSlice, err
+	}
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan(){
+		inputSlice = append(inputSlice, scanner.Text())
+	}
+	err = file.Close()
+	if err != nil{
+		return inputSlice, err
+	}
+	return inputSlice, nil
+}
