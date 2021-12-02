@@ -8,6 +8,7 @@ def input_per_line(file: str):
 
 
 def part_one_sonar(part_one_sonar_measurements):
+    """For part one you want to count how many times n+1 > n from the list part_one_sonar_measurements."""
     increase_count = 0
     previous_measurement = int(part_one_sonar_measurements[0])
     for index in range(1, len(part_one_sonar_measurements)):
@@ -19,6 +20,7 @@ def part_one_sonar(part_one_sonar_measurements):
 
 
 def part_two_sonar(part_two_sonar_measurements):
+    """For part two counting how many times n+1 + n+2 + n+3 > n + n+1 + n+2."""
     increase_count = 0
     previous_triple = int(part_two_sonar_measurements[0]) + int(part_two_sonar_measurements[1]) + \
                       int(part_two_sonar_measurements[2])
@@ -37,5 +39,3 @@ if __name__ == "__main__":
     part_two_answer = part_two_sonar(sonar_measurements)
     print(f"There are {part_one_answer} measurements larger than the previous one.")
     print(f"If measuring by triples, {part_two_answer} measurements are larger than the previous one.")
-
-

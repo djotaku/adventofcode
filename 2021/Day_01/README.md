@@ -80,16 +80,31 @@ In this example, there are 5 sums that are larger than the previous sum.
 
 Consider sums of a three-measurement sliding window. How many sums are larger than the previous sum?
 
-Answer: 
+Answer: 1633
 
 ## Commentary / Approach to the Problem
+Since I was very excited that it was the first day of Advent of Code, I tried to get it done before heading out to work so I just did the first solution that came to mind. A couple of simple for loops handled things for me. 
 
 ## What I Learned
 
 ### Generic
+With my own solutions I didn't learn anything, but going into the Day 01 Megathread I learned a couple awesome things. First of all, the best and most elegant Python solution I saw was:
+
+```python
+part1 = sum((b>a) for (a,b) in zip(input,input[1:]))
+part2 = sum((b>a) for (a,b) in zip(input,input[3:]))
+```
+
+The more impressive thing was the person who pointed out:
+
+    x + y + z < y + z + a
+    is the same as
+    x < a
+
+That just blew my mind! How do people just look at the problem and have that pop out at them?
 
 ### Python
-
+- Nothing today
 ### Ruby
 
 ### Perl
