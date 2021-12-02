@@ -19,11 +19,27 @@ func compareDepthsPart1(depthsList []int) int {
 	return count
 }
 
+func compareDepthsPart2(depthsList []int) int {
+	count := 0
+	currentDepth := depthsList[0]
+	for index := 0; index < len(depthsList); index += 3 {
+		if index+3 < len(depthsList) {
+			if depthsList[index+3] > currentDepth {
+				count += 1
+			}
+			currentDepth = depthsList[index+3]
+		}
+	}
+	return count
+}
+
 func main() {
 	sonarDepths, err := aocinputs2021.MultipleLinesNumbers("/home/ermesa/Programming Projects/adventofcode/2021/Day_01/input.txt")
 	if err != nil {
 		print(err)
 	}
 	partOneAnswer := compareDepthsPart1(sonarDepths)
-	fmt.Printf("The number of times the depth measurement increases is %d", partOneAnswer)
+	fmt.Printf("The number of times the depth measurement increases is %d\n", partOneAnswer)
+	partTwoAnswer := compareDepthsPart2(sonarDepths)
+	fmt.Printf("The number of times the depth measurement increases is %d", partTwoAnswer)
 }
