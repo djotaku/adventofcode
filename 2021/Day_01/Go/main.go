@@ -7,10 +7,11 @@ import (
 	"fmt"
 )
 
+// compareDepthsPart1 is a simple for loop, comparing each item with the next one to see if it's greater
 func compareDepthsPart1(depthsList []int) int {
 	count := 0
 	currentDepth := depthsList[0]
-	for index, _ := range depthsList {
+	for index := range depthsList {
 		if depthsList[index] > currentDepth {
 			count += 1
 		}
@@ -19,15 +20,16 @@ func compareDepthsPart1(depthsList []int) int {
 	return count
 }
 
+// compareDepthsPart2 uses the principle that if you want to know if a+b+c > b+c+d you just need to know if a < d
 func compareDepthsPart2(depthsList []int) int {
 	count := 0
 	currentDepth := depthsList[0]
-	for index := 0; index < len(depthsList); index += 3 {
+	for index := range depthsList {
 		if index+3 < len(depthsList) {
 			if depthsList[index+3] > currentDepth {
 				count += 1
 			}
-			currentDepth = depthsList[index+3]
+			currentDepth = depthsList[index+1]
 		}
 	}
 	return count
@@ -41,5 +43,5 @@ func main() {
 	partOneAnswer := compareDepthsPart1(sonarDepths)
 	fmt.Printf("The number of times the depth measurement increases is %d\n", partOneAnswer)
 	partTwoAnswer := compareDepthsPart2(sonarDepths)
-	fmt.Printf("The number of times the depth measurement increases is %d", partTwoAnswer)
+	fmt.Printf("The number of times the depth measurement increases when looking at triples is %d", partTwoAnswer)
 }
