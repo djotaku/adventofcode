@@ -1,6 +1,7 @@
 # What I learned about Go from this day's problem
     
-    ## Part 1
-    
-    ## Part 2
+## Part 1
+- Nothing    
+## Part 2
+- Nothing
     
