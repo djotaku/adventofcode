@@ -67,15 +67,16 @@ For part one this seems very simple. Simply keep track of your vertical and hori
 
 Not too hard to put this together for part 2 either. If I spent more time I could get it to probably be one function, but time was limited this morning.
 ## What I Learned
-
+- Nothing
 ### Generic
 
 ### Python
-
+- Nothing
 ### Ruby
-
+- TBD at a future date
 ### Perl
-
+- TBD at a future date
 ### Go (Golang)
 
-### Haskell    
+### Haskell
+- TBD at a future date

@@ -106,10 +106,10 @@ That just blew my mind! How do people just look at the problem and have that pop
 ### Python
 - Nothing today
 ### Ruby
-
+- TBD at a future date
 ### Perl
-
+- TBD at a future date
 ### Go (Golang)
 - Nothing new learned for go, but I did use the  x + y + z < y + z + a principle to simplify my part 2 answer compared to Python
 ### Haskell
-    
+- TBD at a future date
