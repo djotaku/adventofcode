@@ -1,28 +1,25 @@
+# Title of Problem
 
-    
-    # Title of Problem
+Out of respect for the author's wishes, I only put as much of the problem text as necessary to understand the problem.
 
-    Out of respect for the author's wishes, I only put as much of the problem text as necessary to understand the problem.
+Visit the version with all the story elements [here](https://adventofcode.com/2021/day/2).
 
-    Visit the version with all the story elements [here](https://adventofcode.com/2021/day/2).
+## Part 1
 
-    ## Part 1
+## Part 2
 
-    ## Part 2
+## Commentary / Approach to the Problem
 
-    ## Commentary / Approach to the Problem
+## What I Learned
 
-    ## What I Learned
+### Generic
 
-    ### Generic
+### Python
 
-    ### Python
+### Ruby
 
-    ### Ruby
+### Perl
 
-    ### Perl
+### Go (Golang)
 
-    ### Go (Golang)
-
-    ### Haskell
-    
+### Haskell    
