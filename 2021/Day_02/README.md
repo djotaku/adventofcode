@@ -73,7 +73,7 @@ Not too hard to put this together for part 2 either. If I spent more time I coul
 ### Python
 - Nothing
 ### Ruby
-- TBD at a future date
+- Nothing
 ### Perl
 - TBD at a future date
 ### Go (Golang)
