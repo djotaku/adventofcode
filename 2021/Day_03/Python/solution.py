@@ -22,13 +22,7 @@ def binary_positions(diagnostics: list) -> int:
     gamma_rate = ""
     epsilon_rate = ""
     position_count_dict = {}
-    for diagnostic_line in diagnostics:
-        positional_diagnostic = [int(pos) for pos in diagnostic_line]
-        for index, position_value in enumerate(positional_diagnostic):
-            if index in position_count_dict:
-                position_count_dict[index] += position_value
-            else:
-                position_count_dict[index] = position_value
+    position_count_dict = count_positions(diagnostics, position_count_dict)
     for key, value in position_count_dict.items():
         if value > diagnostics_length/2:
             gamma_rate += "1"
@@ -43,7 +37,39 @@ def binary_positions(diagnostics: list) -> int:
     return gamma_rate_decimal * epsilon_rate_decimal
 
 
+def count_positions(diagnostics, position_count_dict):
+    for diagnostic_line in diagnostics:
+        positional_diagnostic = [int(pos) for pos in diagnostic_line]
+        for index, position_value in enumerate(positional_diagnostic):
+            if index in position_count_dict:
+                position_count_dict[index] += position_value
+            else:
+                position_count_dict[index] = position_value
+    return position_count_dict
+
+
+def generator_ratings(diagnostics: list, o2_or_co2: str, position: int) -> int:
+    """With the diagnostics list determine the O2 or CO2 generator rating."""
+    if len(diagnostics) == 1:
+        # we have found our value
+        return int(bytearray(diagnostics[0], "utf8"), 2)
+    else:
+        position_count_dict = count_positions(diagnostics, {})
+        print(position_count_dict)
+        binary_number_we_want = 0
+        if o2_or_co2 == "o2":
+            if position_count_dict[position] > len(diagnostics):
+                binary_number_we_want = "1"
+            else:
+                binary_number_we_want = "0"
+        print(diagnostics)
+        new_diagnostics = [diagnostic for diagnostic in diagnostics if diagnostic[position] == binary_number_we_want]
+        print(new_diagnostics)
+        return generator_ratings(new_diagnostics, o2_or_co2, position+1)
+
+
 if __name__ == "__main__":
     our_diagnostics = input_per_line("../input.txt")
     part_one = binary_positions(our_diagnostics)
     print(f"Our power consumption is {part_one}.")
+    oxygen_generator_ratings = generator_ratings(our_diagnostics, "o2", 0)
