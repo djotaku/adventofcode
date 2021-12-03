@@ -77,6 +77,6 @@ Not too hard to put this together for part 2 either. If I spent more time I coul
 ### Perl
 - TBD at a future date
 ### Go (Golang)
-
+- Nothing, but more practice using string.Split
 ### Haskell
 - TBD at a future date
