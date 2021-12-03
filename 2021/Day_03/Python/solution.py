@@ -50,22 +50,25 @@ def count_positions(diagnostics, position_count_dict):
 
 def generator_ratings(diagnostics: list, o2_or_co2: str, position: int) -> int:
     """With the diagnostics list determine the O2 or CO2 generator rating."""
+    # print(f"We are starting with {diagnostics=}")
     if len(diagnostics) == 1:
         # we have found our value
         return int(bytearray(diagnostics[0], "utf8"), 2)
+    position_count_dict = count_positions(diagnostics, {})
+    # print(f"These are {position_count_dict=}")
+    binary_number_we_want = 0
+    if o2_or_co2 == "o2":
+        if position_count_dict[position] >= len(diagnostics)/2:
+            binary_number_we_want = "1"
+        else:
+            binary_number_we_want = "0"
+    elif position_count_dict[position] >= len(diagnostics)/2:
+        binary_number_we_want = "0"
     else:
-        position_count_dict = count_positions(diagnostics, {})
-        print(position_count_dict)
-        binary_number_we_want = 0
-        if o2_or_co2 == "o2":
-            if position_count_dict[position] > len(diagnostics):
-                binary_number_we_want = "1"
-            else:
-                binary_number_we_want = "0"
-        print(diagnostics)
-        new_diagnostics = [diagnostic for diagnostic in diagnostics if diagnostic[position] == binary_number_we_want]
-        print(new_diagnostics)
-        return generator_ratings(new_diagnostics, o2_or_co2, position+1)
+        binary_number_we_want = "1"
+    new_diagnostics = [diagnostic for diagnostic in diagnostics if diagnostic[position] == binary_number_we_want]
+    # print(f"After filtering out what we don't want {new_diagnostics=}")
+    return generator_ratings(new_diagnostics, o2_or_co2, position+1)
 
 
 if __name__ == "__main__":
@@ -73,3 +76,5 @@ if __name__ == "__main__":
     part_one = binary_positions(our_diagnostics)
     print(f"Our power consumption is {part_one}.")
     oxygen_generator_ratings = generator_ratings(our_diagnostics, "o2", 0)
+    carbon_dioxide_generator_ratings = generator_ratings(our_diagnostics, "co2", 0)
+    print(f"The life support rating for the sub is {oxygen_generator_ratings * carbon_dioxide_generator_ratings}")

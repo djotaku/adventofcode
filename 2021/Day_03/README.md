@@ -69,20 +69,23 @@ Finally, to find the life support rating, multiply the oxygen generator rating (
 
 Use the binary numbers in your diagnostic report to calculate the oxygen generator rating and CO2 scrubber rating, then multiply them together. What is the life support rating of the submarine? (Be sure to represent your answer in decimal, not binary.)
 
+Answer: 4474944
+
 ## Commentary / Approach to the Problem
 Interestingly, this is similar to 2015 Day 6 which was to be the next one I was going to try. However, since it's binary, I think the solution is a lot simpler. I can just total the 1s per position and then compare that to half the length of my data.
 
+Part two was a real PITA in terms of properly understanding the filtering. Once I did, it wasn't too bad, but I had to do a unit test to make sure I was doing the right thing.
 ## What I Learned
 
 ### Generic
 
 ### Python
-
+- Nothing
 ### Ruby
-
+- TBD
 ### Perl
-
+- TBD
 ### Go (Golang)
-
+- TBD
 ### Haskell
-    
+- TBD
