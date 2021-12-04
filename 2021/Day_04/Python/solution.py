@@ -105,13 +105,20 @@ if __name__ == "__main__":
     print(f"The winning score is from board {winning_board} and the score is {part_one_final_score}")
     # time for part 2
     winning_boards = set()
-    for number in range(len(game_boards.keys())):
-        winning_board, winning_number, modified_dictionary = bingo_game(called_numbers, game_boards)
-        if len(winning_boards) < len(game_boards.keys()):
-            modified_dictionary.pop(winning_board)
+    total_game_boards = len(game_boards.keys())
+    print(f"{total_game_boards=}")
+    for _ in range(total_game_boards):
+        winning_board, winning_number, modified_game_boards_part2 = bingo_game(called_numbers, game_boards)
+        # print(f"{len(winning_boards)=}")
+        # print(f"{len(game_boards.keys())=}")
+        if len(winning_boards) < total_game_boards - 1:
+            modified_game_boards_part2.pop(winning_board)
             winning_boards.add(winning_board)
-    part_two_final_score = final_score(winning_number, modified_game_boards[winning_board])
-    print(f"If you decide to let the wookie...I mean, the giant squid win, tThe winning score is from board "
+        else:
+            break
+    part_two_final_score = final_score(winning_number, modified_game_boards_part2[winning_board])
+    print(f"If you decide to let the wookie...I mean, the giant squid win, the winning score is from board "
           f"{winning_board} and the score is {part_two_final_score}")
 
 # 7575 is too low
+# 33835 is too high

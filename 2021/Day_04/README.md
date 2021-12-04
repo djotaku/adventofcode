@@ -45,7 +45,7 @@ In the above example, the second board is the last to win, which happens after 1
 
 Figure out which board will win last. Once it wins, what would its final score be?
 
-Answer: 
+Answer: 10030
 
 ## Commentary / Approach to the Problem
 ### Part 1
