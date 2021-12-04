@@ -72,6 +72,7 @@ def bingo_game(called_numbers: str, boards: dict) -> (int, int, dict):
     called_numbers_list = called_numbers.split(",")
     final_number = 0
     win_and_number = [False, 0]
+    boards_that_have_won = set()
     for number in called_numbers_list:
         for bingo_board, value in boards.items():
             for row in range(5):
@@ -102,3 +103,15 @@ if __name__ == "__main__":
     winning_board, winning_number, modified_game_boards = bingo_game(called_numbers, game_boards)
     part_one_final_score = final_score(winning_number, modified_game_boards[winning_board])
     print(f"The winning score is from board {winning_board} and the score is {part_one_final_score}")
+    # time for part 2
+    winning_boards = set()
+    for number in range(len(game_boards.keys())):
+        winning_board, winning_number, modified_dictionary = bingo_game(called_numbers, game_boards)
+        if len(winning_boards) < len(game_boards.keys()):
+            modified_dictionary.pop(winning_board)
+            winning_boards.add(winning_board)
+    part_two_final_score = final_score(winning_number, modified_game_boards[winning_board])
+    print(f"If you decide to let the wookie...I mean, the giant squid win, tThe winning score is from board "
+          f"{winning_board} and the score is {part_two_final_score}")
+
+# 7575 is too low

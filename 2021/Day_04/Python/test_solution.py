@@ -47,3 +47,17 @@ def test_final_score():
     new_sample_called, new_sample_dict = solution.find_numbers_and_bingo_cards(deepcopy(sample_input))
     winning_board, winning_number, modified_dictionary = solution.bingo_game(new_sample_called, new_sample_dict)
     assert solution.final_score("24", modified_dictionary[2]) == 4512
+
+
+def test_bingo_game_squid_wins():
+    new_sample_called, new_sample_dict = solution.find_numbers_and_bingo_cards(deepcopy(sample_input))
+    winning_boards = set()
+    winning_board = 0
+    winning_number = ""
+    for number in range(len(new_sample_dict.keys())):
+        winning_board, winning_number, modified_dictionary = solution.bingo_game(new_sample_called, new_sample_dict)
+        if len(winning_boards) < len(new_sample_dict.keys()):
+            modified_dictionary.pop(winning_board)
+            winning_boards.add(winning_board)
+    assert winning_board == 1
+    assert winning_number == "13"
