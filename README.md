@@ -1,4 +1,4 @@
-tota# Advent of Code
+# Advent of Code
 
 In 2020 I discovered https://adventofcode.com/ via the Python Discord server. 
 
@@ -31,11 +31,11 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
 - 2021
   - Fourth Problem Set/Second Year Participating Live
   - Will primarily solve with Python during December 2021
-  - 4 stars collected so far
+  - 6 stars collected so far
 
 ![total stars](https://github.com/djotaku/adventofcode/blob/5bb7d77c377c65f30cc2ce2611cde563163fd9ea/screenshots/total_star_count_20211202.png)
 
-Total Stars Over All Years: 96
+Total Stars Over All Years: 102
 
 After I'm all caught up, I may try my hand at some visualizations.
     
