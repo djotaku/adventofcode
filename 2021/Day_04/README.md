@@ -67,10 +67,10 @@ This is definitely going to be a problem where I will need some robust unit test
 ### Python
 - Nothing, but I'm glad I remembered about copy.deepcopy from last year. Otherwise this would have taken me all day!
 ### Ruby
-
+- TBD
 ### Perl
-
+- TBD
 ### Go (Golang)
-
+- TBD
 ### Haskell
-    
+- TBD
