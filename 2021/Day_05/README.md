@@ -29,25 +29,40 @@ you need to determine the number of points where at least two lines overlap.
 
 Consider only horizontal and vertical lines. At how many points do at least two lines overlap?
 
-Answer: 
+Answer: 7414
 
 ## Part 2
+you need to also consider diagonal lines.
+
+the lines in your list will only ever be horizontal, vertical, or a diagonal line at exactly 45 degrees. In other words:
+
+- An entry like 1,1 -> 3,3 covers points 1,1, 2,2, and 3,3.
+- An entry like 9,7 -> 7,9 covers points 9,7, 8,8, and 7,9.
+
+You still need to determine the number of points where at least two lines overlap. In the above example, this is still anywhere in the diagram with a 2 or larger - now a total of 12 points.
+
+Consider all of the lines. At how many points do at least two lines overlap?
+
+Answer: 19676
 
 ## Commentary / Approach to the Problem
 ### Part 1
 My initial strategy is to:
 - Parse each line of the input to figure out the points it crosses
 - Use the Counter to count how many points are 2 or larger
+
+My [first time through](https://github.com/djotaku/adventofcode/blob/a406e28bffcc9e1a3693dfa737e5779cfea2753b/2021/Day_05/Python/solution.py), I just did an "else" and so I wasn't only considering the vertical and horizontal lines.
 ## What I Learned
 
 ### Generic
 
 ### Python
-
+- Nothing
 ### Ruby
-
+- TBD
 ### Perl
-
+- TBD
 ### Go (Golang)
-
+- TBD
 ### Haskell
+- TBD
