@@ -21,8 +21,8 @@ def create_points_in_between(endpoints: list) -> list:
             return [(x, y) for y in range(y1, y2 + 1, step)]
         else:
             step = -1
-            return [(x, y) for y in range(y2, y1+1, step)]
-    else:
+            return [(x, y) for y in range(y1, y2 - 1, step)]
+    elif endpoints[0][1] == endpoints[1][1]:
         y = int(endpoints[0][1])
         x1 = int(endpoints[0][0])
         x2 = int(endpoints[1][0])
@@ -31,7 +31,7 @@ def create_points_in_between(endpoints: list) -> list:
             return [(x, y) for x in range(x1, x2 + 1, step)]
         else:
             step = -1
-            return [(x, y) for x in range(x1, x2-1, step)]
+            return [(x, y) for x in range(x1, x2 - 1, step)]
 
 
 def create_start_and_end_points(input_line: str) -> list:
@@ -50,8 +50,10 @@ if __name__ == "__main__":
     for line in vent_list:
         start_and_end = create_start_and_end_points(line)
         point_list = create_points_in_between(start_and_end)
+        print(f"{point_list}")
         point_Count.update(point_list)
     for key, value in point_Count.items():
         if value >= 2:
             part_one_answer += 1
+    print(point_Count)
     print(f"At least {part_one_answer} points are the overlap of two lines.")
