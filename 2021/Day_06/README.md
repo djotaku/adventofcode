@@ -56,6 +56,11 @@ Find a way to simulate lanternfish. How many lanternfish would there be after 80
 Answer: 374994
 
 ## Part 2
+After 256 days in the example above, there would be a total of 26984457539 lanternfish!
+
+How many lanternfish would there be after 256 days?
+
+Answer: 1686252324092
 
 ## Commentary / Approach to the Problem
 ### Part 1
@@ -65,18 +70,21 @@ I think perhaps one thing that will be tricky is what if you need to add more th
 
 So I will need to think a bit about how I do that. 
 
-On possibility is to pass the list into a function that function returns the decremented list plus a new list of newly born lantern fish to add onto the end.
+One possibility is to pass the list into a function that function returns the decremented list plus a new list of newly born lantern fish to add onto the end. <- this is what I did for part one.
+
+For part 2, my computer started slowing to a crawl around day 157. As always the solution when things go bonkers is dictionaries/hashes/maps. I'm happy I was able to figure it out on my own. MAYBE when this is all over I'll come back and fix it so that both parts 1 and 2 are answered with one function.
+
 ## What I Learned
 
 ### Generic
 
 ### Python
-
+- Nothing
 ### Ruby
-
+- TBD
 ### Perl
-
+- TBD
 ### Go (Golang)
-
+- TBD
 ### Haskell
-    
+- TBD
