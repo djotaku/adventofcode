@@ -32,6 +32,7 @@ if __name__ == "__main__":
     fish_population = [int(fish) for fish in initial_fish_population]
     part_one_fish_population = 0
     for day in range(256):
+        print(f"{day=}")
         fish_population = fish_birth(fish_population)
         if day == 79:
             part_one_fish_population = fish_population
