@@ -69,6 +69,7 @@ Looks like I can continue with the naive approach, but will want to factor this 
 
 But Sourcery wanted me to refactor it and so we ended up with...
 
+[this](https://github.com/djotaku/adventofcode/blob/bf95af182dc97691de768e626c15defc52534492/2021/Day_07/Python/solution.py)
 
 ## What I Learned
 
