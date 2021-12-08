@@ -17,145 +17,46 @@ ZERO_SIX_NINE = 6
 TWO_THREE_FIVE = 5
 
 
-# 7 segs  8
-# 6 segs  0, 6, 9
-#             missing segment in 6 is a segment in 1 or 7
-#             missing segment in 0 is a segment in 4 but not 1
-#             missing segment in 9 is not a segment in 1,4,or 7
-# 5 segs  2, 3, 5
-#             both missing segments in 2 are in 4
-#             only one missing segment in 5 is in 4
-#             both missing segments in 3 are not in 1 or 7
-# 4 segs  4
-# 3 segs  7
-# 2 segs  1
+def determine_cache(scrambled_line: str) -> dict:
+    """Takes in our scrambled digits and tells you what letters are in each used for the various segment lengths."""
+    cache = {}
+    for this_digit in scrambled_line.split(" "):
+        this_digit = this_digit.strip()
+        cache[len(this_digit)] = set(this_digit)
+    return cache
 
 
-def decode_segments(scrambled_line: str, decoded_dictionary: dict) -> dict:
-    """Take in string of scrambled digits.
-
-    Return a decoding dictionary to analyze the output.
-    """
-    scrambled_digits = scrambled_line.split()
-    this_one = ""
-    this_four = ""
-    this_seven = ""
-    this_eight = ""
-    letters_in_common_with_one = 0
-    letters_in_common_with_four = 0
-    letters_in_common_with_seven = 0
-    letters_in_common_with_eight = 0
-    for this_digit in scrambled_digits:
-        print(f"{this_digit=}")
-        if len(this_digit) == ONE:
-            decoded_dictionary[this_digit] = 1
-            this_one = this_digit
-        elif len(this_digit) == FOUR:
-            decoded_dictionary[this_digit] = 4
-            this_four = this_digit
-        elif len(this_digit) == SEVEN:
-            decoded_dictionary[this_digit] = 7
-            this_seven = this_digit
-        elif len(this_digit) == EIGHT:
-            decoded_dictionary[this_digit] = 8
-            this_eight = this_digit
-        elif len(this_digit) == ZERO_SIX_NINE:
-            print(f"I am {ZERO_SIX_NINE=} length")
-            this_digit_letters = [letter for letter in this_digit]
-            # check 6 first
-            # do we already have it?
-            if 6 not in decoded_dictionary.values():
-                if this_one != "":
-                    letters_in_one = [letter for letter in this_one]
-                    for letter in this_digit_letters:
-                        if letter in letters_in_one:
-                            letters_in_common_with_one += 1
-                    if letters_in_common_with_one >= 2:
-                        # this is not 6
-                        # check if 0 - compare to 4
-                        if 0 not in decoded_dictionary.values():
-                            if this_four != "":
-                                letters_in_four = [letter for letter in this_four]
-                                for letter in this_digit_letters:
-                                    if letter in letters_in_four:
-                                        letters_in_common_with_four += 1
-                                if letters_in_common_with_four == 4:
-                                    decoded_dictionary[this_digit] = 9
-                                else:
-                                    decoded_dictionary[this_digit] = 0  # not 100% sure about this
-                    elif letters_in_common_with_one < 2:
-                        decoded_dictionary[this_digit] = 6  # maybe?
-                elif this_seven != "":
-                    letters_in_seven = [letter for letter in this_one]
-                    for letter in this_digit_letters:
-                        if letter in letters_in_seven:
-                            letters_in_common_with_seven += 1
-                    if letters_in_common_with_seven >= 3:
-                        # this is not 6
-                        # check if 0 - compare to four
-                        if 0 not in decoded_dictionary.values():
-                            if this_four != "":
-                                letters_in_four = [letter for letter in this_four]
-                                for letter in this_digit_letters:
-                                    if letter in letters_in_four:
-                                        letters_in_common_with_four += 1
-                                if letters_in_common_with_four == 4:
-                                    decoded_dictionary[this_digit] = 9
-                                else:
-                                    decoded_dictionary[this_digit] = 0  # not 100% sure about this
-            elif 0 not in decoded_dictionary.values():
-                # 6 is already decoded if we got here, so it's a zero or a 9
-                # this means we can only depend on 4 as a distinction
-                if this_four != "":
-                    letters_in_four = [letter for letter in this_four]
-                    for letter in this_digit_letters:
-                        if letter in letters_in_four:
-                            letters_in_common_with_four += 1
-                    if letters_in_common_with_four == 4:
-                        decoded_dictionary[this_digit] = 9
-                    else:
-                        decoded_dictionary[this_digit] = 0  # I think
-            else:  # I think if we got here it's definitely 9?
-                decoded_dictionary[this_digit] = 9
-        elif len(this_digit) == TWO_THREE_FIVE:
-            print(f"I am {TWO_THREE_FIVE=} length")
-            this_digit_letters = [letter for letter in this_digit]
-            # check for 2
-            if 2 not in decoded_dictionary.values():
-                if this_four != "":
-                    letters_in_four = [letter for letter in this_four]
-                    for letter in this_digit_letters:
-                        if letter in letters_in_four:
-                            letters_in_common_with_four += 1
-                    if letters_in_common_with_four >= 2:
-                        if letters_in_common_with_four == 3:
-                            decoded_dictionary[this_digit] = 3
-                    else:
-                        decoded_dictionary[this_digit] = 2  # I think
-            elif 5 not in decoded_dictionary.values():
-                if this_four != "":
-                    letters_in_four = [letter for letter in this_four]
-                    for letter in this_digit_letters:
-                        if letter in letters_in_four:
-                            letters_in_common_with_four += 1
-                    if letters_in_common_with_four >= 3:
-                        decoded_dictionary[this_digit] = 3
-                    else:
-                        decoded_dictionary[this_digit] = 5  # I think
-            else:
-                decoded_dictionary[this_digit] = 3  # I think
-        letters_in_common_with_one = 0
-        letters_in_common_with_four = 0
-        letters_in_common_with_seven = 0
-        letters_in_common_with_eight = 0
-    if len(decoded_dictionary.keys()) < 11:
-        return decode_segments(scrambled_line, decoded_dictionary)
+def figure_out_digit(this_number, figure_out_cache):
+    """use the cache to figure out which number we're dealing with."""
+    if len(this_number) == 6:
+        if len(set(this_number).union(figure_out_cache[4])) == 6:
+            return "9"
+        elif len(set(this_number).intersection(figure_out_cache[1])) == 2:
+            return "0"
+        else:
+            return "6"
+    elif len(this_number) == 5:
+        if len(set(this_number).union(figure_out_cache[1])) == len(set(this_number)):
+            return "3"
+        elif len(set(this_number).union(figure_out_cache[4])) == 7:
+            return "2"
+        else:
+            return "5"
     else:
-        return decoded_dictionary
+        values_we_know_from_part_1 = {2: "1", 4: "4", 3: "7", 7: "8"}
+        return values_we_know_from_part_1[len(this_number)]
+
+
+def turn_letters_into_number(output_number, this_cache):
+    """Figure out what each digit is, combine then, turn from string into a number."""
+    print(output_number)
+    print(this_cache)
+    return int("".join([figure_out_digit(number, this_cache) for number in output_number.split(" ")]))
 
 
 if __name__ == "__main__":
     scrambled_input = input_per_line("../input.txt")
+    #scrambled_input = ["acedgfb cdfbe gcdfa fbcad dab cefabd cdfgeb eafb cagedb ab | cdfeb fcadb cdfeb cdbaf"]
     digit_count = 0
     for line in scrambled_input:
         right_hand_side = line.split("|")
@@ -164,3 +65,15 @@ if __name__ == "__main__":
             if len(digit) in [ONE, FOUR, SEVEN, EIGHT]:
                 digit_count += 1
     print(f"1, 4, 7, or 8 appear {digit_count} times.")
+    # To make things easier to understand the answer I'm adapting, I'm just
+    # going to just work from here instead of adapting it to the for loop above
+    # adapted from
+    # https://github.com/barrezuetai/advent-of-code/blob/8174134df374ae384dd545da730f99c747c91522/day8/day8b.py
+    # by /u/itsa_me_
+    print([turn_letters_into_number(right_hand_side, determine_cache(left_hand_side))
+           for left_hand_side, right_hand_side in [line.split(" | ") for line in scrambled_input]])
+    #for line in scrambled_input:
+    #    left_hand_side, right_hand_side = line.strip().split(" | ")
+    #    cache = determine_cache(left_hand_side)
+    #    value = turn_letters_int_number(right_hand_side, cache)
+    #    print(value)
