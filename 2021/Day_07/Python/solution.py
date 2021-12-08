@@ -8,8 +8,8 @@ def input_only_one_line(file: str):
 
 
 if __name__ == "__main__":
-    # crab_positions = input_only_one_line("../input.txt")
-    crab_positions = "16,1,2,0,4,2,7,1,2,14"
+    crab_positions = input_only_one_line("../input.txt")
+    # crab_positions = "16,1,2,0,4,2,7,1,2,14"
     crab_positions = crab_positions.split(",")
     crab_positions = [int(crab) for crab in crab_positions]
     crab_fuel = {}
@@ -19,9 +19,7 @@ if __name__ == "__main__":
         crab_fuel[position] = 0  # let's just make sure all of these exist
     for crab in crab_positions:
         for position in range(minimum_crab_position, maximum_crab_position+1):
-            # print(f"This would be {crab} - {position}")
             crab_fuel[position] += abs(crab-position)
-    print(crab_fuel)
     fuel_costs = list(crab_fuel.values())
     minimal_fuel = min(fuel_costs)
     print(f"The minimal fuel to align the crabs is {minimal_fuel}")

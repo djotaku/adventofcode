@@ -28,9 +28,29 @@ This costs a total of 37 fuel. This is the cheapest possible outcome; more expen
 
 Determine the horizontal position that the crabs can align to using the least fuel possible. How much fuel must they spend to align to that position?
 
-Answer:
+Answer: 344297
 
 ## Part 2
+crab submarine engines don't burn fuel at a constant rate. Instead, each change of 1 step in horizontal position costs 1 more unit of fuel than the last: the first step costs 1, the second step costs 2, the third step costs 3, and so on.
+
+As each crab moves, moving further becomes more expensive. This changes the best horizontal position to align them all on; in the example above, this becomes 5:
+
+- Move from 16 to 5: 66 fuel
+- Move from 1 to 5: 10 fuel
+- Move from 2 to 5: 6 fuel
+- Move from 0 to 5: 15 fuel
+- Move from 4 to 5: 1 fuel
+- Move from 2 to 5: 6 fuel
+- Move from 7 to 5: 3 fuel
+- Move from 1 to 5: 10 fuel
+- Move from 2 to 5: 6 fuel
+- Move from 14 to 5: 45 fuel
+
+This costs a total of 168 fuel. This is the new cheapest possible outcome; the old alignment position (2) now costs 206 fuel instead.
+
+Determine the horizontal position that the crabs can align to using the least fuel possible so they can make you an escape route! How much fuel must they spend to align to that position?
+
+Answer: 
 
 ## Commentary / Approach to the Problem
 ### Part 1
@@ -39,6 +59,9 @@ Two approaches came to me at first. The naive approach - calculate the fuel for 
 The other approach, I can "vocalize", but have to think about programming it. Figure out where the highest distribution of crabs is and search around that space. The example input, for example, has mostly small numbers and 3 crabs already at position 2. I don't quite have the math training I'd need for that, but perhaps finding the average could point me in the right directions as a place to start. If it's like yesterday where part 2 is the same, but more, then this would definitely be the approach. 
 
 I plan to start with the naive approach and go from there.
+
+### Part 2
+Looks like I can continue with the naive approach, but will want to factor this out to a function.
 
 ## What I Learned
 
