@@ -71,7 +71,7 @@ I think perhaps one thing that will be tricky is what if you need to add more th
 So I will need to think a bit about how I do that. 
 
 One possibility is to pass the list into a function that function returns the decremented list plus a new list of newly born lantern fish to add onto the end. <- this is what I did for part one.
-
+### Part 2
 For part 2, my computer started slowing to a crawl around day 157. As always the solution when things go bonkers is dictionaries/hashes/maps. I'm happy I was able to figure it out on my own. MAYBE when this is all over I'll come back and fix it so that both parts 1 and 2 are answered with one function.
 
 ## What I Learned
