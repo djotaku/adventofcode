@@ -63,6 +63,8 @@ I plan to start with the naive approach and go from there.
 ### Part 2
 Looks like I can continue with the naive approach, but will want to factor this out to a function.
 
+[A little googling brought me to the equation I needed.](https://en.wikipedia.org/wiki/1_%2B_2_%2B_3_%2B_4_%2B_%E2%8B%AF) I literally just googled 1+2+3+4 series. That gave me the equation I needed. 
+
 ## What I Learned
 
 ### Generic
