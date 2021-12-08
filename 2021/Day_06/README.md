@@ -74,6 +74,9 @@ One possibility is to pass the list into a function that function returns the de
 ### Part 2
 For part 2, my computer started slowing to a crawl around day 157. As always the solution when things go bonkers is dictionaries/hashes/maps. I'm happy I was able to figure it out on my own. MAYBE when this is all over I'll come back and fix it so that both parts 1 and 2 are answered with one function.
 
+I was extremely happy that when I posted my solution for the day to the megathread, I got the following [comment](https://www.reddit.com/r/adventofcode/comments/r9z49j/comment/hnjspfu/?utm_source=share&utm_medium=web2x&context=3):
+
+"This… this is great. Thank you. Your code was the first one that I could logically follow and make sense of how to solve the problem. Great job!"
 ## What I Learned
 
 ### Generic
