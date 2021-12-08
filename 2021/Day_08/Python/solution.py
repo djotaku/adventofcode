@@ -26,19 +26,21 @@ def determine_cache(scrambled_line: str) -> dict:
     return cache
 
 
-def figure_out_digit(this_number, figure_out_cache):
+def figure_out_digit(this_number, the_cache):
     """use the cache to figure out which number we're dealing with."""
+    print(f"{this_number=}")
+    print(f"{the_cache=}")
     if len(this_number) == 6:
-        if len(set(this_number).union(figure_out_cache[4])) == 6:
+        if len(set(this_number).union(the_cache[4])) == 6:
             return "9"
-        elif len(set(this_number).intersection(figure_out_cache[1])) == 2:
+        elif len(set(this_number).intersection(the_cache[1])) == 2:
             return "0"
         else:
             return "6"
     elif len(this_number) == 5:
-        if len(set(this_number).union(figure_out_cache[1])) == len(set(this_number)):
+        if len(set(this_number).union(the_cache[1])) == len(set(this_number)):
             return "3"
-        elif len(set(this_number).union(figure_out_cache[4])) == 7:
+        elif len(set(this_number).union(the_cache[4])) == 7:
             return "2"
         else:
             return "5"
@@ -71,7 +73,8 @@ if __name__ == "__main__":
     # https://github.com/barrezuetai/advent-of-code/blob/8174134df374ae384dd545da730f99c747c91522/day8/day8b.py
     # by /u/itsa_me_
     print([turn_letters_into_number(right_hand_side, determine_cache(left_hand_side))
-           for left_hand_side, right_hand_side in [line.split(" | ") for line in scrambled_input]])
+           for left_hand_side, right_hand_side in [line.strip().split(" | ")
+                                                   for line in scrambled_input]])
     #for line in scrambled_input:
     #    left_hand_side, right_hand_side = line.strip().split(" | ")
     #    cache = determine_cache(left_hand_side)
