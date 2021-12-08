@@ -31,12 +31,11 @@ TWO_THREE_FIVE = 5
 # 2 segs  1
 
 
-def decode_segments(scrambled_line: str) -> dict:
+def decode_segments(scrambled_line: str, decoded_dictionary: dict) -> dict:
     """Take in string of scrambled digits.
 
     Return a decoding dictionary to analyze the output.
     """
-    decoded_dictionary = {}
     scrambled_digits = scrambled_line.split()
     this_one = ""
     this_four = ""
@@ -142,14 +141,17 @@ def decode_segments(scrambled_line: str) -> dict:
                     if letters_in_common_with_four >= 3:
                         decoded_dictionary[this_digit] = 3
                     else:
-                        decoded_dictionary[this_digit] = 5 # I think
+                        decoded_dictionary[this_digit] = 5  # I think
             else:
                 decoded_dictionary[this_digit] = 3  # I think
         letters_in_common_with_one = 0
         letters_in_common_with_four = 0
         letters_in_common_with_seven = 0
         letters_in_common_with_eight = 0
-    return decoded_dictionary
+    if len(decoded_dictionary.keys()) < 11:
+        return decode_segments(scrambled_line, decoded_dictionary)
+    else:
+        return decoded_dictionary
 
 
 if __name__ == "__main__":
