@@ -65,17 +65,22 @@ Looks like I can continue with the naive approach, but will want to factor this 
 
 [A little googling brought me to the equation I needed.](https://en.wikipedia.org/wiki/1_%2B_2_%2B_3_%2B_4_%2B_%E2%8B%AF) I literally just googled 1+2+3+4 series. That gave me the equation I needed. 
 
+[This is the solution I came up with.](https://github.com/djotaku/adventofcode/blob/872ae1a9f9f803e935d9f5c4d9b55d6c0cb15c3a/2021/Day_07/Python/solution.py)
+
+But Sourcery wanted me to refactor it and so we ended up with...
+
+
 ## What I Learned
 
 ### Generic
-
+- A reminder of the addition series formula
 ### Python
-
+- Nothing
 ### Ruby
-
+- TBD
 ### Perl
-
+- TBD
 ### Go (Golang)
-
+- TBD
 ### Haskell
-    
+- TBD

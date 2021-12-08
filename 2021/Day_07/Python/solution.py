@@ -8,11 +8,13 @@ def input_only_one_line(file: str):
 
 
 def crab_fuel_expenditure(initial_crab_positions: list, part_2: bool = False) -> int:
-    crab_fuel = {}
     minimum_crab_position = min(initial_crab_positions)
     maximum_crab_position = max(initial_crab_positions)
-    for position in range(minimum_crab_position, maximum_crab_position + 1):
-        crab_fuel[position] = 0  # let's just make sure all of these exist
+    crab_fuel = {
+        position: 0
+        for position in range(minimum_crab_position, maximum_crab_position + 1)
+    }
+
     for crab in initial_crab_positions:
         for position in range(minimum_crab_position, maximum_crab_position + 1):
             if part_2:
@@ -21,8 +23,7 @@ def crab_fuel_expenditure(initial_crab_positions: list, part_2: bool = False) ->
             else:
                 crab_fuel[position] += abs(crab - position)
     fuel_costs = list(crab_fuel.values())
-    minimal_fuel = min(fuel_costs)
-    return minimal_fuel
+    return min(fuel_costs)
 
 
 if __name__ == "__main__":
