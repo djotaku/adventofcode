@@ -13,10 +13,12 @@ if __name__ == "__main__":
     crab_positions = crab_positions.split(",")
     crab_positions = [int(crab) for crab in crab_positions]
     crab_fuel = {}
+    minimum_crab_position = min(crab_positions)
+    maximum_crab_position = max(crab_positions)
+    for position in range(minimum_crab_position, maximum_crab_position+1):
+        crab_fuel[position] = 0  # let's just make sure all of these exist
     for crab in crab_positions:
-        crab_fuel[crab] = 0  # let's just make sure all of these exist
-    for crab in crab_positions:
-        for position in crab_positions:
+        for position in range(minimum_crab_position, maximum_crab_position+1):
             # print(f"This would be {crab} - {position}")
             crab_fuel[position] += abs(crab-position)
     print(crab_fuel)
