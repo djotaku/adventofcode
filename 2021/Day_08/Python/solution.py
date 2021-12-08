@@ -42,23 +42,50 @@ def decode_segments(scrambled_line: str) -> dict:
     this_four = ""
     this_seven = ""
     this_eight = ""
+    letters_in_common_with_one = 0
+    letters_in_common_with_four = 0
+    letters_in_common_with_seven = 0
+    letters_in_common_with_eight = 0
     for this_digit in scrambled_digits:
         if len(this_digit) == ONE:
             decoded_dictionary[this_digit] = 1
             this_one = this_digit
         elif len(this_digit) == FOUR:
             decoded_dictionary[this_digit] = 4
-            this_four = = this_digit
+            this_four = this_digit
         elif len(this_digit) == SEVEN:
             decoded_dictionary[this_digit] = 7
-            this_seven = = this_digit
+            this_seven = this_digit
         elif len(this_digit) == EIGHT:
             decoded_dictionary[this_digit] = 8
-            this_eight= this_digit
+            this_eight = this_digit
         elif len(this_digit) == ZERO_SIX_NINE:
             this_digit_letters = [letter for letter in this_digit]
-            # let's see if 6 first
-            letters_in_common_with_one = 0
+            # check 6 first
+            # do we already have it?
+            if 6 not in decoded_dictionary.values():
+                if this_one != "":
+                    letters_in_one = [letter for letter in this_one]
+                    for letter in this_digit_letters:
+                        if letter in letters_in_one:
+                            letters_in_common_with_one += 1
+                    if letters_in_common_with_one == 2:
+                        # this is not 6
+                        # check if 0 - compare to 4
+                        if 0 not in decoded_dictionary.values():
+                            if this_four != "":
+                                letters_in_four = [letter for letter in this_four]
+                                for getter in this_digit_letters:
+                                    if letter in letters_in_four:
+                                        letters_in_common_with_four += 1
+                                if letters_in_common_with_four == 4:
+                                    decoded_dictionary[this_digit] = 9
+                                else:
+                                    decoded_dictionary[this_digit] = 0  # not 100% sure about this
+                    elif letters_in_common_with_one < 2:
+                        decoded_dictionary[this_digit] = 6  # maybe?
+                elif this_seven != "":
+                    pass  # next part to work on
 
 
 
