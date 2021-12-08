@@ -28,19 +28,19 @@ def determine_cache(scrambled_line: str) -> dict:
 
 def figure_out_digit(this_number, the_cache):
     """use the cache to figure out which number we're dealing with."""
-    print(f"{this_number=}")
-    print(f"{the_cache=}")
+    # print(f"{this_number=}")
+    # print(f"{the_cache=}")
     if len(this_number) == 6:
-        if len(set(this_number).union(the_cache[4])) == 6:
+        if len(set(this_number).union(the_cache[FOUR])) == 6:
             return "9"
-        elif len(set(this_number).intersection(the_cache[1])) == 2:
+        elif len(set(this_number).intersection(the_cache[ONE])) == 2:
             return "0"
         else:
             return "6"
     elif len(this_number) == 5:
-        if len(set(this_number).union(the_cache[1])) == len(set(this_number)):
+        if len(set(this_number).union(the_cache[ONE])) == len(set(this_number)):
             return "3"
-        elif len(set(this_number).union(the_cache[4])) == 7:
+        elif len(set(this_number).union(the_cache[FOUR])) == 7:
             return "2"
         else:
             return "5"
@@ -51,14 +51,14 @@ def figure_out_digit(this_number, the_cache):
 
 def turn_letters_into_number(output_number, this_cache):
     """Figure out what each digit is, combine then, turn from string into a number."""
-    print(output_number)
-    print(this_cache)
+    # print(output_number)
+    # print(this_cache)
     return int("".join([figure_out_digit(number, this_cache) for number in output_number.split(" ")]))
 
 
 if __name__ == "__main__":
     scrambled_input = input_per_line("../input.txt")
-    #scrambled_input = ["acedgfb cdfbe gcdfa fbcad dab cefabd cdfgeb eafb cagedb ab | cdfeb fcadb cdfeb cdbaf"]
+    # scrambled_input = ["acedgfb cdfbe gcdfa fbcad dab cefabd cdfgeb eafb cagedb ab | cdfeb fcadb cdfeb cdbaf"]
     digit_count = 0
     for line in scrambled_input:
         right_hand_side = line.split("|")
@@ -72,11 +72,7 @@ if __name__ == "__main__":
     # adapted from
     # https://github.com/barrezuetai/advent-of-code/blob/8174134df374ae384dd545da730f99c747c91522/day8/day8b.py
     # by /u/itsa_me_
-    print([turn_letters_into_number(right_hand_side, determine_cache(left_hand_side))
+    print("The sum of all the output values is:")
+    print(sum([turn_letters_into_number(right_hand_side, determine_cache(left_hand_side))
            for left_hand_side, right_hand_side in [line.strip().split(" | ")
-                                                   for line in scrambled_input]])
-    #for line in scrambled_input:
-    #    left_hand_side, right_hand_side = line.strip().split(" | ")
-    #    cache = determine_cache(left_hand_side)
-    #    value = turn_letters_int_number(right_hand_side, cache)
-    #    print(value)
+                                                   for line in scrambled_input]]))

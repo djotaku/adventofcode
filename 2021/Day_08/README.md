@@ -62,12 +62,14 @@ print(y,z)
 
 Luckily, just a bit further down I [found a solution that I could use to learn from](https://www.reddit.com/r/adventofcode/comments/rbj87a/comment/hnr3uau/?utm_source=share&utm_medium=web2x&context=3). I then adapted this to my code so that I could learn (and also because I don't have 3.10 yet, so no match statements.)
 
+Of course, the code the person posted to their Github account had a typo which cost me another 30 minutes to figure out. At least I got past this one.
+
 ## What I Learned
 
 ### Generic
 
 ### Python
-
+- Nothing
 ### Ruby
 - TBD
 ### Perl
