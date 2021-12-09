@@ -24,4 +24,23 @@ def test_find_low_points():
         "9899965678"
     ]
     heightmap, x, y = solution.create_basin_heightmap(test_input)
-    assert set(solution.find_low_points(heightmap, x, y)) == set([1, 0, 5, 5])
+    assert sorted(solution.find_low_points(heightmap, x, y)) == sorted([1, 0, 5, 5])
+
+
+def test_find_basin_members():
+    """Figure out all the members of a basin around a low point."""
+    # Start with top-left basin in the sample input
+    test_input = [
+        "2199943210",
+        "3987894921",
+        "9856789892",
+        "8767896789",
+        "9899965678"
+    ]
+    heightmap, x, y = solution.create_basin_heightmap(test_input)
+    print(solution.find_basin_members((1, 0), heightmap, x, y))
+    assert sorted(solution.find_basin_members((1, 0), heightmap, x, y)) == sorted([1, 2, 3])
+
+
+def test_find_three_largest_basins():
+    pass

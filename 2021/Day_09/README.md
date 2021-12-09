@@ -14,7 +14,14 @@ This actually doesn't seem too hard. My plan is to do what I did for Conway in t
 
 So this may be a little complex given how large the input is. I'll DEFINITELY need to use a unit test to make sure I'm getting the indexes, neighbors, etc right. Overall doesn't seem too hard, just more work than I can do before starting my day today.  
 
+Overall the answer was relatively easy to calculate without any issues.
+
 ### Part 2
+After reading the problem statement twice, it looks like what I need to do is flow from a low point out in all directions until hemmed in by 9s.  
+
+That part I'm worried about it:
+
+"all other locations will always be part of exactly one basin"
 
 ## What I Learned
 
@@ -29,4 +36,3 @@ So this may be a little complex given how large the input is. I'll DEFINITELY ne
 ### Go (Golang)
 
 ### Haskell
-    
