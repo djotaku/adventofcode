@@ -34,7 +34,7 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
   - 20 stars collected so far
   - Reached 100 stars total over all years on 20211202
 
-![total stars](https://github.com/djotaku/adventofcode/blob/9441dd775585675cbf04aad781ac702986baa66d/screenshots/total/total_star_count_20211209.png)
+![total stars](https://github.com/djotaku/adventofcode/blob/e3e9ecdf0815858fcf36ed3d5b327a007de38ba2/screenshots/total/total_star_count_20211210.png)
 
 Total Stars Over All Years: 116
 
