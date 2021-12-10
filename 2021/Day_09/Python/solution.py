@@ -148,6 +148,6 @@ if __name__ == "__main__":
     answer = sum(our_low_points) + len(our_low_points)
     print(f"The sum of the low points is {answer}")
     empty_set = set()
-    answer_two, no_search_two = find_basin_members((1, 0), this_heightmap, empty_set)
+    answer_two, no_search_two = find_basin_members((9, 0), this_heightmap, empty_set)
 
 # 346 is too low
