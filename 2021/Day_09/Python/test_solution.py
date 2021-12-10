@@ -28,7 +28,9 @@ def test_find_low_points():
 
 
 def test_find_basin_members():
-    """Figure out all the members of a basin around a low point."""
+    """Figure out all the members of a basin around a low point.
+    This doesn't work with my eventual solution.
+    """
     # Start with top-left basin in the sample input
     test_input = [
         "2199943210",
@@ -43,4 +45,5 @@ def test_find_basin_members():
 
 
 def test_find_three_largest_basins():
+    """Ended up not using"""
     pass
