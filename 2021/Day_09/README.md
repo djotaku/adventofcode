@@ -23,16 +23,19 @@ That part I'm worried about it:
 
 "all other locations will always be part of exactly one basin"
 
+What was so easy to state turned out to be complicated to turn into an algorithm. I dont' know if it would be presumptuous of me to say that I "accidentally" reinvented the tree search (because I can't remember enough of my algorithms class from nearly 20 years ago to say for sure), but I got a nice, recursive solution that works!
+
 ## What I Learned
 
 ### Generic
 
 ### Python
-
+- The correct way to put two sets together is set = set.union(set1, set2)
 ### Ruby
-
+- TBD
 ### Perl
-
+- TBD
 ### Go (Golang)
-
+- TBD
 ### Haskell
+- TBD
