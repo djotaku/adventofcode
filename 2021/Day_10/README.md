@@ -106,12 +106,12 @@ I think for C, Golang, etc this is a good time to use pointers to delete items f
 ### Generic
 
 ### Python
-
+- Nothing
 ### Ruby
-
+- TBD
 ### Perl
-
+- TBD
 ### Go (Golang)
-
+- TBD
 ### Haskell
-    
+- TBD
