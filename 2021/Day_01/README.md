@@ -106,7 +106,8 @@ That just blew my mind! How do people just look at the problem and have that pop
 ### Python
 - Nothing today
 ### Ruby
-- TBD at a future date
+- how to use .each_cons(number)
+- A reminder of how to do ternary operations in Ruby
 ### Perl
 - TBD at a future date
 ### Go (Golang)
