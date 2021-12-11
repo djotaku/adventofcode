@@ -49,7 +49,7 @@ While I don't think this is the Conway for this year, it's one of those problems
 
 As I've learned, this is best done with a dictionary in Python. 
 
-I'm not sure yet how to deal with the octopuses only flashing once per step. One possibility is to make each octopus an object (or named tuple? Have to see if those values can change since it's a tuple. (after a google search) Nope - can't change) that stores both level and whether it has flashed this step. Or just have it be a list where the second element is whether it has flashed this step. 
+I'm not sure yet how to deal with the octopuses only flashing once per step. One possibility is to make each octopus an object (or named tuple? Have to see if those values can change since it's a tuple. (after a google search) Nope - can't change) that stores both level and whether it has flashed this step. Or just have it be a list where the second element is whether it has flashed this step. Went with class objects, inspired by the Kotlin blog solutions this year.
 
 Overall it wasn't too hard, although a typo on line 37 led to wasted time debugging. Creating the octopus class helped make it more readable, but did make debugging a bit harder.
 
