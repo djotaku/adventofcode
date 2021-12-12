@@ -27,29 +27,31 @@ def create_graph(graph_connection_input: list) -> dict:
 path = []
 
 
-def traverse_graph(visited, graph, node):
+def traverse_graph(visited, graph, can_revisit=True):
     """Do a depth-first search of the graph.
 
     Only visit small nodes once.
 
     Stop at end.
     """
-    temp_path = [node]
-    if node not in visited:
-        if node.islower():
-            visited.add(node)
-        for neighbor in graph[node]:
-            temp_path.append(neighbor)
-            if neighbor == "end":
-                path.append(deepcopy(temp_path))
-                temp_path.clear()
-            traverse_graph(visited, graph, neighbor)
+    # check if we've reached "end" to end the recursion
+    if visited[-1] == "end":
+        return 1
+    return sum(
+        traverse_graph(
+            visited + [next_node],
+            graph,
+            can_revisit and not (next_node.islower() and next_node in visited)
+        )
+        for next_node in graph[visited[-1]]
+        if next_node not in visited or next_node.isupper() or can_revisit
+        )
 
 
 if __name__ == "__main__":
-    graph_implementation = input_per_line("../test_input_1.txt")
+    graph_implementation = input_per_line("../input.txt")
     the_graph = create_graph(graph_implementation)
     logger_12.debug(f"{the_graph}")
-    visited_nodes = set()
-    traverse_graph(visited_nodes, the_graph, "start")
-    print(path)
+    visited_nodes = ["start"]
+    part_1 = traverse_graph(visited_nodes, the_graph, False)
+    print(f"There are {part_1} paths.")

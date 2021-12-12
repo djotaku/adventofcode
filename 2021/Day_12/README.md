@@ -6,7 +6,7 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 
 ## Part 1
 
-
+Answer: 5874
 ## Part 2
 
 ## Commentary / Approach to the Problem
@@ -21,7 +21,7 @@ Thinking through my algorithm:
 - Need to be able to throw away paths that cannot finish because they'd require going through a lowercase twice
 - Do we need a tree or other recursive way of exploring every possible intersection? Or do we relay on randomness and enough turns to get it right? If so, do we split into multiple functions?
 
-After struggling for a couple hours, I decided to look up a DFS algorith and see if I could use that as a starting point.
+After struggling on [this implementation](https://github.com/djotaku/adventofcode/blob/25bbbea180b80fc0b16e170e9108179e918b6577/2021/Day_12/Python/scrapped_solution.py) for a couple of hours, I decided to look up a DFS algorith and see if I could use that as a starting point.
 
 So if a normal DFS looks like this:
 
@@ -49,6 +49,10 @@ def dfs(visited, graph, node):
 dfs(visited, graph, 'A')
 ```
 What I want is one there only small caves are added to the visited list. I also want it to end when we get to "end".
+
+I got to [here](https://github.com/djotaku/adventofcode/blob/25bbbea180b80fc0b16e170e9108179e918b6577/2021/Day_12/Python/solution.py) and was struggling on how to set up the recursion. So I went to the megathreads to see what I was doing wrong.
+
+[This one](https://www.reddit.com/r/adventofcode/comments/rehj2r/comment/hoabzvk/?utm_source=share&utm_medium=web2x&context=3) seemed to be very close to what I was already doing so I decided to adapt it to my solution.
 
 ## What I Learned
 
