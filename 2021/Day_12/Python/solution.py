@@ -1,5 +1,6 @@
 """Solution for Advent of Code 2021 Day 12: Passage Pathing"""
 from collections import defaultdict
+from copy import deepcopy
 import logging
 logger_12 = logging.getLogger("Day_12")
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(name)s %(levelname)s:%(message)s')
@@ -22,7 +23,9 @@ def create_graph(graph_connection_input: list) -> dict:
             graph[nodes[1]].append(nodes[0])
     return graph
 
+
 path = []
+
 
 def traverse_graph(visited, graph, node):
     """Do a depth-first search of the graph.
@@ -31,11 +34,15 @@ def traverse_graph(visited, graph, node):
 
     Stop at end.
     """
+    temp_path = [node]
     if node not in visited:
         if node.islower():
             visited.add(node)
         for neighbor in graph[node]:
-            path.append(neighbor)
+            temp_path.append(neighbor)
+            if neighbor == "end":
+                path.append(deepcopy(temp_path))
+                temp_path.clear()
             traverse_graph(visited, graph, neighbor)
 
 
