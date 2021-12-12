@@ -9,6 +9,7 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 Answer: 5874
 ## Part 2
 
+Answer: 153592
 ## Commentary / Approach to the Problem
 ### Part 1
 At first I was happy because I thought it was going to be a traveling salesman problem. I created an algorithm for that with the 2015 problem set. But this is different as we're allowed to revisit some locations and not others.
@@ -54,16 +55,19 @@ I got to [here](https://github.com/djotaku/adventofcode/blob/25bbbea180b80fc0b16
 
 [This one](https://www.reddit.com/r/adventofcode/comments/rehj2r/comment/hoabzvk/?utm_source=share&utm_medium=web2x&context=3) seemed to be very close to what I was already doing so I decided to adapt it to my solution.
 
+This worked for [part 1](https://github.com/djotaku/adventofcode/blob/c5b148c4c32aecfb91e188fde8010494a60020e4/2021/Day_12/Python/solution.py), but not part 2. I did notice that he only eliminated start from the dictionary, not end.  Turns out that wasn't the issue, I just wasn't being perfect in keeping "start" out of the destinations in the dictionary.
+
 ## What I Learned
 
 ### Generic
 
 ### Python
-
+- Got practice at a couple DFS algorithms and used megathread to get more comfortable doing it recursively
 ### Ruby
-
+- TBD
 ### Perl
-
+- TBD
 ### Go (Golang)
-
+- TBD
 ### Haskell
+- TBD
