@@ -21,6 +21,35 @@ Thinking through my algorithm:
 - Need to be able to throw away paths that cannot finish because they'd require going through a lowercase twice
 - Do we need a tree or other recursive way of exploring every possible intersection? Or do we relay on randomness and enough turns to get it right? If so, do we split into multiple functions?
 
+After struggling for a couple hours, I decided to look up a DFS algorith and see if I could use that as a starting point.
+
+So if a normal DFS looks like this:
+
+```python
+# Using a Python dictionary to act as an adjacency list
+graph = {
+    'A' : ['B','C'],
+    'B' : ['D', 'E'],
+    'C' : ['F'],
+    'D' : [],
+    'E' : ['F'],
+    'F' : []
+}
+
+visited = set() # Set to keep track of visited nodes.
+
+def dfs(visited, graph, node):
+    if node not in visited:
+        print (node)
+        visited.add(node)
+        for neighbour in graph[node]:
+            dfs(visited, graph, neighbour)
+
+# Driver Code
+dfs(visited, graph, 'A')
+```
+What I want is one there only small caves are added to the visited list. I also want it to end when we get to "end".
+
 ## What I Learned
 
 ### Generic
