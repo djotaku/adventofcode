@@ -60,7 +60,9 @@ So what was left was to figure out how I wanted to parse the pairs since the sec
 
 I am not sure the person who said it was like the lanternfish actually tried to solve the problem. Wasn't able to do what he described. So I did it a completely different way.
 
-Then again, it looks like I don't have a choice. I need to figure out how to do it the lanternfish way whether or not I like it. The problem I was having is that it didn't seem as though we were getting the proper elements considered.
+Then again, [it looks like I don't have a choice](https://github.com/djotaku/adventofcode/blob/31aefd09df06596c0264b19790f30023915bc81c/2021/Day_14/Python/solution.py). I need to figure out how to do it the lanternfish way whether or not I like it. The problem I was having is that it didn't seem as though we were getting the proper elements considered.
+
+What helped me get over the hump was the [solution by /u/hugseverycat](https://www.reddit.com/r/adventofcode/comments/rfzq6f/comment/hok35lj/?utm_source=share&utm_medium=web2x&context=3). [Their code](https://github.com/hugseverycat/AOC2021/blob/bd8fbeec2abf9ca1a52353e82288d783c7e5a1e1/day14.py) helped me realize that all I needed to count with the dictionary method was the additional letter I was adding in multiplied by the number of times the pairs would have led to its insertion.
 
 ## What I Learned
 

@@ -1,10 +1,9 @@
 """Solution for Advent of Code 2021 Day 14: Extended Polymerization"""
-import copy
 from collections import defaultdict, Counter
 import re
 import logging
 logger_14 = logging.getLogger("Day_14")
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(name)s %(levelname)s:%(message)s')
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(name)s %(levelname)s:%(message)s')
 
 
 def input_per_line_unique_first_line(file: str):
@@ -31,58 +30,40 @@ def create_pair_insertion_dict(rules: str) -> dict:
     return rule_dict
 
 
-def transformation_step(before_dict: dict, rule_dict: dict) -> dict:
+def transformation_step(before_dict: dict, rule_dict: dict, this_letter_count: dict) -> (dict, dict):
     """Take in a dictionary, transform it, return the new one.
 
+    :param this_letter_count: a count of all the letters in the polymer
     :param before_dict: A dictionary with the state of the molecule before the step is taken
     :param rule_dict: A dictionary with the rules for transformation
     :return: A dictionary with the new state of the molecule
     """
-
-
-def transformation_step_2(list_of_pairs, rule_dict):
-    new_pairs = []
-    for pair in list_of_pairs:
+    new_dict = defaultdict(int)
+    for pair, value in before_dict.items():
         insertion_letter = rule_dict[pair]
         letters = [letter for letter in pair]
-        new_pairs.append(letters[0]+insertion_letter)
-        new_pairs.append(insertion_letter+letters[1])
-    return new_pairs
-
-
-def recreate_molecule(list_of_pairs) -> str:
-    molecule = list_of_pairs[0]
-    for pair in list_of_pairs[1:]:
-        letters = [letter for letter in pair]
-        molecule += letters[1]
-    return molecule
-
-
-def figure_out_letter_difference(pairs_to_check):
-    molecule_to_check = recreate_molecule(pairs_to_check)
-    letter_count = Counter(molecule_to_check)
-    letter_values = [value for value in letter_count.values()]
-    letter_values.sort()
-    return letter_values[-1] - letter_values[0]
+        new_dict[letters[0]+insertion_letter] += before_dict[pair]
+        new_dict[insertion_letter+letters[1]] += value
+        this_letter_count[insertion_letter] += before_dict[pair]
+    return new_dict, this_letter_count
 
 
 if __name__ == "__main__":
     template_molecule, rules_for_transformation = input_per_line_unique_first_line("../input.txt")
     transformation_rules = create_pair_insertion_dict(rules_for_transformation)
     first_round_pairs = find_template_pairs(template_molecule)
-    logger_14.debug(first_round_pairs)
-    after_round_one = transformation_step_2(first_round_pairs, transformation_rules)
-    logger_14.debug(f"{after_round_one=}")
-    pairs = first_round_pairs
-    part_1_pairs = []
+    letter_count = Counter(template_molecule)
+    logger_14.debug(f"{letter_count}")
+    molecule_dict = Counter(first_round_pairs)
+    part_1_letter_count = {}
     for number in range(40):
         logger_14.debug(f"This is after step {number + 1}")
-        pairs = transformation_step_2(pairs, transformation_rules)
+        molecule_dict, letter_count = transformation_step(molecule_dict, transformation_rules, letter_count)
+        logger_14.debug(f"{letter_count}")
         if number == 9:
-            part_1_pairs = copy.deepcopy(pairs)
-    # Part 1
-    part_1_answer = figure_out_letter_difference(part_1_pairs)
-    part_2_answer = figure_out_letter_difference(pairs)
+            part_1_letter_count = letter_count.copy()
+    part_1_answer = max(part_1_letter_count.values()) - min(part_1_letter_count.values())
+    part_2_answer = max(letter_count.values()) - min(letter_count.values())
     print(f"Difference between most common and least common letter after 10 rounds is"
           f" {part_1_answer}.")
     print(f"Difference between most common and least common letter after 40 rounds is"
