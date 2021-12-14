@@ -62,18 +62,23 @@ I am not sure the person who said it was like the lanternfish actually tried to 
 
 Then again, [it looks like I don't have a choice](https://github.com/djotaku/adventofcode/blob/31aefd09df06596c0264b19790f30023915bc81c/2021/Day_14/Python/solution.py). I need to figure out how to do it the lanternfish way whether or not I like it. The problem I was having is that it didn't seem as though we were getting the proper elements considered.
 
-What helped me get over the hump was the [solution by /u/hugseverycat](https://www.reddit.com/r/adventofcode/comments/rfzq6f/comment/hok35lj/?utm_source=share&utm_medium=web2x&context=3). [Their code](https://github.com/hugseverycat/AOC2021/blob/bd8fbeec2abf9ca1a52353e82288d783c7e5a1e1/day14.py) helped me realize that all I needed to count with the dictionary method was the additional letter I was adding in multiplied by the number of times the pairs would have led to its insertion.
+What helped me get over the hump was the [solution by /u/hugseverycat](https://www.reddit.com/r/adventofcode/comments/rfzq6f/comment/hok35lj/?utm_source=share&utm_medium=web2x&context=3). [Their code](https://github.com/hugseverycat/AOC2021/blob/bd8fbeec2abf9ca1a52353e82288d783c7e5a1e1/day14.py) helped me realize that all I needed to count with the dictionary method was the additional letter I was adding in multiplied by the number of times the pairs would have led to its insertion. So I decided to pay that help forward by telling them how using Counter would help their code be less kludgey.
+
+Comparisons:
+- [Part 1](https://github.com/djotaku/adventofcode/blob/c633f1e2aab62e68624d6ec577c819bc85b27fb6/2021/Day_14/Python/solution.py)
+- [Part 2](https://github.com/djotaku/adventofcode/blob/4201ec80e1fb2e3fc61c72f1aeb3f756b102e825/2021/Day_14/Python/solution.py)
 
 ## What I Learned
 
 ### Generic
-
+Although this was the same, in principle, as the fish - the details of the implementation are different in an important way. What I learned was another way of understanding these sorts of problems and another way to look for the patterns in order to come up with the solution.
 ### Python
-
+- first_line, *rest_of_lines = our_input.split("\n") to handle AoC inputs where the first line is unique
 ### Ruby
-
+- TBD
 ### Perl
-
+- TBD
 ### Go (Golang)
-
+- TBD
 ### Haskell
+- TBD
