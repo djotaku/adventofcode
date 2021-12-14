@@ -89,7 +89,11 @@ I'm guessing that just like 2016's where are the north pole objects stored, I ne
 ### Generic
 
 ### Python
-
+- To print in python 3 without creating a newline, you need to do: 
+```python
+print(".", end="")
+```
+What you have in the quotes in end is what comes after the first argument. Here I didn't want any space.
 ### Ruby
 - TBD
 ### Perl
