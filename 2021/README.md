@@ -6,7 +6,7 @@ My fourth Advent of Code Problem set and the second one I'm doing live.
 
 During Dec 2021 I will be solving the problems in Python. If I happen to finish it quickly, I may try the problem out in one of the other languages I know: Ruby, Perl, Go, or Haskell. Eventually (perhaps even a couple years out from now) I will do all the problems in all these languages and more as practice.
 
-![progress](https://github.com/djotaku/adventofcode/blob/10ffe35f064fa63af33d65c30c66e464b91dfa8b/screenshots/2021/2021_progress_20211211.png)
+![progress](https://github.com/djotaku/adventofcode/blob/895b03088c908f2e5b8c8ef7e9215b225ff93912/screenshots/2021/2021_progress_20211213.png)
 
 ## Days I could Not Complete
 
