@@ -76,6 +76,8 @@ How many dots are visible after completing just the first fold instruction on yo
 Answer: 638
 ## Part 2
 
+Answer: CJCKBAPB
+
 ## Commentary / Approach to the Problem
 ### Part 1
 Starting idea is to count how far form the fold line to the dots and use that to do math on their new locations. Doesn't seem too hard.
