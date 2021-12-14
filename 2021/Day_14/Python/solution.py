@@ -1,4 +1,5 @@
 """Solution for Advent of Code 2021 Day 14: Extended Polymerization"""
+import copy
 from collections import defaultdict, Counter
 import re
 import logging
@@ -57,6 +58,14 @@ def recreate_molecule(list_of_pairs) -> str:
     return molecule
 
 
+def figure_out_letter_difference(pairs_to_check):
+    molecule_to_check = recreate_molecule(pairs_to_check)
+    letter_count = Counter(molecule_to_check)
+    letter_values = [value for value in letter_count.values()]
+    letter_values.sort()
+    return letter_values[-1] - letter_values[0]
+
+
 if __name__ == "__main__":
     template_molecule, rules_for_transformation = input_per_line_unique_first_line("../input.txt")
     transformation_rules = create_pair_insertion_dict(rules_for_transformation)
@@ -65,16 +74,16 @@ if __name__ == "__main__":
     after_round_one = transformation_step_2(first_round_pairs, transformation_rules)
     logger_14.debug(f"{after_round_one=}")
     pairs = first_round_pairs
-    for number in range(10):
+    part_1_pairs = []
+    for number in range(40):
         logger_14.debug(f"This is after step {number + 1}")
         pairs = transformation_step_2(pairs, transformation_rules)
-        logger_14.debug(pairs)
-    molecule_to_check = recreate_molecule(pairs)
-    logger_14.debug(f"{molecule_to_check=}")
-    logger_14.debug(f"{len(molecule_to_check)=}")
-    letter_count = Counter(molecule_to_check)
-    logger_14.debug(letter_count)
-    letter_values = [value for value in letter_count.values()]
-    letter_values.sort()
-    logger_14.debug(letter_values)
-    print(f"Difference between most common and least common letter is {letter_values[-1]-letter_values[0]}")
+        if number == 9:
+            part_1_pairs = copy.deepcopy(pairs)
+    # Part 1
+    part_1_answer = figure_out_letter_difference(part_1_pairs)
+    part_2_answer = figure_out_letter_difference(pairs)
+    print(f"Difference between most common and least common letter after 10 rounds is"
+          f" {part_1_answer}.")
+    print(f"Difference between most common and least common letter after 40 rounds is"
+          f" {part_2_answer}.")

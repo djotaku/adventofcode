@@ -60,6 +60,8 @@ So what was left was to figure out how I wanted to parse the pairs since the sec
 
 I am not sure the person who said it was like the lanternfish actually tried to solve the problem. Wasn't able to do what he described. So I did it a completely different way.
 
+Then again, it looks like I don't have a choice. I need to figure out how to do it the lanternfish way whether or not I like it. The problem I was having is that it didn't seem as though we were getting the proper elements considered.
+
 ## What I Learned
 
 ### Generic
