@@ -63,9 +63,20 @@ if __name__ == "__main__":
     dot_location, folds = create_sheet_get_instructions(instructions)
     # Part 1 - just do one fold
     logger_13.debug(f"{folds[0]=}")
-    dot_location = do_a_fold(dot_location, folds[0])
-    print(f"After the first fold there are {len(dot_location.keys())} dots visible.")
-
-
-#  Answer is too low
-#  Answer is too high
+    dot_location_part_1 = do_a_fold(dot_location, folds[0])
+    print(f"After the first fold there are {len(dot_location_part_1.keys())} dots visible.")
+    # Assuming I have to print out and look at the output
+    # Let's do all the folds.
+    for fold in folds:
+        dot_location = do_a_fold(dot_location, fold)
+    logger_13.debug(f"{dot_location=}")
+    # let's start off assuming Eric Wastl's not going to go > 80 cols. (term width)
+    # Arbitrarily select a length of 10
+    for x in range(81):
+        for y in range(11):
+            if (x, y) in dot_location:
+                print("#", end="")
+            else:
+                print(".", end="")
+            if x == 80:
+                print("")

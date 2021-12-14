@@ -80,7 +80,8 @@ Answer: 638
 ### Part 1
 Starting idea is to count how far form the fold line to the dots and use that to do math on their new locations. Doesn't seem too hard.
 
-
+### Part 2
+I'm guessing that just like 2016's where are the north pole objects stored, I need to actually look at the output to figure this out. So I'm going to print it to the screen and hopefully it's obvious.
 ## What I Learned
 
 ### Generic
