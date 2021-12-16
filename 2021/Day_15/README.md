@@ -42,7 +42,8 @@ Answer:
 ## Part 2
 
 ## Commentary / Approach to the Problem
-
+### Part 1
+I was at first thinking of maybe using a Hamilton Path or Traveling Salesman, but I think (at least the way I was thinking about it) it wouldn't work well. So instead I decided to try and go with the same algorithm as for the caves. I would link each node to its cardinal direction neighbors and then capture the numbers to sum at the end. 
 ## What I Learned
 
 ### Generic
