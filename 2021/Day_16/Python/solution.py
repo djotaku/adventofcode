@@ -56,17 +56,47 @@ def read_subpacket(subpacket: str) -> dict:
                         "packet_type": int(packet_type_id, 2)}
     if subpacket_fields["version"] == 6:
         # here need to go through the packet and figure out how long it is
+        number_of_quintets = 0
+        literal_list = []
+        for number in range(0, 100, 5):
+            number_of_quintets += 1
+            this_quintet = subpacket_broken_up[6+number:11+number]
+            print(this_quintet)
+            quartet = "".join(this_quintet[1:])
+            literal_list.append(quartet)
+            if this_quintet[0] == "0":
+                break
         # may as well also put the number into a field for possibility for part 2
+        subpacket_length = 6 + number_of_quintets * 5
+        literal_number = int("".join(literal_list), 2)
+        print(f"{literal_number=}")
+        subpacket_fields["length"] = subpacket_length
+        subpacket_fields["literal number"] = literal_number
         return subpacket_fields
     else:
         length_type = subpacket_broken_up[6]
-        if length_type == 0:
+        subpacket_fields["length type"] = length_type
+        if length_type == "0":
             length = "".join(subpacket_broken_up[7:22])
             length_of_subpackets = int(length, 2)
-            # for loop until run out o length - add subpackets into field "subpacket"
+            subpacket_list = []
+            offset = 0
+            while length_of_subpackets > 0:
+                this_subpacket = read_subpacket("".join(subpacket_broken_up[23+offset:]))
+                subpacket_list.append(this_subpacket)
+                length_of_subpackets -= this_subpacket["length"]
+                offset += length_of_subpackets
+            # for/while loop until run out o length - add subpackets into field "subpacket"
             # add them by calling this method recursively
             # when each subpacket returns, check the length of the subpacket and subtract
             # that from length_of_subpackets. When that gets to 0, we're done searching for
             # subpackets
-        elif length_type == 1:
+        elif length_type == "1":
+            # figure out how many subpackets we have.
+            # As you find each, add to "subpacket" field
+            # subtract 1 until at zero
             pass
+    return subpacket_fields
+
+# For part 1:
+# Parse dict - searching each packet for subpackets and so on - adding up version fields
