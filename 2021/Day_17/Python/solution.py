@@ -16,10 +16,17 @@ def probe_step(current_location: tuple, current_velocity: tuple) -> (tuple, tupl
     x_pos = current_location[0] + current_velocity[0]
     y_pos = current_location[1] + current_velocity[1]
     x_velocity = current_velocity[0] - 1
-    if x_velocity < 0:
-        x_velocity = 0
+    x_velocity = max(x_velocity, 0)
     y_velocity = current_velocity[1] - 1
     return x_pos, y_pos, x_velocity, y_velocity
+
+
+def find_highest_y(valid_velocities: list) -> int:
+    """Take in a list of valid velocities and figure out the highest y reached.
+
+    Assumption for part 1: I don't think the actual velocity matters, so just look for highest
+    number.
+    """
 
 
 if __name__ == "__main__":
@@ -39,12 +46,15 @@ if __name__ == "__main__":
             run_sim = True
             current_x_velocity = x
             current_y_velocity = y
-            print(f"testing velocities: ({current_x_velocity}, {current_y_velocity}")
+            current_x_pos = 0
+            current_y_pos = 0
+            print(f"testing velocities: ({current_x_velocity}, {current_y_velocity})")
             while run_sim:
                 current_x_pos, current_y_pos, current_x_velocity, current_y_velocity = probe_step((current_x_pos, current_y_pos), (current_x_velocity, current_y_velocity))
-                if x_min <= current_x_pos <= x_max and y_min <= current_y_pos <= y_max:
-                    velocities_that_complete.append((x, y))
-                    run_sim = False
+                if x_min <= current_x_pos <= x_max:
+                    if y_min >= current_y_pos >= y_max:
+                        velocities_that_complete.append((x, y))
+                        run_sim = False
                 if current_x_velocity == 0 and current_x_pos < x_min:
                     run_sim = False
                 if current_x_pos > x_max:
@@ -52,4 +62,4 @@ if __name__ == "__main__":
                 if current_y_pos < y_min:
                     run_sim = False
                 print(current_x_pos, current_y_pos)
-    print(velocities_that_complete)
+    print(f"{velocities_that_complete=}")
