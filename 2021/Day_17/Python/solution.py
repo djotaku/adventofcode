@@ -27,20 +27,25 @@ def find_highest_y(valid_velocities: list) -> int:
     Assumption for part 1: I don't think the actual velocity matters, so just look for highest
     number.
     """
+    y_values = []
+    for velocity in valid_velocities:
+        x_velocity = velocity[0]
+        y_velocity = velocity[1]
+        current_x_pos = 0
+        current_y_pos = 0
+        while current_y_pos > -1:
+            current_x_pos, current_y_pos, x_velocity, y_velocity = probe_step(
+                    (current_x_pos, current_y_pos), (x_velocity, y_velocity))
+            y_values.append(current_y_pos)
+    return max(y_values)
 
 
-if __name__ == "__main__":
-    # target_parameters = input_only_one_line("../input.txt")
-    target_parameters = input_only_one_line("../test_input.txt")
-    regex = re.compile(r'target area: x=(\d+)..(\d+), y=(-\d+)..(-\d+)')
-    target_area = re.findall(regex, target_parameters)
-    x_min = int(target_area[0][0])
-    x_max = int(target_area[0][1])
-    y_min = int(target_area[0][3])
-    y_max = int(target_area[0][2])
+def run_the_sim(x_min: int, x_max: int, y_min: int, y_max) -> list:
+    """Take in boundary conditions for the target area and run the sim.
+
+    Return valid velocities in a list
+    """
     velocities_that_complete = []
-    current_x_pos = 0
-    current_y_pos = 0
     for x in range(x_max):
         for y in range(10):
             run_sim = True
@@ -48,18 +53,33 @@ if __name__ == "__main__":
             current_y_velocity = y
             current_x_pos = 0
             current_y_pos = 0
-            print(f"testing velocities: ({current_x_velocity}, {current_y_velocity})")
             while run_sim:
-                current_x_pos, current_y_pos, current_x_velocity, current_y_velocity = probe_step((current_x_pos, current_y_pos), (current_x_velocity, current_y_velocity))
-                if x_min <= current_x_pos <= x_max:
-                    if y_min >= current_y_pos >= y_max:
-                        velocities_that_complete.append((x, y))
-                        run_sim = False
+                current_x_pos, current_y_pos, current_x_velocity, current_y_velocity = probe_step(
+                    (current_x_pos, current_y_pos), (current_x_velocity, current_y_velocity))
+                if (
+                    x_min <= current_x_pos <= x_max
+                    and y_min >= current_y_pos >= y_max
+                ):
+                    velocities_that_complete.append((x, y))
+                    run_sim = False
                 if current_x_velocity == 0 and current_x_pos < x_min:
                     run_sim = False
                 if current_x_pos > x_max:
                     run_sim = False
                 if current_y_pos < y_min:
                     run_sim = False
-                print(current_x_pos, current_y_pos)
-    print(f"{velocities_that_complete=}")
+    return velocities_that_complete
+
+
+if __name__ == "__main__":
+    target_parameters = input_only_one_line("../input.txt")
+    # target_parameters = input_only_one_line("../test_input.txt")
+    regex = re.compile(r'target area: x=(\d+)..(\d+), y=(-\d+)..(-\d+)')
+    target_area = re.findall(regex, target_parameters)
+    extracted_x_min = int(target_area[0][0])
+    extracted_x_max = int(target_area[0][1])
+    extracted_y_min = int(target_area[0][3])
+    extracted_y_max = int(target_area[0][2])
+    the_valid_velocities = run_the_sim(extracted_x_min, extracted_x_max, extracted_y_min, extracted_y_max)
+    part_1_answer = find_highest_y(the_valid_velocities)
+    print(f"The highest y-value is {part_1_answer}")
