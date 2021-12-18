@@ -4,7 +4,7 @@ Out of respect for the author's wishes, I only put as much of the problem text a
 
 Visit the version with all the story elements [here](https://adventofcode.com/2021/day/17).
 
-## Part 1
+## Part 1v
 The probe's x,y position starts at 0,0. Then, it will follow some trajectory by moving in steps. On each step, these changes occur in the following order:
 
 - The probe's x position increases by its x velocity.
