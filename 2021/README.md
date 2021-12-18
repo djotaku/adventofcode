@@ -12,6 +12,8 @@ During Dec 2021 I will be solving the problems in Python. If I happen to finish 
 
 ### Part 1 sections still incomplete: 
 - Day 15 - Life got too busy (explanations later). My attempts in the few free moments failed. Will have to return to it later.
+- Day 16 - same explanation
+- Day 17 - same
 ### Part 2 sections still incomplete:
 
 ### Part 2 sections incomplete because of inefficient algorithms
