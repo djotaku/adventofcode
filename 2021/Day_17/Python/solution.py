@@ -37,6 +37,7 @@ def find_highest_y(valid_velocities: list) -> int:
             current_x_pos, current_y_pos, x_velocity, y_velocity = probe_step(
                     (current_x_pos, current_y_pos), (x_velocity, y_velocity))
             y_values.append(current_y_pos)
+    logger_17.debug(y_values)
     return max(y_values)
 
 
@@ -47,7 +48,8 @@ def run_the_sim(x_min: int, x_max: int, y_min: int, y_max) -> list:
     """
     velocities_that_complete = []
     for x in range(x_max):
-        for y in range(10):
+        print(f"{x=}")
+        for y in range(100):
             run_sim = True
             current_x_velocity = x
             current_y_velocity = y
@@ -66,7 +68,7 @@ def run_the_sim(x_min: int, x_max: int, y_min: int, y_max) -> list:
                     run_sim = False
                 if current_x_pos > x_max:
                     run_sim = False
-                if current_y_pos < y_min:
+                if current_y_pos < y_max:
                     run_sim = False
     return velocities_that_complete
 
@@ -81,5 +83,9 @@ if __name__ == "__main__":
     extracted_y_min = int(target_area[0][3])
     extracted_y_max = int(target_area[0][2])
     the_valid_velocities = run_the_sim(extracted_x_min, extracted_x_max, extracted_y_min, extracted_y_max)
+    logger_17.debug(the_valid_velocities)
     part_1_answer = find_highest_y(the_valid_velocities)
     print(f"The highest y-value is {part_1_answer}")
+
+
+# not 45

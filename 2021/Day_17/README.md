@@ -18,10 +18,12 @@ target area: x=20..30, y=-10..-5
 
 This target area means that you need to find initial x,y velocity values such that after any step, the probe's x position is at least 20 and at most 30, and the probe's y position is at least -10 and at most -5.
 
-Answer: 
-
+Answer: 4186
 
 ## Part 2
+How many distinct initial velocity values cause the probe to be within the target area after any step?
+
+Answer: 
 
 ## Commentary / Approach to the Problem
 ### Part 1
@@ -49,7 +51,8 @@ But thinking about ways to know if I've chosen a bad velocity:
 
 So I think I've decided that I will just simulate various x and y velocities and have a stopping point if they can't reach their destination.
 
-
+### Part 2
+We'll see, but I *think* I may be lucky in that I think I calculated this as part of my answer. If this is the case, I'm going to laugh - it may be one of those cases where 
 
 ## What I Learned
 
