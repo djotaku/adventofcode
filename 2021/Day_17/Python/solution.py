@@ -47,9 +47,9 @@ def run_the_sim(x_min: int, x_max: int, y_min: int, y_max) -> list:
     Return valid velocities in a list
     """
     velocities_that_complete = []
-    for x in range(x_max):
+    for x in range(x_max+1):
         print(f"{x=}")
-        for y in range(100):
+        for y in range(-100, 100):
             run_sim = True
             current_x_velocity = x
             current_y_velocity = y
@@ -86,6 +86,8 @@ if __name__ == "__main__":
     logger_17.debug(the_valid_velocities)
     part_1_answer = find_highest_y(the_valid_velocities)
     print(f"The highest y-value is {part_1_answer}")
+    part_2_answer = len(the_valid_velocities)
+    print(f"There are {part_2_answer} valid initial velocities.")
 
 
 # not 45

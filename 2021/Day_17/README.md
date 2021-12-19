@@ -23,7 +23,7 @@ Answer: 4186
 ## Part 2
 How many distinct initial velocity values cause the probe to be within the target area after any step?
 
-Answer: 
+Answer: 2709
 
 ## Commentary / Approach to the Problem
 ### Part 1
@@ -52,7 +52,7 @@ But thinking about ways to know if I've chosen a bad velocity:
 So I think I've decided that I will just simulate various x and y velocities and have a stopping point if they can't reach their destination.
 
 ### Part 2
-We'll see, but I *think* I may be lucky in that I think I calculated this as part of my answer. If this is the case, I'm going to laugh - it may be one of those cases where 
+We'll see, but I *think* I may be lucky in that I think I calculated this as part of my answer. If this is the case, I'm going to laugh - it may be one of those cases where the inefficient answer helped with part 2. In this case, I would just get the length of what is currently called "the valid velocities". Yup! It was THAT EASY. Although, I did have to change my ranges a little to allow for negative starting y values. 
 
 ## What I Learned
 
