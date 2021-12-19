@@ -59,11 +59,12 @@ We'll see, but I *think* I may be lucky in that I think I calculated this as par
 ### Generic
 
 ### Python
-
+- Nothing
 ### Ruby
-
+- TBD
 ### Perl
-
+- TBD
 ### Go (Golang)
-
+- TBD
 ### Haskell
+- TBD
