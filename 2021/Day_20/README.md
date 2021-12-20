@@ -27,7 +27,7 @@ Answer:
 ### Part 1
 This seems to be our Game of Life problem (or one of them) for this year, so I'm going to treat it that way. I'm GUESSING that the point of the infinite field that Wastl keeps harping on means that pixels at the edge of our initial image will result in some pixels out beyond the initial borders.
 
-Overall it hasn't been too hard. What's the hardest has been figuring out my boundaries for checking since it goes infinitely.
+Overall it hasn't been too hard. What's the hardest has been figuring out my boundaries for checking since it goes infinitely. Apparently because of the way he wrote it, the background flickers. I think the way to model this is to see how my current boundary changes as well as the points that are 1 outside of it. But for the next iteration I need to simulate a band of #s beyond that. Question is whether the band is 1 or 2 levels thick.
 
 ## What I Learned
 

@@ -34,8 +34,8 @@ def enhance_image(enhancement_algorithm: list, mapped_points: dict,
     """Using the enhancement algorithm, determine the points in the new map and return it."""
     points_and_values = []
     enhanced_map = defaultdict(int)
-    for x in range(min_coordinates[0]-1, max_coordinates[0]+1):
-        for y in range(min_coordinates[1]-1, max_coordinates[1]+1):
+    for x in range(min_coordinates[0]-2, max_coordinates[0]+2):
+        for y in range(min_coordinates[1]-2, max_coordinates[1]+2):
             # calculate the 3x3 evaluation grid
             top_left = (x - 1, y - 1)
             top = (x, y - 1)
@@ -71,10 +71,23 @@ def enhance_image(enhancement_algorithm: list, mapped_points: dict,
 if __name__ == "__main__":
     translation, our_image = input_per_line_unique_first_line("../input.txt")
     this_map, coordinates = create_initial_map(our_image)
+    # pprint(this_map)
     translation = [character for character in translation]
     new_map, coordinates = enhance_image(translation, this_map, coordinates[0], coordinates[1])
+    # pprint(new_map)
     print("----------------")
     new_map, coordinates = enhance_image(translation, new_map, coordinates[0], coordinates[1])
+    # pprint(new_map)
+    print(coordinates)
+    # remove right and bottom padding
+    for y in range(coordinates[1][1]):
+        new_map[(100, y)] = 0
+        new_map[(101, y)] = 0
+        new_map[(102, y)] = 0
+    for x in range(coordinates[0][0]):
+        new_map[(x, 100)] = 0
+        new_map[(x, 101)] = 0
+        new_map[(x, 102)] = 0
     print(f"After 2 transforms there are {sum(new_map.values())} pixels lit.")
 
 
@@ -84,5 +97,6 @@ if __name__ == "__main__":
 # 5276 isn't right - do not submit until 1423
 # 5058 isn't the right answer - do not submit until 1430
 # 5195 isn't right - do not submit until 1455
-# 8283 isn't right - do not submit until 1505
+# 5283 isn't right - do not submit until 1505
+# 5313 isn't right - do not submit until 1547
 # current range: 5046 - 5505
