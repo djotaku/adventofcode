@@ -1,6 +1,8 @@
 """Solution for Advent of Code 2021 Day 15: Chiton"""
 import copy
 import logging
+from pprint import pprint
+
 logger_15 = logging.getLogger("Day_15")
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(name)s %(levelname)s:%(message)s')
 
@@ -27,16 +29,15 @@ def create_adjacency_grid(length_of_grid: int) -> dict:
      For part 1, at least, we cannot go diagonal.
      """
     this_adjacency_grid = {}
-    above = None
-    left = None
-    right = None
-    below = None
     for x in range(length_of_grid):
         for y in range(length_of_grid):
-            this_point = (x, y)
-            if (x - 1) > -1:
+            above = None
+            left = None
+            right = None
+            below = None
+            if x > 0:
                 left = (x-1, y)
-            if (y - 1) > -1:
+            if y > 0:
                 above = (x, y - 1)
             if (x + 1) < length_of_grid:
                 right = (x + 1, y)
@@ -65,9 +66,10 @@ def traverse_graph(visited, graph, bottom_right: tuple, can_revisit=True):
     it'll be can_revisit=False going forward.
     """
     # check if we've reached bottom_right to end the recursion
-    logger_15.debug(f"{visited=}")
+    # print(f"{visited=}")
     if visited[-1] == bottom_right:
-        return 0
+        # print("I am at end")
+        return visited
     return [
         traverse_graph(
             visited + [next_node],
@@ -80,8 +82,13 @@ def traverse_graph(visited, graph, bottom_right: tuple, can_revisit=True):
 
 
 if __name__ == "__main__":
-    points = input_per_line("../input.txt")
+    points = input_per_line("../test_input_2.txt")
     grid_of_points = create_grid(points)
     length_of_grid = len(points)
     adjacency_grid = create_adjacency_grid(length_of_grid)
+    # pprint(adjacency_grid)
+    # print(f"{length_of_grid-1}")
     find_paths = traverse_graph([(0, 0)], adjacency_grid, (length_of_grid-1, length_of_grid-1), False)
+    # pprint(f"{find_paths=}")
+    for path in find_paths:
+        print(f"{path=}")

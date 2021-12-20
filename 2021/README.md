@@ -13,7 +13,7 @@ During Dec 2021 I will be solving the problems in Python. If I happen to finish 
 ### Part 1 sections still incomplete: 
 - Day 15 - Attended WorldCon 2021, so I only had a few minutes here and there between panels to attempt the puzzle. My attempts in the few free moments failed. Will have to return to it later.
 - Day 16 - Attended WorldCon 2021, so I only had a few minutes here and there between panels to attempt the puzzle. My attempts in the few free moments failed. Will have to return to it later.
-- Day 18 - Attended WorldCon 2021, so I only had a few minutes here and there between panels to attempt the puzzle. My attempts in the few free moments failed. Will have to return to it later.
+- Day 19 - I was catching up with previous days I'd missed. I wrote myself some notes for when I come back across it later.
 ### Part 2 sections still incomplete:
 
 ### Part 2 sections incomplete because of inefficient algorithms
