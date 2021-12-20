@@ -23,7 +23,7 @@ During Dec 2021 I will be solving the problems in Python. If I happen to finish 
 ### Completed After AoC 2021
 
 ## Things I learned during this year's Advent of Code
-
+- I need to get better at realizing when zip will help me do a better job of setting up the answer 
 ## Position in Python Discord leaderboard during the month of December:
 
 - 20211214 1812 - pos: #157; score: 19715

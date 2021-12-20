@@ -1,5 +1,5 @@
 """Test solution for Advent of Code Day 18: Snailfish."""
-from . import  solution
+from . import  original_attempt_solution
 
 
 def test_snailfish_addition():
