@@ -34,14 +34,15 @@ def enhance_image(enhancement_algorithm: list, mapped_points: dict,
     """Using the enhancement algorithm, determine the points in the new map and return it."""
     points_and_values = []
     enhanced_map = defaultdict(int)
-    for x in range(min_coordinates[0], max_coordinates[0]):
-        for y in range(min_coordinates[1], max_coordinates[1]):
+    for x in range(min_coordinates[0]-1, max_coordinates[0]+1):
+        for y in range(min_coordinates[1]-1, max_coordinates[1]+1):
             # calculate the 3x3 evaluation grid
             top_left = (x - 1, y - 1)
             top = (x, y - 1)
             top_right = (x + 1, y - 1)
             left = (x - 1, y)
             self = (x, y)
+            # print(f"Checking out coordinate {self}")
             right = (x + 1, y)
             bottom_left = (x - 1, y + 1)
             bottom = (x, y + 1)
@@ -61,6 +62,7 @@ def enhance_image(enhancement_algorithm: list, mapped_points: dict,
         enhanced_map[point] = value
         x_values.append(point[0])
         y_values.append(point[1])
+    # print(f"{x_values=}")
     return enhanced_map, ((min(x_values), min(y_values)), (max(max(x_values),
                                                                max_coordinates[0]), max(max(y_values),
                                                                                         max_coordinates[1])))
@@ -71,6 +73,7 @@ if __name__ == "__main__":
     this_map, coordinates = create_initial_map(our_image)
     translation = [character for character in translation]
     new_map, coordinates = enhance_image(translation, this_map, coordinates[0], coordinates[1])
+    print("----------------")
     new_map, coordinates = enhance_image(translation, new_map, coordinates[0], coordinates[1])
     print(f"After 2 transforms there are {sum(new_map.values())} pixels lit.")
 
@@ -80,3 +83,6 @@ if __name__ == "__main__":
 # 5505 is too high
 # 5276 isn't right - do not submit until 1423
 # 5058 isn't the right answer - do not submit until 1430
+# 5195 isn't right - do not submit until 1455
+# 8283 isn't right - do not submit until 1505
+# current range: 5046 - 5505
