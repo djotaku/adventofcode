@@ -55,11 +55,13 @@ I was able to make a few improvements, including making the magnitude calculatio
 ### Generic
 
 ### Python
-
+- use of continue in a for loop to return to the beginning of the for loop
+- need to get better at when to use zip
 ### Ruby
-
+- TBD
 ### Perl
-
+- TBD
 ### Go (Golang)
-
+- TBD
 ### Haskell
+- TBD
