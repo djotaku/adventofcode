@@ -30,12 +30,12 @@ def create_initial_map(image: list) -> (dict, tuple):
 
 
 def enhance_image(enhancement_algorithm: list, mapped_points: dict,
-                  min_coordinates: tuple, max_coordinates: tuple) -> (dict, tuple):
+                  min_coordinates: tuple, max_coordinates: tuple, step: int) -> (dict, tuple):
     """Using the enhancement algorithm, determine the points in the new map and return it."""
     points_and_values = []
     enhanced_map = defaultdict(int)
-    for x in range(min_coordinates[0]-2, max_coordinates[0]+2):
-        for y in range(min_coordinates[1]-2, max_coordinates[1]+2):
+    for x in range(min_coordinates[0]-(step*2), max_coordinates[0]+(step*2)):
+        for y in range(min_coordinates[1]-(step*2), max_coordinates[1]+(step*2)):
             # calculate the 3x3 evaluation grid
             top_left = (x - 1, y - 1)
             top = (x, y - 1)
@@ -73,21 +73,23 @@ if __name__ == "__main__":
     this_map, coordinates = create_initial_map(our_image)
     # pprint(this_map)
     translation = [character for character in translation]
-    new_map, coordinates = enhance_image(translation, this_map, coordinates[0], coordinates[1])
+    new_map, coordinates = enhance_image(translation, this_map, coordinates[0], coordinates[1], 1)
     # pprint(new_map)
     print("----------------")
-    new_map, coordinates = enhance_image(translation, new_map, coordinates[0], coordinates[1])
+    new_map, coordinates = enhance_image(translation, new_map, coordinates[0], coordinates[1], 2)
     # pprint(new_map)
     print(coordinates)
     # remove right and bottom padding
     for y in range(coordinates[1][1]):
-        new_map[(100, y)] = 0
         new_map[(101, y)] = 0
         new_map[(102, y)] = 0
+        new_map[(103, y)] = 0
+        new_map[(104, y)] = 0
     for x in range(coordinates[0][0]):
-        new_map[(x, 100)] = 0
         new_map[(x, 101)] = 0
         new_map[(x, 102)] = 0
+        new_map[(x, 103)] = 0
+        new_map[(x, 104)] = 0
     print(f"After 2 transforms there are {sum(new_map.values())} pixels lit.")
 
 
