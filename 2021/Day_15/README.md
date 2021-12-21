@@ -44,6 +44,10 @@ Answer:
 ## Commentary / Approach to the Problem
 ### Part 1
 I was at first thinking of maybe using a Hamilton Path or Traveling Salesman, but I think (at least the way I was thinking about it) it wouldn't work well. So instead I decided to try and go with the same algorithm as for the caves. I would link each node to its cardinal direction neighbors and then capture the numbers to sum at the end. 
+
+The cave algorithm - BFS - was the wrong algorithm to use. It was more or less infinite.
+
+Someone told me to use Dijkstra. I'd tried last year and earlier this year, but I guess it was time to finally learn it. [I'm using a stack abuse page](https://stackabuse.com/dijkstras-algorithm-in-python/) to learn Dijkstra/use their implementation, but I'll still have to format the input to work with it.
 ## What I Learned
 
 ### Generic

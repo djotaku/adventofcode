@@ -1,10 +1,49 @@
-"""Solution for Advent of Code 2021 Day 15: Chiton"""
-import copy
-import logging
-from pprint import pprint
+"""Solution for Advent of Code 2021 Day 15: Chiton using Dijkstra's Algorithm"""
+from queue import PriorityQueue
+from copy import deepcopy
 
-logger_15 = logging.getLogger("Day_15")
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(name)s %(levelname)s:%(message)s')
+
+class Graph:
+    """Implement a graph representing the chitons"""
+
+    def __init__(self, num_of_vertices):
+        self.vertices = num_of_vertices
+        # basically equivalent to an "infinity" value for all edges to start with.
+        self.edges = [[-1 for _ in range(num_of_vertices)] for _ in range(num_of_vertices)]
+        self.visited = []
+
+    def add_edge(self, u, v, weight):
+        self.edges[u][v] = weight
+        # self.edges[v][u] = weight
+
+
+def dijkstra(graph, start_vertex):
+    """Implement a Dijkstra algorithm over the graph.
+
+    The result is the dictionary where the key is the vertex you want to know the distance to.
+    """
+    distance_cost_dictionary = {vertex: float('inf') for vertex in range(graph.vertices)}
+    distance_cost_dictionary[start_vertex] = 0
+
+    pq = PriorityQueue()
+    pq.put((0, start_vertex))
+
+    while not pq.empty():
+        (dist, current_vertex) = pq.get()
+        graph.visited.append(current_vertex)
+
+        for neighbor in range(graph.vertices):
+            if (
+                    graph.edges[current_vertex][neighbor] != -1
+                    and neighbor not in graph.visited
+            ):
+                old_cost = distance_cost_dictionary[neighbor]
+                distance = graph.edges[current_vertex][neighbor]
+                new_cost = distance_cost_dictionary[current_vertex] + distance
+                if new_cost < old_cost:
+                    pq.put((new_cost, neighbor))
+                    distance_cost_dictionary[neighbor] = new_cost
+    return distance_cost_dictionary
 
 
 def input_per_line(file: str):
@@ -16,60 +55,71 @@ def input_per_line(file: str):
 def create_grid(lines: list) -> dict:
     """Take in the lines of input from the problem and push to a dictionary with grid position as keys"""
     this_grid = {}
-    for y, line in enumerate(lines):
+    incrementing_number = 0
+    for line in lines:
         numbers = [number for number in line]
-        for x, number in enumerate(numbers):
-            this_grid[(x, y)] = number
+        for number in numbers:
+            this_grid[incrementing_number] = int(number)
+            incrementing_number += 1
     return this_grid
 
 
-def create_adjacency_grid(length_of_grid: int) -> dict:
+def create_adjacency_grid(our_points: dict) -> dict:
     """For each point on the grid, creeate a dict entry (list) of other point we can get to.
 
      For part 1, at least, we cannot go diagonal.
      """
     this_adjacency_grid = {}
-    for x in range(length_of_grid):
-        for y in range(length_of_grid):
-            above = None
-            left = None
-            right = None
-            below = None
-            if x > 0:
-                left = (x-1, y)
-            if y > 0:
-                above = (x, y - 1)
-            if (x + 1) < length_of_grid:
-                right = (x + 1, y)
-            if (y + 1) < length_of_grid:
-                below = (x, y + 1)
-            neighbors = [above, left, right, below]
-            valid_neighbors = [neighbor for neighbor in neighbors if neighbor]
-            this_adjacency_grid[(x, y)] = copy.deepcopy(valid_neighbors)
+    for number in range(len(our_points.items())):
+        above = None
+        left = None
+        right = None
+        below = None
+        # top row
+        if 0 <= number <= 9:  # this needs to be adapted to the size of the input (make a function parameter)
+            if number != 0:
+                left = number - 1
+            if number != 10:
+                right = number + 1
+            below = number + 10
+        # bottom row
+        elif 90 <= number <= 99:
+            above = number - 10
+            if number != 90:
+                left = number - 1
+            if number != 99:
+                right = number + 1
+        elif number % 10 == 0:
+            right = number + 1
+            below = number + 10
+        elif number % 9 == 0:
+            left = number - 1
+            below = number + 10
+        else:
+            above = number - 10
+            left = number - 1
+            right = number + 1
+            below = number + 10
+        neighbors = [above, left, right, below]
+        valid_neighbors = [neighbor for neighbor in neighbors if neighbor]
+        this_adjacency_grid[number] = deepcopy(valid_neighbors)
     return this_adjacency_grid
 
 
-def traverse_graph(visited, graph, bottom_right: tuple, can_revisit, grid_dictionary):
-    """Do a depth-first search of the graph.
-    """
-    # check if we've reached bottom_right to end the recursion
-    # print(f"{visited=}")
-    if visited[-1] == bottom_right:
-        # print("I am at end")
-        return sum(int(grid_dictionary[point]) for point in visited if point != (0, 0))
-
-    return [traverse_graph(visited + [next_node], graph, bottom_right, False, grid_dictionary)
-            for next_node in graph[visited[-1]]
-            if next_node not in visited or can_revisit
-            ]
-
-
 if __name__ == "__main__":
-    points = input_per_line("../test_input_2.txt")
+    points = input_per_line("../input.txt")
     grid_of_points = create_grid(points)
-    length_of_grid = len(points)
-    adjacency_grid = create_adjacency_grid(length_of_grid)
-    pprint(adjacency_grid)
-    # print(f"{length_of_grid-1}")
-    find_paths = traverse_graph([(0, 0)], adjacency_grid, (length_of_grid-1, length_of_grid-1), False, grid_of_points)
-    pprint(f"{find_paths=}")
+    # print(grid_of_points)
+    adjacency_grid = create_adjacency_grid(grid_of_points)
+    print(adjacency_grid)
+    size_of_graph = len(points)**2
+    chiton_graph = Graph(size_of_graph)
+    for key, value in adjacency_grid.items():
+        for neighbor in value:
+            # print(f"{key=}, {neighbor=}, {grid_of_points[neighbor]}")
+            chiton_graph.add_edge(key, neighbor, grid_of_points[neighbor])
+    dijkstra_solution = dijkstra(chiton_graph, 0)
+    # print(dijkstra_solution)
+    print(f"The lowest total risk to the bottom right position from the top left is:"
+          f"{dijkstra_solution[99]}")
+    # print(dijkstra(test_graph, 0))
