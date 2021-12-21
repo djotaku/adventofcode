@@ -34,6 +34,18 @@ def enhance_image(enhancement_algorithm: list, mapped_points: dict,
     """Using the enhancement algorithm, determine the points in the new map and return it."""
     points_and_values = []
     enhanced_map = defaultdict(int)
+    if step % 2 == 0:
+        for x in range(min_coordinates[0], max_coordinates[0] + 4):
+            for y in range(min_coordinates[1], min_coordinates[1] + 4):
+                enhanced_map[(x, y)] = 1
+            for y in range(max_coordinates[1] - 4, max_coordinates[1]):
+                enhanced_map[(x, y)] = 1
+        for x in range(min_coordinates[0], min_coordinates[0] + 4):
+            for y in range(min_coordinates[1] - 4, max_coordinates[1] + 4):
+                enhanced_map[(x, y)] = 1
+        for x in range(max_coordinates[0] - 4, max_coordinates[0]):
+            for y in range(min_coordinates[1] - 4, max_coordinates[1] + 4):
+                enhanced_map[(x, y)] = 1
     for x in range(min_coordinates[0]-(step*2), max_coordinates[0]+(step*2)):
         for y in range(min_coordinates[1]-(step*2), max_coordinates[1]+(step*2)):
             # calculate the 3x3 evaluation grid
@@ -79,17 +91,10 @@ if __name__ == "__main__":
     new_map, coordinates = enhance_image(translation, new_map, coordinates[0], coordinates[1], 2)
     # pprint(new_map)
     print(coordinates)
-    # remove right and bottom padding
-    for y in range(coordinates[1][1]):
-        new_map[(101, y)] = 0
-        new_map[(102, y)] = 0
-        new_map[(103, y)] = 0
-        new_map[(104, y)] = 0
-    for x in range(coordinates[0][0]):
-        new_map[(x, 101)] = 0
-        new_map[(x, 102)] = 0
-        new_map[(x, 103)] = 0
-        new_map[(x, 104)] = 0
+    valid_area = sum(new_map[(x, y)]
+                     for x in range(coordinates[0][0], coordinates[1][0])
+                     for y in range(coordinates[0][1], coordinates[1][1]))
+    print(valid_area)
     print(f"After 2 transforms there are {sum(new_map.values())} pixels lit.")
 
 
@@ -101,4 +106,5 @@ if __name__ == "__main__":
 # 5195 isn't right - do not submit until 1455
 # 5283 isn't right - do not submit until 1505
 # 5313 isn't right - do not submit until 1547
+# 5424 isn't right - do not submit until 1938
 # current range: 5046 - 5505
