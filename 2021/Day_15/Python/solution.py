@@ -1,5 +1,8 @@
 """Solution for Advent of Code 2021 Day 15: Chiton using Dijkstra's Algorithm"""
+from pprint import pprint
 from queue import PriorityQueue
+import heapq as heap
+from collections import Counter
 from copy import deepcopy
 
 
@@ -32,17 +35,17 @@ def dijkstra(graph, start_vertex):
         (dist, current_vertex) = pq.get()
         graph.visited.append(current_vertex)
 
-        for neighbor in range(graph.vertices):
+        for current_neighbor in range(graph.vertices):
             if (
-                    graph.edges[current_vertex][neighbor] != -1
-                    and neighbor not in graph.visited
+                    graph.edges[current_vertex][current_neighbor] != -1
+                    and current_neighbor not in graph.visited
             ):
-                old_cost = distance_cost_dictionary[neighbor]
-                distance = graph.edges[current_vertex][neighbor]
+                old_cost = distance_cost_dictionary[current_neighbor]
+                distance = graph.edges[current_vertex][current_neighbor]
                 new_cost = distance_cost_dictionary[current_vertex] + distance
                 if new_cost < old_cost:
-                    pq.put((new_cost, neighbor))
-                    distance_cost_dictionary[neighbor] = new_cost
+                    pq.put((new_cost, current_neighbor))
+                    distance_cost_dictionary[current_neighbor] = new_cost
     return distance_cost_dictionary
 
 
@@ -65,7 +68,7 @@ def create_grid(lines: list) -> dict:
 
 
 def create_adjacency_grid(our_points: dict) -> dict:
-    """For each point on the grid, creeate a dict entry (list) of other point we can get to.
+    """For each point on the grid, create a dict entry (list) of other point we can get to.
 
      For part 1, at least, we cannot go diagonal.
      """
@@ -107,11 +110,11 @@ def create_adjacency_grid(our_points: dict) -> dict:
 
 
 if __name__ == "__main__":
-    points = input_per_line("../input.txt")
+    points = input_per_line("../test_input.txt")
     grid_of_points = create_grid(points)
     # print(grid_of_points)
     adjacency_grid = create_adjacency_grid(grid_of_points)
-    print(adjacency_grid)
+    # print(adjacency_grid)
     size_of_graph = len(points)**2
     chiton_graph = Graph(size_of_graph)
     for key, value in adjacency_grid.items():
@@ -122,4 +125,5 @@ if __name__ == "__main__":
     # print(dijkstra_solution)
     print(f"The lowest total risk to the bottom right position from the top left is:"
           f"{dijkstra_solution[99]}")
-    # print(dijkstra(test_graph, 0))
+    check = Counter(chiton_graph.visited)
+    # print(check)
