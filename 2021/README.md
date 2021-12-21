@@ -11,7 +11,7 @@ During Dec 2021 I will be solving the problems in Python. If I happen to finish 
 ## Days I could Not Complete
 
 ### Part 1 sections still incomplete: 
-- Day 15 - Attended WorldCon 2021, so I only had a few minutes here and there between panels to attempt the puzzle. My attempts in the few free moments failed. Will have to return to it later.
+- Day 15 - Attended WorldCon 2021, so I only had a few minutes here and there between panels to attempt the puzzle. My attempts in the few free moments failed. Will have to return to it later. Did start on progress on 20 Dec, but got stuck on a bug with my Dijkstra implementation.
 - Day 16 - Attended WorldCon 2021, so I only had a few minutes here and there between panels to attempt the puzzle. My attempts in the few free moments failed. Will have to return to it later.
 - Day 19 - I was catching up with previous days I'd missed. I wrote myself some notes for when I come back across it later.
 - Day 20 - I am very close, but failing because I can't get the edges right

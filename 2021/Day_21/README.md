@@ -45,7 +45,10 @@ Answer:
 ## Part 2
 
 ## Commentary / Approach to the Problem
+### Part 1
+I might be over-thinking this, but this seems like a fun time to work with classes and do a mini game engine. I'm thinking classes each for game board, player, and die. The gameboard keeps track of what spaces the players are on and what spaces they go to next. The die keeps track of its last number (since part 1 has a deterministic die). The players keep track of their score. We'll see if this spins out of control and I end up just doing it all in a while loop or something.
 
+Decided to get rid of gameboard and just let players keep track of where they are.
 ## What I Learned
 
 ### Generic
