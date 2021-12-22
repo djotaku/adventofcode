@@ -40,9 +40,10 @@ Since player 1 has at least 1000 points, player 1 wins and the game ends. At thi
 
 Play a practice game using the deterministic 100-sided die. The moment either player wins, what do you get if you multiply the score of the losing player by the number of times the die was rolled during the game?
 
-Answer: 
+Answer: 1067724
 
 ## Part 2
+
 
 ## Commentary / Approach to the Problem
 ### Part 1

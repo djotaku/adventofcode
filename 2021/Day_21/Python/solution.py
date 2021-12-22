@@ -15,9 +15,10 @@ class Player:
 
     def move_player(self, die_roll: int):
         """Move the player from their current location to the new location."""
-        location = self.location + die_roll
         # now take into account that the board is circular
-        location = location % 10
+        location = self.location + die_roll
+        while location > 10:
+            location = location - 10
         self.location = location
 
     def update_score(self):
@@ -49,7 +50,7 @@ class Die:
 
 
 if __name__ == "__main__":
-    player_starting_positions = input_per_line("../test_input.txt")
+    player_starting_positions = input_per_line("../input.txt")
     # create the players
     _, player_one_starting_position = player_starting_positions[0].split(":")
     player_one_starting_position = int(player_one_starting_position)
@@ -73,6 +74,8 @@ if __name__ == "__main__":
         player_one_moves = sum(rolls)
         print(f"{player_one_moves=}")
         player_one.complete_move(player_one_moves)
+        if player_one.player_score > 999:
+            break
         rolls.clear()
         rolls = [part_one_die.next_roll(practice_mode=True), part_one_die.next_roll(practice_mode=True),
                  part_one_die.next_roll(practice_mode=True)]
