@@ -48,6 +48,7 @@ def initialize_cuboid_sets(instruction, current_cubes: dict) -> dict:
                 elif instruction.on_or_off == "off":
                     current_cubes[(x, y, z)] = 0
                     try:
+                        pass
                         # current_cubes.remove((x, y, z))
                     except KeyError:
                         pass
