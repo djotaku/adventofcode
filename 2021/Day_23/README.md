@@ -40,7 +40,8 @@ Answer:
 ## Part 2
 
 ## Commentary / Approach to the Problem
-
+### Part 1
+I have no idea where to start. Will have to think about this.
 
 ## What I Learned
 
