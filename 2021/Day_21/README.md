@@ -43,13 +43,25 @@ Play a practice game using the deterministic 100-sided die. The moment either pl
 Answer: 1067724
 
 ## Part 2
+when you roll it, the universe splits into multiple copies, one copy for each possible outcome of the die. In this case, rolling the die always splits the universe into three copies: one where the outcome of the roll was 1, one where it was 2, and one where it was 3.
 
+The game is played the same as before, although to prevent things from getting too far out of hand, the game now ends when either player's score reaches at least 21.
+
+Using the same starting positions as in the example above, player 1 wins in 444356092776315 universes, while player 2 merely wins in 341960390180808 universes.
+
+Using your given starting positions, determine every possible outcome. Find the player that wins in more universes; in how many universes does that player win?
+
+Answer: 
 
 ## Commentary / Approach to the Problem
 ### Part 1
 I might be over-thinking this, but this seems like a fun time to work with classes and do a mini game engine. I'm thinking classes each for game board, player, and die. The gameboard keeps track of what spaces the players are on and what spaces they go to next. The die keeps track of its last number (since part 1 has a deterministic die). The players keep track of their score. We'll see if this spins out of control and I end up just doing it all in a while loop or something.
 
 Decided to get rid of gameboard and just let players keep track of where they are.
+
+### Part 2
+I think this can be done similarly to the fish or the polymer. But I'm not sure what I'm keeping track of to run it.  This will take a little more thought and/or research.
+
 ## What I Learned
 
 ### Generic
