@@ -11,10 +11,21 @@ def input_per_line(file: str):
 def math(a, b, this_instruction):
     if this_instruction == 'add':
         return int(a) + int(b)
+    elif this_instruction == "mul":
+        return int(a) * int(b)
+    elif this_instruction == "div":
+        return floor(int(a)/int(b))
+    elif this_instruction == "mod":
+        return int(a) % int(b)
+    elif this_instruction == "eql":
+        if int(a) == int(b):
+            return 1
+        else:
+            return 0
 
 
 if __name__ == "__main__":
-    instructions = input_per_line("../tiny_test_input.txt")
+    instructions = input_per_line("../input.txt")
     # initialize registers
     w, x, y, z = 0, 0, 0, 0
     letter_dict = {"w": w, "x": x, "y": y, "z": z}
