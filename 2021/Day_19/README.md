@@ -23,9 +23,10 @@ I'm not sure when I'm going to come back to this, but I did [find a thread that 
 ### Python
 
 ### Ruby
-
+- TBD
 ### Perl
-
+- TBD
 ### Go (Golang)
-
+- TBD
 ### Haskell
+- TBD

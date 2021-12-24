@@ -105,9 +105,10 @@ Since there are SO MANY parts of this problem, I'm just going to go one-by-one, 
 ### Python
 
 ### Ruby
-
+- TBD
 ### Perl
-
+- TBD
 ### Go (Golang)
-
+- TBD
 ### Haskell
+- TBD
