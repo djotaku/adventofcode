@@ -18,12 +18,15 @@ if __name__ == "__main__":
     while True:
         for instruction in instructions:
             parsed_instruction = instruction.split()
+            # print(parsed_instruction)
             match parsed_instruction[0]:
                 case "inp":
                     value_to_store = test_number_as_list[inp_counter]
                     inp_counter += 1
+                    # print(f"{inp_counter=}")
                     match parsed_instruction[1]:
                         case "w":
+                            # print(f"case is w and it should get {value_to_store}")
                             w = int(value_to_store)
                         case "x":
                             x = int(value_to_store)
@@ -32,30 +35,28 @@ if __name__ == "__main__":
                         case "z":
                             z = int(value_to_store)
                 case "add":
+                    add_1 = 0
+                    add_2 = 0
                     match parsed_instruction[2]:
                         case "w":
                             add_2 = w
                         case "x":
                             add_2 = x
                         case "y":
-                            add_2= y
+                            add_2 = y
                         case "z":
                             add_2 = z
                         case _:
-                            add_2 = parsed_instruction[2]
+                            add_2 = int(parsed_instruction[2])
                     match parsed_instruction[1]:
                         case "w":
-                            add_1 = w
-                            w = add_1 + add_2
+                            w = w + int(add_2)
                         case "x":
-                            add_1 = x
-                            x = add_1 + add_2
+                            x = x + int(add_2)
                         case "y":
-                            add_1 = y
-                            y = add_1 + add_2
+                            y = y + int(add_2)
                         case "z":
-                            add_1 = z
-                            z = add_1 + add_2
+                            z = z + int(add_2)
                 case "mul":
                     match parsed_instruction[2]:
                         case "w":
@@ -67,20 +68,20 @@ if __name__ == "__main__":
                         case "z":
                             mul_2 = z
                         case _:
-                            mul_2 = parsed_instruction[2]
+                            mul_2 = int(parsed_instruction[2])
                     match parsed_instruction[1]:
                         case "w":
                             mul_1 = w
-                            w = mul_1 * mul_2
+                            w = int(mul_1) * int(mul_2)
                         case "x":
                             mul_1 = x
-                            x = mul_1 * mul_2
+                            x = int(mul_1) * int(mul_2)
                         case "y":
                             mul_1 = y
-                            y = mul_1 * mul_2
+                            y = int(mul_1) * int(mul_2)
                         case "z":
                             mul_1 = z
-                            z = mul_1 * mul_2
+                            z = int(mul_1) * int(mul_2)
                 case "div":
                     match parsed_instruction[2]:
                         case "w":
@@ -92,20 +93,20 @@ if __name__ == "__main__":
                         case "z":
                             div_2 = z
                         case _:
-                            div_2 = parsed_instruction[2]
+                            div_2 = int(parsed_instruction[2])
                     match parsed_instruction[1]:
                         case "w":
                             div_1 = w
-                            w = floor(div_1/div_2)
+                            w = floor(int(div_1)/int(div_2))
                         case "x":
                             div_1 = x
-                            x = floor(div_1/div_2)
+                            x = floor(int(div_1)/int(div_2))
                         case "y":
                             div_1 = y
-                            y = floor(div_1/div_2)
+                            y = floor(int(div_1)/int(div_2))
                         case "z":
                             div_1 = z
-                            z = floor(div_1/div_2)
+                            z = floor(int(div_1)/int(div_2))
                 case "mod":
                     match parsed_instruction[2]:
                         case "w":
@@ -117,20 +118,20 @@ if __name__ == "__main__":
                         case "z":
                             mod_2 = z
                         case _:
-                            mod_2 = parsed_instruction[2]
+                            mod_2 = int(parsed_instruction[2])
                     match parsed_instruction[1]:
                         case "w":
                             mod_1 = w
-                            w = mod_1 % mod_2
+                            w = int(mod_1) % int(mod_2)
                         case "x":
                             mod_1 = x
-                            x = mod_1 % mod_2
+                            x = int(mod_1) % int(mod_2)
                         case "y":
                             mod_1 = y
-                            y = mod_1 % mod_2
+                            y = int(mod_1) % int(mod_2)
                         case "z":
                             mod_1 = z
-                            z = mod_1 % mod_2
+                            z = int(mod_1) % int(mod_2)
                 case "eql":
                     match parsed_instruction[2]:
                         case "w":
@@ -142,11 +143,11 @@ if __name__ == "__main__":
                         case "z":
                             eql_2 = z
                         case _:
-                            eql = parsed_instruction[2]
+                            eql = int(parsed_instruction[2])
                     match parsed_instruction[1]:
                         case "w":
                             eql_1 = w
-                            if eql_1 == eql_2:
+                            if int(eql_1) == int(eql_2):
                                 w = 1
                             else:
                                 w = 0
@@ -168,6 +169,7 @@ if __name__ == "__main__":
                                 z = 1
                             else:
                                 z = 0
+        print(f"{w=}, {x=}, {y=}, {z=}")
         if z == 0:
             break
         test_number -= test_number
@@ -178,3 +180,5 @@ if __name__ == "__main__":
             test_number_as_list = [int(x) for x in str(test_number)]
     print(f"The model number is {test_number}")
 
+
+# answer is not 99999999999999 so need to check algorithm
