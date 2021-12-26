@@ -16,6 +16,8 @@ During Dec 2021 I will be solving the problems in Python. If I happen to finish 
 - Day 19 - I was catching up with previous days I'd missed. I wrote myself some notes for when I come back across it later.
 - Day 20 - I am very close, but failing because I can't get the edges right
 - Day 22 - my laptop keeps dying from OOM. Tried both dictionaries and sets.
+- Day 24 - Christmas Celebrations
+- Day 25 - More Christmas Celebrations
 ### Part 2 sections still incomplete:
 - Day 21 - because I literally ran out of day. It's day 22 as I write this.
 ### Part 2 sections incomplete because of inefficient algorithms
