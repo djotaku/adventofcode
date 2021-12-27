@@ -30,44 +30,47 @@ def cucumber_step(cucumber_locations: dict, x_max, y_max) -> (dict, int):
     
     return the new locations
     """
-    east_bound_cucumbers = {}
     final_cucumbers = {}
     cucumbers_that_moved = 0
+    east_bound_points = []
+    east_bound_arrows = []
     # first the east-bound sea cucumbers
     for x in range(x_max):
         for y in range(y_max):
             if cucumber_locations.get((x, y)) == ">":
                 if (x, y) == (x_max-1, y):  # we're at the end - check the first spot
                     if cucumber_locations[(0, y)] == ".":
-                        east_bound_cucumbers[(0, y)] = ">"
-                        east_bound_cucumbers[(x, y)] = "."
+                        east_bound_arrows.append((0, y))
+                        east_bound_points.append((x, y))
                         cucumbers_that_moved += 1
-                    else:
-                        east_bound_cucumbers[(x, y)] = ">"
                 elif cucumber_locations[(x+1, y)] == ".":
-                    east_bound_cucumbers[(x+1, y)] = ">"
-                    east_bound_cucumbers[(x, y)] = "."
+                    east_bound_arrows.append((x+1, y))
+                    east_bound_points.append((x, y))
                     cucumbers_that_moved += 1
-                else:
-                    east_bound_cucumbers[(x, y)] = ">"
+    for arrows in east_bound_arrows:
+        cucumber_locations[arrows] = ">"
+    for point in east_bound_points:
+        cucumber_locations[point] = "."
     # now the south-facing sea cucumbers
+    south_bound_arrows = []
+    south_bound_points = []
     for x in range(x_max):
         for y in range(y_max):
             if cucumber_locations.get((x, y)) == "v":
                 if (x, y) == (x, y_max - 1):  # we're at the bottom - check the top spot
-                    if east_bound_cucumbers.get((x, 0)) in [".", None] or cucumber_locations[x, 0] != "v":
-                        final_cucumbers[(x, 0)] = "v"
-                        final_cucumbers[(x, y)] = "."
+                    if cucumber_locations[(x, 0)] == ".":
+                        south_bound_arrows.append((x, 0))
+                        south_bound_points.append((x, y))
                         cucumbers_that_moved += 1
-                    else:
-                        final_cucumbers[(x, y)] = "v"
-                elif east_bound_cucumbers.get((x, y+1)) in [".", None] or cucumber_locations[(x, y+1)] != "v":
-                    final_cucumbers[(x, y+1)] = "v"
-                    final_cucumbers[(x, y)] = "."
+                elif cucumber_locations.get((x, y+1)) == ".":
+                    south_bound_arrows.append((x, y+1))
+                    south_bound_points.append((x, y))
                     cucumbers_that_moved += 1
-                else:
-                    final_cucumbers[(x, y)] = "v"
-    return final_cucumbers, cucumbers_that_moved
+    for arrow in south_bound_arrows:
+        cucumber_locations[arrow] = "v"
+    for point in south_bound_points:
+        cucumber_locations[point] = "."
+    return cucumber_locations, cucumbers_that_moved
 
 
 if __name__ == "__main__":
