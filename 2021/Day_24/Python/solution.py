@@ -33,10 +33,13 @@ if __name__ == "__main__":
     test_number = 99999999999999
     add_2 = 0
     test_number_as_list = [int(x) for x in str(test_number)]
+    print(f"{len(test_number_as_list)=}")
     while True:
+        print(f"{test_number=} at beginning")
+        print(f"{test_number_as_list=}")
         for instruction in instructions:
             parsed_instruction = instruction.split()
-            print(parsed_instruction)
+            # print(parsed_instruction)
             if len(parsed_instruction) == 2:
                 if parsed_instruction[0] == "inp":
                     if parsed_instruction[1] == "w":
@@ -62,14 +65,15 @@ if __name__ == "__main__":
                     y = math(y, add_2, parsed_instruction[0])
                 elif parsed_instruction[1] == "z":
                     z = math(z, add_2, parsed_instruction[0])
-                print(f"{w=}, {x=}, {y=}, {z=}")
+                # print(f"{w=}, {x=}, {y=}, {z=}")
         if z == 0:
             break
-        test_number -= test_number
+        test_number -= 1
+        print(f"{test_number=} at end")
         test_number_as_list = [int(x) for x in str(test_number)]
         inp_counter = 0
         if 0 in test_number_as_list:
-            test_number -= test_number
+            test_number -= 1
             test_number_as_list = [int(x) for x in str(test_number)]
     print(f"The model number is {test_number}")
 

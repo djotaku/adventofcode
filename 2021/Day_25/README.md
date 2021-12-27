@@ -22,7 +22,7 @@ During a single step, the east-facing herd moves first, then the south-facing he
 
 What is the first step on which no sea cucumbers move?
 
-Answer: 
+Answer: 400
 ## Part 2
 
 ## Commentary / Approach to the Problem
@@ -35,11 +35,12 @@ This seems a relatively easy simulation. For each step attempt to move east and 
 ### Generic
 
 ### Python
-
+- Nothing
 ### Ruby
-
+- TBD
 ### Perl
-
+- TBD
 ### Go (Golang)
-
+- TBD
 ### Haskell
+- TBD

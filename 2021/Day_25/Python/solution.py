@@ -74,14 +74,17 @@ def cucumber_step(cucumber_locations: dict, x_max, y_max) -> (dict, int):
 
 
 if __name__ == "__main__":
-    initial_cucumbers = input_per_line("../sample_input.txt")
+    initial_cucumbers = input_per_line("../input.txt")
     initial_cucumber_mapping, (this_x_max, this_y_max) = map_sea_cucumbers(initial_cucumbers)
     keep_lopping = True
     comparison_dictionary = {}
     post_step_dictionary = initial_cucumber_mapping
     step = 1
-    while step < 60:
+    while keep_lopping:
         post_step_dictionary, how_many_moved = cucumber_step(post_step_dictionary, this_x_max, this_y_max)
         print(f"{step=}")
         print(f"{how_many_moved=}")
         step += 1
+        if how_many_moved == 0:
+            keep_lopping = False
+    print(f"The first step on which no sea cucumbers move is {step-1}")
