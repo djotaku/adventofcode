@@ -36,7 +36,7 @@ def cucumber_step(cucumber_locations: dict, x_max, y_max) -> (dict, int):
     # first the east-bound sea cucumbers
     for x in range(x_max):
         for y in range(y_max):
-            if cucumber_locations[(x, y)] == ">":
+            if cucumber_locations.get((x, y)) == ">":
                 if (x, y) == (x_max-1, y):  # we're at the end - check the first spot
                     if cucumber_locations[(0, y)] == ".":
                         east_bound_cucumbers[(0, y)] = ">"
@@ -53,15 +53,15 @@ def cucumber_step(cucumber_locations: dict, x_max, y_max) -> (dict, int):
     # now the south-facing sea cucumbers
     for x in range(x_max):
         for y in range(y_max):
-            if cucumber_locations[(x, y)] == "v":
+            if cucumber_locations.get((x, y)) == "v":
                 if (x, y) == (x, y_max - 1):  # we're at the bottom - check the top spot
-                    if east_bound_cucumbers[(x, 0)] == "." or cucumber_locations[x, 0] != "v":
+                    if east_bound_cucumbers.get((x, 0)) in [".", None] or cucumber_locations[x, 0] != "v":
                         final_cucumbers[(x, 0)] = "v"
                         final_cucumbers[(x, y)] = "."
                         cucumbers_that_moved += 1
                     else:
                         final_cucumbers[(x, y)] = "v"
-                elif east_bound_cucumbers[(x, y+1)] == "." or cucumber_locations[(x, y+1)] != "v":
+                elif east_bound_cucumbers.get((x, y+1)) in [".", None] or cucumber_locations[(x, y+1)] != "v":
                     final_cucumbers[(x, y+1)] = "v"
                     final_cucumbers[(x, y)] = "."
                     cucumbers_that_moved += 1
