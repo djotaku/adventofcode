@@ -37,9 +37,18 @@ The total risk of this path is 40 (the starting position is never entered, so it
 
 What is the lowest total risk of any path from the top left to the bottom right?
 
-Answer: 
+Answer: 619
 
 ## Part 2
+The entire cave is actually five times larger in both dimensions than you thought; the area you originally scanned is just one tile in a 5x5 tile area that forms the full map. Your original map tile repeats to the right and downward; each time the tile repeats to the right or downward, all of its risk levels are 1 higher than the tile immediately up or left of it. However, risk levels above 9 wrap back around to 1. So, if your original map had some position with a risk level of 8, then that same position on each of the 25 total tiles would be as follows:
+
+    8 9 1 2 3
+    9 1 2 3 4
+    1 2 3 4 5
+    2 3 4 5 6
+    3 4 5 6 7
+
+Answer: 
 
 ## Commentary / Approach to the Problem
 ### Part 1
@@ -48,6 +57,9 @@ I was at first thinking of maybe using a Hamilton Path or Traveling Salesman, bu
 The cave algorithm - BFS - was the wrong algorithm to use. It was more or less infinite.
 
 Someone told me to use Dijkstra. I'd tried last year and earlier this year, but I guess it was time to finally learn it. [I'm using a stack abuse page](https://stackabuse.com/dijkstras-algorithm-in-python/) to learn Dijkstra/use their implementation, but I'll still have to format the input to work with it.
+
+### Part 2 
+Looks like the real challenge here is confirming that I've correctly increased my inputs. Right now I think my strategy will be to ingest the grid and then maybe write it back out to ingest again. Alternatively, I may just ingest it and, line by line, increase it by 5 times and then work with that in memory. I will have to think about this a bit.
 ## What I Learned
 
 ### Generic

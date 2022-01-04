@@ -97,12 +97,12 @@ def create_adjacency_grid(our_points: dict, one_dimension: int) -> dict:
 
 
 if __name__ == "__main__":
-    points = input_per_line("../test_input.txt")
+    points = input_per_line("../input.txt")
     grid_of_points = create_grid(points)
     # print(grid_of_points)
     size_of_one_side = len(points)
     adjacency_grid = create_adjacency_grid(grid_of_points, size_of_one_side)
-    print(adjacency_grid)
+    # print(adjacency_grid)
     size_of_graph = size_of_one_side ** 2
     chiton_graph = Graph(size_of_graph)
     for key, value in adjacency_grid.items():
@@ -110,7 +110,11 @@ if __name__ == "__main__":
             # print(f"{key=}, {neighbor=}, {grid_of_points[neighbor]}")
             chiton_graph.add_edge(key, this_neighbor, grid_of_points[this_neighbor])
     dijkstra_solution = dijkstra(chiton_graph, 0)
+
     # print(f"{dijkstra_solution=}")
     print(f"The lowest total risk to the bottom right position from the top left is:"
-          f"{dijkstra_solution[99]}")
+          f"{dijkstra_solution[9999]}")  # this part has to be changed between test input and real input
     # print(chiton_graph.visited)
+
+
+# 431 is too low
