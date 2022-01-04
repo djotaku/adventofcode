@@ -84,26 +84,27 @@ def create_adjacency_grid(our_points: dict, one_dimension: int) -> dict:
             if number != 0:
                 left = number - 1
             below = number + one_dimension
-        # bottom row
-        elif 90 <= number <= 99:
-            above = number - one_dimension
-            if number != 90:
-                left = number - 1
-            if number != 99:
+            if number + 1 <= max_number:
                 right = number + 1
         # first number in a row
         elif number % one_dimension == 0:
             right = number + 1
-            below = number + one_dimension
+            above = number - one_dimension
+            if number + one_dimension <= (max_number - 1):
+                below = number + one_dimension
         # last number in a row
         elif number % (one_dimension - 1) == 0:
             left = number - 1
-            below = number + one_dimension
+            above = number - one_dimension
+            if number + one_dimension <= (max_number - 1):
+                below = number + one_dimension
         else:
             above = number - one_dimension
             left = number - 1
-            right = number + 1
-            below = number + one_dimension
+            if number + 1 <= max_number:
+                right = number + 1
+            if number + one_dimension <= (max_number - 1):
+                below = number + one_dimension
         neighbors = [above, left, right, below]
         valid_neighbors = [neighbor for neighbor in neighbors if neighbor]
         this_adjacency_grid[number] = deepcopy(valid_neighbors)
@@ -116,8 +117,8 @@ if __name__ == "__main__":
     # print(grid_of_points)
     size_of_one_side = len(points)
     adjacency_grid = create_adjacency_grid(grid_of_points, size_of_one_side)
-    # print(adjacency_grid)
-    size_of_graph = size_of_one_side**2
+    print(adjacency_grid)
+    size_of_graph = size_of_one_side ** 2
     chiton_graph = Graph(size_of_graph)
     for key, value in adjacency_grid.items():
         for this_neighbor in value:
