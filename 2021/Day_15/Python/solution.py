@@ -75,38 +75,23 @@ def create_adjacency_grid(our_points: dict, one_dimension: int) -> dict:
     this_adjacency_grid = {}
     max_number = len(our_points.items()) - 1
     for number in range(len(our_points.items())):
-        above = None
         left = None
         right = None
         below = None
-        # top row
-        if 0 <= number <= one_dimension - 1:
-            if number != 0:
-                left = number - 1
-            below = number + one_dimension
-            if number + 1 <= max_number:
-                right = number + 1
         # first number in a row
-        elif number % one_dimension == 0:
+        if number % one_dimension == 0:
             right = number + 1
-            above = number - one_dimension
-            if number + one_dimension <= (max_number - 1):
-                below = number + one_dimension
-        # last number in a row
-        elif number % (one_dimension - 1) == 0:
+        elif (number + 1) % one_dimension == 0:
             left = number - 1
-            above = number - one_dimension
-            if number + one_dimension <= (max_number - 1):
-                below = number + one_dimension
         else:
-            above = number - one_dimension
             left = number - 1
             if number + 1 <= max_number:
                 right = number + 1
-            if number + one_dimension <= (max_number - 1):
-                below = number + one_dimension
+        above = number - one_dimension if (number - one_dimension) > -1 else None
+        if (number + one_dimension) <= max_number:
+            below = number + one_dimension
         neighbors = [above, left, right, below]
-        valid_neighbors = [neighbor for neighbor in neighbors if neighbor]
+        valid_neighbors = [neighbor for neighbor in neighbors if neighbor is not None]
         this_adjacency_grid[number] = deepcopy(valid_neighbors)
     return this_adjacency_grid
 
@@ -125,8 +110,7 @@ if __name__ == "__main__":
             # print(f"{key=}, {neighbor=}, {grid_of_points[neighbor]}")
             chiton_graph.add_edge(key, this_neighbor, grid_of_points[this_neighbor])
     dijkstra_solution = dijkstra(chiton_graph, 0)
-    # print(dijkstra_solution)
+    # print(f"{dijkstra_solution=}")
     print(f"The lowest total risk to the bottom right position from the top left is:"
           f"{dijkstra_solution[99]}")
-    check = Counter(chiton_graph.visited)
-    # print(check)
+    # print(chiton_graph.visited)
