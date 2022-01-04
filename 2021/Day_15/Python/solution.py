@@ -67,42 +67,43 @@ def create_grid(lines: list) -> dict:
     return this_grid
 
 
-def create_adjacency_grid(our_points: dict) -> dict:
+def create_adjacency_grid(our_points: dict, one_dimension: int) -> dict:
     """For each point on the grid, create a dict entry (list) of other point we can get to.
 
      For part 1, at least, we cannot go diagonal.
      """
     this_adjacency_grid = {}
+    max_number = len(our_points.items()) - 1
     for number in range(len(our_points.items())):
         above = None
         left = None
         right = None
         below = None
         # top row
-        if 0 <= number <= 9:  # this needs to be adapted to the size of the input (make a function parameter)
+        if 0 <= number <= one_dimension - 1:
             if number != 0:
                 left = number - 1
-            if number != 10:
-                right = number + 1
-            below = number + 10
+            below = number + one_dimension
         # bottom row
         elif 90 <= number <= 99:
-            above = number - 10
+            above = number - one_dimension
             if number != 90:
                 left = number - 1
             if number != 99:
                 right = number + 1
-        elif number % 10 == 0:
+        # first number in a row
+        elif number % one_dimension == 0:
             right = number + 1
-            below = number + 10
-        elif number % 9 == 0:
+            below = number + one_dimension
+        # last number in a row
+        elif number % (one_dimension - 1) == 0:
             left = number - 1
-            below = number + 10
+            below = number + one_dimension
         else:
-            above = number - 10
+            above = number - one_dimension
             left = number - 1
             right = number + 1
-            below = number + 10
+            below = number + one_dimension
         neighbors = [above, left, right, below]
         valid_neighbors = [neighbor for neighbor in neighbors if neighbor]
         this_adjacency_grid[number] = deepcopy(valid_neighbors)
@@ -113,14 +114,15 @@ if __name__ == "__main__":
     points = input_per_line("../test_input.txt")
     grid_of_points = create_grid(points)
     # print(grid_of_points)
-    adjacency_grid = create_adjacency_grid(grid_of_points)
+    size_of_one_side = len(points)
+    adjacency_grid = create_adjacency_grid(grid_of_points, size_of_one_side)
     # print(adjacency_grid)
-    size_of_graph = len(points)**2
+    size_of_graph = size_of_one_side**2
     chiton_graph = Graph(size_of_graph)
     for key, value in adjacency_grid.items():
-        for neighbor in value:
+        for this_neighbor in value:
             # print(f"{key=}, {neighbor=}, {grid_of_points[neighbor]}")
-            chiton_graph.add_edge(key, neighbor, grid_of_points[neighbor])
+            chiton_graph.add_edge(key, this_neighbor, grid_of_points[this_neighbor])
     dijkstra_solution = dijkstra(chiton_graph, 0)
     # print(dijkstra_solution)
     print(f"The lowest total risk to the bottom right position from the top left is:"
