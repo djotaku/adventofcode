@@ -61,9 +61,8 @@ def create_grid(lines: list) -> dict:
     this_grid = {}
     incrementing_number = 0
     for line in lines:
-        numbers = [number for number in line]
-        for number in numbers:
-            this_grid[incrementing_number] = int(number)
+        for number in line:
+            this_grid[incrementing_number] = number
             incrementing_number += 1
     return this_grid
 
@@ -106,7 +105,44 @@ def turn_input_into_grid_of_numbers(input_list: list) -> list:
     return fixed_list
 
 
-def create_part_two_grid(original_input: list) -> list:
+def number_increase_and_wrap(number: int) -> int:
+    """Increase the number or wrap it back to 1 if it goes past 9"""
+    number += 1
+    if number == 10:
+        return 1
+    else:
+        return number
+
+
+def increase_numbers(list_of_numbers: list) -> list:
+    """Increase all the numbers. Wrap back to 1 if you go past 9."""
+    increased_list = []
+    for line in list_of_numbers:
+        temp_list = [number_increase_and_wrap(number) for number in line]
+        increased_list.append(copy.deepcopy(temp_list))
+    return increased_list
+
+
+def create_grid_row(list_1: list, list_2: list, list_3: list, list_4: list, list_5: list) -> list:
+    """Basically create one row of grids"""
+    grid_row = []
+    for row_number, row in enumerate(list_1):
+        temp_row = []
+        for character in list_1[row_number]:
+            temp_row.append(character)
+        for character in list_2[row_number]:
+            temp_row.append(character)
+        for character in list_3[row_number]:
+            temp_row.append(character)
+        for character in list_4[row_number]:
+            temp_row.append(character)
+        for character in list_5[row_number]:
+            temp_row.append(character)
+        grid_row.append(copy.deepcopy(temp_row))
+    return grid_row
+
+
+def create_part_two_grid(original_input: list) -> tuple:
     """Take the input list and create the following (where 8 is the original):
 
     8 9 1 2 3
@@ -115,13 +151,45 @@ def create_part_two_grid(original_input: list) -> list:
     2 3 4 5 6
     3 4 5 6 7
     """
-    return []
+    original_grid_plus_1 = increase_numbers(original_input)
+    original_grid_plus_2 = increase_numbers(original_grid_plus_1)
+    original_grid_plus_3 = increase_numbers(original_grid_plus_2)
+    original_grid_plus_4 = increase_numbers(original_grid_plus_3)
+    original_grid_plus_5 = increase_numbers(original_grid_plus_4)
+    original_grid_plus_6 = increase_numbers(original_grid_plus_5)
+    original_grid_plus_7 = increase_numbers(original_grid_plus_6)
+    original_grid_plus_8 = increase_numbers(original_grid_plus_7)
+    # a grid row is a repeating grid
+    grid_row_0 = []
+    grid_row_1 = []
+    grid_row_2 = []
+    grid_row_3 = []
+    grid_row_4 = []
+    grid_row_0 = create_grid_row(original_input, original_grid_plus_1, original_grid_plus_2, original_grid_plus_3,
+                                 original_grid_plus_4)
+    grid_row_1 = create_grid_row(original_grid_plus_1, original_grid_plus_2, original_grid_plus_3, original_grid_plus_4,
+                                 original_grid_plus_5)
+    grid_row_2 = create_grid_row(original_grid_plus_2, original_grid_plus_3, original_grid_plus_4, original_grid_plus_5,
+                                 original_grid_plus_6)
+    grid_row_3 = create_grid_row(original_grid_plus_3, original_grid_plus_4, original_grid_plus_5, original_grid_plus_6,
+                                 original_grid_plus_7)
+    grid_row_4 = create_grid_row(original_grid_plus_4, original_grid_plus_5, original_grid_plus_6, original_grid_plus_7,
+                                 original_grid_plus_8)
+    part_two_grid_dict = {}
+    part_two_item_count = 0
+    all_grids = [grid_row_0, grid_row_1, grid_row_2, grid_row_3, grid_row_4]
+    for grid in all_grids:
+        for line in grid:
+            for number in line:
+                part_two_grid_dict[part_two_item_count] = number
+                part_two_item_count += 1
+    return part_two_grid_dict, len(grid_row_0[0])
 
 
 if __name__ == "__main__":
     points = input_per_line("../test_input.txt")
-    print(turn_input_into_grid_of_numbers(points))
-    grid_of_points = create_grid(points)
+    integer_points = turn_input_into_grid_of_numbers(points)
+    grid_of_points = create_grid(integer_points)
     # print(grid_of_points)
     size_of_one_side = len(points)
     adjacency_grid = create_adjacency_grid(grid_of_points, size_of_one_side)
@@ -138,6 +206,18 @@ if __name__ == "__main__":
     print(f"The lowest total risk to the bottom right position from the top left is:"
           f"{dijkstra_solution[size_of_graph-1]}")  # this part has to be changed between test input and real input
     # print(chiton_graph.visited)
-
-
-# 431 is too low
+    # Part 2
+    part_two_grid, part_two_size_of_one_side = create_part_two_grid(integer_points)
+    # print(f"{part_two_grid=}")
+    # print(f"{part_two_size_of_one_side=}")
+    part_two_adjacency_grid = create_adjacency_grid(part_two_grid, part_two_size_of_one_side)
+    # print(f"{part_two_adjacency_grid}")
+    part_two_size_of_graph = part_two_size_of_one_side**2
+    part_two_chiton_graph = Graph(part_two_size_of_graph)
+    for key, value in part_two_adjacency_grid.items():
+        for this_neighbor in value:
+            # print(f"{key=}, {value=}, {this_neighbor=}, {part_two_grid[this_neighbor]=}")
+            part_two_chiton_graph.add_edge(key, this_neighbor, part_two_grid[this_neighbor])
+    part_two_dijkstra_solution = dijkstra(part_two_chiton_graph, 0)
+    print(f"The lowest total risk to the bottom right position from the top left in part 2 is:"
+          f"{part_two_dijkstra_solution[part_two_size_of_graph - 1]}")
