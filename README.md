@@ -31,7 +31,7 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
 - 2021
   - Fourth Problem Set/Second Year Participating Live
   - Will primarily solve with Python during December 2021
-  - 34 stars collected so far
+  - 35 stars collected so far
   - Reached 100 stars total over all years on 20211202
   - Interruption in problem-solving days 15-19 due to WorldCon 2021 and 21-25 for family time at Christmas
   - Repo stats at end of 2021 Live period the repo code was split as follows:
