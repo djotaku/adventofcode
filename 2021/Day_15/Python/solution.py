@@ -1,4 +1,5 @@
 """Solution for Advent of Code 2021 Day 15: Chiton using Dijkstra's Algorithm"""
+import copy
 from pprint import pprint
 from queue import PriorityQueue
 import heapq as heap
@@ -96,8 +97,30 @@ def create_adjacency_grid(our_points: dict, one_dimension: int) -> dict:
     return this_adjacency_grid
 
 
+def turn_input_into_grid_of_numbers(input_list: list) -> list:
+    """Take our list which has lines of strings like '12345' and turn it into list of int lists."""
+    fixed_list = []
+    for line in input_list:
+        temp_list = [int(character) for character in line]
+        fixed_list.append(copy.deepcopy(temp_list))
+    return fixed_list
+
+
+def create_part_two_grid(original_input: list) -> list:
+    """Take the input list and create the following (where 8 is the original):
+
+    8 9 1 2 3
+    9 1 2 3 4
+    1 2 3 4 5
+    2 3 4 5 6
+    3 4 5 6 7
+    """
+    return []
+
+
 if __name__ == "__main__":
-    points = input_per_line("../input.txt")
+    points = input_per_line("../test_input.txt")
+    print(turn_input_into_grid_of_numbers(points))
     grid_of_points = create_grid(points)
     # print(grid_of_points)
     size_of_one_side = len(points)
@@ -113,7 +136,7 @@ if __name__ == "__main__":
 
     # print(f"{dijkstra_solution=}")
     print(f"The lowest total risk to the bottom right position from the top left is:"
-          f"{dijkstra_solution[9999]}")  # this part has to be changed between test input and real input
+          f"{dijkstra_solution[size_of_graph-1]}")  # this part has to be changed between test input and real input
     # print(chiton_graph.visited)
 
 
