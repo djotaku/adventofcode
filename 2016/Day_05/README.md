@@ -23,12 +23,6 @@ Your puzzle input is ugkcyxxp.
 Answer: d4cd2ee1
 
 ## Part 2
-
-## Commentary / Approach to the Problem
-### Part 1
-In 2015 Day 4 I used the hashing algorithms for Python, Perl, and Ruby. So I decided to start there. Part 1 seemed pretty easy and straightforward. I was able to take that 2015 code and just modify it slightly to get the answer to part 1.
-
-### Part 2
 Instead of simply filling in the password from left to right, the hash now also indicates the position within the password to fill. You still look for hashes that begin with five zeroes; however, now, the sixth character represents the position (0-7), and the seventh character is the character to put in that position.
 
 A hash result of 000001f means that f is the second character in the password. Use only the first result for each position, and ignore invalid positions.
@@ -44,6 +38,13 @@ producing the password 05ace8e3.
 Given the actual Door ID and this new method, what is the password?
 
 Answer: f2c730e5
+## Commentary / Approach to the Problem
+### Part 1
+In 2015 Day 4 I used the hashing algorithms for Python, Perl, and Ruby. So I decided to start there. Part 1 seemed pretty easy and straightforward. I was able to take that 2015 code and just modify it slightly to get the answer to part 1.
+
+### Part 2
+What was most difficult was making this work in each language. The idea behind the problem itself wasn't too bad.
+
 ## What I Learned
 
 ### Generic
@@ -56,5 +57,5 @@ Answer: f2c730e5
 - Very easy, just required remembering substr function.
 - using defined keyword to check if a variable is undefined.
 ### Go (Golang)
-
+- How to use the MD5 hashes in Go
 ### Haskell
