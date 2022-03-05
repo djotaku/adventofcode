@@ -31,6 +31,13 @@ Given the recording in your puzzle input, what is the error-corrected version of
 Answer: dzqckwsd
 
 ## Part 2
+In this modified code, the sender instead transmits what looks like random data, but for each character, the character they actually want to send is slightly less likely than the others. Even after signal-jamming noise, you can look at the letter distributions in each column and choose the least common letter to reconstruct the original message.
+
+In the above example, the least common character in the first column is a; in the second, d, and so on. Repeating this process for the remaining characters produces the original message, advent.
+
+Given the recording in your puzzle input and this new decoding methodology, what is the original message that Santa is trying to send?
+
+Answer: lragovly.
 
 ## Commentary / Approach to the Problem
 ### Part 1
@@ -40,7 +47,7 @@ My initial approach to the problem: For each position, have a Count dict (or tal
 ### Generic
 
 ### Python
-
+- Counter does not have a least_common method - boo!
 ### Ruby
 
 ### Perl

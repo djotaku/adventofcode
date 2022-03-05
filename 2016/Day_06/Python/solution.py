@@ -9,7 +9,7 @@ def input_per_line(file: str):
         return [line.rstrip() for line in input_file.readlines()]
 
 
-def find_most_common_letters(word_list: list, word_length: int) -> list:
+def decrypt_message(word_list: list, word_length: int) -> tuple:
     """Take in a list of words, count the number of times each letter appears per position.
 
     :param word_list: the words to search.
@@ -21,11 +21,14 @@ def find_most_common_letters(word_list: list, word_length: int) -> list:
         characters = [character for character in word]
         for position, character in enumerate(characters):
             counter_list[position][character] += 1
-    return [counter_list[number].most_common(1)[0][0] for number in range(len(counter_list))]
+    most_common_letters = [counter_list[number].most_common(1)[0][0] for number in range(len(counter_list))]
+    least_common_letters = [list(reversed(counter_list[number].most_common()))[0][0] for number in range(len(counter_list))]
+    return most_common_letters, least_common_letters
 
 
 if __name__ == '__main__':
     scrambled_signal = input_per_line("../input.txt")
     scrambled_word_length = len(scrambled_signal[0])
-    most_common = find_most_common_letters(scrambled_signal, scrambled_word_length)
-    print(f"The message is {''.join(most_common)}")
+    most_common, least_common = decrypt_message(scrambled_signal, scrambled_word_length)
+    print(f"The first message is {''.join(most_common)}")
+    print(f"The second message is {''.join(least_common)}")
