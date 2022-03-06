@@ -1,5 +1,5 @@
 # What I learned from this day's problem
 
 ## Part 1
-
+- I know I made things a bit more complicated than they needed to be with the search for abba and then passing all those to aaaa to make sure they weren't aaaa. I think a good refactor or way of looking at things in the other languages would be to combine those into one rule check.
 ## Part 2
