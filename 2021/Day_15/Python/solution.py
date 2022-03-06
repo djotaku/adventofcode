@@ -187,7 +187,7 @@ def create_part_two_grid(original_input: list) -> tuple:
 
 
 if __name__ == "__main__":
-    points = input_per_line("../test_input.txt")
+    points = input_per_line("../input.txt")
     integer_points = turn_input_into_grid_of_numbers(points)
     grid_of_points = create_grid(integer_points)
     # print(grid_of_points)
