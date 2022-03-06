@@ -16,7 +16,7 @@ For example:
 
 How many IPs in your puzzle input support TLS?
 
-Answer: 
+Answer: 115
 
 ## Part 2
 
