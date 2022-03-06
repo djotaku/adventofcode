@@ -18,8 +18,13 @@ def test_aaaa_rule():
     assert solution.aaaa_rule(["aaaa"]) is False
     assert solution.aaaa_rule(["aaaa", "bbbb", 'xyyx']) is True
 
+
 def test_part_one_rules():
     assert solution.test_part_one_rule("abba[mnop]qrst") is True
     assert solution.test_part_one_rule("abcd[bddb]xyyx") is False
     assert solution.test_part_one_rule("ioxxoj[asdfgh]zxcvbn") is True
     assert solution.test_part_one_rule("aaaa[qwer]tyui") is False
+
+
+def test_part_two_rules():
+    assert solution.test_part_two_rules("aba[bab]xyz") is True

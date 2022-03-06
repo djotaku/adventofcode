@@ -45,11 +45,36 @@ def test_part_one_rule(line_to_test: str) -> bool:
     return abba_rule(line_to_test) and aaaa_rule(find_abba_and_aaaa(line_to_test)) and bracket_abba_rule(line_to_test)
 
 
+def test_part_two_rules(line_to_test: str) -> bool:
+    # axa[xax]
+    regex_one = re.compile(r'(\w)(\w)\1\w*\[\w*\2\1\2\w*\]')
+    captured_chars_one = re.findall(regex_one, line_to_test)
+    #print(f"{captured_chars_one=}")
+    # [xax]axa
+    regex_two = re.compile(r'\[\w*(\w)(\w)\1\w*\]\w*\2\1\2')
+    captured_chars_two = re.findall(regex_two, line_to_test)
+    #print(f"{captured_chars_two=}")
+    if re.search(regex_one, line_to_test):
+        if captured_chars_one[0][0] != captured_chars_one[0][1]:
+            return True
+    if re.search(regex_two, line_to_test):
+        if captured_chars_two[0][0] != captured_chars_two[0][1]:
+            return True
+    return False
+
+
 if __name__ == '__main__':
     ip_addresses_to_check = input_per_line("../input.txt")
     valid_ipv7 = sum(1 for ip_address in ip_addresses_to_check if test_part_one_rule(ip_address))
-    print(f"By part one's definition there are {valid_ipv7} valid IPv7 addresses.")
+    print(f"There are {valid_ipv7} valid IPv7 addresses.")
+    valid_ssl = sum(1 for ip_address in ip_addresses_to_check if test_part_two_rules(ip_address))
+    print(f"There are {valid_ssl} valid ssl addresses.")
 
+# Part 2
+# 158 is too low
+
+
+# Part 1
 # 189 is too high
 # 79 is not right
 # 114 is too low
