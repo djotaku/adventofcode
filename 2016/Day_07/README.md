@@ -30,7 +30,7 @@ For example:
 
 How many IPs in your puzzle input support SSL?
 
-Answer:
+Answer: 231
 
 ## Commentary / Approach to the Problem
 ### Part 1
@@ -48,7 +48,8 @@ Second, I'm going to try and construct a regex that can get this in one shot. Or
 ### Generic
 - used the awesome regex101.com to figure out the regex expressions for the rules
 ### Python
-
+- re.finditer to get all your matches. Had to use this instead of findall because I was using parenthesis to do duplicates and that makes findall not work intuitively for the entire match.
+- using re.split to get everything that DOESN'T match the regex!
 ### Ruby
 
 ### Perl
