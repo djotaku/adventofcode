@@ -22,6 +22,8 @@ My goal for the 2016 problem sets are:
 ### Language Specific
 - Day 01 Haskell - I had a hard enough time with part 1. I'll come back to this when I've got more Haskell experience.
 - Day 03 Haskell - Without for loops and variables I could assign, I couldn't figure out how to grab every 3 rows, transpose, eval, sum, and then move on to the next three rows.
+- Day 04 Haskell - Partially solved, but need to return to this
+- Day 05 Haskell - Wil come back to it
 ## What I learned from Advent of Code 2016
 
 A distillation of what I learned this year.
