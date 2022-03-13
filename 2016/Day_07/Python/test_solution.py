@@ -1,6 +1,6 @@
 from . import solution
 
-
+4
 def test_find_abba_and_aaaa():
     assert solution.find_abba_and_aaaa("abba[mnop]qrst") == ["abba"]
     assert solution.find_abba_and_aaaa("abcd[bddb]xyyx") == ["bddb", "xyyx"]

@@ -45,31 +45,47 @@ def test_part_one_rule(line_to_test: str) -> bool:
     return abba_rule(line_to_test) and aaaa_rule(find_abba_and_aaaa(line_to_test)) and bracket_abba_rule(line_to_test)
 
 
-# def test_part_two_rules(line_to_test: str) -> bool:
-#     # find an ABA
-#     aba_regex = re.compile(r'(\w)\w\1')
-#     abas_in_line = re.finditer(aba_regex, line_to_test)
-#     for aba in abas_in_line:
-#         letters = [letter for letter in aba.group()]
-#         if letters[0] != letters[1]:
-#             bab = f"{letters[1]}{letters[0]}{letters[1]}"
-#             bab_regex = re.compile(r'\[\w*'+bab+r'\w*]')
-#             if re.search(bab_regex, line_to_test) is not None:
-#                 return True
-#     return False
-
+# idea for part 2 - break up into inside and outside of brackets and then see if any ABAs have BABs
 def test_part_two_rules(line_to_test: str) -> bool:
-    # aba[bab]
-    regex = re.compile(r'(\w)(\w)\1\w*\[\w*\2\1\2\w*]|\[\w*(\w)(\w)\3\w*]\w*\4\3\4')
-    captured_chars = re.findall(regex, line_to_test)
-    all_matches = re.finditer(regex, line_to_test)
-    for match in all_matches:
-        print(match.group())
-    print(captured_chars)
-    if re.search(regex, line_to_test) is not None:
-        if captured_chars[0][0] != captured_chars[0][1] or captured_chars[0][2] != captured_chars[0][3]:
-            return True
+    # debug
+    print(f"{line_to_test=}")
+    hypernet_regex = re.compile(r'\[(\w*)]')
+    all_hypernets = re.findall(hypernet_regex, line_to_test)
+    all_supernets = re.split(r'\[\w*]', line_to_test)
+    print(f"{all_hypernets=}")
+    print(f"{all_supernets=}")
+    all_abas = []
+    for supernet in all_supernets:
+        abas_in_this_supernet = re.finditer(r'(\w)\w\1', supernet)
+        for aba in abas_in_this_supernet:
+            print(f"{aba=}")
+            letters = [letter for letter in aba.group()]
+            if letters[0] != letters[1]:
+                all_abas.append(aba.group())
+    print(f"{all_abas=}")
+    for aba in all_abas:
+        letters = [letter for letter in aba]
+        bab = f"{letters[1]}{letters[0]}{letters[1]}"
+        for hypernet in all_hypernets:
+            if bab in hypernet:
+                return True
     return False
+
+
+# def test_part_two_rules(line_to_test: str) -> bool:
+#     # aba[bab]
+#     regex = re.compile(r'(\w)(\w)\1\w*\[\w*\2\1\2\w*]|\[\w*(\w)(\w)\3\w*]\w*\4\3\4')
+#     captured_chars = re.findall(regex, line_to_test)
+#     all_matches = re.finditer(regex, line_to_test)
+#     print('----')
+#     for match in all_matches:
+#         print(match.group())
+#     print(captured_chars)
+#     print('----')
+#     if re.search(regex, line_to_test) is not None:
+#         if captured_chars[0][0] != captured_chars[0][1] or captured_chars[0][2] != captured_chars[0][3]:
+#             return True
+#     return False
 
 
 if __name__ == '__main__':
