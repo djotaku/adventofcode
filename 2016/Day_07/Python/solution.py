@@ -45,18 +45,29 @@ def test_part_one_rule(line_to_test: str) -> bool:
     return abba_rule(line_to_test) and aaaa_rule(find_abba_and_aaaa(line_to_test)) and bracket_abba_rule(line_to_test)
 
 
+# def test_part_two_rules(line_to_test: str) -> bool:
+#     # find an ABA
+#     aba_regex = re.compile(r'(\w)\w\1')
+#     abas_in_line = re.finditer(aba_regex, line_to_test)
+#     for aba in abas_in_line:
+#         letters = [letter for letter in aba.group()]
+#         if letters[0] != letters[1]:
+#             bab = f"{letters[1]}{letters[0]}{letters[1]}"
+#             bab_regex = re.compile(r'\[\w*'+bab+r'\w*]')
+#             if re.search(bab_regex, line_to_test) is not None:
+#                 return True
+#     return False
+
 def test_part_two_rules(line_to_test: str) -> bool:
     # aba[bab]
-    regex_one = re.compile(r'(\w)(\w)\1\w*\[\w*\2\1\2\w*]')
-    captured_chars_one = re.findall(regex_one, line_to_test)
-    # [bab]aba
-    regex_two = re.compile(r'\[\w*(\w)(\w)\1\w*]\w*\2\1\2')
-    captured_chars_two = re.findall(regex_two, line_to_test)
-    if re.search(regex_one, line_to_test) is not None:
-        if captured_chars_one[0][0] != captured_chars_one[0][1]:
-            return True
-    if re.search(regex_two, line_to_test) is not None:
-        if captured_chars_two[0][0] != captured_chars_two[0][1]:
+    regex = re.compile(r'(\w)(\w)\1\w*\[\w*\2\1\2\w*]|\[\w*(\w)(\w)\3\w*]\w*\4\3\4')
+    captured_chars = re.findall(regex, line_to_test)
+    all_matches = re.finditer(regex, line_to_test)
+    for match in all_matches:
+        print(match.group())
+    print(captured_chars)
+    if re.search(regex, line_to_test) is not None:
+        if captured_chars[0][0] != captured_chars[0][1] or captured_chars[0][2] != captured_chars[0][3]:
             return True
     return False
 
@@ -69,6 +80,7 @@ if __name__ == '__main__':
     print(f"There are {valid_ssl} valid ssl addresses.")
 
 # Part 2
+# 259 is too high
 # 158 is too low
 
 
