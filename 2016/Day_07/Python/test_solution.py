@@ -28,3 +28,14 @@ def test_part_one_rules():
 
 def test_part_two_rules():
     assert solution.test_part_two_rules("aba[bab]xyz") is True
+    assert solution.test_part_two_rules("xyx[xyx]xyx") is False
+    assert solution.test_part_two_rules("aaa[kek]eke") is True
+    assert solution.test_part_two_rules("zazbz[bzb]cdb") is True
+    # my own tests
+    assert solution.test_part_two_rules("aaaaba[bab]xyz") is True
+    assert solution.test_part_two_rules("abaaaa[bab]xyz") is True
+    assert solution.test_part_two_rules("abaaaa[aaababaaa]aaaxyzaaa") is True
+    assert solution.test_part_two_rules("abaaaba[aabababaaxa]aabaaxyzavava") is True
+    assert solution.test_part_two_rules("aaa[xvx]aaavbvdfasdfasdf[asdfasdfbvbasdfasdf]aaa") is True
+    assert solution.test_part_two_rules("aaa[xvx]aaavbvdfasdfasdf[asdfasdfbvbasdfasdf]aaa[aaa]") is True
+    assert solution.test_part_two_rules("aba[aaa]aaa[htv]exc[bab]xyz") is True

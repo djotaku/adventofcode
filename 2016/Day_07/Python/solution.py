@@ -46,18 +46,16 @@ def test_part_one_rule(line_to_test: str) -> bool:
 
 
 def test_part_two_rules(line_to_test: str) -> bool:
-    # axa[xax]
-    regex_one = re.compile(r'(\w)(\w)\1\w*\[\w*\2\1\2\w*\]')
+    # aba[bab]
+    regex_one = re.compile(r'(\w)(\w)\1\w*\[\w*\2\1\2\w*]')
     captured_chars_one = re.findall(regex_one, line_to_test)
-    #print(f"{captured_chars_one=}")
-    # [xax]axa
-    regex_two = re.compile(r'\[\w*(\w)(\w)\1\w*\]\w*\2\1\2')
+    # [bab]aba
+    regex_two = re.compile(r'\[\w*(\w)(\w)\1\w*]\w*\2\1\2')
     captured_chars_two = re.findall(regex_two, line_to_test)
-    #print(f"{captured_chars_two=}")
-    if re.search(regex_one, line_to_test):
+    if re.search(regex_one, line_to_test) is not None:
         if captured_chars_one[0][0] != captured_chars_one[0][1]:
             return True
-    if re.search(regex_two, line_to_test):
+    if re.search(regex_two, line_to_test) is not None:
         if captured_chars_two[0][0] != captured_chars_two[0][1]:
             return True
     return False
