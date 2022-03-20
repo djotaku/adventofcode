@@ -25,10 +25,10 @@ def rotate_row(display: dict, row_number: int, amount: int, dict_width: int = 50
     return display
 
 
-def rotate_column(display: dict, col_number: int, amount: int, dict_width: int = 50) -> dict:
+def rotate_column(display: dict, col_number: int, amount: int, dict_width: int = 6) -> dict:
     """Take in a dictionary with the current state of the display.
 
-    Move lights in row to the right by amount. They rotate back around to the left if they go off the edge.
+    Move lights in col down by amount. They rotate back around to the top if they go off the edge.
     """
     new_values = [((number + amount) % dict_width, display[(col_number, number)]) for number in range(dict_width)]
     for (row, value) in new_values:
@@ -44,7 +44,7 @@ def input_per_line(file: str):
 
 def pixel_text(display: dict) -> None:
     """Print out the display for viewing with human eyes."""
-    for height in range(50):
+    for height in range(6):
         for width in range(50):
             if display[(width, height)] == 1:
                 if width == 49:

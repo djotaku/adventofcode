@@ -45,17 +45,17 @@ You notice that the screen is only capable of displaying capital letters; in the
 
 After you swipe your card, what code is the screen trying to display?
 
-Answer: 
+Answer: ZFHFSFOGPO
 
 
 ## Commentary / Approach to the Problem
-
+It was pretty straightforward
 ## What I Learned
 
 ### Generic
 
 ### Python
-
+- Nothing, but a reminder that to print without a newline, you need to do print("something", end='')'
 ### Ruby
 
 ### Perl
