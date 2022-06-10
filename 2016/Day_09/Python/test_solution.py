@@ -12,3 +12,5 @@ def test_decompress_string():
 
 def test_decompress_version_2():
     assert solution.decompress_version_2("(3x3)XYZ") == 9
+    assert solution.decompress_version_2("X(8x2)(3x3)ABCY") == 20
+
