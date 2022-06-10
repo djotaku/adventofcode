@@ -26,7 +26,8 @@ My goal for the 2016 problem sets are:
 - Day 05 Haskell - Wil come back to it
 ## What I learned from Advent of Code 2016
 
-A distillation of what I learned this year.
+A distillation of what I learned this year:
+- TBD!
 
 
 For a full list of what I learned, for each day the README will contain what I learned in each programming language.
