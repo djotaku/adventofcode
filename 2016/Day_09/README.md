@@ -36,6 +36,8 @@ For example:
 Unfortunately, the computer you brought probably doesn't have enough memory to actually decompress the file; you'll have to come up with another way to get its decompressed length.
 
 What is the decompressed length of the file using this improved format?
+
+Answer: 10774309173
 ## Commentary / Approach to the Problem
 ### Part 1
 My immediate thought for the approach is to have a parser that will have a flag indicating whether we're currently in a data section or searching for makers. We have to do this rather than a naive regular expression because if we have what looks like a marker within the data, we treat it like data. 
@@ -46,10 +48,12 @@ guessing this means I have to do some math or something because actually decompr
 After thinking a bit, I think the answer is a recursive solution that involves multiplication and addition. Plus you need to handle characters that occur outside of
 marker territory. EG the "X" in the second example.
 ## What I Learned
+Didn't necessarily LEARN this, but got more practice with recursion in part 2.
 
 ### Generic
 
 ### Python
+- Nothing. My solution is VERY ugly, though. There must be a more elegant way to do this!
 
 ### Ruby
 

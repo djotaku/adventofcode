@@ -61,28 +61,26 @@ def decompress_version_2(input_string: str) -> int:
     current_marker = ""
     while position_in_character_list < len(characters):
         if not are_we_in_marker:
-            if characters[position_in_character_list] != "(":
-                length += 1
-                position_in_character_list += 1
-            else:
+            if characters[position_in_character_list] == "(":
                 are_we_in_marker = True
-                position_in_character_list += 1
-        elif are_we_in_marker:
-            if characters[position_in_character_list] != ')':
-                current_marker += characters[position_in_character_list]
-                position_in_character_list += 1
             else:
-                are_we_in_marker = False
-                split_marker = current_marker.split('x')
-                characters_to_repeat = int(split_marker[0])
-                repetitions = int(split_marker[1])
-                current_marker = ''
-                position_in_character_list += 1
-                new_string_to_test = "".join(
-                    characters[position_in_character_list:position_in_character_list + characters_to_repeat])
-                length += repetitions * decompress_version_2(new_string_to_test)
-                characters = characters[(position_in_character_list + characters_to_repeat):]
-                position_in_character_list = 0
+                length += 1
+            position_in_character_list += 1
+        elif characters[position_in_character_list] != ')':
+            current_marker += characters[position_in_character_list]
+            position_in_character_list += 1
+        else:
+            are_we_in_marker = False
+            split_marker = current_marker.split('x')
+            characters_to_repeat = int(split_marker[0])
+            repetitions = int(split_marker[1])
+            current_marker = ''
+            position_in_character_list += 1
+            new_string_to_test = "".join(
+                characters[position_in_character_list:position_in_character_list + characters_to_repeat])
+            length += repetitions * decompress_version_2(new_string_to_test)
+            characters = characters[(position_in_character_list + characters_to_repeat):]
+            position_in_character_list = 0
     return length
 
 
