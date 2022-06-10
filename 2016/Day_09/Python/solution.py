@@ -60,12 +60,13 @@ def decompress_version_2(input_string: str) -> int:
     position_in_character_list = 0
     current_marker = ""
     while position_in_character_list < len(characters):
-        if characters[position_in_character_list] != "(" and not are_we_in_marker:
-            length += 1
-            position_in_character_list += 1
-        elif characters[position_in_character_list] == "(":
-            are_we_in_marker = True
-            position_in_character_list += 1
+        if not are_we_in_marker:
+            if characters[position_in_character_list] != "(":
+                length += 1
+                position_in_character_list += 1
+            else:
+                are_we_in_marker = True
+                position_in_character_list += 1
         elif are_we_in_marker:
             if characters[position_in_character_list] != ')':
                 current_marker += characters[position_in_character_list]
@@ -77,13 +78,10 @@ def decompress_version_2(input_string: str) -> int:
                 repetitions = int(split_marker[1])
                 current_marker = ''
                 position_in_character_list += 1
-                print(split_marker)
                 new_string_to_test = "".join(
                     characters[position_in_character_list:position_in_character_list + characters_to_repeat])
-                print(f"{new_string_to_test=}")
-                length = repetitions * decompress_version_2(new_string_to_test)
+                length += repetitions * decompress_version_2(new_string_to_test)
                 characters = characters[(position_in_character_list + characters_to_repeat):]
-                print(f"{characters=}")
                 position_in_character_list = 0
     return length
 
@@ -91,8 +89,10 @@ def decompress_version_2(input_string: str) -> int:
 if __name__ == "__main__":
     our_input = input_only_one_line("../input.txt")
     decompressed_string = decompress_string(our_input)
-    # print(f"{decompressed_string=}")
     decompressed_length = len(decompressed_string)
     print(f"The decompressed length of the input is {decompressed_length}.")
+    print("Now it's time to try the decompression v2 algorithm.")
+    decompressed_length_v2 = decompress_version_2(our_input)
+    print(f"The decompressed length, using the v2 algorithm is {decompressed_length_v2}.")
 
 # Part 1: 110347 is too high
