@@ -1,4 +1,4 @@
-# Title of Problem
+# Two-Factor Authentication
 
 Out of respect for the author's wishes, I only put as much of the problem text as necessary to understand the problem.
 
@@ -55,7 +55,8 @@ It was pretty straightforward
 ### Generic
 
 ### Python
-- Nothing, but a reminder that to print without a newline, you need to do print("something", end='')'
+- For default dict, you don't want to use dict.get() for a value you haven't assigned or you'll get a None. Instead you want to just use the brackets and you'll get the default value
+- A reminder that to print without a newline, you need to do print("something", end='')'
 ### Ruby
 
 ### Perl

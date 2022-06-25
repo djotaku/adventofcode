@@ -20,7 +20,7 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
 - 2016
   - Third Problem Set Tackled (Oct 2021 - )
   - Originally solved with Python, Ruby, Perl, Haskell, and Go
-  - 14 stars Collected so Far
+  - 16 stars Collected so Far
 - 2017
   - Fifth Problem Set Tackled (TBD)
   - Languages: Rust and Julia (“One hard one and one easy one”)
