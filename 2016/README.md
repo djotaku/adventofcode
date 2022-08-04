@@ -18,6 +18,8 @@ My goal for the 2016 problem sets are:
 
 ## Days I could not complete
 ### Part 1 Sections Still incomplete:
+- Day 10 - I am not sure what the algorithm is
+- Day 11 - I don't know how to do this algorithmically
 ### Part 2 Sections Still incomplete:
 ### Language Specific
 - Day 01 Haskell - I had a hard enough time with part 1. I'll come back to this when I've got more Haskell experience.
