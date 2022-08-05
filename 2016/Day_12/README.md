@@ -32,18 +32,21 @@ After executing the assembunny code in your puzzle input, what value is left in 
 Answer: 318020
 
 ## Part 2
+If you instead initialize register c to be 1, what value is now left in register a?
+
+Answer: 9227674
 
 ## Commentary / Approach to the Problem
 ### Part 1
 I tend to do well at these assembly language interpreter problems. Now that I have Python 3.10, I want to try their new switch-case syntax.
 
-My Python solution for part 1 took a long time to run (relative to what was going on), but it did give me the right answer.
+My Python solution for part 1 took a long time to run (relative to what was going on), but it did give me the right answer. Second time around, I removed the print statements. Apparently it took a long time because I was printing to the terminal.
 ## What I Learned
 
 ### Generic
 
 ### Python
-
+- How to use match/case in Python
 ### Ruby
 
 ### Perl
