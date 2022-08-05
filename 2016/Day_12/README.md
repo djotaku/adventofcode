@@ -29,13 +29,15 @@ The above code would set register a to 41, increase its value by 2, decrease its
 
 After executing the assembunny code in your puzzle input, what value is left in register a?
 
-Answer: 
+Answer: 318020
 
 ## Part 2
 
 ## Commentary / Approach to the Problem
 ### Part 1
 I tend to do well at these assembly language interpreter problems. Now that I have Python 3.10, I want to try their new switch-case syntax.
+
+My Python solution for part 1 took a long time to run (relative to what was going on), but it did give me the right answer.
 ## What I Learned
 
 ### Generic
