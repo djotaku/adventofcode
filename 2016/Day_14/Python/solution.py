@@ -23,7 +23,6 @@ def is_there_a_quintuple(char_to_match: str, md5_hash: str) -> bool:
     regular_expression = re.compile(r'(%s)\1\1\1\1' % char_to_match)
     match = re.search(regular_expression, md5_hash)
     if match:
-        print(match[0])
         return True
     else:
         return False
@@ -39,7 +38,6 @@ def find_one_time_pad_keys(salt: str, key_to_stop: int) -> int:
 
     while key != key_to_stop:
         triple_answer, triple_character = is_there_a_triple(hash_list[index])
-        print(f"{triple_character=}")
         if triple_answer:
             for quint_index in range(index+1, len(hash_list)):
                 if is_there_a_quintuple(str(triple_character), hash_list[quint_index]):
@@ -51,4 +49,6 @@ def find_one_time_pad_keys(salt: str, key_to_stop: int) -> int:
 
 
 if __name__ == "__main__":
-    pass
+    our_salt = "ihaygndm"
+    sixty_fourth_index = find_one_time_pad_keys(our_salt, 64)
+    print(f"With our salt, the 64th key for the one-time pad is {sixty_fourth_index}")
