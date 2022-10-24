@@ -13,7 +13,7 @@ def find_capsule_time(discs: list) -> int:
     # first figure out the time points where each disc gets to 0 the first time
     disc_first_zero = []
     for time, disc in enumerate(discs, start=1):
-        distance_from_hole = (time + disc[1]) % disc[0]
+        distance_from_hole = disc[0] % (disc[1] + time)
         if distance_from_hole == 0:
             disc_first_zero.append(time)
         else:
