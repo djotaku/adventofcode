@@ -1,4 +1,4 @@
-"""Solution for Advent of Code 2016: One-Time Pad."""
+"""Solution for Advent of Code 2016: One-Time Pad testing optimizations."""
 
 import hashlib
 import re
@@ -26,9 +26,8 @@ def is_there_a_triple(md5_hash: str) -> (bool, str):
 
 def is_there_a_quintuple(char_to_match: str, md5_hash: str) -> bool:
     """Check to see if there is a quintuple featuring the char_to_match"""
-    regular_expression = re.compile(r'(%s)\1\1\1\1' % char_to_match)
-    match = re.search(regular_expression, md5_hash)
-    if match:
+    quintuple = char_to_match * 5
+    if quintuple in md5_hash:
         return True
     else:
         return False

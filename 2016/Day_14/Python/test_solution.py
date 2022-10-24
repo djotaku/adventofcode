@@ -14,3 +14,11 @@ def test_find_one_time_pad_keys():
     assert solution.find_one_time_pad_keys("abc", 1) == 39
     assert solution.find_one_time_pad_keys("abc", 2) == 92
     assert solution.find_one_time_pad_keys("abc", 64) == 22728
+
+
+def test_part_two_hash():
+    assert solution.part_two_hash("abc0") == "a107ff634856bb300138cac6568c0f24"
+
+
+def test_find_one_time_pad_keys_part_2():
+    assert solution.find_one_time_pad_keys("abc", 1, True) == 10
