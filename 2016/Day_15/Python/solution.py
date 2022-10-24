@@ -57,3 +57,6 @@ if __name__ == "__main__":
     # print(f"{our_extracted_data=}")
     start_time = find_capsule_time(our_extracted_data)
     print(f"To get the capsule to the bottom, we should push start at {start_time}")
+    our_extracted_data.append((11, 0))
+    new_start_time = find_capsule_time(our_extracted_data)
+    print(f"In the new configuration: to get the capsule to the bottom, we should push start at {new_start_time}")

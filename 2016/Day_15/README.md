@@ -7,6 +7,7 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 ## Part 1
 Answer: 203660
 ## Part 2
+Answer: 2408135
 
 ## Commentary / Approach to the Problem
 ### Part 1
@@ -18,6 +19,7 @@ First guess is that I add 1 to the modulo per each disc to allow for the second 
 Eventually, I ended up going with the direct simulation route.
 
 ### Part 2
+First attempt will be to simply insert the new disc into the list and see if that works.
 
 ## What I Learned
 
