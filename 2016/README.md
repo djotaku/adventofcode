@@ -20,6 +20,7 @@ My goal for the 2016 problem sets are:
 ### Part 1 Sections Still incomplete:
 - Day 10 - I am not sure what the algorithm is
 - Day 11 - I don't know how to do this algorithmically
+- Day 13 - I think this is depth-first or breadth-first search, but I haven't remembered how to do this since undergrad (almost 20 years ago)
 ### Part 2 Sections Still incomplete:
 ### Language Specific
 - Day 01 Haskell - I had a hard enough time with part 1. I'll come back to this when I've got more Haskell experience.
