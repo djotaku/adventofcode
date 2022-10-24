@@ -11,17 +11,20 @@ def find_capsule_time(discs: list) -> int:
     """
     # reaches the first disc at t=1.
     # first figure out the time points where each disc gets to 0 the first time
-    disc_first_zero = []
-    for time, disc in enumerate(discs, start=1):
-        distance_from_hole = disc[0] % (disc[1] + time)
-        if distance_from_hole == 0:
-            disc_first_zero.append(time)
-        else:
-            disc_first_zero.append(time+distance_from_hole)
-    # figure out the time that works for all the values in disc_first_zero
-    # LCM?
-    print(disc_first_zero)
-    return math.lcm(*disc_first_zero)
+    time = 0
+    loop = True
+    drop_check = []
+    while loop:
+        time += 1
+        for time_delta, disc in enumerate(discs, start=1):
+            if (disc[1] + time + time_delta) % disc[0] == 0:
+                drop_check.append(True)
+            else:
+                drop_check.append(False)
+        if all(drop_check):
+            loop = False
+        drop_check.clear()
+    return time
 
 
 if __name__ == "__main__":
