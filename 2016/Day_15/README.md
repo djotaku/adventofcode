@@ -5,7 +5,7 @@ Out of respect for the author's wishes, I only put as much of the problem text a
 Visit the version with all the story elements [here](https://adventofcode.com/2016/day/15).
 
 ## Part 1
-
+Answer: 203660
 ## Part 2
 
 ## Commentary / Approach to the Problem
@@ -14,6 +14,8 @@ This seems similar to the bus problem from 2020. I need to figure out the math t
 simulation. I think that a sim might work OK for part 1, but I'm pretty sure it won't work for part 2.
 
 First guess is that I add 1 to the modulo per each disc to allow for the second that each disc consumes.
+
+Eventually, I ended up going with the direct simulation route.
 
 ### Part 2
 
