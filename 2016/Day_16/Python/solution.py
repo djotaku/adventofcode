@@ -39,3 +39,11 @@ def fill_disk(initial_state: str, fill_length: int) -> str:
         our_string = our_string + "0" + suffix
         length_of_string = len(our_string)
     return our_string[0:fill_length]
+
+
+if __name__ == "__main__":
+    puzzle_initial_state = "10000"
+    length = 20
+    filled_string = fill_disk(puzzle_initial_state, length)
+    final_checksum = generate_checksum(filled_string)
+    print(f"The final checksum is {final_checksum}")
