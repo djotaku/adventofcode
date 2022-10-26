@@ -51,9 +51,9 @@ def fill_out_floor_map(initial_floor_map: dict, rows_to_end: int) -> dict:
     return initial_floor_map
 
 
-def count_safe_tiles(floor_map: dict, total_cols: int) -> int:
+def count_safe_tiles(floor_map: dict, total_rows: int, total_cols: int) -> int:
     safe_tile_count = 0
-    for row in range(0, 40):
+    for row in range(0, total_rows):
         for col in range(0, total_cols):
             if floor_map[(row, col)] is False:
                 safe_tile_count += 1
@@ -65,11 +65,11 @@ if __name__ == "__main__":
     floor_width = len(input_first_row)
     this_floor_map = input_to_dict(input_first_row)
     this_floor_map = fill_out_floor_map(this_floor_map, 40)
-    safe_tiles = count_safe_tiles(this_floor_map, floor_width)
+    safe_tiles = count_safe_tiles(this_floor_map, 40, floor_width)
     print(f"After 40 rows there are {safe_tiles} safe tiles.")
     second_floor_map = input_to_dict(input_first_row)
     second_floor_map = fill_out_floor_map(second_floor_map, 400000)
-    safe_tiles = count_safe_tiles(second_floor_map, floor_width)
+    safe_tiles = count_safe_tiles(second_floor_map, 400000, floor_width)
     print(f"If we have 400000 rows, we have {safe_tiles} safe tiles.")
 
 # 4000 is too high

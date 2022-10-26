@@ -55,16 +55,16 @@ Answer: 1939
 ## Part 2
 How many safe tiles are there in a total of 400000 rows?
 
-Answer: 
+Answer: 19999535
 
 ## Commentary / Approach to the Problem
-
+Seems to be a 1-D Conway. It was extremely easy to solve. 
 ## What I Learned
 
 ### Generic
 
 ### Python
-
+- Nothing
 ### Ruby
 
 ### Perl
