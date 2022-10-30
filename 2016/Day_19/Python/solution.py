@@ -1,29 +1,28 @@
 """Solution for AoC Day 19: An Elephant Named Joseph"""
 
 
-def game_round(elfs_and_presents: dict) -> dict:
+def game_round(elfs_and_presents: dict) -> (dict, bool):
     """play one round of the white elephant game."""
-    elves_still_in_game = list(elfs_and_presents.keys())
-    for playing_elf, present_status in elf_presents.items():
-        if present_status:
-            if playing_elf == len(elf_presents.keys()):
-                elf_presents[elves_still_in_game[0]] = False
+    elves_still_in_game = [key for key in elfs_and_presents.keys() if elfs_and_presents[key] is True]
+    if len(elves_still_in_game) == 1:
+        return elfs_and_presents, False
+    for index, this_elf in enumerate(elves_still_in_game):
+        if elfs_and_presents[this_elf]:
+            if this_elf != elves_still_in_game[-1]:
+                elfs_and_presents[elves_still_in_game[index+1]] = False
             else:
-                elf_presents[elf + 1] = False
-    elves_to_delete = []
-    for key, item in elfs_and_presents:
-        if item is False:
-            elves_to_delete.append(elfs_and_presents[key])
-    for the_elf in elves_to_delete:
-        del(elfs_and_presents[the_elf])
-    return elfs_and_presents
+                elfs_and_presents[elves_still_in_game[0]] = False
+    return elfs_and_presents, True
 
 
 if __name__ == "__main__":
-    ELVES = 5
+    ELVES = 3018458
     elf_presents = {}
     for elf in range(1, ELVES + 1):
         elf_presents[elf] = True
-    while len(elf_presents) > 1:
-        elf_presents = game_round(elf_presents)
-    print(elf_presents.keys())
+    continue_game = True
+    while continue_game:
+        elf_presents, continue_game = game_round(elf_presents)
+    for elf, present_bool in elf_presents.items():
+        if present_bool is True:
+            print(f"The elf with all the presents is at position: {elf}")

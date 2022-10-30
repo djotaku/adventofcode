@@ -22,11 +22,13 @@ With the number of Elves given in your puzzle input, which Elf gets all the pres
 
 Your puzzle input is 3018458.
 
-Answer: 
+Answer: 1842613
 ## Part 2
+Unsure how to setup the circles.
 
 ## Commentary / Approach to the Problem
-
+### Part 1
+Since we don't care about the number of presents, just who ends up with all of them, I set up a dictionary with True for each elf. Then I loop through and have them steal from each other (make that elf's value False)
 ## What I Learned
 
 ### Generic
