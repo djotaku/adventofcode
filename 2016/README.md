@@ -23,6 +23,7 @@ My goal for the 2016 problem sets are:
 - Day 13 - I think this is depth-first or breadth-first search, but I haven't remembered how to do this since undergrad (almost 20 years ago)
 - Day 17 - Might be a variant of Day 13 combined with MD5 hashes. Saving for later.
 ### Part 2 Sections Still incomplete:
+- Day 19 - Need to use [this page](https://www.reddit.com/r/adventofcode/comments/yh2476/2016_day_19_part_2_how_do_i_figure_out_how_to/) to figure out how to do this programmatically.
 ### Language Specific
 - Day 01 Haskell - I had a hard enough time with part 1. I'll come back to this when I've got more Haskell experience.
 - Day 03 Haskell - Without for loops and variables I could assign, I couldn't figure out how to grab every 3 rows, transpose, eval, sum, and then move on to the next three rows.
