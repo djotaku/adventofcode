@@ -17,10 +17,10 @@ def input_per_line(file: str):
 
 
 if __name__ == "__main__":
-    MAX_IP = 9
+    MAX_IP = 4294967295
     all_potential_ips = [number for number in range(0, MAX_IP + 1)]
     all_potential_ips_set = set(all_potential_ips)
-    banned_ip_range_list = input_per_line('test_input.txt')
+    banned_ip_range_list = input_per_line('../input.txt')
     banned_ips_set = set()
     for ips in banned_ip_range_list:
         ip_list = range_to_list(ips)
