@@ -23,7 +23,7 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
   - 29 stars Collected so Far
   - 20221029 Reached 150 stars total for the repo
 - 2017
-  - Fifth Problem Set Tackled (TBD)
+  - Sixth Problem Set Tackled (TBD)
   - Languages: Rust and Julia (“One hard one and one easy one”)
 - 2020
     - First Year of Participation (1st attempt: Live Dec 2020; Trying to get all 50 stars: Sept 2021 -)
@@ -42,6 +42,9 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
     - 2.5% Go
     - 1.4% Haskell
     - 0.1% Shell
+- 2022
+  - Fifth Problem Set Tackled/Third Year Participating Live
+  - Will primarily solve with Python during December 2022
 
 ![total stars](https://github.com/djotaku/adventofcode/blob/11daeab6d43562b86f1f7357a49e17864f77c749/screenshots/total/total_star_count_20221111.png)
 
