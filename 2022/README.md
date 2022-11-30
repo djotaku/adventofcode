@@ -7,8 +7,6 @@ My (blank) Advent of Code Problem Set
 My goal for the 2022 problem sets are:
 
 - Keep working with Python, Ruby, and Perl, Go, and Haskell
-- Learn Rust
-- Learn Julia
 - In general my aim is to get more and more idiomatic with each language as the days go by.
 - To have fun solving programming puzzles
 
