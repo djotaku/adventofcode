@@ -18,6 +18,10 @@ def process_elves(calorie_file: str) -> list:
     return calorie_list
 
 
+def find_top_3_calorie_sum(elf_cals: list) -> int:
+    """Take in a list of elf calories, sort, and sum the top 3."""
+
+
 if __name__ == "__main__":
     elf_calories = process_elves("../input.txt")
     max_calorie_elf = max(elf_calories)

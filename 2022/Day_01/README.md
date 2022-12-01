@@ -15,6 +15,7 @@ In Python, at least, the approach for part 1 seems very simple. Parse the input 
 Put this sum into a list. Use Python's max function to find the maximum number. Made easier by the fact that we don't care 
 which elf has the calories, just the amount.
 ### Part 2
+My approach to part 2, again using Python built-ins, is to sort the list and then pick the last 3 and sum those.
 ## What I Learned
 
 ### Generic
