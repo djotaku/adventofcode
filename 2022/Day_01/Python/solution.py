@@ -6,8 +6,7 @@ def process_elves(calorie_file: str) -> list:
     elf_sum = 0
     calorie_list = []
     with open(calorie_file) as input_file:
-        elf_calories = input_file.readlines()
-        for this_line in elf_calories:
+        for this_line in input_file:
             if this_line != "\n":
                 elf_sum += int(this_line)
             else:
