@@ -10,7 +10,7 @@ My goal for the 2022 problem sets are:
 - In general my aim is to get more and more idiomatic with each language as the days go by.
 - To have fun solving programming puzzles
 
-(progress image will go here)
+https://github.com/djotaku/adventofcode/blob/3457d5eed136e11b9bc6f13f5b80ee76671eae29/screenshots/2022/2022_20221201.png
 
 ## Days I could not complete
 ### Part 1 Sections Still incomplete:
