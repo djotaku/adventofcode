@@ -49,7 +49,7 @@ My approach to part 2, again using Python built-ins, is to sort the list and the
 ## What I Learned
 
 ### Generic
-
+- Don't be wedded to your pre-made input utilities. Life can be simpler if you process the input as it comes in.
 ### Python
 - Nothing, although I did have to refresh myself on parsing input and doing something with it rather than just parsing and dealing with it later.
 ### Ruby
