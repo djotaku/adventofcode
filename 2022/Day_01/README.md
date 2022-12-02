@@ -53,7 +53,8 @@ My approach to part 2, again using Python built-ins, is to sort the list and the
 ### Python
 - Nothing, although I did have to refresh myself on parsing input and doing something with it rather than just parsing and dealing with it later.
 ### Ruby
-
+- enum.slice_when which is like chunk_when, but when it's true
+- sort! and reverse! sort and reverse arrays in place
 ### Perl
 
 ### Go (Golang)
