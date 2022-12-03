@@ -5,9 +5,10 @@ Out of respect for the author's wishes, I only put as much of the problem text a
 Visit the version with all the story elements [here](https://adventofcode.com/2022/day/2).
 
 ## Part 1
-
+Answer: 13446
 ## Part 2
 
+Answer: 
 ## Commentary / Approach to the Problem
 ### Part 1
 A function/subroutine to calculate the score for the strategy used. Another function to determine if you won.
