@@ -50,6 +50,8 @@ Now that the entire problem has been revealed to me, I'm going to create a dicti
 ### Perl
 
 ### Go (Golang)
+- Practice with maps of maps
+- A reminder of the strings.Fields to do the equivalent of Python's split() 
 
 ### Haskell
 
