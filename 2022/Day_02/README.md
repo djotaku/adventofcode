@@ -37,6 +37,8 @@ A function/subroutine to calculate the score for the strategy used. Another func
 
 ### Part 2
 I need to run things in reverse, but I think I can keep the functions I already made.
+
+Now that the entire problem has been revealed to me, I'm going to create a dictionary/hash/map with all the possible outcomes and scores. Then I can just reference that dictionary. 
 ## What I Learned
 
 ### Generic
