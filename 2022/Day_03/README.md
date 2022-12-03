@@ -21,6 +21,7 @@ Answer:
 Sum
 
 ### Part 2
+I think I can do a modified version of what I was doing above, only with lines instead of halves of lines. And comparing 3 lines. 
 ## What I Learned
 
 ### Generic
