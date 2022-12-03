@@ -39,11 +39,38 @@ def calculate_turn_points(turn: list) -> int:
     return shape_points[turn[1]] + calculate_win(turn)
 
 
+def new_interpretations(turn: list) -> int:
+    """Using the part 2 interpretation of the strategy guide, figure out the score."""
+    shape_points = {"rock": 1, "paper": 2, "scissors": 3}
+    if turn[0] == "A":  # opponent has chosen Rock
+        if turn[1] == "X":  # I should lose - meaning choose scissors
+            return shape_points["scissors"]
+        elif turn[1] == "Y":  # I should draw - meaning choose rock
+            return shape_points['rock'] + 3
+        else:  # I should win - meaning choose paper
+            return shape_points['paper'] + 6
+    elif turn[0] == "B":  # opponent has chosen Paper
+        if turn[1] == "X":  # I should lose - meaning choose rock
+            return shape_points['rock']
+        elif turn[1] == 'Y':  # I should draw - meaning choose paper
+            return shape_points['paper'] + 3
+        else:  # I should win - meaning choose scissors
+            return shape_points['scissors'] + 6
+    else:  # Opponent has chosen scissors
+        if turn[1] == "X":  # I should lose - meaning choose paper
+            return shape_points['paper']
+        elif turn[1] == 'Y':  # I should tie - meaning choose scissors
+            return shape_points['scissors'] + 3
+        else:  # I should win - meaning choose rock
+            return shape_points['rock'] + 6
+
+
 if __name__ == "__main__":
-    # read input
-    # cycle through the parsed input with calculate_turn_points
-    # either append into a list and sum or keep a sum going the whole time
     strategy_guide = process_strategy_guide("../input.txt")
     turn_totals = [calculate_turn_points(turn) for turn in strategy_guide]
     total_score = sum(turn_totals)
     print(f"Following the strategy guide will yield a total score of {total_score}.")
+    part_2_turn_totals = [new_interpretations(turn) for turn in strategy_guide]
+    part_2_total_score = sum(part_2_turn_totals)
+    print(f"Following the actual instructions from the strategy guide (part 2) "
+          f"will result in a total score of {part_2_total_score}")
