@@ -58,7 +58,7 @@ My approach to part 2, again using Python built-ins, is to sort the list and the
 ### Perl
 
 ### Go (Golang)
-
+- nothing
 ### Haskell
 
 ### Rust
