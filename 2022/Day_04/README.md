@@ -27,8 +27,11 @@ Use isdisjoint to see if there's any overlap.
 ### Generic
 
 ### Python
-
+- set.issubset
+- set.isdisjoint
 ### Ruby
+- subset?
+- disjoint?
 
 ### Perl
 
