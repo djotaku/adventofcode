@@ -8,7 +8,7 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 
 Answer: 8088
 ## Part 2
-Answer: 
+Answer: 2522
 ## Commentary / Approach to the Problem
 ### Part 1
  -Use normal multiple lines in function

@@ -26,3 +26,26 @@ if __name__ == "__main__":
         unique_letters.append(unique_letter.pop())
     unique_values = [priorities[letter] for letter in unique_letters]
     print(f"The sum of priorities is {sum(unique_values)}")
+    number = 0
+    badge_letters = []
+    while True:
+        elf_one = set()
+        elf_two = set()
+        elf_three = set()
+        for item in rucksacks[number]:
+            elf_one.add(item)
+        for item in rucksacks[number+1]:
+            elf_two.add(item)
+        for item in rucksacks[number+2]:
+            elf_three.add(item)
+        badge_candidates = elf_one.intersection(elf_two)
+        badge = badge_candidates.intersection(elf_three)
+        badge_letters.append(badge.pop())
+        elf_one.clear()
+        elf_two.clear()
+        elf_three.clear()
+        number +=3
+        if number >= len(rucksacks):
+            break
+    badge_values = [priorities[letter] for letter in badge_letters]
+    print(f"The sum of badges is {sum(badge_values)}")
