@@ -47,6 +47,7 @@ My Python solution for part 1 took a long time to run (relative to what was goin
 
 ### Python
 - How to use match/case in Python
+- Redid much better with more DRY principles 20221204
 ### Ruby
 
 ### Perl
