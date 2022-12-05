@@ -9,18 +9,21 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 Answer: TWSGQHNHL
 ## Part 2
 
+Answer: JNRSCDWPP
+
 ## Commentary / Approach to the Problem
 ### Part 1
 Because we're stacking crates, and they end up on top, I think this is a good opportunity for using a deque.
 
 Decided not to try and parse the initial state. I'll just start off with it already set up. 
 ### Part 2
+This time pop left on the queue a bunch.
 ## What I Learned
 
 ### Generic
 
 ### Python
-
+- Nothing
 ### Ruby
 
 ### Perl
