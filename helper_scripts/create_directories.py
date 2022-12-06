@@ -24,9 +24,7 @@ def create_language_readme_template(language: str, year: int, day: int):
 
 
 def create_daily_template(year: int, day: int):
-    output_string = f"""
-    
-# Title of Problem
+    output_string = f"""# Title of Problem
 
 Out of respect for the author's wishes, I only put as much of the problem text as necessary to understand the problem.
 
@@ -37,7 +35,7 @@ Visit the version with all the story elements [here](https://adventofcode.com/{y
 ## Part 2
 
 ## Commentary / Approach to the Problem
-###Part 1
+### Part 1
 
 ### Part 2
 ## What I Learned

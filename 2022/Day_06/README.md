@@ -1,6 +1,4 @@
-
-    
-# Title of Problem
+# Day 06 - Tuning Trouble
 
 Out of respect for the author's wishes, I only put as much of the problem text as necessary to understand the problem.
 
@@ -11,7 +9,8 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 ## Part 2
 
 ## Commentary / Approach to the Problem
-###Part 1
+### Part 1
+
 
 ### Part 2
 ## What I Learned
