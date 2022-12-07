@@ -19,6 +19,7 @@ My goal for the 2022 problem sets are:
 
 | Date | Position | Score |
 | ---- | -------- | ----- |
+|6 Dec | 62       | 606   |
 |5 Dec |    61    |  457  |
 
 ## Days I could not complete
