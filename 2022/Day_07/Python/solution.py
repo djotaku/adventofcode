@@ -21,6 +21,10 @@ if __name__ == "__main__":
     current_directory = []
     depth = 0
     for line in history:
+        if current_directory:
+            previous_dir = current_directory[-1]
+        else:
+            previous_dir = ""
         components = line.split()
         if components[0] == "$":
             if components[1] == "cd":
@@ -29,10 +33,10 @@ if __name__ == "__main__":
                     depth -= 1
                 else:
                     depth += 1
-                    current_directory.append(components[2]+str(depth))
-                    directories[components[2]+str(depth)] = []
+                    current_directory.append(components[2]+str(depth)+previous_dir)
+                    directories[components[2]+str(depth)+previous_dir] = []
         elif components[0] == "dir":
-            directories[current_directory[-1]].append(components[1]+str(depth+1))
+            directories[current_directory[-1]].append(components[1]+str(depth+1)+previous_dir)
         else:  # files
             directories[current_directory[-1]].append(int(components[0]))
     dictionary_of_file_sizes = {directory: find_directory_sizes(directories, directory) for directory in directories}
