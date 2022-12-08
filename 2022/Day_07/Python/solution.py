@@ -6,20 +6,19 @@ def input_per_line(file: str):
     with open(file, 'r') as input_file:
         return [line.rstrip() for line in input_file.readlines()]
 
-def find_directory_sizes(these_directory: dict) -> dict:
+
+def find_directory_sizes(these_directory: dict, key_to_check: str) -> int:
     """Will return the sum of all file sizes in a directory structure.
     Will 'double count' sub-directories.
     """
-    output_dictionary = {}
-    for directory in these_directory.keys():
-        file_sizes = 0
-        for item in directory:
-            if isinstance(item, int):
-                file_sizes += item
-            else:
-                file_sizes += find_directory_sizes(item)
-        output_dictionary[directory] = file_sizes
-    return output_dictionary
+    file_sizes = 0
+    for item in these_directory[key_to_check]:
+        if isinstance(item, int):
+            file_sizes += item
+        else:
+            file_sizes += find_directory_sizes(these_directory, item)
+    return file_sizes
+
 
 if __name__ == "__main__":
     history = input_per_line("../sample_input.txt")
@@ -38,6 +37,8 @@ if __name__ == "__main__":
             directories[current_directory[-1]].append(components[1])
         else:  # files
             directories[current_directory[-1]].append(int(components[0]))
-    # debug
-    print(directories)
-    directory_sums = find_directory_sizes(directories)
+    dictionary_of_file_sizes = {directory: find_directory_sizes(directories, directory) for directory in directories}
+    large_enough_files = [size for size in dictionary_of_file_sizes.values() if size <= 100000]
+    print(f"The total size of the the directories large enough to delete is {sum(large_enough_files)}")
+
+# 73314807 is too high
