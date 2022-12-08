@@ -11,17 +11,12 @@ def find_directory_sizes(these_directory: dict, key_to_check: str) -> int:
     """Will return the sum of all file sizes in a directory structure.
     Will 'double count' sub-directories.
     """
-    file_sizes = 0
-    for item in these_directory[key_to_check]:
-        if isinstance(item, int):
-            file_sizes += item
-        else:
-            file_sizes += find_directory_sizes(these_directory, item)
-    return file_sizes
+    return sum(item if isinstance(item, int) else find_directory_sizes(these_directory, item)
+               for item in these_directory[key_to_check])
 
 
 if __name__ == "__main__":
-    history = input_per_line("../sample_input.txt")
+    history = input_per_line("../input.txt")
     directories: dict = {"/": []}
     current_directory = []
     for line in history:
@@ -38,7 +33,8 @@ if __name__ == "__main__":
         else:  # files
             directories[current_directory[-1]].append(int(components[0]))
     dictionary_of_file_sizes = {directory: find_directory_sizes(directories, directory) for directory in directories}
+    print(f"{dictionary_of_file_sizes=}")
     large_enough_files = [size for size in dictionary_of_file_sizes.values() if size <= 100000]
     print(f"The total size of the the directories large enough to delete is {sum(large_enough_files)}")
 
-# 73314807 is too high
+# 726630 is too low
