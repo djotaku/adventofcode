@@ -40,10 +40,14 @@ if __name__ == "__main__":
         else:  # files
             directories[current_directory[-1]].append(int(components[0]))
     dictionary_of_file_sizes = {directory: find_directory_sizes(directories, directory) for directory in directories}
-    print(f"{dictionary_of_file_sizes=}")
     large_enough_files = [size for size in dictionary_of_file_sizes.values() if size <= 100000]
-    print(f"{large_enough_files=}")
     print(f"The total size of the the directories large enough to delete is {sum(large_enough_files)}")
+    total_disk_space = 70000000
+    space_needed_for_install = 30000000
+    current_free_space = total_disk_space - dictionary_of_file_sizes["/1"]
+    space_needed_to_clear = space_needed_for_install - current_free_space
+    print(f"{current_free_space=}")
+    all_directory_sizes = sorted([size for size in dictionary_of_file_sizes.values() if size >= space_needed_to_clear])
+    print(f"Smallest directory that can be deleted has a size of {all_directory_sizes[0]}.")
 
-# 726630 is too low
-# 1046603 is not the right answer
+    # 25773269 is too high
