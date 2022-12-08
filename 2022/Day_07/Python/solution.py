@@ -19,10 +19,9 @@ if __name__ == "__main__":
                     current_directory.pop()
                 else:
                     current_directory.append(components[2])
-            elif components[1] == "ls":
-                pass  # don't need to do anything because the rest of lines until we get to "$" is a listing
+                    directories[components[2]] = []
         elif components[0] == "dir":
-            directories[current_directory[-1]].append({components[1]: []})
+            directories[current_directory[-1]].append(components[1])
         else:  # files
-            directories[current_directory[-1]].append({components[1]: int(components[0])})
+            directories[current_directory[-1]].append(int(components[0]))
     print(directories)
