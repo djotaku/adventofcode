@@ -17,24 +17,29 @@ def find_directory_sizes(these_directory: dict, key_to_check: str) -> int:
 
 if __name__ == "__main__":
     history = input_per_line("../input.txt")
-    directories: dict = {"/": []}
+    directories: dict = {"/1": []}
     current_directory = []
+    depth = 0
     for line in history:
         components = line.split()
         if components[0] == "$":
             if components[1] == "cd":
                 if components[2] == "..":
                     current_directory.pop()
+                    depth -= 1
                 else:
-                    current_directory.append(components[2])
-                    directories[components[2]] = []
+                    depth += 1
+                    current_directory.append(components[2]+str(depth))
+                    directories[components[2]+str(depth)] = []
         elif components[0] == "dir":
-            directories[current_directory[-1]].append(components[1])
+            directories[current_directory[-1]].append(components[1]+str(depth+1))
         else:  # files
             directories[current_directory[-1]].append(int(components[0]))
     dictionary_of_file_sizes = {directory: find_directory_sizes(directories, directory) for directory in directories}
     print(f"{dictionary_of_file_sizes=}")
     large_enough_files = [size for size in dictionary_of_file_sizes.values() if size <= 100000]
+    print(f"{large_enough_files=}")
     print(f"The total size of the the directories large enough to delete is {sum(large_enough_files)}")
 
 # 726630 is too low
+# 1046603 is not the right answer
