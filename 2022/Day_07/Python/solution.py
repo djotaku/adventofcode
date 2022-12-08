@@ -6,6 +6,20 @@ def input_per_line(file: str):
     with open(file, 'r') as input_file:
         return [line.rstrip() for line in input_file.readlines()]
 
+def find_directory_sizes(these_directory: dict) -> dict:
+    """Will return the sum of all file sizes in a directory structure.
+    Will 'double count' sub-directories.
+    """
+    output_dictionary = {}
+    for directory in these_directory.keys():
+        file_sizes = 0
+        for item in directory:
+            if isinstance(item, int):
+                file_sizes += item
+            else:
+                file_sizes += find_directory_sizes(item)
+        output_dictionary[directory] = file_sizes
+    return output_dictionary
 
 if __name__ == "__main__":
     history = input_per_line("../sample_input.txt")
@@ -24,4 +38,6 @@ if __name__ == "__main__":
             directories[current_directory[-1]].append(components[1])
         else:  # files
             directories[current_directory[-1]].append(int(components[0]))
+    # debug
     print(directories)
+    directory_sums = find_directory_sizes(directories)
