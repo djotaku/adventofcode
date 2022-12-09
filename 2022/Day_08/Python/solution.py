@@ -71,9 +71,8 @@ if __name__ == "__main__":
     tree_map, maximum_width, maximum_height = text_to_grid(tree_map_text)
     visible_trees = []
     for this_x in range(maximum_width):
-        for this_y in range(maximum_height):
-            visible_trees.append(
-                determine_if_tree_is_visible(tree_map, (this_x, this_y), maximum_height, maximum_width))
+        visible_trees.extend(determine_if_tree_is_visible(tree_map, (this_x, this_y), maximum_height, maximum_width) for this_y in range(maximum_height))
+
     visible_tree_count = sum(tree for tree in visible_trees if tree)
     print(f"There are {visible_tree_count} trees visible from outside the grid.")
 
