@@ -10,7 +10,7 @@ def input_per_line(file: str):
         return [line.split() for line in input_file.readlines()]
 
 
-def simulation(moves: list) -> int:
+def simulation(moves: list, part_two: bool) -> int:
     """Move the head and tail around.
 
     Keep track of every point the tail visits at least once.
@@ -19,60 +19,63 @@ def simulation(moves: list) -> int:
     """
     head_pos = [0, 0]
     tail_pos = [0, 0]
+    if part_two:
+        rope_pieces = [head_pos, [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], tail_pos]
+    else:
+        rope_pieces = [head_pos, tail_pos]
     positions_visited = {(0, 0)}
     for move in moves:
         direction = move[0]
         distance = int(move[1])
         # debug
-        #print("**************")
-        #print("start of moves")
-        #print(f"{direction} {distance}")
-        #print(f"{head_pos=}")
-        #print(f"{tail_pos=}")
+        print("**************")
+        print("start of moves")
+        print(f"{direction} {distance}")
+        print(f"{rope_pieces=}")
         # end debug
         for _ in range(distance):
-                    # debug
-                    #print("**************")
-                    #print("start of moves")
-                    #print(f"{direction} {distance}")
-                    #print(f"{head_pos=}")
-                    #print(f"{tail_pos=}")
-                    # end debug
             if direction == "D":
-                head_pos[1] -= 1
-                if should_tail_move(head_pos, tail_pos):
-                    if not should_tail_move_straight(head_pos, tail_pos):
-                        tail_pos[0] = head_pos[0]
-                    tail_pos[1] -= 1
-                    positions_visited.add((tail_pos[0], tail_pos[1]))
+                rope_pieces[0][1] -= 1
+                for index in range(len(rope_pieces)-1):
+                    if should_tail_move(rope_pieces[index], rope_pieces[index + 1]):
+                        if not should_tail_move_straight(rope_pieces[index], rope_pieces[index + 1]):
+                            rope_pieces[index + 1][0] = rope_pieces[index][0]
+                        rope_pieces[index + 1][1] -= 1
+                        if index == (len(rope_pieces)-2):
+                            positions_visited.add((rope_pieces[index + 1][0], rope_pieces[index + 1][1]))
             elif direction == "L":
-                head_pos[0] -= 1
-                if should_tail_move(head_pos, tail_pos):
-                    if not should_tail_move_straight(head_pos, tail_pos):
-                        tail_pos[1] = head_pos[1]
-                    tail_pos[0] -= 1
-                    positions_visited.add((tail_pos[0], tail_pos[1]))
+                rope_pieces[0][0] -= 1
+                for index in range(len(rope_pieces)-1):
+                    if should_tail_move(rope_pieces[index], rope_pieces[index + 1]):
+                        if not should_tail_move_straight(rope_pieces[index], rope_pieces[index + 1]):
+                            rope_pieces[index + 1][1] = rope_pieces[index][1]
+                        rope_pieces[index + 1][0] -= 1
+                        if index == (len(rope_pieces) - 2):
+                            positions_visited.add((rope_pieces[index + 1][0], rope_pieces[index + 1][1]))
             elif direction == "R":
-                head_pos[0] += 1
-                if should_tail_move(head_pos, tail_pos):
-                    if not should_tail_move_straight(head_pos, tail_pos):
-                        tail_pos[1] = head_pos[1]
-                    tail_pos[0] += 1
-                    positions_visited.add((tail_pos[0], tail_pos[1]))
+                rope_pieces[0][0] += 1
+                for index in range(len(rope_pieces)-1):
+                    if should_tail_move(rope_pieces[index], rope_pieces[index + 1]):
+                        if not should_tail_move_straight(rope_pieces[index], rope_pieces[index + 1]):
+                            rope_pieces[index + 1][1] = rope_pieces[index][1]
+                        rope_pieces[index + 1][0] += 1
+                        if index == (len(rope_pieces) - 2):
+                            positions_visited.add((rope_pieces[index + 1][0], rope_pieces[index + 1][1]))
             elif direction == "U":
-                head_pos[1] += 1
-                if should_tail_move(head_pos, tail_pos):
-                    if not should_tail_move_straight(head_pos, tail_pos):
-                        tail_pos[0] = head_pos[0]
-                    tail_pos[1] += 1
-                    positions_visited.add((tail_pos[0], tail_pos[1]))
-            # debug
-            #print("end of moves")
-            #print(f"{direction} {distance}")
-            #print(f"{head_pos=}")
-            #print(f"{tail_pos=}")
-            #print("**************")
-            # end debug
+                rope_pieces[0][1] += 1
+                for index in range(len(rope_pieces)-1):
+                    if should_tail_move(rope_pieces[index], rope_pieces[index + 1]):
+                        if not should_tail_move_straight(rope_pieces[index], rope_pieces[index + 1]):
+                            rope_pieces[index + 1][0] = rope_pieces[index][0]
+                        rope_pieces[index + 1][1] += 1
+                        if index == (len(rope_pieces) - 2):
+                            positions_visited.add((rope_pieces[index + 1][0], rope_pieces[index + 1][1]))
+        # debug
+        print("end of moves")
+        print(f"{direction} {distance}")
+        print(f"{rope_pieces=}")
+        print("**************")
+        # end debug
     return len(positions_visited)
 
 
@@ -105,6 +108,10 @@ def should_tail_move_straight(head_position: list, tail_position: list) -> bool:
 
 
 if __name__ == "__main__":
-    move_list = input_per_line("../input.txt")
-    positions_visited_part_1 = simulation(move_list)
+    move_list = input_per_line("../sample_input.txt")
+    positions_visited_part_1 = simulation(move_list, False)
     print(f"The tail visited {positions_visited_part_1} unique locations.")
+    positions_visited_part_2 = simulation(move_list, True)
+    print(f"The tail visited {positions_visited_part_2} unique locations.")
+
+# 2119 is too low
