@@ -29,41 +29,45 @@ def determine_if_tree_is_visible(a_tree_map: dict, coordinates: tuple, map_heigh
     b) All trees in any of the cardinal directions are shorter than the tree.
     """
     this_tree_height = a_tree_map[coordinates]
+    test_values_north = []
+    test_values_south = []
+    test_values_east = []
+    test_values_west = []
     # First deal with the edges
     # coordinates = (x, y)
     if coordinates[0] == 0 or coordinates[0] == (map_width - 1) or coordinates[1] == 0 or coordinates[1] == (
             map_height - 1):
         return True
-    # Look up - or a decreasing value for x
+    # Look left - or a decreasing value for x
     for x in reversed(range(-1, coordinates[0])):
         if a_tree_map[(x, coordinates[1])] >= this_tree_height:
-            break
+            test_values_west.append(False)
         else:
-            return True
-    # Look down - or increasing value for x
-    for x in range(coordinates[0], map_width):
+            test_values_west.append(True)
+    # Look right - or increasing value for x
+    for x in range(coordinates[0]+1, map_width):
         if a_tree_map[(x, coordinates[1])] >= this_tree_height:
-            break
+            test_values_east.append(False)
         else:
-            return True
-    # Look left - or decreasing value for y
+            test_values_east.append(True)
+    # Look up - or decreasing value for y
     for y in reversed(range(-1, coordinates[1])):
         if a_tree_map[(coordinates[0], y)] >= this_tree_height:
-            break
+            test_values_north.append(False)
         else:
-            return True
-    # Look right - increasing value for y
-    for y in range(coordinates[1], map_height):
+            test_values_north.append(True)
+    # Look down - increasing value for y
+    for y in range(coordinates[1]+1, map_height):
         if a_tree_map[(coordinates[0], y)] >= this_tree_height:
-            break
+            test_values_south.append(False)
         else:
-            return True
-    return False
+            test_values_south.append(True)
+    return all(test_values_north) or all(test_values_south) or all(test_values_east) or all(test_values_west)
 
 
 if __name__ == "__main__":
     # Assume positive y is downwards and positive x is to the right.
-    tree_map_text = input_per_line("../input.txt")
+    tree_map_text = input_per_line("../sample_input.txt")
     tree_map, maximum_width, maximum_height = text_to_grid(tree_map_text)
     visible_trees = []
     for this_x in range(maximum_width):
