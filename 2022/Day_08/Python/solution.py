@@ -83,33 +83,25 @@ def compute_scenic_score(a_tree_map: dict, coordinates: tuple, map_height: int, 
         return 0  # If a tree is right on the edge, at least one of its viewing distances will be zero and something
                   # times 0 is 0.
     # Look left - or a decreasing value for x
-    for x in reversed(range(0, coordinates[0])):
+    for x in reversed(range(coordinates[0])):
+        scenic_value_west += 1
         if a_tree_map[(x, coordinates[1])] >= this_tree_height:
-            scenic_value_west += 1
             break
-        else:
-            scenic_value_west += 1
     # Look right - or increasing value for x
     for x in range(coordinates[0] + 1, map_width):
+        scenic_value_east += 1
         if a_tree_map[(x, coordinates[1])] >= this_tree_height:
-            scenic_value_east += 1
             break
-        else:
-            scenic_value_east += 1
     # Look up - or decreasing value for y
-    for y in reversed(range(0, coordinates[1])):
+    for y in reversed(range(coordinates[1])):
+        scenic_value_north += 1
         if a_tree_map[(coordinates[0], y)] >= this_tree_height:
-            scenic_value_north += 1
             break
-        else:
-            scenic_value_north += 1
     # Look down - increasing value for y
     for y in range(coordinates[1] + 1, map_height):
+        scenic_value_south += 1
         if a_tree_map[(coordinates[0], y)] >= this_tree_height:
-            scenic_value_south += 1
             break
-        else:
-            scenic_value_south += 1
     return scenic_value_north * scenic_value_south * scenic_value_east * scenic_value_west
 
 
