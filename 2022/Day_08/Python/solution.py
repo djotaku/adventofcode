@@ -67,7 +67,7 @@ def determine_if_tree_is_visible(a_tree_map: dict, coordinates: tuple, map_heigh
 
 if __name__ == "__main__":
     # Assume positive y is downwards and positive x is to the right.
-    tree_map_text = input_per_line("../sample_input.txt")
+    tree_map_text = input_per_line("../input.txt")
     tree_map, maximum_width, maximum_height = text_to_grid(tree_map_text)
     visible_trees = []
     for this_x in range(maximum_width):
