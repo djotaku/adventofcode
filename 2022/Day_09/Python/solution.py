@@ -19,24 +19,54 @@ def simulation(moves: list) -> int:
     """
     head_pos = [0, 0]
     tail_pos = [0, 0]
+    positions_visited = set()
     for move in moves:
         direction = move[0]
+        distance = int(move[1])
+        # debug
+
+        # end debug
         if direction == "U":
-            for y in range(move[1] + 1):
-                head_pos[1] += y
-                # figure out if tail moves and move tail
+            for y in range(distance + 1):
+                head_pos[1] += 1
+                if should_tail_move(head_pos, tail_pos):
+                    if should_tail_move_straight(head_pos, tail_pos):
+                        tail_pos[1] += 1
+                    else:  # diag
+                        tail_pos[0] = head_pos[0]
+                        tail_pos[1] += 1
+                        positions_visited.add((tail_pos[0], tail_pos[1]))
         elif direction == "D":
-            for y in range(move[1] + 1):
-                head_pos[1] -= y
-                # figure out if tail moves and move tail
+            for y in range(distance + 1):
+                head_pos[1] -= 1
+                if should_tail_move(head_pos, tail_pos):
+                    if should_tail_move_straight(head_pos, tail_pos):
+                        tail_pos[1] -= 1
+                    else:  # diag
+                        tail_pos[0] = head_pos[0]
+                        tail_pos[1] -= 1
+                        positions_visited.add((tail_pos[0], tail_pos[1]))
         elif direction == "L":
-            for x in range(move[1] + 1):
-                head_pos[0] -= x
-                # figure out if tail moves and move tail
+            for x in range(distance + 1):
+                head_pos[0] -= 1
+                if should_tail_move(head_pos, tail_pos):
+                    if should_tail_move_straight(head_pos, tail_pos):
+                        tail_pos[0] -= 1
+                    else:  # diag
+                        tail_pos[1] = head_pos[1]
+                        tail_pos[0] -= 1
+                        positions_visited.add((tail_pos[0], tail_pos[1]))
         elif direction == "R":
-            for x in range(move[1] + 1):
-                head_pos[0] += x
-                # figure out if tail moves and move tail
+            for x in range(distance + 1):
+                head_pos[0] += 1
+                if should_tail_move(head_pos, tail_pos):
+                    if should_tail_move_straight(head_pos, tail_pos):
+                        tail_pos[0] += 1
+                    else:  # diag
+                        tail_pos[1] = head_pos[1]
+                        tail_pos[0] += 1
+                        positions_visited.add((tail_pos[0], tail_pos[1]))
+    return len(positions_visited)
 
 
 def should_tail_move(head_position: list, tail_position: list) -> bool:
@@ -44,13 +74,33 @@ def should_tail_move(head_position: list, tail_position: list) -> bool:
 
     If they are diagonal, they are touching.
     """
-    if abs(head_position[0] - tail_position[0]) == 2 or abs(
-            head_position[1] - tail_position[1]) == 2:  # same row or column
-        return True
+    if abs(head_position[0] - tail_position[0]) <= 1 or abs(head_position[1] - tail_position[1]) <= 1:  # same row/col
+        return False
+    # handle diagonals - top left
+    if head_position[0] == (tail_position[0] - 1) and head_position[1] == (tail_position[1] + 1):
+        return False
+    # top right
+    if head_position[0] == (tail_position[0] + 1) and head_position[1] == (tail_position[1] + 1):
+        return False
+    # bottom left
+    if head_position[0] == (tail_position[0] - 1) and head_position[1] == (tail_position[1] - 1):
+        return False
+    # bottom right
+    if head_position[0] == (tail_position[0] + 1) and head_position[1] == (tail_position[1] - 1):
+        return False
+    # not touching anywhere
+    return True
 
+
+def should_tail_move_straight(head_position: list, tail_position: list) -> bool:
+    """If true, move in a cardinal direction. If false, move diagonally."""
+    if head_position[0] == tail_position[0] or head_position[1] == tail_position[1]:
+        return True
     else:
         return False
 
 
 if __name__ == "__main__":
     move_list = input_per_line("../input.txt")
+    positions_visited_part_1 = simulation(move_list)
+    print(f"The tail visited {positions_visited_part_1} unique locations.")
