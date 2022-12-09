@@ -1,23 +1,27 @@
 """Solution for AoC 2022 Day 08 - Treetop Tree House"""
 
 from collections import defaultdict
+
+
 def input_per_line(file: str):
     """This is for when each line is an input to the puzzle. The newline character is stripped."""
     with open(file, 'r') as input_file:
         return [line.rstrip() for line in input_file.readlines()]
 
 
-def text_to_grid(text_map: list) -> dict:
+def text_to_grid(text_map: list) -> (dict, int, int):
     """Take in a list of items that need to be parsed into a dictionary where each set of keys is a coordinate.
 
     Return a dictionary representation of the map.
     """
     grid_map = defaultdict(int)
+    max_y = len(text_map)
+    max_x = len(text_map[0])
     for line in text_map:
-        for y in range(len(text_map)):
+        for y in range(max_y):
             for x, number in enumerate(line):
                 grid_map[(x, y)] = int(number)
-    return grid_map
+    return grid_map, max_x, max_y
 
 
 def determine_if_tree_is_visible(a_tree_map: dict, coordinates: tuple, map_height: int, map_width: int) -> bool:
@@ -28,7 +32,8 @@ def determine_if_tree_is_visible(a_tree_map: dict, coordinates: tuple, map_heigh
     this_tree_height = a_tree_map[coordinates]
     # First deal with the edges
     # coordinates = (x, y)
-    if coordinates[0] == 0 or coordinates[0] == (map_width - 1) or coordinates[1] == 0 or coordinates[1] == (map_height - 1):
+    if coordinates[0] == 0 or coordinates[0] == (map_width - 1) or coordinates[1] == 0 or coordinates[1] == (
+            map_height - 1):
         return True
     # Look up - or a decreasing value for x
     for x in range(coordinates[0], -1):
@@ -49,13 +54,20 @@ def determine_if_tree_is_visible(a_tree_map: dict, coordinates: tuple, map_heigh
         else:
             return True
     # Look right - increasing value for y
-    for y in range(coordinates[1], map_height+1):
+    for y in range(coordinates[1], map_height + 1):
         if a_tree_map[(coordinates[0], y)] >= this_tree_height:
             return False
         else:
             return True
 
+
 if __name__ == "__main__":
     # Assume positive y is downwards and positive x is to the right.
-    tree_map_text = input_per_line("../input.txt")
-    tree_map = text_to_grid(tree_map_text)
+    tree_map_text = input_per_line("../sample_input.txt")
+    tree_map, maximum_width, maximum_height = text_to_grid(tree_map_text)
+    visible_trees = []
+    for x in range(maximum_width):
+        for y in range(maximum_height):
+            visible_trees.append(determine_if_tree_is_visible(tree_map, (x, y), maximum_height, maximum_width))
+    visible_tree_count = sum(tree for tree in visible_trees if tree)
+    print(f"There are {visible_tree_count} trees visible from outside the grid.")
