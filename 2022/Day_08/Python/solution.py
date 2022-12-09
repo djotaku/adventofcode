@@ -110,14 +110,6 @@ def compute_scenic_score(a_tree_map: dict, coordinates: tuple, map_height: int, 
             break
         else:
             scenic_value_south += 1
-    # debug
-    print(f"For tree at {coordinates}, scores are:")
-    print(f"{scenic_value_north=}")
-    print(f"{scenic_value_south=}")
-    print(f"{scenic_value_east=}")
-    print(f"{scenic_value_west=}")
-    print(f"Total score: {scenic_value_north * scenic_value_south * scenic_value_east * scenic_value_west}")
-    # end debug
     return scenic_value_north * scenic_value_south * scenic_value_east * scenic_value_west
 
 
@@ -131,11 +123,6 @@ if __name__ == "__main__":
         for this_y in range(maximum_height):
             visible_trees.append(
                 determine_if_tree_is_visible(tree_map, (this_x, this_y), maximum_height, maximum_width))
-            # debug
-            #print(f"Coord for consideration is ({this_x},{this_y}) and height is {tree_map[(this_x, this_y)]}")
-            #scenic_score = compute_scenic_score(tree_map, (this_x, this_y), maximum_height, maximum_width)
-            #print(f"{scenic_score=}")
-            # end debug
             scenic_values.append(compute_scenic_score(tree_map, (this_x, this_y), maximum_height, maximum_width))
 
     visible_tree_count = sum(tree for tree in visible_trees if tree)
