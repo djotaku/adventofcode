@@ -45,7 +45,7 @@ def determine_if_tree_is_visible(a_tree_map: dict, coordinates: tuple, map_heigh
         else:
             test_values_west.append(True)
     # Look right - or increasing value for x
-    for x in range(coordinates[0]+1, map_width):
+    for x in range(coordinates[0] + 1, map_width):
         if a_tree_map[(x, coordinates[1])] >= this_tree_height:
             test_values_east.append(False)
         else:
@@ -57,7 +57,7 @@ def determine_if_tree_is_visible(a_tree_map: dict, coordinates: tuple, map_heigh
         else:
             test_values_north.append(True)
     # Look down - increasing value for y
-    for y in range(coordinates[1]+1, map_height):
+    for y in range(coordinates[1] + 1, map_height):
         if a_tree_map[(coordinates[0], y)] >= this_tree_height:
             test_values_south.append(False)
         else:
@@ -65,15 +65,80 @@ def determine_if_tree_is_visible(a_tree_map: dict, coordinates: tuple, map_heigh
     return all(test_values_north) or all(test_values_south) or all(test_values_east) or all(test_values_west)
 
 
+def compute_scenic_score(a_tree_map: dict, coordinates: tuple, map_height: int, map_width: int) -> int:
+    """
+    A tree's scenic score computed as follows:
+    1. In each cardinal direction, add 1 until you cannot continue (because a tree is bigger or same size)
+    2. Multiply these 4 numbers.
+    """
+    this_tree_height = a_tree_map[coordinates]
+    scenic_value_north = 0
+    scenic_value_south = 0
+    scenic_value_east = 0
+    scenic_value_west = 0
+    # First deal with the edges
+    # coordinates = (x, y)
+    if coordinates[0] == 0 or coordinates[0] == (map_width - 1) or coordinates[1] == 0 or coordinates[1] == (
+            map_height - 1):
+        return 0  # If a tree is right on the edge, at least one of its viewing distances will be zero and something
+                  # times 0 is 0.
+    # Look left - or a decreasing value for x
+    for x in reversed(range(0, coordinates[0])):
+        if a_tree_map[(x, coordinates[1])] >= this_tree_height:
+            scenic_value_west += 1
+            break
+        else:
+            scenic_value_west += 1
+    # Look right - or increasing value for x
+    for x in range(coordinates[0] + 1, map_width):
+        if a_tree_map[(x, coordinates[1])] >= this_tree_height:
+            scenic_value_east += 1
+            break
+        else:
+            scenic_value_east += 1
+    # Look up - or decreasing value for y
+    for y in reversed(range(0, coordinates[1])):
+        if a_tree_map[(coordinates[0], y)] >= this_tree_height:
+            scenic_value_north += 1
+            break
+        else:
+            scenic_value_north += 1
+    # Look down - increasing value for y
+    for y in range(coordinates[1] + 1, map_height):
+        if a_tree_map[(coordinates[0], y)] >= this_tree_height:
+            scenic_value_south += 1
+            break
+        else:
+            scenic_value_south += 1
+    # debug
+    print(f"For tree at {coordinates}, scores are:")
+    print(f"{scenic_value_north=}")
+    print(f"{scenic_value_south=}")
+    print(f"{scenic_value_east=}")
+    print(f"{scenic_value_west=}")
+    print(f"Total score: {scenic_value_north * scenic_value_south * scenic_value_east * scenic_value_west}")
+    # end debug
+    return scenic_value_north * scenic_value_south * scenic_value_east * scenic_value_west
+
+
 if __name__ == "__main__":
     # Assume positive y is downwards and positive x is to the right.
     tree_map_text = input_per_line("../input.txt")
     tree_map, maximum_width, maximum_height = text_to_grid(tree_map_text)
     visible_trees = []
+    scenic_values = []
     for this_x in range(maximum_width):
-        visible_trees.extend(determine_if_tree_is_visible(tree_map, (this_x, this_y), maximum_height, maximum_width) for this_y in range(maximum_height))
+        for this_y in range(maximum_height):
+            visible_trees.append(
+                determine_if_tree_is_visible(tree_map, (this_x, this_y), maximum_height, maximum_width))
+            # debug
+            #print(f"Coord for consideration is ({this_x},{this_y}) and height is {tree_map[(this_x, this_y)]}")
+            #scenic_score = compute_scenic_score(tree_map, (this_x, this_y), maximum_height, maximum_width)
+            #print(f"{scenic_score=}")
+            # end debug
+            scenic_values.append(compute_scenic_score(tree_map, (this_x, this_y), maximum_height, maximum_width))
 
     visible_tree_count = sum(tree for tree in visible_trees if tree)
     print(f"There are {visible_tree_count} trees visible from outside the grid.")
-
-# 5680 is too high
+    print("Time to assess which tree has the highest scenic score.")
+    print(f"The highest scenic score is: {max(scenic_values)}")

@@ -7,7 +7,7 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 ## Part 1
 Answer: 1859
 ## Part 2
-
+Answer: 332640
 ## Commentary / Approach to the Problem
 ### Part 1
 First pass at how to do this is to load the tree map into a dictionary. Then for each point on the map, see it can be seen in the cardinal directions.
