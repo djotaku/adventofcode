@@ -36,7 +36,7 @@ def determine_if_tree_is_visible(a_tree_map: dict, coordinates: tuple, map_heigh
             map_height - 1):
         return True
     # Look up - or a decreasing value for x
-    for x in range(coordinates[0], -1):
+    for x in reversed(range(-1, coordinates[0])):
         if a_tree_map[(x, coordinates[1])] >= this_tree_height:
             return False
         else:
@@ -48,7 +48,7 @@ def determine_if_tree_is_visible(a_tree_map: dict, coordinates: tuple, map_heigh
         else:
             return True
     # Look left - or decreasing value for y
-    for y in range(coordinates[1], -1):
+    for y in reversed(range(-1, coordinates[1])):
         if a_tree_map[(coordinates[0], y)] >= this_tree_height:
             return False
         else:
@@ -66,8 +66,13 @@ if __name__ == "__main__":
     tree_map_text = input_per_line("../sample_input.txt")
     tree_map, maximum_width, maximum_height = text_to_grid(tree_map_text)
     visible_trees = []
-    for this_x in range(maximum_width+1):
-        for this_y in range(maximum_height+1):
+    for this_x in range(maximum_width):
+        for this_y in range(maximum_height):
+            # debug
+            print(f"Coord for consideration is ({this_x},{this_y})")
+            if is_visible := determine_if_tree_is_visible(tree_map, (this_x, this_y), maximum_height, maximum_width):
+                print("visible!")
+            # end debug
             visible_trees.append(determine_if_tree_is_visible(tree_map, (this_x, this_y), maximum_height, maximum_width))
     visible_tree_count = sum(tree for tree in visible_trees if tree)
     print(f"There are {visible_tree_count} trees visible from outside the grid.")
