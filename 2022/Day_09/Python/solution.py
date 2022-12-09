@@ -109,10 +109,7 @@ def should_tail_move(head_position: list, tail_position: list) -> bool:
 
 def should_tail_move_straight(head_position: list, tail_position: list) -> bool:
     """If true, move in a cardinal direction. If false, move diagonally."""
-    if head_position[0] == tail_position[0] or head_position[1] == tail_position[1]:
-        return True
-    else:
-        return False
+    return head_position[0] == tail_position[0] or head_position[1] == tail_position[1]
 
 
 if __name__ == "__main__":
