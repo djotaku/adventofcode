@@ -17,10 +17,10 @@ def text_to_grid(text_map: list) -> (dict, int, int):
     grid_map = defaultdict(int)
     max_y = len(text_map)
     max_x = len(text_map[0])
-    for line in text_map:
-        for y in range(max_y):
-            for x, number in enumerate(line):
-                grid_map[(x, y)] = int(number)
+    for y, line in enumerate(text_map):
+        for x, number in enumerate(line):
+            print(f"{number=}")
+            grid_map[(x, y)] = int(number)
     return grid_map, max_x, max_y
 
 
@@ -38,27 +38,28 @@ def determine_if_tree_is_visible(a_tree_map: dict, coordinates: tuple, map_heigh
     # Look up - or a decreasing value for x
     for x in reversed(range(-1, coordinates[0])):
         if a_tree_map[(x, coordinates[1])] >= this_tree_height:
-            return False
+            break
         else:
             return True
     # Look down - or increasing value for x
-    for x in range(coordinates[0], map_width + 1):
+    for x in range(coordinates[0], map_width):
         if a_tree_map[(x, coordinates[1])] >= this_tree_height:
-            return False
+            break
         else:
             return True
     # Look left - or decreasing value for y
     for y in reversed(range(-1, coordinates[1])):
         if a_tree_map[(coordinates[0], y)] >= this_tree_height:
-            return False
+            break
         else:
             return True
     # Look right - increasing value for y
-    for y in range(coordinates[1], map_height + 1):
+    for y in range(coordinates[1], map_height):
         if a_tree_map[(coordinates[0], y)] >= this_tree_height:
-            return False
+            break
         else:
             return True
+    return False
 
 
 if __name__ == "__main__":
@@ -69,10 +70,11 @@ if __name__ == "__main__":
     for this_x in range(maximum_width):
         for this_y in range(maximum_height):
             # debug
-            print(f"Coord for consideration is ({this_x},{this_y})")
+            print(f"Coord for consideration is ({this_x},{this_y}) and height is {tree_map[(this_x, this_y)]}")
             if is_visible := determine_if_tree_is_visible(tree_map, (this_x, this_y), maximum_height, maximum_width):
                 print("visible!")
             # end debug
-            visible_trees.append(determine_if_tree_is_visible(tree_map, (this_x, this_y), maximum_height, maximum_width))
+            visible_trees.append(
+                determine_if_tree_is_visible(tree_map, (this_x, this_y), maximum_height, maximum_width))
     visible_tree_count = sum(tree for tree in visible_trees if tree)
     print(f"There are {visible_tree_count} trees visible from outside the grid.")
