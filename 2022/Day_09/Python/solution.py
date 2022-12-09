@@ -30,57 +30,49 @@ def simulation(moves: list) -> int:
         #print(f"{head_pos=}")
         #print(f"{tail_pos=}")
         # end debug
-        if direction == "U":
-            for y in range(distance):
-                head_pos[1] += 1
-                if should_tail_move(head_pos, tail_pos):
-                    if should_tail_move_straight(head_pos, tail_pos):
-                        tail_pos[1] += 1
-                        positions_visited.add((tail_pos[0], tail_pos[1]))
-                    else:  # diag
-                        tail_pos[0] = head_pos[0]
-                        tail_pos[1] += 1
-                        positions_visited.add((tail_pos[0], tail_pos[1]))
-        elif direction == "D":
-            for y in range(distance):
+        for _ in range(distance):
+                    # debug
+                    #print("**************")
+                    #print("start of moves")
+                    #print(f"{direction} {distance}")
+                    #print(f"{head_pos=}")
+                    #print(f"{tail_pos=}")
+                    # end debug
+            if direction == "D":
                 head_pos[1] -= 1
                 if should_tail_move(head_pos, tail_pos):
-                    if should_tail_move_straight(head_pos, tail_pos):
-                        tail_pos[1] -= 1
-                        positions_visited.add((tail_pos[0], tail_pos[1]))
-                    else:  # diag
+                    if not should_tail_move_straight(head_pos, tail_pos):
                         tail_pos[0] = head_pos[0]
-                        tail_pos[1] -= 1
-                        positions_visited.add((tail_pos[0], tail_pos[1]))
-        elif direction == "L":
-            for x in range(distance):
+                    tail_pos[1] -= 1
+                    positions_visited.add((tail_pos[0], tail_pos[1]))
+            elif direction == "L":
                 head_pos[0] -= 1
                 if should_tail_move(head_pos, tail_pos):
-                    if should_tail_move_straight(head_pos, tail_pos):
-                        tail_pos[0] -= 1
-                        positions_visited.add((tail_pos[0], tail_pos[1]))
-                    else:  # diag
+                    if not should_tail_move_straight(head_pos, tail_pos):
                         tail_pos[1] = head_pos[1]
-                        tail_pos[0] -= 1
-                        positions_visited.add((tail_pos[0], tail_pos[1]))
-        elif direction == "R":
-            for x in range(distance):
+                    tail_pos[0] -= 1
+                    positions_visited.add((tail_pos[0], tail_pos[1]))
+            elif direction == "R":
                 head_pos[0] += 1
                 if should_tail_move(head_pos, tail_pos):
-                    if should_tail_move_straight(head_pos, tail_pos):
-                        tail_pos[0] += 1
-                        positions_visited.add((tail_pos[0], tail_pos[1]))
-                    else:  # diag
+                    if not should_tail_move_straight(head_pos, tail_pos):
                         tail_pos[1] = head_pos[1]
-                        tail_pos[0] += 1
-                        positions_visited.add((tail_pos[0], tail_pos[1]))
-        # debug
-        #print("end of moves")
-        #print(f"{direction} {distance}")
-        #print(f"{head_pos=}")
-        #print(f"{tail_pos=}")
-        #print("**************")
-        # end debug
+                    tail_pos[0] += 1
+                    positions_visited.add((tail_pos[0], tail_pos[1]))
+            elif direction == "U":
+                head_pos[1] += 1
+                if should_tail_move(head_pos, tail_pos):
+                    if not should_tail_move_straight(head_pos, tail_pos):
+                        tail_pos[0] = head_pos[0]
+                    tail_pos[1] += 1
+                    positions_visited.add((tail_pos[0], tail_pos[1]))
+            # debug
+            #print("end of moves")
+            #print(f"{direction} {distance}")
+            #print(f"{head_pos=}")
+            #print(f"{tail_pos=}")
+            #print("**************")
+            # end debug
     return len(positions_visited)
 
 
