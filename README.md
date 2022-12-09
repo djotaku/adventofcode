@@ -47,7 +47,7 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
   - Will primarily solve with Python during December 2022
   - 16 Stars Collected so far
 
-![total stars](https://github.com/djotaku/adventofcode/blob/36a53a7a6dea48b1e233937d7cd68d3aceab78aa/screenshots/total/total_star_count_20221206.png)
+![total stars](https://github.com/djotaku/adventofcode/blob/997e7470376dbc7ff9ae8784918b2bde9999d47d/screenshots/total/total_star_count_20221208.png)
 
 Total Stars Over All Years: 166
 
