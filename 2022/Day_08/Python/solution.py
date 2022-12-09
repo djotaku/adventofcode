@@ -19,7 +19,6 @@ def text_to_grid(text_map: list) -> (dict, int, int):
     max_x = len(text_map[0])
     for y, line in enumerate(text_map):
         for x, number in enumerate(line):
-            print(f"{number=}")
             grid_map[(x, y)] = int(number)
     return grid_map, max_x, max_y
 
@@ -64,7 +63,7 @@ def determine_if_tree_is_visible(a_tree_map: dict, coordinates: tuple, map_heigh
 
 if __name__ == "__main__":
     # Assume positive y is downwards and positive x is to the right.
-    tree_map_text = input_per_line("../sample_input.txt")
+    tree_map_text = input_per_line("../input.txt")
     tree_map, maximum_width, maximum_height = text_to_grid(tree_map_text)
     visible_trees = []
     for this_x in range(maximum_width):
@@ -78,3 +77,5 @@ if __name__ == "__main__":
                 determine_if_tree_is_visible(tree_map, (this_x, this_y), maximum_height, maximum_width))
     visible_tree_count = sum(tree for tree in visible_trees if tree)
     print(f"There are {visible_tree_count} trees visible from outside the grid.")
+
+# 5680 is too high
