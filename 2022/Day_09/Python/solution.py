@@ -19,16 +19,16 @@ def simulation(moves: list) -> int:
     """
     head_pos = [0, 0]
     tail_pos = [0, 0]
-    positions_visited = set()
+    positions_visited = {(0, 0)}
     for move in moves:
         direction = move[0]
         distance = int(move[1])
         # debug
-        print("**************")
-        print("start of moves")
-        print(f"{direction} {distance}")
-        print(f"{head_pos=}")
-        print(f"{tail_pos=}")
+        #print("**************")
+        #print("start of moves")
+        #print(f"{direction} {distance}")
+        #print(f"{head_pos=}")
+        #print(f"{tail_pos=}")
         # end debug
         if direction == "U":
             for y in range(distance):
@@ -75,12 +75,12 @@ def simulation(moves: list) -> int:
                         tail_pos[0] += 1
                         positions_visited.add((tail_pos[0], tail_pos[1]))
         # debug
-        print("end of moves")
-        print(f"{direction} {distance}")
-        print(f"{head_pos=}")
-        print(f"{tail_pos=}")
-        print("**************")
-                # end debug
+        #print("end of moves")
+        #print(f"{direction} {distance}")
+        #print(f"{head_pos=}")
+        #print(f"{tail_pos=}")
+        #print("**************")
+        # end debug
     return len(positions_visited)
 
 
@@ -116,6 +116,6 @@ def should_tail_move_straight(head_position: list, tail_position: list) -> bool:
 
 
 if __name__ == "__main__":
-    move_list = input_per_line("../sample_input.txt")
+    move_list = input_per_line("../input.txt")
     positions_visited_part_1 = simulation(move_list)
     print(f"The tail visited {positions_visited_part_1} unique locations.")
