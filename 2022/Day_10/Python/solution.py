@@ -11,7 +11,7 @@ def program_execution(assembly: list) -> list:
     """Take in list of assembly code and return list of signal strengths."""
     signal_strengths = []
     register_x = 1
-    cycle = 0
+    cycle = 1
     for assembly_code in assembly:
         match assembly_code:
             case "noop":
@@ -25,12 +25,11 @@ def program_execution(assembly: list) -> list:
                 register_x += int(command[1])
                 cycle += 1
         if cycle == 20 or cycle == 60 or cycle == 100 or cycle == 140 or cycle == 180 or cycle == 220:
-            print(f"{cycle=} - {register_x=}")
             signal_strengths.append(register_x * cycle)
     return signal_strengths
 
 
 if __name__ == "__main__":
-    code_to_execute = input_per_line("../complex_sample_input.txt")
+    code_to_execute = input_per_line("../input.txt")
     executed_signal_strengths = program_execution(code_to_execute)
-    print(f"{executed_signal_strengths}")
+    print(f"Sum of the signal strengths is {sum(executed_signal_strengths)}")

@@ -30,10 +30,11 @@ For now, consider the signal strength (the cycle number multiplied by the value 
 
 Find the signal strength during the 20th, 60th, 100th, 140th, 180th, and 220th cycles. What is the sum of these six signal strengths?
 
-Answer: 
+Answer: 15880
 
 ## Part 2
 
+Answer: 
 ## Commentary / Approach to the Problem
 ### Part 1
 I think the trickiest thing here is that some of the instructions take 2 cycles. So it can't just be a simple loop. 
