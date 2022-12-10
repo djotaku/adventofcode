@@ -19,15 +19,13 @@ def program_execution(assembly: list) -> list:
             case _:
                 cycle += 1
                 if cycle == 20 or cycle == 60 or cycle == 100 or cycle == 140 or cycle == 180 or cycle == 220:
-                    print(f"{cycle=}")
-                    print(f"{register_x=}")
+                    print(f"{cycle=} - {register_x=}")
                     signal_strengths.append(register_x * cycle)
                 command = assembly_code.split()
                 register_x += int(command[1])
                 cycle += 1
         if cycle == 20 or cycle == 60 or cycle == 100 or cycle == 140 or cycle == 180 or cycle == 220:
-            print(f"{cycle=}")
-            print(f"{register_x=}")
+            print(f"{cycle=} - {register_x=}")
             signal_strengths.append(register_x * cycle)
     return signal_strengths
 
