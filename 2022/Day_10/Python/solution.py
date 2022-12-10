@@ -57,7 +57,7 @@ if __name__ == "__main__":
     print(f"{this_message=}")
     print(f"Sum of the signal strengths is {sum(executed_signal_strengths)}")
     print("Message is:")
-    for index, character in enumerate(this_message):
+    for index, character in enumerate(this_message, start=1):
         if index % 40 == 0:
             print()
             print(character, end="")
