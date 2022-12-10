@@ -1,6 +1,5 @@
 """Solution to AoC 2022 Day 09 - Rope Bridge"""
 
-
 def input_per_line(file: str):
     """This is for when each line is an input to the puzzle. The newline character is stripped.
 
@@ -29,9 +28,7 @@ def simulation(moves: list, part_two: bool) -> int:
         distance = int(move[1])
         # debug
         print("**************")
-        print("start of moves")
-        print(f"{direction} {distance}")
-        print(f"{rope_pieces=}")
+        print(f"start of moves - {direction} {distance} - {rope_pieces}")
         # end debug
         for _ in range(distance):
             if direction == "D":
@@ -70,9 +67,10 @@ def simulation(moves: list, part_two: bool) -> int:
                         rope_pieces[index + 1][1] += 1
                         if index == (len(rope_pieces) - 2):
                             positions_visited.add((rope_pieces[index + 1][0], rope_pieces[index + 1][1]))
+            # debug
+            print(f"{rope_pieces=}")
         # debug
         print("end of moves")
-        print(f"{direction} {distance}")
         print(f"{rope_pieces=}")
         print("**************")
         # end debug
@@ -85,20 +83,26 @@ def should_tail_move(head_position: list, tail_position: list) -> bool:
     If they are diagonal, they are touching.
     """
     if abs(head_position[0] - tail_position[0]) <= 1 and abs(head_position[1] - tail_position[1]) <= 1:  # same row/col
+        print("do not move, too close")
         return False
     # handle diagonals - top left
     if head_position[0] == (tail_position[0] - 1) and head_position[1] == (tail_position[1] + 1):
+        print("do not move, diagonal")
         return False
     # top right
     if head_position[0] == (tail_position[0] + 1) and head_position[1] == (tail_position[1] + 1):
+        print("do not move, diagonal")
         return False
     # bottom left
     if head_position[0] == (tail_position[0] - 1) and head_position[1] == (tail_position[1] - 1):
+        print("do not move, diagonal")
         return False
     # bottom right
     if head_position[0] == (tail_position[0] + 1) and head_position[1] == (tail_position[1] - 1):
+        print("do not move, diagonal")
         return False
     # not touching anywhere
+    print("not touching anywhere, move")
     return True
 
 
