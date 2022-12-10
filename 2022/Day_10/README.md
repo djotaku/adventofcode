@@ -34,7 +34,7 @@ Answer: 15880
 
 ## Part 2
 
-Answer: 
+Answer: PLGFKAZG
 ## Commentary / Approach to the Problem
 ### Part 1
 I think the trickiest thing here is that some of the instructions take 2 cycles. So it can't just be a simple loop. 
