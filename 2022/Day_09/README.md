@@ -22,6 +22,12 @@ Seems like the keys are:
 Since we're not given any initial map, just start at (0,0) with head on tail 
 
 ### Part 2
+My first thought was to create a list and have each considered as the head and tail.
+I don't think that's horribly wrong, but the problem is that when you have more than one piece, you're not necessarily always moving in the same direction.
+
+I think I need to set it up so that each piece that moves lets the next one know which direction it went so that it can follow in the right way.
+
+
 ## What I Learned
 
 ### Generic
