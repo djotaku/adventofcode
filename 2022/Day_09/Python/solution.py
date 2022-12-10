@@ -35,9 +35,9 @@ def simulation(moves: list, part_two: bool) -> int:
             if direction == "D":
                 rope_pieces[0][1] -= 1
                 for index in range(len(rope_pieces) - 1):
-                    move, piece_direction = should_tail_move(rope_pieces[index], rope_pieces[index+1])
+                    move, piece_direction = should_tail_move(rope_pieces[index], rope_pieces[index + 1])
                     if move:
-                        rope_pieces[index + 1] = new_piece_coordinate(rope_pieces[index+1], piece_direction)
+                        rope_pieces[index + 1] = new_piece_coordinate(rope_pieces[index + 1], piece_direction)
                         if index == (len(rope_pieces) - 2):
                             positions_visited.add((rope_pieces[index + 1][0], rope_pieces[index + 1][1]))
             elif direction == "L":
@@ -45,9 +45,7 @@ def simulation(moves: list, part_two: bool) -> int:
                 for index in range(len(rope_pieces) - 1):
                     move, piece_direction = should_tail_move(rope_pieces[index], rope_pieces[index + 1])
                     if move:
-                        if not should_tail_move_straight(rope_pieces[index], rope_pieces[index + 1]):
-                            rope_pieces[index + 1][1] = rope_pieces[index][1]
-                        rope_pieces[index + 1][0] -= 1
+                        rope_pieces[index + 1] = new_piece_coordinate(rope_pieces[index + 1], piece_direction)
                         if index == (len(rope_pieces) - 2):
                             positions_visited.add((rope_pieces[index + 1][0], rope_pieces[index + 1][1]))
             elif direction == "R":
@@ -55,9 +53,7 @@ def simulation(moves: list, part_two: bool) -> int:
                 for index in range(len(rope_pieces) - 1):
                     move, piece_direction = should_tail_move(rope_pieces[index], rope_pieces[index + 1])
                     if move:
-                        if not should_tail_move_straight(rope_pieces[index], rope_pieces[index + 1]):
-                            rope_pieces[index + 1][1] = rope_pieces[index][1]
-                        rope_pieces[index + 1][0] += 1
+                        rope_pieces[index + 1] = new_piece_coordinate(rope_pieces[index + 1], piece_direction)
                         if index == (len(rope_pieces) - 2):
                             positions_visited.add((rope_pieces[index + 1][0], rope_pieces[index + 1][1]))
             elif direction == "U":
@@ -66,9 +62,7 @@ def simulation(moves: list, part_two: bool) -> int:
                     print(f"Consider {index} and {index + 1}")
                     move, piece_direction = should_tail_move(rope_pieces[index], rope_pieces[index + 1])
                     if move:
-                        if not should_tail_move_straight(rope_pieces[index], rope_pieces[index + 1]):
-                            rope_pieces[index + 1][0] = rope_pieces[index][0]
-                        rope_pieces[index + 1][1] += 1
+                        rope_pieces[index + 1] = new_piece_coordinate(rope_pieces[index + 1], piece_direction)
                         if index == (len(rope_pieces) - 2):
                             positions_visited.add((rope_pieces[index + 1][0], rope_pieces[index + 1][1]))
             # debug
@@ -151,30 +145,11 @@ def new_piece_coordinate(old_coordinate: list, direction: str) -> list:
             return [old_coordinate[0] + 1, old_coordinate[1] - 1]
 
 
-# may end up abandoning this below
-def move_rope_piece(direction_of_prev_piece: str, prev_piece_coordinate: list, this_piece_coordinate: list) -> list:
-    """Based on the direction of the previous piece, determine the direction and coordinates of
-    the current piece."""
-    match direction_of_prev_piece:
-        case "D":
-            if should_tail_move(prev_piece_coordinate, this_piece_coordinate):
-                if not should_tail_move_straight(prev_piece_coordinate, this_piece_coordinate):
-                    this_piece_coordinate[0] = prev_piece_coordinate[0]
-                this_piece_coordinate[1] -= 1
-        case "U":
-            pass
-        case "L":
-            pass
-        case "R":
-            pass
-    return this_piece_coordinate
-
-
 if __name__ == "__main__":
-    move_list = input_per_line("../sample_input.txt")
+    move_list = input_per_line("../input.txt")
     positions_visited_part_1 = simulation(move_list, False)
     print(f"The tail visited {positions_visited_part_1} unique locations.")
-    #positions_visited_part_2 = simulation(move_list, True)
-    #print(f"The tail visited {positions_visited_part_2} unique locations.")
+    positions_visited_part_2 = simulation(move_list, True)
+    print(f"The tail visited {positions_visited_part_2} unique locations.")
 
 # 2119 is too low

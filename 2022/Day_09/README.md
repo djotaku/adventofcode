@@ -9,7 +9,7 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 Answer: 6197
 ## Part 2
 
-
+Answer: 2562
 ## Commentary / Approach to the Problem
 ### Part 1
 Seems like the keys are:
@@ -27,7 +27,7 @@ I don't think that's horribly wrong, but the problem is that when you have more 
 
 I think I need to set it up so that each piece that moves lets the next one know which direction it went so that it can follow in the right way.
 
-
+That was a lot harder than I thought it would be!
 ## What I Learned
 
 ### Generic
