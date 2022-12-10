@@ -31,9 +31,9 @@ That was a lot harder than I thought it would be!
 ## What I Learned
 
 ### Generic
-
+- Sometimes breaking out things (Sourcery had been complaining about method complexity) can help you find where things aren't working.
 ### Python
-
+- Nothing
 ### Ruby
 
 ### Perl
