@@ -45,12 +45,13 @@ Perl has the ability to go back to the top of a loop, wonder if that would be he
 
 After working it for a while, Since it's 20th and then 40 after that, it's not easy to use modulo. Will go to manually coding the cycle values.
 ### Part 2
+
 ## What I Learned
 
 ### Generic
 
 ### Python
-
+- Nothing
 ### Ruby
 
 ### Perl
