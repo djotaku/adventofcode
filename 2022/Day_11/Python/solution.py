@@ -57,7 +57,10 @@ def monkey_in_the_middle(monkeys: dict, rounds: int, part_one:bool = True) -> di
                     value_for_next_monkey = item + int(operations[2])
                 elif operations[1] == "*":
                     if operations[2] == "old":
-                        value_for_next_monkey = item * item
+                        if part_one:
+                            value_for_next_monkey = item * item
+                        else:
+                            value_for_next_monkey = item
                     else:
                         value_for_next_monkey = item * int(operations[2])
                 # print(f"{value_for_next_monkey=}")
@@ -90,3 +93,5 @@ if __name__ == "__main__":
     monkey_inspections = sorted(monkey_inspections)
     monkey_business = monkey_inspections[-1] * monkey_inspections[-2]
     print(f"Monkey business: {monkey_business}")
+
+# 14704875900 is too low
