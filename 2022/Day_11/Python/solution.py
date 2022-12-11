@@ -42,7 +42,12 @@ def monkey_in_the_middle(monkeys: dict, rounds: int) -> dict:
     for this_round in range(rounds+1):
         print(f"We are in round: {this_round}.")
         for monkey in monkeys.keys():
-            for item in monkeys[monkey]["starting_items"]:
+            if len(monkeys[monkey]["starting_items"]) == 0:
+                print(f"{monkey=} without items.")
+                break
+            length_starting_items = len(monkeys[monkey]["starting_items"])
+            for this_item in range(length_starting_items):
+                item = monkeys[monkey]["starting_items"].popleft()
                 monkeys[monkey]["inspected"] += 1
                 operations = monkeys[monkey]["operation"].split()
                 value_for_next_monkey = 0
@@ -68,5 +73,7 @@ if __name__ == "__main__":
     game_over = monkey_in_the_middle(our_input, 20)
     print(game_over)
     # find active monkeys
-    for monkey in game_over.keys():
-        
+    monkey_inspections = [game_over[monkey]["inspected"] for monkey in game_over.keys()]
+    monkey_inspections = sorted(monkey_inspections)
+    monkey_business = monkey_inspections[-1] * monkey_inspections[-2]
+    print(f"Monkey business: {monkey_business}")
