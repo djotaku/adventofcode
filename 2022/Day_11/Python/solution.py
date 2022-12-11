@@ -43,10 +43,10 @@ def monkey_in_the_middle(monkeys: dict, rounds: int, part_one:bool = True) -> di
     for this_round in range(rounds):
         print(f"We are in round: {this_round}.")
         for monkey in monkeys.keys():
-            print(f"We are with {monkey=}")
-            print(f"{monkeys[monkey]['starting_items']=}")
-            if len(monkeys[monkey]["starting_items"]) == 0:
-                print(f"{monkey=} without items.")
+            # print(f"We are with {monkey=}")
+            # print(f"{monkeys[monkey]['starting_items']=}")
+            #if len(monkeys[monkey]["starting_items"]) == 0:
+            #    print(f"{monkey=} without items.")
             length_starting_items = len(monkeys[monkey]["starting_items"])
             for this_item in range(length_starting_items):
                 item = monkeys[monkey]["starting_items"].popleft()
@@ -60,25 +60,25 @@ def monkey_in_the_middle(monkeys: dict, rounds: int, part_one:bool = True) -> di
                         value_for_next_monkey = item * item
                     else:
                         value_for_next_monkey = item * int(operations[2])
-                print(f"{value_for_next_monkey=}")
+                # print(f"{value_for_next_monkey=}")
                 if part_one:
                     value_for_next_monkey = math.floor(value_for_next_monkey / 3)
-                print(f"{value_for_next_monkey=} after dividing by 3")
+                # print(f"{value_for_next_monkey=} after dividing by 3")
                 if value_for_next_monkey % monkeys[monkey]["test"] == 0:
                     monkey_to_pass_true = monkeys[monkey]["true_monkey"]
-                    print(f"It was divisible, passing to {monkey_to_pass_true}")
+                    # print(f"It was divisible, passing to {monkey_to_pass_true}")
                     monkeys[monkey_to_pass_true]["starting_items"].append(value_for_next_monkey)
                 else:
                     monkey_to_pass_false = monkeys[monkey]["false_monkey"]
-                    print(f"It was not divisible, passing to {monkey_to_pass_false}")
+                    # print(f"It was not divisible, passing to {monkey_to_pass_false}")
                     monkeys[monkey_to_pass_false]["starting_items"].append(value_for_next_monkey)
     return monkeys
 
 if __name__ == "__main__":
     our_input = parse_monkeys("../input.txt")
-    print(our_input)
+    # print(our_input)
     game_over = monkey_in_the_middle(our_input, 20)
-    print(game_over)
+    # print(game_over)
     # find active monkeys
     monkey_inspections = [game_over[monkey]["inspected"] for monkey in game_over.keys()]
     monkey_inspections = sorted(monkey_inspections)
