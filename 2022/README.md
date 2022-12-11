@@ -19,6 +19,7 @@ My goal for the 2022 problem sets are:
 
 | Date | Position | Score |
 | ---- | -------- | ----- |
+|11 Dec| 56       | 1349  |
 |10 Dec| 60       | 1189  |   
 | 9 Dec| 62       | 1030  |
 | 8 Dec| 62       | 880   |
