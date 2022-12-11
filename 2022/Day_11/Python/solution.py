@@ -38,10 +38,10 @@ def parse_monkeys(input_file: str) -> dict:
             monkey_dict[this_monkey_number]["inspected"] = 0
     return monkey_dict
 
-def monkey_in_the_middle(monkeys: dict, rounds: int, part_one:bool = True) -> dict:
+def monkey_in_the_middle(monkeys: dict, rounds: int, part_one:bool = True, super_modulo: int = 0) -> dict:
     """Do the monkey rounds and return the monkey dict with the inspected numbers updated."""
     for this_round in range(rounds):
-        print(f"We are in round: {this_round}.")
+        #print(f"We are in round: {this_round}.")
         for monkey in monkeys.keys():
             # print(f"We are with {monkey=}")
             # print(f"{monkeys[monkey]['starting_items']=}")
@@ -50,6 +50,8 @@ def monkey_in_the_middle(monkeys: dict, rounds: int, part_one:bool = True) -> di
             length_starting_items = len(monkeys[monkey]["starting_items"])
             for this_item in range(length_starting_items):
                 item = monkeys[monkey]["starting_items"].popleft()
+                if not part_one:
+                    item = item % super_modulo
                 monkeys[monkey]["inspected"] += 1
                 operations = monkeys[monkey]["operation"].split()
                 value_for_next_monkey = 0
@@ -57,10 +59,7 @@ def monkey_in_the_middle(monkeys: dict, rounds: int, part_one:bool = True) -> di
                     value_for_next_monkey = item + int(operations[2])
                 elif operations[1] == "*":
                     if operations[2] == "old":
-                        if part_one:
-                            value_for_next_monkey = item * item
-                        else:
-                            value_for_next_monkey = item
+                        value_for_next_monkey = item * item
                     else:
                         value_for_next_monkey = item * int(operations[2])
                 # print(f"{value_for_next_monkey=}")
@@ -75,6 +74,7 @@ def monkey_in_the_middle(monkeys: dict, rounds: int, part_one:bool = True) -> di
                     monkey_to_pass_false = monkeys[monkey]["false_monkey"]
                     # print(f"It was not divisible, passing to {monkey_to_pass_false}")
                     monkeys[monkey_to_pass_false]["starting_items"].append(value_for_next_monkey)
+        # print(f"Monkey 0 inspected {monkeys[0]['inspected']}")
     return monkeys
 
 if __name__ == "__main__":
@@ -88,10 +88,21 @@ if __name__ == "__main__":
     monkey_business = monkey_inspections[-1] * monkey_inspections[-2]
     print(f"Monkey business: {monkey_business}")
     print("Worry levels no longer drop!")
-    game_over = monkey_in_the_middle(our_input, 10000, False)
+    # compute super modulo
+    test_values = []
+    for monkey in our_input.keys():
+        test_values.append(our_input[monkey]["test"])
+    super_modulo_value = 1
+    for value in test_values:
+        super_modulo_value *= value
+    print(f"{super_modulo_value=}")
+    our_input_part_2 = parse_monkeys("../input.txt")
+    game_over = monkey_in_the_middle(our_input_part_2, 10000, False, super_modulo_value)
     monkey_inspections = [game_over[monkey]["inspected"] for monkey in game_over.keys()]
     monkey_inspections = sorted(monkey_inspections)
+    print(f"{monkey_inspections=}")
     monkey_business = monkey_inspections[-1] * monkey_inspections[-2]
     print(f"Monkey business: {monkey_business}")
 
 # 14704875900 is too low
+# 14713601920 is too low
