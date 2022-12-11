@@ -95,12 +95,12 @@ if __name__ == "__main__":
     super_modulo_value = 1
     for value in test_values:
         super_modulo_value *= value
-    print(f"{super_modulo_value=}")
+    # print(f"{super_modulo_value=}")
     our_input_part_2 = parse_monkeys("../input.txt")
     game_over = monkey_in_the_middle(our_input_part_2, 10000, False, super_modulo_value)
     monkey_inspections = [game_over[monkey]["inspected"] for monkey in game_over.keys()]
     monkey_inspections = sorted(monkey_inspections)
-    print(f"{monkey_inspections=}")
+    # print(f"{monkey_inspections=}")
     monkey_business = monkey_inspections[-1] * monkey_inspections[-2]
     print(f"Monkey business: {monkey_business}")
 
