@@ -38,7 +38,7 @@ def parse_monkeys(input_file: str) -> dict:
             monkey_dict[this_monkey_number]["inspected"] = 0
     return monkey_dict
 
-def monkey_in_the_middle(monkeys: dict, rounds: int) -> dict:
+def monkey_in_the_middle(monkeys: dict, rounds: int, part_one:bool = True) -> dict:
     """Do the monkey rounds and return the monkey dict with the inspected numbers updated."""
     for this_round in range(rounds):
         print(f"We are in round: {this_round}.")
@@ -61,7 +61,8 @@ def monkey_in_the_middle(monkeys: dict, rounds: int) -> dict:
                     else:
                         value_for_next_monkey = item * int(operations[2])
                 print(f"{value_for_next_monkey=}")
-                value_for_next_monkey = math.floor(value_for_next_monkey / 3)
+                if part_one:
+                    value_for_next_monkey = math.floor(value_for_next_monkey / 3)
                 print(f"{value_for_next_monkey=} after dividing by 3")
                 if value_for_next_monkey % monkeys[monkey]["test"] == 0:
                     monkey_to_pass_true = monkeys[monkey]["true_monkey"]
@@ -79,6 +80,12 @@ if __name__ == "__main__":
     game_over = monkey_in_the_middle(our_input, 20)
     print(game_over)
     # find active monkeys
+    monkey_inspections = [game_over[monkey]["inspected"] for monkey in game_over.keys()]
+    monkey_inspections = sorted(monkey_inspections)
+    monkey_business = monkey_inspections[-1] * monkey_inspections[-2]
+    print(f"Monkey business: {monkey_business}")
+    print("Worry levels no longer drop!")
+    game_over = monkey_in_the_middle(our_input, 10000, False)
     monkey_inspections = [game_over[monkey]["inspected"] for monkey in game_over.keys()]
     monkey_inspections = sorted(monkey_inspections)
     monkey_business = monkey_inspections[-1] * monkey_inspections[-2]
