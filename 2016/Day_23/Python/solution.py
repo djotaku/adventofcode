@@ -1,4 +1,5 @@
 """ Solution to Aoc 2016 Day 23 - Safe Cracking"""
+import math
 
 """Solution to Advent of Code 2016 Day 12: Leonardo's Monorail."""
 
@@ -9,7 +10,7 @@ def input_per_line(file: str):
         return [line.rstrip() for line in input_file.readlines()]
 
 
-def run_bunny_assembly(registers: dict) -> dict:
+def run_bunny_assembly(registers: dict, part_two=False) -> dict:
     """
     Runs bunny assembly based on initial registers.
 
@@ -17,10 +18,10 @@ def run_bunny_assembly(registers: dict) -> dict:
     """
     counter = 0
     while counter < len(our_input):
-        print(f"{our_input=}")
+        # print(f"{our_input=}")
         components = our_input[counter].split()
         instruction = components[0]
-        print(components)
+        # print(components)
         x = components[1]
         y = 0
         if len(components) == 3:
@@ -70,7 +71,7 @@ def run_bunny_assembly(registers: dict) -> dict:
                 except:
                     print("tried to go beyond the list")
                 counter += 1
-        print(registers)
+        # print(registers)
     return registers
 
 
@@ -95,3 +96,10 @@ if __name__ == "__main__":
     part_1_final_registers = run_bunny_assembly(part_1_initial_registers)
     print("Part 1:")
     print(f"{part_1_final_registers=}")
+    print("Part 2")
+    print("It's a joke revolving around factorial and bunnies multiplying")
+    constant = 85 * 76
+    bunny_factorial = math.factorial(12)
+    print(f"Part 2 answer is {bunny_factorial + constant}")
+
+# 6592 iw too low - but I hadn't changed to multiplicatoin yet.
