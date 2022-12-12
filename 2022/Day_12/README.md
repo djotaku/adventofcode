@@ -6,7 +6,11 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 
 ## Part 1
 
+Answer: 520
+
 ## Part 2
+
+
 
 ## Commentary / Approach to the Problem
 ### Part 1

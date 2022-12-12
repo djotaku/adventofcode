@@ -72,12 +72,12 @@ def valid_next_cell(current_letter: str, row: int, col: int, the_grid: dict) -> 
         next_letter_value = ord("z")
     else:
         next_letter_value = ord(next_letter)
-    print(f"{current_letter=} with {current_letter_value=} and {next_letter=} with {next_letter_value=}")
+    # print(f"{current_letter=} with {current_letter_value=} and {next_letter=} with {next_letter_value=}")
     return next_letter_value <= current_letter_value or next_letter_value == current_letter_value + 1
 
 
 def breadth_first_search(the_grid, source: Point, destination: Point, last_row: int, last_col: int) -> int:
-    print(f"Within bfs {last_row=}, {last_col=}")
+    # print(f"Within bfs {last_row=}, {last_col=}")
     """Find the shortest path from a source cell to a destination cell."""
     row_directions = [-1, 0, 0, 1]
     column_directions = [0, -1, 1, 0]
@@ -110,16 +110,16 @@ def breadth_first_search(the_grid, source: Point, destination: Point, last_row: 
             row = point.x + row_directions[i]
             col = point.y + column_directions[i]
 
-            print(f"checking {row=}, {col=}")
-            print(f"Would this row and column be in the grid? {is_in_grid(row, col, last_row, last_col)}")
+            # print(f"checking {row=}, {col=}")
+            # print(f"Would this row and column be in the grid? {is_in_grid(row, col, last_row, last_col)}")
             # adjacent cell is within bounds, has a path, and is not visited yet so enqueue it
             if is_in_grid(row, col, last_row, last_col) and valid_next_cell(the_grid[(point.x, point.y)],
                                                                             row, col,
                                                                             the_grid) and not visited[row][col]:
                 # print("valid!")
                 visited[row][col] = True
-                print(f"Current letter is at ({point.x},{point.y}) and is {the_grid[(point.x, point.y)]}")
-                print(f"Next letter would be at {(row, col)=} and would be {the_grid[(row, col)]}")
+                # print(f"Current letter is at ({point.x},{point.y}) and is {the_grid[(point.x, point.y)]}")
+                # print(f"Next letter would be at {(row, col)=} and would be {the_grid[(row, col)]}")
                 adjacent_cell = QueueNode(Point(row, col), current.distance + 1)
                 queue.append(adjacent_cell)
     print("no destination")
@@ -127,14 +127,15 @@ def breadth_first_search(the_grid, source: Point, destination: Point, last_row: 
 
 
 if __name__ == "__main__":
-    our_input = input_per_line("../sample_input.txt")
+    our_input = input_per_line("../input.txt")
     grid, max_row, max_col = text_to_grid(our_input)
-    print(f"{max_row=}")
-    print(f"{max_col=}")
-    print(grid)
+    # print(f"{max_row=}")
+    # print(f"{max_col=}")
+    # print(grid)
     start, end = find_start_and_end(grid)
     start_point = Point(start[0], start[1])
     end_point = Point(end[0], end[1])
-    print(f"{end=}")
+    # print(f"{end=}")
     steps_to_end = breadth_first_search(grid, start_point, end_point, max_row, max_col)
-    print(f"{steps_to_end=}")
+    print(f"To get to the location with the best signal from my starting point would take {steps_to_end} steps.")
+    print("")
