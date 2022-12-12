@@ -8,6 +8,8 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 Answer: 11500
 ## Part 2
 
+Answer: 479008060
+
 ## Commentary / Approach to the Problem
 ### Part 1
 Initial idea is to create a function that will figure out what to change with tgl. Might do if/else or match statements.

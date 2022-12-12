@@ -1,5 +1,6 @@
-""" Solution to Aoc 2016 Day 23 - Safe Cracking."""
+""" Solution to Aoc 2016 Day 25- Clock Signal"""
 import math
+
 
 
 def input_per_line(file: str):
@@ -88,17 +89,7 @@ def toggle_transform(assembly: str) -> str:
             split[0] = "jnz"
     return " ".join(split)
 
-
 if __name__ == "__main__":
     our_input = input_per_line('../input.txt')
     part_1_initial_registers = {"a": 7, "b": 0, "c": 0, "d": 0}
     part_1_final_registers = run_bunny_assembly(part_1_initial_registers)
-    print("Part 1:")
-    print(f"{part_1_final_registers=}")
-    print("Part 2")
-    print("It's a joke revolving around factorial and bunnies multiplying")
-    constant = 85 * 76
-    bunny_factorial = math.factorial(12)
-    print(f"Part 2 answer is {bunny_factorial + constant}")
-
-# 6592 iw too low - but I hadn't changed to multiplicatoin yet.
