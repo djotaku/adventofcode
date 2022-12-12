@@ -1,6 +1,4 @@
-
-    
-# Title of Problem
+# Day 12 - Hill Climbing Algorithm
 
 Out of respect for the author's wishes, I only put as much of the problem text as necessary to understand the problem.
 
@@ -11,8 +9,15 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 ## Part 2
 
 ## Commentary / Approach to the Problem
-###Part 1
+### Part 1
+I'm not good at these, I never know how to actually do it. I know that, generally, it's something like:
 
+- figure out every direction you can go from your current spot
+- branch out and try each of those
+- If any branch reaches a dead end, stop having that branch go.
+- at the end, pick the one that meets the criteria (fewest, most, etc)
+
+Where I struggle is how to do the second step. 
 ### Part 2
 ## What I Learned
 
