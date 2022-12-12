@@ -122,8 +122,13 @@ def breadth_first_search(the_grid, source: Point, destination: Point, last_row: 
                 # print(f"Next letter would be at {(row, col)=} and would be {the_grid[(row, col)]}")
                 adjacent_cell = QueueNode(Point(row, col), current.distance + 1)
                 queue.append(adjacent_cell)
-    print("no destination")
+    # print("no destination")
     return -1  # couldn't get to the destination
+
+
+def find_starting_points(grid_map: dict) -> list:
+    """Find the coordinates of the potential starting points."""
+    return [Point(key[0], key[1]) for key, value in grid_map.items() if value in ["a", "S"]]
 
 
 if __name__ == "__main__":
@@ -138,4 +143,16 @@ if __name__ == "__main__":
     # print(f"{end=}")
     steps_to_end = breadth_first_search(grid, start_point, end_point, max_row, max_col)
     print(f"To get to the location with the best signal from my starting point would take {steps_to_end} steps.")
-    print("")
+    print("But what if we wanted to find a more scenic starting point?")
+    print("Consider all lowest elevations (a) as starting points.")
+    print("Gather up all the 'a' spots plus original starting S")
+    starting_points = find_starting_points(grid)
+    print("Evaluate starting points")
+    potential_best_starting_points = [breadth_first_search(grid,
+                                                           starting_point,
+                                                           end_point,
+                                                           max_row, max_col) for starting_point in starting_points]
+    print("Eliminate DNFs (-1)")
+    potential_best_starting_points = [point for point in potential_best_starting_points if point != -1]
+    print("The most scenic starting point.....")
+    print(f"the one that gets you to the top in the fewest steps is {min(potential_best_starting_points)}")

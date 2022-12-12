@@ -10,7 +10,7 @@ Answer: 520
 
 ## Part 2
 
-
+Answer: 508
 
 ## Commentary / Approach to the Problem
 ### Part 1
