@@ -18,6 +18,10 @@ I'm not good at these, I never know how to actually do it. I know that, generall
 - at the end, pick the one that meets the criteria (fewest, most, etc)
 
 Where I struggle is how to do the second step. 
+
+Looks like I'm finally learning BFS. 
+
+I'm going to be adapting the code from https://www.geeksforgeeks.org/shortest-path-in-a-binary-maze/ to work with my grid. I don't normally bother with classes and I think namedTuple might even work better here, but for simplicity's sake I'm going to go with their method.
 ### Part 2
 ## What I Learned
 
