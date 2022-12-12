@@ -62,12 +62,14 @@ def valid_next_cell(current_letter: str, row: int, col: int, the_grid: dict) -> 
     if current_letter == "S":
         current_letter_value = 9999999999999999999
     elif current_letter == "E":
-        current_letter_value = -9999999999999999999
+        current_letter_value = ord("z")
     else:
         current_letter_value = ord(current_letter)
     next_letter = the_grid[(row, col)]
     if next_letter == "":
         return False
+    elif next_letter == "E":
+        next_letter_value = ord("z")
     else:
         next_letter_value = ord(next_letter)
     print(f"{current_letter=} with {current_letter_value=} and {next_letter=} with {next_letter_value=}")
