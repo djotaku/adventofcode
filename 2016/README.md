@@ -14,7 +14,7 @@ My goal for the 2016 problem sets are:
 - In general my aim is to get more and more idiomatic with each language as the days go by.
 - To have fun solving programming puzzles
 
-![progress](https://github.com/djotaku/adventofcode/blob/11daeab6d43562b86f1f7357a49e17864f77c749/screenshots/2016/2016_progress_20221111.png)
+![progress](https://github.com/djotaku/adventofcode/blob/8d5650fb90ba6ef5416979740811790b47a05852/screenshots/2016/2016_20221212.png)
 
 ## Days I could not complete
 ### Part 1 Sections Still incomplete:
