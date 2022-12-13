@@ -8,7 +8,7 @@ def input_per_line(file: str):
         return [line.rstrip() for line in input_file.readlines()]
 
 
-def run_bunny_assembly(registers: dict, part_two=False) -> list:
+def run_bunny_assembly(registers: dict) -> list:
     """
     Runs bunny assembly based on initial registers.
 
@@ -76,6 +76,7 @@ if __name__ == "__main__":
     our_input = input_per_line('../input.txt')
     output_signals = []
     for a in range(10000):
+        print(a)
         # print(f"we're trying {a=}")
         part_1_initial_registers = {"a": a, "b": 0, "c": 0, "d": 0}
         output_signals = run_bunny_assembly(part_1_initial_registers)
@@ -84,6 +85,4 @@ if __name__ == "__main__":
             print(output_signals)
             print(f"{a=}")
             break
-        else:
-            print("didn't find")
-    print(output_signals)
+    print("And we're done.")
