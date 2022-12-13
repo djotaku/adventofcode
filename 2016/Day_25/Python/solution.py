@@ -8,11 +8,11 @@ def input_per_line(file: str):
         return [line.rstrip() for line in input_file.readlines()]
 
 
-def run_bunny_assembly(registers: dict, part_two=False) -> dict:
+def run_bunny_assembly(registers: dict, part_two=False) -> list:
     """
     Runs bunny assembly based on initial registers.
 
-    Returns registers at the end.
+    Returns output at the end.
     """
     counter = 0
     output = []
@@ -29,10 +29,7 @@ def run_bunny_assembly(registers: dict, part_two=False) -> dict:
             case "cpy":  # copies x (either an integer or the value of a register) into register y
                 if isinstance(y, int):
                     break
-                if x == "a" or x == "b" or x == "c" or x == "d":
-                    registers[y] = int(registers[x])
-                else:
-                    registers[y] = int(x)
+                registers[y] = int(registers[x]) if x in ["a", "b", "c", "d"] else int(x)
                 counter += 1
             case "inc":  # increases the value of register x by one
                 registers[x] += 1
@@ -41,32 +38,17 @@ def run_bunny_assembly(registers: dict, part_two=False) -> dict:
                 registers[x] -= 1
                 counter += 1
             case "jnz":  # jumps to an instruction y away (positive means forward; negative means backward), but only if x is not zero.
-                if y in ["a", "b", "c", "d"]:
-                    jump_location = registers[y]
+                jump_location = registers[y] if y in ["a", "b", "c", "d"] else int(y)
+                if x in ["a", "b", "c", "d"] and registers[x] != 0 or x not in ["a", "b", "c", "d"] and int(x) != 0:
+                    counter += jump_location
                 else:
-                    jump_location = int(y)
-                if x in ["a", "b", "c", "d"]:
-                    if registers[x] != 0:
-                        counter += jump_location
-                    else:
-                        counter += 1
-                else:
-                    if int(x) != 0:
-                        counter += jump_location
-                    else:
-                        counter += 1
-            # need to add in the tgl instruction
-            # need a try/catch in case it tries to modify a spot outside the list
+                    counter += 1
             case "tgl":
-                distance = 0
-                if x in ["a", "b", "c", "d"]:
-                    distance = registers[x]
-                else:
-                    distance = int(x)
+                distance = registers[x] if x in ["a", "b", "c", "d"] else int(x)
                 try:
                     modified_command = toggle_transform(our_input[counter + distance])
                     our_input[counter + distance] = modified_command
-                except:
+                except Exception:
                     print("tried to go beyond the list")
                 counter += 1
             case "out":
@@ -74,6 +56,7 @@ def run_bunny_assembly(registers: dict, part_two=False) -> dict:
                     output.append(registers[x])
                 else:
                     output.append(x)
+
         if len(output) == 20:
             return output
     return output
@@ -83,27 +66,24 @@ def toggle_transform(assembly: str) -> str:
     """Take in assembly code and transform it based on toggle rules. Return the new string."""
     split = assembly.split()
     if len(split) == 2:
-        if split[0] == "inc":
-            split[0] = "dec"
-        else:
-            split[0] = "inc"
+        split[0] = "dec" if split[0] == "inc" else "inc"
     elif len(split) == 3:
-        if split[0] == "jnz":
-            split[0] = "cpy"
-        else:
-            split[0] = "jnz"
+        split[0] = "cpy" if split[0] == "jnz" else "jnz"
     return " ".join(split)
 
 
 if __name__ == "__main__":
     our_input = input_per_line('../input.txt')
     output_signals = []
-    for a in range(100000):
-        print(f"we're trying {a=}")
+    for a in range(10000):
+        # print(f"we're trying {a=}")
         part_1_initial_registers = {"a": a, "b": 0, "c": 0, "d": 0}
         output_signals = run_bunny_assembly(part_1_initial_registers)
-        print(f"testing output: {output_signals}")
+        # print(f"testing output: {output_signals}")
         if output_signals[0] == 0 and output_signals[1] == 1 and output_signals[2] == 0 and output_signals[3] == 1:
             print(output_signals)
-            print(f"{a}")
+            print(f"{a=}")
             break
+        else:
+            print("didn't find")
+    print(output_signals)
