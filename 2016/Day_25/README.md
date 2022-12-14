@@ -5,7 +5,7 @@ Out of respect for the author's wishes, I only put as much of the problem text a
 Visit the version with all the story elements [here](https://adventofcode.com/2016/day/25).
 
 ## Part 1
-
+Answer: 189
 ## Part 2
 
 ## Commentary / Approach to the Problem

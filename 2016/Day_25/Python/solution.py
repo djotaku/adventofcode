@@ -54,8 +54,10 @@ def run_bunny_assembly(registers: dict) -> list:
             case "out":
                 if x in ["a", "b", "c", "d"]:
                     output.append(registers[x])
+                    counter += 1
                 else:
                     output.append(x)
+                    counter += 1
 
         if len(output) == 20:
             return output
@@ -76,13 +78,14 @@ if __name__ == "__main__":
     our_input = input_per_line('../input.txt')
     output_signals = []
     for a in range(10000):
-        print(a)
         # print(f"we're trying {a=}")
         part_1_initial_registers = {"a": a, "b": 0, "c": 0, "d": 0}
         output_signals = run_bunny_assembly(part_1_initial_registers)
         # print(f"testing output: {output_signals}")
-        if output_signals[0] == 0 and output_signals[1] == 1 and output_signals[2] == 0 and output_signals[3] == 1:
+        if output_signals[0] == 0 and output_signals[1] == 1 and output_signals[2] == 0 and output_signals[3] == 1 and output_signals[4] == 0 and output_signals[5] == 1 and output_signals[6] == 0 and output_signals[7] == 1:
             print(output_signals)
             print(f"{a=}")
             break
     print("And we're done.")
+
+# 13 is too small

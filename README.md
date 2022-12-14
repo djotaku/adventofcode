@@ -20,7 +20,7 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
 - 2016
   - Third Problem Set Tackled (Oct 2021 - )
   - Originally solved with Python, Ruby, Perl, Haskell, and Go
-  - 31 stars Collected so Far
+  - 32 stars Collected so Far
   - 20221029 Reached 150 stars total for the repo
 - 2017
   - Sixth Problem Set Tackled (TBD)
@@ -49,7 +49,7 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
 
 ![total stars](https://github.com/djotaku/adventofcode/blob/8d5650fb90ba6ef5416979740811790b47a05852/screenshots/total/total_star_count_20221212.png)
 
-Total Stars Over All Years: 176
+Total Stars Over All Years: 177
 
 After I'm all caught up, I may try my hand at some visualizations.
     
