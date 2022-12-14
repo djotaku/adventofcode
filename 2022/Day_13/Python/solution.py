@@ -33,16 +33,22 @@ def transform_integer():
 
 def check_order(left_side, right_side) -> bool:
     """Given a pair of items, check if they are in the right order."""
+    print(f"At beginning of this function {left_side=} and {right_side=}")
     if left_side is None and right_side is not None:
+        print("left side was none")
         return True
     elif left_side is not None and right_side is None:
         return False
-    if isinstance(left_side, list) and not isinstance(right_side, list):
+    if isinstance(left_side, list) and isinstance(right_side, list):
+        if len(left_side) == 0:
+            return True
+    elif isinstance(left_side, list) and not isinstance(right_side, list):
         return check_order(left_side, [right_side])
     elif not isinstance(left_side, list) and isinstance(right_side, list):
         return check_order([left_side], right_side)
     for index in range(len(left_side)):
         left_at_index = left_side[index]
+        print(f"{left_at_index=}")
         try:
             right_at_index = right_side[index]
         except Exception:
@@ -55,8 +61,9 @@ def check_order(left_side, right_side) -> bool:
                 print("Comparing integers and left is smaller")
                 return True
         else:
+            print(f"We're checking a list and we're checking {left_at_index=} vs {right_at_index=}")
             return check_order(left_at_index, right_at_index)
-        print(f"We're checking a list and we're checking {left_at_index=} vs {right_at_index=}")
+
 
 
 if __name__ == "__main__":
