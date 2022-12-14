@@ -52,7 +52,7 @@ def check_order(left_side, right_side) -> bool:
         try:
             right_at_index = right_side[index]
         except Exception:
-            right_at_index = None
+            return False  # because right is shorter
         if isinstance(left_at_index, int) and isinstance(right_at_index, int):
             if left_at_index > right_at_index:
                 print("Comparing integers and left is larger")
