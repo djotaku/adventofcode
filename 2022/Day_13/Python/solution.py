@@ -19,18 +19,6 @@ def input_per_line(file: str):
         return final_line_list
 
 
-def check_integer_order():
-    pass
-
-
-def check_lists():
-    pass
-
-
-def transform_integer():
-    pass
-
-
 def check_order(left_side, right_side):
     """Given a pair of items, check if they are in the right order."""
     print(f"At beginning of this function {left_side=} and {right_side=}")
@@ -48,7 +36,6 @@ def check_order(left_side, right_side):
         return check_order([left_side], right_side)
     for index in range(len(left_side)):
         left_at_index = left_side[index]
-        print(f"{left_at_index=}")
         try:
             right_at_index = right_side[index]
         except Exception:
@@ -65,17 +52,15 @@ def check_order(left_side, right_side):
         else:
             print(f"We're checking a list and we're checking {left_at_index=} vs {right_at_index=}")
             return check_order(left_at_index, right_at_index)
-    return True
 
-
-
-def correct_order(left_side: list, right_side: list) -> bool:
+def check(left_side, right_side):
     for index in range(len(left_side)):
         left_at_index = left_side[index]
         try:
             right_at_index = right_side[index]
         except Exception:
             return False  # because right is shorter
+    # check ints
         if isinstance(left_at_index, int) and isinstance(right_at_index, int):
             if left_at_index > right_at_index:
                 print("Comparing integers and left is larger")
@@ -83,8 +68,7 @@ def correct_order(left_side: list, right_side: list) -> bool:
             elif left_at_index < right_at_index:
                 print("Comparing integers and left is smaller")
                 return True
-            elif left_at_index == right_at_index:
-                continue
+
 
 if __name__ == "__main__":
     print("We've received a distress signal!")
@@ -98,3 +82,6 @@ if __name__ == "__main__":
         if ordered:
             correct_inputs.append(index + 1)
     print(correct_inputs)
+    print(f"The sum of the indices with correct inputs is {sum(correct_inputs)}")
+
+# 5726 is too low
