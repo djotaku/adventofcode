@@ -49,13 +49,14 @@ def check_order(left_side, right_side) -> bool:
             right_at_index = None
         if isinstance(left_at_index, int) and isinstance(right_at_index, int):
             if left_at_index > right_at_index:
+                print("Comparing integers and left is larger")
                 return False
             elif left_at_index < right_at_index:
+                print("Comparing integers and left is smaller")
                 return True
         else:
             return check_order(left_at_index, right_at_index)
         print(f"We're checking a list and we're checking {left_at_index=} vs {right_at_index=}")
-
 
 
 if __name__ == "__main__":
@@ -65,8 +66,8 @@ if __name__ == "__main__":
     for index, input_pair in enumerate(input_signals):
         left = json.loads(input_pair[0])
         right = json.loads(input_pair[1])
-        print(f"Pair{index+1}: {left=}, {right=}")
+        print(f"Pair{index + 1}: {left=}, {right=}")
         ordered = check_order(left, right)
         if ordered:
-            correct_inputs.append(index+1)
+            correct_inputs.append(index + 1)
     print(correct_inputs)
