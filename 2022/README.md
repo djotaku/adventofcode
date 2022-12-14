@@ -29,7 +29,7 @@ My goal for the 2022 problem sets are:
 
 ## Days I could not complete
 ### Part 1 Sections Still incomplete:
-- Nothing yet
+- Day 13 - the recursive answer I was trying to formulate did not work and I ran out of day.
 ### Part 2 Sections Still incomplete:
 - Nothing yet
 ### Language Specific
