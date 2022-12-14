@@ -62,7 +62,7 @@ def check_order(left_side, right_side) -> bool:
                 return True
         else:
             print(f"We're checking a list and we're checking {left_at_index=} vs {right_at_index=}")
-            return check_order(left_at_index, right_at_index)
+            check_order(left_at_index, right_at_index)
 
 
 
