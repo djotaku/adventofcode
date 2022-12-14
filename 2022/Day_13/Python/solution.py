@@ -31,15 +31,42 @@ def transform_integer():
     pass
 
 
-def check_order(pair: list) -> bool:
+def check_order(left_side, right_side) -> bool:
     """Given a pair of items, check if they are in the right order."""
-    left = json.loads(pair[0])
-    right = json.loads(pair[1])
-    print(left)
+    if left_side is None and right_side is not None:
+        return True
+    elif left_side is not None and right_side is None:
+        return False
+    if isinstance(left_side, list) and not isinstance(right_side, list):
+        return check_order(left_side, [right_side])
+    elif not isinstance(left_side, list) and isinstance(right_side, list):
+        return check_order([left_side], right_side)
+    for index in range(len(left_side)):
+        left_at_index = left_side[index]
+        try:
+            right_at_index = right_side[index]
+        except Exception:
+            right_at_index = None
+        if isinstance(left_at_index, int) and isinstance(right_at_index, int):
+            if left_at_index > right_at_index:
+                return False
+            elif left_at_index < right_at_index:
+                return True
+        else:
+            return check_order(left_at_index, right_at_index)
+        print(f"We're checking a list and we're checking {left_at_index=} vs {right_at_index=}")
+
 
 
 if __name__ == "__main__":
     print("We've received a distress signal!")
     input_signals = input_per_line("../sample_input.txt")
-    for input_pair in input_signals:
-        ordered = check_order(input_pair)
+    correct_inputs = []
+    for index, input_pair in enumerate(input_signals):
+        left = json.loads(input_pair[0])
+        right = json.loads(input_pair[1])
+        print(f"Pair{index+1}: {left=}, {right=}")
+        ordered = check_order(left, right)
+        if ordered:
+            correct_inputs.append(index+1)
+    print(correct_inputs)
