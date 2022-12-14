@@ -61,17 +61,12 @@ def check_order(left_side, right_side):
                 print("Comparing integers and left is smaller")
                 return True
             elif left_at_index == right_at_index:
-                print('equal')
-                return "equal"
+                continue
         else:
             print(f"We're checking a list and we're checking {left_at_index=} vs {right_at_index=}")
-            answer = check_order(left_at_index, right_at_index)
-            if answer == "equal":
-                check_order(left_at_index, right_at_index)
-            elif answer:
-                return True
-            elif answer is False:
-                return False
+            return check_order(left_at_index, right_at_index)
+    return True
+
 
 
 def correct_order(left_side: list, right_side: list) -> bool:
@@ -99,7 +94,7 @@ if __name__ == "__main__":
         left = json.loads(input_pair[0])
         right = json.loads(input_pair[1])
         print(f"Pair{index + 1}: {left=}, {right=}")
-        ordered = correct_order(left, right)
+        ordered = check_order(left, right)
         if ordered:
             correct_inputs.append(index + 1)
     print(correct_inputs)
