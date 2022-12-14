@@ -15,7 +15,7 @@ Answer: 189
 ### Generic
 
 ### Python
-
+- Nothing
 ### Ruby
 
 ### Perl
