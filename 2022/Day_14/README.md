@@ -7,7 +7,7 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 ## Part 1
 Answer: 578
 ## Part 2
-Answer: 
+Answer: 24377
 ## Commentary / Approach to the Problem
 ### Part 1
 NOTE: y= 0 is the TOP of the cavern
@@ -26,7 +26,7 @@ No diagonal lines - all are vertical or horizontal
 ### Generic
 
 ### Python
-
+- Sometimes for compound if statements it's better to use "in" and then a list
 ### Ruby
 
 ### Perl

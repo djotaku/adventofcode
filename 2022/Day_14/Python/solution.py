@@ -50,37 +50,62 @@ def find_lowest_rock(rock_map: dict) -> int:
     return max(rock_coordinates)
 
 
-def sand_simulation(cavern_map: dict, lowest_rock_y: int) -> int:
+def sand_simulation(cavern_map: dict, lowest_rock_y: int, part_two: bool = False) -> int:
     """Return number of units sand before further sand will fall into the abyss."""
     protected = True
     sand_tally = 0
+    part_two_floor = lowest_rock_y + 2
+    print(f"{part_two_floor=}")
     while protected:
         falling = True
-        # print("starting new sand grain")
+        print("starting new sand grain")
         sand_coordinate = [500, 0]
         while falling:
-            # print(sand_coordinate)
+            print(f"{sand_coordinate=}")
             if cavern_map[(sand_coordinate[0], sand_coordinate[1] + 1)] not in ["#", "o"]:  # nothing below
-                sand_coordinate[1] += 1
-                if sand_coordinate[1] > lowest_rock_y:  # infinite falling
-                    return sand_tally
+                if part_two and (sand_coordinate[1] + 1) == part_two_floor:
+                    print("part 2 section!")
+                    cavern_map[(sand_coordinate[0], sand_coordinate[1])] = 'o'
+                    falling = False
+                    sand_tally += 1
+                else:
+                    sand_coordinate[1] += 1
+                    if not part_two:
+                        if sand_coordinate[1] > lowest_rock_y:  # infinite falling
+                            return sand_tally
             elif cavern_map[(sand_coordinate[0] - 1, sand_coordinate[1] + 1)] not in ["#",
                                                                                       "o"]:  # nothing diag left -> fall
-                sand_coordinate[0] -= 1
-                sand_coordinate[1] += 1
-                if sand_coordinate[1] > lowest_rock_y:  # infinite falling
-                    return sand_tally
+                if part_two and (sand_coordinate[1] + 1) == part_two_floor:
+                    print("part 2 section!")
+                    cavern_map[(sand_coordinate[0], sand_coordinate[1])] = 'o'
+                    falling = False
+                    sand_tally += 1
+                else:
+                    sand_coordinate[1] += 1
+                    sand_coordinate[0] -= 1
+                    if not part_two:
+                        if sand_coordinate[1] > lowest_rock_y:  # infinite falling
+                            return sand_tally
             elif cavern_map[(sand_coordinate[0] + 1, sand_coordinate[1] + 1)] not in ["#",
                                                                                       'o']:  # nothin diag right -> fall
-                sand_coordinate[0] += 1
-                sand_coordinate[1] += 1
-                if sand_coordinate[1] > lowest_rock_y:  # infinite falling
-                    return sand_tally
+                if part_two and (sand_coordinate[1] + 1) == part_two_floor:
+                    print("part 2 section!")
+                    cavern_map[(sand_coordinate[0], sand_coordinate[1])] = 'o'
+                    falling = False
+                    sand_tally += 1
+                else:
+                    sand_coordinate[1] += 1
+                    sand_coordinate[0] += 1
+                    if not part_two:
+                        if sand_coordinate[1] > lowest_rock_y:  # infinite falling
+                            return sand_tally
             else:  # nowhere left to go
                 cavern_map[(sand_coordinate[0], sand_coordinate[1])] = 'o'
                 falling = False
                 sand_tally += 1
-        # print(f"{sand_coordinate=}")
+                if part_two and sand_coordinate == [500, 0]:
+                    return sand_tally
+
     return sand_tally
 
 
@@ -92,7 +117,12 @@ if __name__ == "__main__":
         cavern = add_rocks(cavern, seam)
     # find lowest rock y value
     lowest_rock = find_lowest_rock(cavern)
+    part_two_cavern = cavern.copy()
     # simulate sand
     print("Running sand simulation....")
     sand_before_abyss = sand_simulation(cavern, lowest_rock)
     print(f"{sand_before_abyss} grains of sand fell before the rest started flowing into the abyss.")
+    print("Wait a minute, we're not floating in a void! We're standing on the floor!")
+    print("Need a new calculation where we fill sand until it blocks the sand source.")
+    part_two_sand = sand_simulation(part_two_cavern, lowest_rock, True)
+    print(f"{part_two_sand} grains of sand fell before plugging the source.")
