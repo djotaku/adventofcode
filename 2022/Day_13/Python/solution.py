@@ -38,7 +38,7 @@ def check_order(left_side, right_side):
         else:  # at least one side is an int and the other side is a list
             if isinstance(item_left, int):
                 item_left = [item_left]
-            if isinstance(right_side, int):
+            if isinstance(item_right, int):
                 item_right = [item_right]
             comparison = check_order(item_left, item_right)
         if comparison != 0:
@@ -54,7 +54,7 @@ def check_order(left_side, right_side):
 
 if __name__ == "__main__":
     print("We've received a distress signal!")
-    input_signals = input_per_line("../sample_input.txt")
+    input_signals = input_per_line("../input.txt")
     correct_inputs = []
     for index, input_pair in enumerate(input_signals):
         left = json.loads(input_pair[0])
@@ -68,3 +68,4 @@ if __name__ == "__main__":
     print(f"The sum of the indices with correct inputs is {sum(correct_inputs)}")
 
 # 5726 is too low
+# 5693 is too low
