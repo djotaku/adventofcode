@@ -70,9 +70,8 @@ def sand_simulation(cavern_map: dict, lowest_rock_y: int, part_two: bool = False
                     sand_tally += 1
                 else:
                     sand_coordinate[1] += 1
-                    if not part_two:
-                        if sand_coordinate[1] > lowest_rock_y:  # infinite falling
-                            return sand_tally
+                if not part_two and sand_coordinate[1] > lowest_rock_y:
+                    return sand_tally
             elif cavern_map[(sand_coordinate[0] - 1, sand_coordinate[1] + 1)] not in ["#",
                                                                                       "o"]:  # nothing diag left -> fall
                 if part_two and (sand_coordinate[1] + 1) == part_two_floor:
@@ -83,9 +82,8 @@ def sand_simulation(cavern_map: dict, lowest_rock_y: int, part_two: bool = False
                 else:
                     sand_coordinate[1] += 1
                     sand_coordinate[0] -= 1
-                    if not part_two:
-                        if sand_coordinate[1] > lowest_rock_y:  # infinite falling
-                            return sand_tally
+                if not part_two and sand_coordinate[1] > lowest_rock_y:
+                    return sand_tally
             elif cavern_map[(sand_coordinate[0] + 1, sand_coordinate[1] + 1)] not in ["#",
                                                                                       'o']:  # nothin diag right -> fall
                 if part_two and (sand_coordinate[1] + 1) == part_two_floor:
@@ -96,9 +94,8 @@ def sand_simulation(cavern_map: dict, lowest_rock_y: int, part_two: bool = False
                 else:
                     sand_coordinate[1] += 1
                     sand_coordinate[0] += 1
-                    if not part_two:
-                        if sand_coordinate[1] > lowest_rock_y:  # infinite falling
-                            return sand_tally
+                if not part_two and sand_coordinate[1] > lowest_rock_y:
+                    return sand_tally
             else:  # nowhere left to go
                 cavern_map[(sand_coordinate[0], sand_coordinate[1])] = 'o'
                 falling = False
