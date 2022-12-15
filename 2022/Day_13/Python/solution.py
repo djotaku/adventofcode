@@ -24,12 +24,12 @@ def check_order(left_side, right_side):
     print(f"At beginning of this function {left_side=} and {right_side=}")
     if left_side is None and right_side is not None:
         print("left side was none")
-        return True
+        return 1
     elif left_side is not None and right_side is None:
-        return False
+        return -1
     if isinstance(left_side, list) and isinstance(right_side, list):
         if len(left_side) == 0:
-            return True
+            return 1
     elif isinstance(left_side, list) and not isinstance(right_side, list):
         return check_order(left_side, [right_side])
     elif not isinstance(left_side, list) and isinstance(right_side, list):
@@ -39,16 +39,16 @@ def check_order(left_side, right_side):
         try:
             right_at_index = right_side[index]
         except Exception:
-            return False  # because right is shorter
+            return -1  # because right is shorter
         if isinstance(left_at_index, int) and isinstance(right_at_index, int):
             if left_at_index > right_at_index:
                 print("Comparing integers and left is larger")
-                return False
+                return -1
             elif left_at_index < right_at_index:
                 print("Comparing integers and left is smaller")
-                return True
+                return 1
             elif left_at_index == right_at_index:
-                continue
+                pass
         else:
             print(f"We're checking a list and we're checking {left_at_index=} vs {right_at_index=}")
             return check_order(left_at_index, right_at_index)
@@ -79,7 +79,7 @@ if __name__ == "__main__":
         right = json.loads(input_pair[1])
         print(f"Pair{index + 1}: {left=}, {right=}")
         ordered = check_order(left, right)
-        if ordered:
+        if ordered == 1:
             correct_inputs.append(index + 1)
     print(correct_inputs)
     print(f"The sum of the indices with correct inputs is {sum(correct_inputs)}")
