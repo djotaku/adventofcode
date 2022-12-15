@@ -2,7 +2,7 @@
 
 Advent of Code 2022 can be found [here](https://adventofcode.com/2022).
 
-You need to help the elves collect [star fruit](https://en.wikipedia.org/wiki/Carambola) to power Santa's reindeer. 
+Traipsing through the jungle because you need to help the elves collect [star fruit](https://en.wikipedia.org/wiki/Carambola) to power Santa's reindeer. 
 
 My Fifth Advent of Code Problem Set
 
@@ -12,13 +12,14 @@ My goal for the 2022 problem sets are:
 - In general my aim is to get more and more idiomatic with each language as the days go by.
 - To have fun solving programming puzzles
 
-![2022 stars](https://github.com/djotaku/adventofcode/blob/8d5650fb90ba6ef5416979740811790b47a05852/screenshots/2022/2022_20221212.png)
+![2022 stars](https://github.com/djotaku/adventofcode/blob/4441b52a313588b959b72bc83e2e5ff73af95cc1/screenshots/2022/2022_20221214.png)
 
 
 ## Live Score on Python Discord Server
 
 | Date | Position | Score |
 | ---- | -------- | ----- |
+|14 Dec| 52       | 1757  |
 |12 Dec| 52       | 1526  |
 |11 Dec| 56       | 1349  |
 |10 Dec| 60       | 1189  |   
