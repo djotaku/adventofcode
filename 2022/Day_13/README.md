@@ -20,6 +20,9 @@ Still, I may look back on that for inspiration.
 
 Looking at the input, there may be some shortcuts that can be taken. For example, count opening '[' and if they don't match, that might be a quick eval.
 Also, just compare lengths and if they are off by a LOT, may be easy to just make a judgement.
+
+Was having trouble getting my comparison recurion to work, so I modified things based on [this solution](https://www.reddit.com/r/adventofcode/comments/zkmyh4/comment/j098dd5/?utm_source=share&utm_medium=web2x&context=3) 
+
 ### Part 2
 ## What I Learned
 
