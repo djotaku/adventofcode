@@ -19,56 +19,38 @@ def input_per_line(file: str):
         return final_line_list
 
 
+def compare_integers(left_int, right_int):
+    if left_int == right_int:
+        return 0
+    return 1 if left_int > right_int else -1
+
+
 def check_order(left_side, right_side):
     """Given a pair of items, check if they are in the right order."""
     print(f"At beginning of this function {left_side=} and {right_side=}")
-    if left_side is None and right_side is not None:
-        print("left side was none")
-        return 1
-    elif left_side is not None and right_side is None:
+    counter = 0
+    while counter < len(left_side) and counter < len(right_side):
+        item_left = left_side[counter]
+        item_right = right_side[counter]
+        comparison = 0
+        if isinstance(item_left, int) and isinstance(item_right, int):
+            comparison = compare_integers(item_left, item_right)
+        else:  # at least one side is an int and the other side is a list
+            if isinstance(item_left, int):
+                item_left = [item_left]
+            if isinstance(right_side, int):
+                item_right = [item_right]
+            comparison = check_order(item_left, item_right)
+        if comparison != 0:
+            return comparison
+        counter += 1
+
+    if counter == len(left_side) and counter == len(right_side):
+        return 0
+    elif counter == len(left_side):
         return -1
-    if isinstance(left_side, list) and isinstance(right_side, list):
-        if len(left_side) == 0:
-            return 1
-    elif isinstance(left_side, list) and not isinstance(right_side, list):
-        return check_order(left_side, [right_side])
-    elif not isinstance(left_side, list) and isinstance(right_side, list):
-        return check_order([left_side], right_side)
-    for index in range(len(left_side)):
-        left_at_index = left_side[index]
-        try:
-            right_at_index = right_side[index]
-        except Exception:
-            return -1  # because right is shorter
-        if isinstance(left_at_index, int) and isinstance(right_at_index, int):
-            if left_at_index > right_at_index:
-                print("Comparing integers and left is larger")
-                return -1
-            elif left_at_index < right_at_index:
-                print("Comparing integers and left is smaller")
-                return 1
-            elif left_at_index == right_at_index:
-                pass
-        else:
-            print(f"We're checking a list and we're checking {left_at_index=} vs {right_at_index=}")
-            return check_order(left_at_index, right_at_index)
-
-def check(left_side, right_side):
-    for index in range(len(left_side)):
-        left_at_index = left_side[index]
-        try:
-            right_at_index = right_side[index]
-        except Exception:
-            return False  # because right is shorter
-    # check ints
-        if isinstance(left_at_index, int) and isinstance(right_at_index, int):
-            if left_at_index > right_at_index:
-                print("Comparing integers and left is larger")
-                return False
-            elif left_at_index < right_at_index:
-                print("Comparing integers and left is smaller")
-                return True
-
+    else:
+        return 1
 
 if __name__ == "__main__":
     print("We've received a distress signal!")
@@ -77,10 +59,11 @@ if __name__ == "__main__":
     for index, input_pair in enumerate(input_signals):
         left = json.loads(input_pair[0])
         right = json.loads(input_pair[1])
-        print(f"Pair{index + 1}: {left=}, {right=}")
+        print(f"Pair {index + 1}: {left=}, {right=}")
         ordered = check_order(left, right)
-        if ordered == 1:
+        if ordered == -1:
             correct_inputs.append(index + 1)
+        print(f"{correct_inputs=}")
     print(correct_inputs)
     print(f"The sum of the indices with correct inputs is {sum(correct_inputs)}")
 
