@@ -55,16 +55,16 @@ def sand_simulation(cavern_map: dict, lowest_rock_y: int, part_two: bool = False
     protected = True
     sand_tally = 0
     part_two_floor = lowest_rock_y + 2
-    print(f"{part_two_floor=}")
+    # print(f"{part_two_floor=}")
     while protected:
         falling = True
-        print("starting new sand grain")
+        # print("starting new sand grain")
         sand_coordinate = [500, 0]
         while falling:
-            print(f"{sand_coordinate=}")
+            # print(f"{sand_coordinate=}")
             if cavern_map[(sand_coordinate[0], sand_coordinate[1] + 1)] not in ["#", "o"]:  # nothing below
                 if part_two and (sand_coordinate[1] + 1) == part_two_floor:
-                    print("part 2 section!")
+                    # print("part 2 section!")
                     cavern_map[(sand_coordinate[0], sand_coordinate[1])] = 'o'
                     falling = False
                     sand_tally += 1
@@ -76,7 +76,7 @@ def sand_simulation(cavern_map: dict, lowest_rock_y: int, part_two: bool = False
             elif cavern_map[(sand_coordinate[0] - 1, sand_coordinate[1] + 1)] not in ["#",
                                                                                       "o"]:  # nothing diag left -> fall
                 if part_two and (sand_coordinate[1] + 1) == part_two_floor:
-                    print("part 2 section!")
+                    # print("part 2 section!")
                     cavern_map[(sand_coordinate[0], sand_coordinate[1])] = 'o'
                     falling = False
                     sand_tally += 1
@@ -89,7 +89,7 @@ def sand_simulation(cavern_map: dict, lowest_rock_y: int, part_two: bool = False
             elif cavern_map[(sand_coordinate[0] + 1, sand_coordinate[1] + 1)] not in ["#",
                                                                                       'o']:  # nothin diag right -> fall
                 if part_two and (sand_coordinate[1] + 1) == part_two_floor:
-                    print("part 2 section!")
+                    # print("part 2 section!")
                     cavern_map[(sand_coordinate[0], sand_coordinate[1])] = 'o'
                     falling = False
                     sand_tally += 1
