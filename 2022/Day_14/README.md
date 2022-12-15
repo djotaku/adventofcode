@@ -5,9 +5,9 @@ Out of respect for the author's wishes, I only put as much of the problem text a
 Visit the version with all the story elements [here](https://adventofcode.com/2022/day/14).
 
 ## Part 1
-Answer: 
+Answer: 578
 ## Part 2
-
+Answer: 
 ## Commentary / Approach to the Problem
 ### Part 1
 NOTE: y= 0 is the TOP of the cavern
