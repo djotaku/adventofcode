@@ -27,6 +27,8 @@ def compare_integers(left_int, right_int):
 
 def check_order(left_side, right_side):
     """Given a pair of items, check if they are in the right order."""
+    print()
+    print("============")
     print(f"At beginning of this function {left_side=} and {right_side=}")
     counter = 0
     while counter < len(left_side) and counter < len(right_side):
