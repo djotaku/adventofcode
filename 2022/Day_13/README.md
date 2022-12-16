@@ -7,7 +7,7 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 ## Part 1
 Answer: 5843
 ## Part 2
-
+Answer: 26289
 ## Commentary / Approach to the Problem
 ### Part 1
 I think the hardest parts will be parsing the input and keeping the comparisons from getting messy. The actual comparisons shouldn't be too hard.
@@ -28,7 +28,7 @@ Basically write a sort method...
 ## What I Learned
 
 ### Generic
-
+- How to write a comparison algorithm
 ### Python
 
 ### Ruby

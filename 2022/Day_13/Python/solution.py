@@ -18,7 +18,9 @@ def input_per_line(file: str):
                 temp_list = []
         return final_line_list
 
-
+def inputs_part_2(file: str):
+    with open(file, 'r') as input_file:
+        return [json.loads(line.rstrip()) for line in input_file.readlines() if line != "\n"]
 def compare_integers(left_int, right_int):
     if left_int == right_int:
         return 0
@@ -54,6 +56,20 @@ def check_order(left_side, right_side):
     else:
         return 1
 
+def sort_input(part_two_inputs: list) -> list:
+    """Use an insertion sort to sort the list."""
+    for this_index in range(len(part_two_inputs)):
+        insert(part_two_inputs, this_index, part_two_inputs[this_index])
+    return part_two_inputs
+
+def insert(the_list: list, position: int, value) -> list:
+    i = position - 1
+    while i >= 0 and (check_order(the_list[i], value) == 1):
+        the_list[i + 1] = the_list[i]
+        i = i - 1
+    the_list[i + 1] = value
+    return the_list
+
 if __name__ == "__main__":
     print("We've received a distress signal!")
     input_signals = input_per_line("../input.txt")
@@ -61,13 +77,19 @@ if __name__ == "__main__":
     for index, input_pair in enumerate(input_signals):
         left = json.loads(input_pair[0])
         right = json.loads(input_pair[1])
-        print(f"Pair {index + 1}: {left=}, {right=}")
+        # print(f"Pair {index + 1}: {left=}, {right=}")
         ordered = check_order(left, right)
         if ordered == -1:
             correct_inputs.append(index + 1)
         # print(f"{correct_inputs=}")
     print(correct_inputs)
     print(f"The sum of the indices with correct inputs is {sum(correct_inputs)}")
-
-# 5726 is too low
-# 5693 is too low
+    print(f"Now we're not comparing pairs, we're putting everything into order.")
+    part_two_input_signals = inputs_part_2("../input.txt")
+    part_two_input_signals.append([[2]])
+    part_two_input_signals.append([[6]])
+    sorted_part_two_inputs = sort_input(part_two_input_signals)
+    index_of_2 = sorted_part_two_inputs.index([[2]]) + 1
+    index_of_6 = sorted_part_two_inputs.index([[6]]) + 1
+    decoder_key = index_of_6 * index_of_2
+    print(f"The decoder key is {decoder_key}")
