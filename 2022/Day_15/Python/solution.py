@@ -65,6 +65,7 @@ if __name__ == "__main__":
     all_the_coordinates = input_per_line("../sample_input.txt")
     empty_area_tally = 0
     total_empty_area = set()
+    y_we_care_about = 10
     # all_the_coordinates = ["Sensor at x=8, y=7: closest beacon is at x=2, y=10"]
     for coordinate_pair in all_the_coordinates:
         sensor, beacon = extract_coordinates(coordinate_pair)
@@ -72,8 +73,7 @@ if __name__ == "__main__":
         manhattan_distance = calculate_taxi_distance(sensor, beacon)
         no_beacons = find_beacon_exclusion_zone(sensor, manhattan_distance, beacon)
         # print(f"size of no_beacons: {len(no_beacons)}")
-        total_empty_area = total_empty_area.union(no_beacons)
-    for coordinate in total_empty_area:
-        if coordinate.y == 10:
-            empty_area_tally += 1
-    print(f"There are {empty_area_tally} positions that cannot have a beacon present.")
+        for coordinate in no_beacons:
+            if coordinate.y == y_we_care_about:
+                total_empty_area.add(coordinate)
+    print(f"There are {len(total_empty_area)} positions that cannot have a beacon present.")
