@@ -62,7 +62,7 @@ def find_beacon_exclusion_zone(sensor_coord: Coordinate, taxi_distance: int, bea
 
 
 if __name__ == "__main__":
-    all_the_coordinates = input_per_line("../input.txt")
+    all_the_coordinates = input_per_line("../sample_input.txt")
     empty_area_tally = 0
     total_empty_area = set()
     # all_the_coordinates = ["Sensor at x=8, y=7: closest beacon is at x=2, y=10"]
@@ -74,6 +74,6 @@ if __name__ == "__main__":
         # print(f"size of no_beacons: {len(no_beacons)}")
         total_empty_area = total_empty_area.union(no_beacons)
     for coordinate in total_empty_area:
-        if coordinate.y == 2000000:
+        if coordinate.y == 10:
             empty_area_tally += 1
     print(f"There are {empty_area_tally} positions that cannot have a beacon present.")
