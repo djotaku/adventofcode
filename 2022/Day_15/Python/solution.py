@@ -30,7 +30,7 @@ def calculate_taxi_distance(sensor_coord: Coordinate, beacon_coord: Coordinate) 
     return abs(sensor_coord.x - beacon_coord.x) + abs(sensor_coord.y - beacon_coord.y)
 
 
-def find_beacon_exclusion_zone(sensor_coord: Coordinate, taxi_distance: int, beacon_coord: Coordinate) -> set:
+def find_beacon_exclusion_zone(sensor_coord: Coordinate, taxi_distance: int, beacon_coord: Coordinate, y: int) -> set:
     """Find all the areas there can't be a beacon.
 
     Based on understanding of the problem prompt, remove the beacon that we know about.
@@ -46,7 +46,8 @@ def find_beacon_exclusion_zone(sensor_coord: Coordinate, taxi_distance: int, bea
         for delta_x in range(-(delta_y), taxi_distance + (new_y - sensor_coord.y) + 1):
             new_x = top_coordinate.x + delta_x
             # print(f"({new_x}, {new_y})")
-            non_beacon_coordinates.add(Coordinate(new_x, new_y))
+            if new_y == y:
+                non_beacon_coordinates.add(Coordinate(new_x, new_y))
     # bottom half
     for delta_y in range(taxi_distance+1, (taxi_distance*2) + 1):
         new_y = top_coordinate.y + delta_y
@@ -56,8 +57,10 @@ def find_beacon_exclusion_zone(sensor_coord: Coordinate, taxi_distance: int, bea
         for delta_x in range(-(taxi_distance - (new_y - sensor_coord.y)), taxi_distance - (new_y - sensor_coord.y)+1):
             new_x = top_coordinate.x + delta_x
             # print(f"{new_x=}, {new_y=}")
-            non_beacon_coordinates.add(Coordinate(new_x, new_y))
-    non_beacon_coordinates.remove(beacon_coord)
+            if new_y == y:
+                non_beacon_coordinates.add(Coordinate(new_x, new_y))
+    if beacon_coord in non_beacon_coordinates:
+        non_beacon_coordinates.remove(beacon_coord)
     return non_beacon_coordinates
 
 
@@ -77,7 +80,7 @@ if __name__ == "__main__":
         sensor, beacon = extract_coordinates(coordinate_pair)
         # print(f"{sensor=}")
         manhattan_distance = calculate_taxi_distance(sensor, beacon)
-        no_beacons = find_beacon_exclusion_zone(sensor, manhattan_distance, beacon)
+        no_beacons = find_beacon_exclusion_zone(sensor, manhattan_distance, beacon, y_we_care_about)
         # print(f"size of no_beacons: {len(no_beacons)}")
         for coordinate in no_beacons:
             if coordinate.y == y_we_care_about:
