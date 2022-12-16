@@ -63,19 +63,26 @@ def find_beacon_exclusion_zone(sensor_coord: Coordinate, taxi_distance: int, bea
         non_beacon_coordinates.remove(beacon_coord)
     return non_beacon_coordinates
 
-def simplified_part_1(taxi_distance: int, y_value: int, sensor_coord: Coordinate, beacon_coord: Coordinate) -> int:
+def simplified_part_1(taxi_distance: int, y_value: int, sensor_coord: Coordinate, beacon_coord: Coordinate) -> set:
     """Take in taxi distance, sensor, beacon, and a y value and calcluate all the non-beacon spots."""
     # does this sensor have an exclusion zone in the y-space we care about?
-    number_of_x = 0
-    if (sensor_coord.y - taxi_distance) <= y_value <= (sensor_coord.y + taxi_distance):
-        x_value = abs(y_value) - taxi_distance
-        number_of_x = x_value * 2
-    if beacon_coord.y == y_value:
-        number_of_x -= 1
+    number_of_x = set()
+    this_min = sensor_coord.y - taxi_distance
+    print(f"{this_min=}")
+    this_max = sensor_coord.y + taxi_distance
+    print(f"{this_max=}")
+    if this_min <= y_value <= this_max:
+        x_value = taxi_distance - abs(y_value)
+        print(f"{x_value=}")
+        for x in range(-x_value, x_value + 1):
+            number_of_x.add(Coordinate(x, y_value))
+    if beacon_coord in number_of_x:
+        number_of_x.remove(beacon_coord)
+    print(number_of_x)
     return number_of_x
 
 if __name__ == "__main__":
-    debug = False
+    debug = True
     if debug:
         file = "../sample_input.txt"
         y_we_care_about = 10
@@ -99,7 +106,9 @@ if __name__ == "__main__":
     # new way
     for coordinate_pair in all_the_coordinates:
         sensor, beacon = extract_coordinates(coordinate_pair)
-    #    # print(f"{sensor=}")
+        print(f"{sensor=}")
         manhattan_distance = calculate_taxi_distance(sensor, beacon)
-        empty_area_tally += simplified_part_1(manhattan_distance, y_we_care_about, sensor, beacon)
-    print(f"There are {empty_area_tally} positions that cannot have a beacon present.")
+        print(f"{manhattan_distance=}")
+        non_beacon_area = simplified_part_1(manhattan_distance, y_we_care_about, sensor, beacon)
+        total_empty_area = total_empty_area.union(non_beacon_area)
+    print(f"There are {len(total_empty_area)} positions that cannot have a beacon present.")
