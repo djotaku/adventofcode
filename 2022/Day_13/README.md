@@ -5,7 +5,7 @@ Out of respect for the author's wishes, I only put as much of the problem text a
 Visit the version with all the story elements [here](https://adventofcode.com/2022/day/13).
 
 ## Part 1
-
+Answer: 5843
 ## Part 2
 
 ## Commentary / Approach to the Problem
@@ -24,6 +24,7 @@ Also, just compare lengths and if they are off by a LOT, may be easy to just mak
 Was having trouble getting my comparison recurion to work, so I modified things based on [this solution](https://www.reddit.com/r/adventofcode/comments/zkmyh4/comment/j098dd5/?utm_source=share&utm_medium=web2x&context=3) 
 
 ### Part 2
+Basically write a sort method...
 ## What I Learned
 
 ### Generic

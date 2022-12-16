@@ -27,9 +27,9 @@ def compare_integers(left_int, right_int):
 
 def check_order(left_side, right_side):
     """Given a pair of items, check if they are in the right order."""
-    print()
-    print("============")
-    print(f"At beginning of this function {left_side=} and {right_side=}")
+    #print()
+    #print("============")
+    #print(f"At beginning of this function {left_side=} and {right_side=}")
     counter = 0
     while counter < len(left_side) and counter < len(right_side):
         item_left = left_side[counter]
@@ -65,7 +65,7 @@ if __name__ == "__main__":
         ordered = check_order(left, right)
         if ordered == -1:
             correct_inputs.append(index + 1)
-        print(f"{correct_inputs=}")
+        # print(f"{correct_inputs=}")
     print(correct_inputs)
     print(f"The sum of the indices with correct inputs is {sum(correct_inputs)}")
 
