@@ -1,0 +1,79 @@
+"""Solution to AoC 2022 Day 15 - Beacon Exclusion Zone."""
+import re
+from collections import namedtuple
+
+
+def input_per_line(file: str):
+    """This is for when each line is an input to the puzzle. The newline character is stripped."""
+    with open(file, 'r') as input_file:
+        return [line.rstrip() for line in input_file.readlines()]
+
+
+Coordinate = namedtuple('Point', ['x', 'y'])
+
+
+def extract_coordinates(location: str) -> Coordinate:
+    """Take in a sentence like:
+
+    Sensor at x=2, y=18: closest beacon is at x=-2, y=15
+
+    and returns 2 named tuples of type Coordinate.
+    """
+    regex = re.compile(r'(-*\d+)')
+    coordinates = re.findall(regex, location)
+    # print(coordinates)
+    return Coordinate(int(coordinates[0]), int(coordinates[1])), Coordinate(int(coordinates[2]), int(coordinates[3]))
+
+
+def calculate_taxi_distance(sensor_coord: Coordinate, beacon_coord: Coordinate) -> int:
+    """Take in 2 coordinates and calculate the taxi (or Manhattan) distance"""
+    return abs(sensor_coord.x - beacon_coord.x) + abs(sensor_coord.y - beacon_coord.y)
+
+
+def find_beacon_exclusion_zone(sensor_coord: Coordinate, taxi_distance: int, beacon_coord: Coordinate) -> set:
+    """Find all the areas there can't be a beacon.
+
+    Based on understanding of the problem prompt, remove the beacon that we know about.
+    """
+    non_beacon_coordinates = set()
+    top_coordinate = Coordinate(sensor_coord.x, (sensor_coord.y - taxi_distance))
+    # print(f"{top_coordinate=}")
+    non_beacon_coordinates.add(top_coordinate)
+    # top half
+    for delta_y in range(1, taxi_distance + 1):
+        new_y = top_coordinate.y + delta_y
+        # print(f"{new_y=}")
+        for delta_x in range(-(delta_y), taxi_distance + (new_y - sensor_coord.y) + 1):
+            new_x = top_coordinate.x + delta_x
+            # print(f"({new_x}, {new_y})")
+            non_beacon_coordinates.add(Coordinate(new_x, new_y))
+    # bottom half
+    for delta_y in range(taxi_distance+1, (taxi_distance*2) + 1):
+        new_y = top_coordinate.y + delta_y
+        # print(f"{delta_y=}")
+        # print(f"{new_y=}")
+        # print(-(taxi_distance - (new_y - sensor_coord.y)))
+        for delta_x in range(-(taxi_distance - (new_y - sensor_coord.y)), taxi_distance - (new_y - sensor_coord.y)+1):
+            new_x = top_coordinate.x + delta_x
+            # print(f"{new_x=}, {new_y=}")
+            non_beacon_coordinates.add(Coordinate(new_x, new_y))
+    non_beacon_coordinates.remove(beacon_coord)
+    return non_beacon_coordinates
+
+
+if __name__ == "__main__":
+    all_the_coordinates = input_per_line("../sample_input.txt")
+    empty_area_tally = 0
+    total_empty_area = set()
+    # all_the_coordinates = ["Sensor at x=8, y=7: closest beacon is at x=2, y=10"]
+    for coordinate_pair in all_the_coordinates:
+        sensor, beacon = extract_coordinates(coordinate_pair)
+        # print(f"{sensor=}")
+        manhattan_distance = calculate_taxi_distance(sensor, beacon)
+        no_beacons = find_beacon_exclusion_zone(sensor, manhattan_distance, beacon)
+        # print(f"size of no_beacons: {len(no_beacons)}")
+        total_empty_area = total_empty_area.union(no_beacons)
+    for coordinate in total_empty_area:
+        if coordinate.y == 10:
+            empty_area_tally += 1
+    print(f"There are {empty_area_tally} positions that cannot have a beacon present.")
