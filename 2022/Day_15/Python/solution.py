@@ -62,10 +62,16 @@ def find_beacon_exclusion_zone(sensor_coord: Coordinate, taxi_distance: int, bea
 
 
 if __name__ == "__main__":
-    all_the_coordinates = input_per_line("../sample_input.txt")
+    debug = False
+    if debug:
+        file = "../sample_input.txt"
+        y_we_care_about = 10
+    else:
+        file = "../input.txt"
+        y_we_care_about = 2000000
+    all_the_coordinates = input_per_line(file)
     empty_area_tally = 0
     total_empty_area = set()
-    y_we_care_about = 10
     # all_the_coordinates = ["Sensor at x=8, y=7: closest beacon is at x=2, y=10"]
     for coordinate_pair in all_the_coordinates:
         sensor, beacon = extract_coordinates(coordinate_pair)
