@@ -31,7 +31,8 @@ My goal for the 2022 problem sets are:
 
 ## Days I could not complete
 ### Part 1 Sections Still incomplete:
-- Day 13 - the recursive answer I was trying to formulate did not work and I ran out of day.
+- Day 15 - need help with algorithm for part 1
+- Day 16 - will probably run out of day before I can even really get started on this one. Did write down some ideas, though.
 ### Part 2 Sections Still incomplete:
 - Nothing yet
 ### Language Specific
