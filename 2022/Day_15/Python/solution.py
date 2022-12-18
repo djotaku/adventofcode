@@ -63,23 +63,24 @@ def find_beacon_exclusion_zone(sensor_coord: Coordinate, taxi_distance: int, bea
         non_beacon_coordinates.remove(beacon_coord)
     return non_beacon_coordinates
 
-def simplified_part_1(taxi_distance: int, y_value: int, sensor_coord: Coordinate, beacon_coord: Coordinate) -> set:
+
+def simplified_part_1(taxi_distance: int, y_value: int, sensor_coord: Coordinate, beacon_coord: Coordinate,
+                      tracking_set: set) -> set:
     """Take in taxi distance, sensor, beacon, and a y value and calcluate all the non-beacon spots."""
     # does this sensor have an exclusion zone in the y-space we care about?
-    number_of_x = set()
     this_min = sensor_coord.y - taxi_distance
-    print(f"{this_min=}")
+    # print(f"{this_min=}")
     this_max = sensor_coord.y + taxi_distance
-    print(f"{this_max=}")
+    # print(f"{this_max=}")
     if this_min <= y_value <= this_max:
-        x_value = taxi_distance - abs(y_value)
-        print(f"{x_value=}")
-        for x in range(-x_value, x_value + 1):
-            number_of_x.add(Coordinate(x, y_value))
-    if beacon_coord in number_of_x:
-        number_of_x.remove(beacon_coord)
-    print(number_of_x)
-    return number_of_x
+        x_value = (taxi_distance - y_value)
+        # print(f"{x_value=}")
+        for x in range(sensor_coord.x - abs(x_value), sensor_coord.x + abs(x_value) + 1):
+            tracking_set.add(Coordinate(x, y_value))
+    if beacon_coord in tracking_set:
+        tracking_set.remove(beacon_coord)
+    return tracking_set
+
 
 if __name__ == "__main__":
     debug = True
@@ -90,25 +91,14 @@ if __name__ == "__main__":
         file = "../input.txt"
         y_we_care_about = 2000000
     all_the_coordinates = input_per_line(file)
-    empty_area_tally = 0
     total_empty_area = set()
-    # all_the_coordinates = ["Sensor at x=8, y=7: closest beacon is at x=2, y=10"]
-    # old way
-    #for coordinate_pair in all_the_coordinates:
-    #    sensor, beacon = extract_coordinates(coordinate_pair)
-    #    # print(f"{sensor=}")
-    #    manhattan_distance = calculate_taxi_distance(sensor, beacon)
-    #    no_beacons = find_beacon_exclusion_zone(sensor, manhattan_distance, beacon, y_we_care_about)
-    #    # print(f"size of no_beacons: {len(no_beacons)}")
-    #    for coordinate in no_beacons:
-    #        if coordinate.y == y_we_care_about:
-    #            total_empty_area.add(coordinate)
-    # new way
     for coordinate_pair in all_the_coordinates:
         sensor, beacon = extract_coordinates(coordinate_pair)
-        print(f"{sensor=}")
+        # print(f"{sensor=}")
         manhattan_distance = calculate_taxi_distance(sensor, beacon)
-        print(f"{manhattan_distance=}")
-        non_beacon_area = simplified_part_1(manhattan_distance, y_we_care_about, sensor, beacon)
-        total_empty_area = total_empty_area.union(non_beacon_area)
+        # print(f"{manhattan_distance=}")
+        total_empty_area = simplified_part_1(manhattan_distance, y_we_care_about, sensor, beacon, total_empty_area)
     print(f"There are {len(total_empty_area)} positions that cannot have a beacon present.")
+
+
+# 5151840 is too low
