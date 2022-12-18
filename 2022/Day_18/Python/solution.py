@@ -32,3 +32,6 @@ if __name__ == "__main__":
             sides.add(zx)
     unconnected_sides = highest_number_of_sides - connected_sides_count
     print(f"There are {unconnected_sides} unconnected sides.")
+
+
+# 9298 is too high
