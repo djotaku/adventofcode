@@ -8,7 +8,7 @@ def input_per_line(file: str):
 
 
 if __name__ == "__main__":
-    debug = True
+    debug = False
     our_input_file = "../sample_input.txt" if debug else "../input.txt"
     boulder_list = input_per_line(our_input_file)
     print(f"{len(boulder_list)=}")
