@@ -10,7 +10,7 @@ Answer:
 
 ## Commentary / Approach to the Problem
 ### Part 1
-Straightforward sim for part 1, it seems.
+Straightforward sim for part 1, it seems. But very complicated....
 
 ### Part 2
 ## What I Learned

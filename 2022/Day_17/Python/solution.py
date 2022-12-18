@@ -316,3 +316,9 @@ if __name__ == "__main__":
         if jet_number == len(jet_patterns):
             jet_number = 0
     print(f"{highest_height=}")
+
+
+# was debugging the vertical line. It was coming to rest on the backwards L instead of on the right side of the cross.
+# Also, the shapes below vertical line will need changes to their horizontal movements (including adding the dictionary as a parameter)
+# And see the other changes had to make to check if it's bumping against other shapes.
+# And add a __repr__ for the other shapes, too, to assist in debugging.

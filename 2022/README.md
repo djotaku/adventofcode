@@ -17,22 +17,24 @@ My goal for the 2022 problem sets are:
 
 ## Live Score on Python Discord Server
 
-| Date | Position | Score |
-| ---- | -------- | ----- |
-|15 Dec| 49       | 1923  |
-|14 Dec| 52       | 1757  |
-|12 Dec| 52       | 1526  |
-|11 Dec| 56       | 1349  |
-|10 Dec| 60       | 1189  |   
-| 9 Dec| 62       | 1030  |
-| 8 Dec| 62       | 880   |
-|6 Dec | 62       | 606   |
-|5 Dec |    61    |  457  |
+| Date   | Position | Score |
+|--------| -------- | ----- |
+| 17 Dec | 49       | 1923  |
+| 15 Dec | 49       | 1923  |
+| 14 Dec | 52       | 1757  |
+| 12 Dec | 52       | 1526  |
+| 11 Dec | 56       | 1349  |
+| 10 Dec | 60       | 1189  |   
+| 9 Dec  | 62       | 1030  |
+| 8 Dec  | 62       | 880   |
+| 6 Dec  | 62       | 606   |
+| 5 Dec  |    61    |  457  |
 
 ## Days I could not complete
 ### Part 1 Sections Still incomplete:
 - Day 15 - need help with algorithm for part 1
 - Day 16 - will probably run out of day before I can even really get started on this one. Did write down some ideas, though.
+- Day 17 - busy day and complicated sim.  Ran out of day before I could finish. Was debugging the horizontal line.
 ### Part 2 Sections Still incomplete:
 - Nothing yet
 ### Language Specific
