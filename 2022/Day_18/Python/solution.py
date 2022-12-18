@@ -8,7 +8,7 @@ def input_per_line(file: str):
 
 
 if __name__ == "__main__":
-    debug = False
+    debug = True
     our_input_file = "../sample_input.txt" if debug else "../input.txt"
     boulder_list = input_per_line(our_input_file)
     print(f"{len(boulder_list)=}")
@@ -16,32 +16,11 @@ if __name__ == "__main__":
     print(f"{highest_number_of_sides=}")
     connected_sides_count = 0
     cube_locations = defaultdict(bool)
+    boulder_list = [[int(boulder[0]), int(boulder[1]), int(boulder[2])] for boulder in boulder_list]  # make into ints
     for boulder in boulder_list:
-        cube_locations[(int(boulder[0]), int(boulder[1]), int(boulder[2]))] = True
-    checked_points = set()
-    for index in range(len(boulder_list)):  # minus 1 to not count the last one
-        # check for x neighbors
-        if cube_locations[(int(boulder_list[index][0]) + 1), int(boulder_list[index][1]), int(boulder_list[index][2])] is True:
-            this_point = f"({int(boulder_list[index][0]) + 1}, {int(boulder_list[index][1])}, {int(boulder_list[index][2])})"
-            checked_points.add(this_point)
-        if cube_locations[(int(boulder_list[index][0]) - 1), int(boulder_list[index][1]), int(boulder_list[index][2])] is True:
-            this_point = f"({int(boulder_list[index][0]) - 1}, {int(boulder_list[index][1])}, {int(boulder_list[index][2])})"
-            checked_points.add(this_point)
-        # check for y neighbors
-        if cube_locations[(int(boulder_list[index][0])), (int(boulder_list[index][1]) + 1), int(boulder_list[index][2])] is True:
-            this_point = f"({int(boulder_list[index][0])}, {int(boulder_list[index][1]) + 1}, {int(boulder_list[index][2])})"
-            checked_points.add(this_point)
-        if cube_locations[(int(boulder_list[index][0])), (int(boulder_list[index][1]) - 1), int(boulder_list[index][2])] is True:
-            this_point = f"({int(boulder_list[index][0])}, {int(boulder_list[index][1]) -1}, {int(boulder_list[index][2])})"
-            checked_points.add(this_point)
-        # check for z neighbors
-        if cube_locations[(int(boulder_list[index][0])), int(boulder_list[index][1]), (int(boulder_list[index][2])+1)] is True:
-            this_point = f"({int(boulder_list[index][0])}, {int(boulder_list[index][1])}, {int(boulder_list[index][2])+1})"
-            checked_points.add(this_point)
-        if cube_locations[(int(boulder_list[index][0])), int(boulder_list[index][1]), (int(boulder_list[index][2])-1)] is True:
-            this_point = f"({int(boulder_list[index][0])}, {int(boulder_list[index][1])}, {int(boulder_list[index][2])-1})"
-            checked_points.add(this_point)
-    unconnected_sides = (highest_number_of_sides + 2) - (len(checked_points)*2)
+        if [boulder[0]+1, boulder[1], boulder[2]] in boulder_list or [boulder[0]-1, boulder[1], boulder[2]] in boulder_list or [boulder[0], boulder[1]+1, boulder[2]] in boulder_list or [boulder[0], boulder[1]-1, boulder[2]] in boulder_list or [boulder[0], boulder[1], boulder[2]+1] in boulder_list or [boulder[0], boulder[1], boulder[2]-1] in boulder_list:
+            connected_sides_count += 2
+    unconnected_sides = highest_number_of_sides - (connected_sides_count - 2)
     print(f"There are {unconnected_sides} unconnected sides.")
 
 
