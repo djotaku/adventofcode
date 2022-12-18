@@ -11,23 +11,25 @@ if __name__ == "__main__":
     debug = True
     our_input_file = "../sample_input.txt" if debug else "../input.txt"
     boulder_list = input_per_line(our_input_file)
+    print(f"{len(boulder_list)=}")
     highest_number_of_sides = len(boulder_list) * 6
+    print(f"{highest_number_of_sides=}")
     connected_sides_count = 0
     sides = set()
     for boulder in boulder_list:
         xy = f"(x={boulder[0]},y={boulder[1]})"
         if xy in sides:
-            connected_sides_count += 1
+            connected_sides_count += 2
         else:
             sides.add(xy)
         yz = f"(y={boulder[1]},z={boulder[2]})"
         if yz in sides:
-            connected_sides_count += 1
+            connected_sides_count += 2
         else:
             sides.add(yz)
         zx = f"(z={boulder[2]},x={boulder[0]})"
         if zx in sides:
-            connected_sides_count += 1
+            connected_sides_count += 2
         else:
             sides.add(zx)
     unconnected_sides = highest_number_of_sides - connected_sides_count
