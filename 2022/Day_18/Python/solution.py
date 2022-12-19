@@ -7,6 +7,25 @@ def input_per_line(file: str):
         return [line.rstrip().split(",") for line in input_file.readlines()]
 
 
+def count_sides(boulder: list, boulders: list) -> int:
+    """Take boulder coordinates and compare to the other boulders. Count sides that are touching."""
+    count = 0
+    print(f"{boulder=}")
+    if [boulder[0] + 1, boulder[1], boulder[2]] in boulders:
+        count += 2
+    if [boulder[0] - 1, boulder[1], boulder[2]] in boulders:
+        count += 2
+    if [boulder[0], boulder[1] + 1, boulder[2]] in boulders:
+        count += 2
+    if [boulder[0], boulder[1] - 1, boulder[2]] in boulders:
+        count += 2
+    if [boulder[0], boulder[1], boulder[2] + 1] in boulders:
+        count += 2
+    if [boulder[0], boulder[1], boulder[2] - 1] in boulders:
+        count += 2
+    return count
+
+
 if __name__ == "__main__":
     debug = True
     our_input_file = "../sample_input.txt" if debug else "../input.txt"
@@ -17,10 +36,10 @@ if __name__ == "__main__":
     connected_sides_count = 0
     cube_locations = defaultdict(bool)
     boulder_list = [[int(boulder[0]), int(boulder[1]), int(boulder[2])] for boulder in boulder_list]  # make into ints
-    for boulder in boulder_list:
-        if [boulder[0]+1, boulder[1], boulder[2]] in boulder_list or [boulder[0]-1, boulder[1], boulder[2]] in boulder_list or [boulder[0], boulder[1]+1, boulder[2]] in boulder_list or [boulder[0], boulder[1]-1, boulder[2]] in boulder_list or [boulder[0], boulder[1], boulder[2]+1] in boulder_list or [boulder[0], boulder[1], boulder[2]-1] in boulder_list:
-            connected_sides_count += 2
-    unconnected_sides = highest_number_of_sides - (connected_sides_count - 2)
+    current_boulder = boulder_list.pop()
+    print(f"After the pop, {boulder_list=}")
+    connected_sides_count += count_sides(current_boulder, boulder_list)
+    unconnected_sides = highest_number_of_sides - connected_sides_count
     print(f"There are {unconnected_sides} unconnected sides.")
 
 
