@@ -27,7 +27,7 @@ def count_sides(boulder: list, boulders: list) -> int:
 
 
 if __name__ == "__main__":
-    debug = True
+    debug = False
     our_input_file = "../sample_input.txt" if debug else "../input.txt"
     boulder_list = input_per_line(our_input_file)
     print(f"{len(boulder_list)=}")
@@ -36,9 +36,10 @@ if __name__ == "__main__":
     connected_sides_count = 0
     cube_locations = defaultdict(bool)
     boulder_list = [[int(boulder[0]), int(boulder[1]), int(boulder[2])] for boulder in boulder_list]  # make into ints
-    current_boulder = boulder_list.pop()
-    print(f"After the pop, {boulder_list=}")
-    connected_sides_count += count_sides(current_boulder, boulder_list)
+    while len(boulder_list) > 0:
+        current_boulder = boulder_list.pop()
+        # print(f"After the pop, {boulder_list=}")
+        connected_sides_count += count_sides(current_boulder, boulder_list)
     unconnected_sides = highest_number_of_sides - connected_sides_count
     print(f"There are {unconnected_sides} unconnected sides.")
 

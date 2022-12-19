@@ -5,7 +5,7 @@ Out of respect for the author's wishes, I only put as much of the problem text a
 Visit the version with all the story elements [here](https://adventofcode.com/2022/day/18).
 
 ## Part 1
-
+Answer: 4474
 ## Part 2
 
 ## Commentary / Approach to the Problem
@@ -23,6 +23,8 @@ Second attempt:
 - Test if cubes are touching on Y-axis and remove 2 sides if they are
 
 or simplify things? Put all cubes into a dict. Key is the coordinate. Test each cube to see if it's a neighbor with others. Do not test last cube or you'll get double-counts.
+
+After 3 attempts, a friend helped me realize that by "or"-ing the checks, it was only checking one side, not all six.
 ### Part 2
 ## What I Learned
 
