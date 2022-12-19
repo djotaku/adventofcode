@@ -19,6 +19,7 @@ My goal for the 2022 problem sets are:
 
 | Date   | Position | Score |
 |--------| -------- | ----- |
+| 18 Dec | 46       | 2024  |
 | 17 Dec | 49       | 1923  |
 | 15 Dec | 49       | 1923  |
 | 14 Dec | 52       | 1757  |
@@ -36,7 +37,7 @@ My goal for the 2022 problem sets are:
 - Day 16 - will probably run out of day before I can even really get started on this one. Did write down some ideas, though.
 - Day 17 - busy day and complicated sim.  Ran out of day before I could finish. Was debugging the horizontal line.
 ### Part 2 Sections Still incomplete:
-- Nothing yet
+- Day 18 - spent way too long confused about why my part 1 wasn't working. Don't quite understand the geometry necessary for part 2.
 ### Language Specific
 - Nothing Yet
 ## What I learned from Advent of Code 2022

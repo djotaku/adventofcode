@@ -26,6 +26,9 @@ or simplify things? Put all cubes into a dict. Key is the coordinate. Test each 
 
 After 3 attempts, a friend helped me realize that by "or"-ing the checks, it was only checking one side, not all six.
 ### Part 2
+I saw folks mentioning [flood fill](https://www.geeksforgeeks.org/flood-fill-algorithm/) and others mentioned BFS or DFS, but those are used for flood fill in that link.
+
+The problem on day 18 is that I'm not sure exactly what I'm searching, and, therefore, how to use my new-found knowledge of BFS to solve it. Will have to think a bit about the geometry so I can solve it.
 ## What I Learned
 
 ### Generic
