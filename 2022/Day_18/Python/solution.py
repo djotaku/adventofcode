@@ -10,7 +10,7 @@ def input_per_line(file: str):
 def count_sides(boulder: list, boulders: list) -> int:
     """Take boulder coordinates and compare to the other boulders. Count sides that are touching."""
     count = 0
-    print(f"{boulder=}")
+    # print(f"{boulder=}")
     if [boulder[0] + 1, boulder[1], boulder[2]] in boulders:
         count += 2
     if [boulder[0] - 1, boulder[1], boulder[2]] in boulders:
@@ -43,6 +43,3 @@ if __name__ == "__main__":
     unconnected_sides = highest_number_of_sides - connected_sides_count
     print(f"There are {unconnected_sides} unconnected sides.")
 
-
-# 9298 is too high
-# 11094 is too high
