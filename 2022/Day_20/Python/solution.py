@@ -10,7 +10,15 @@ def input_per_line(file: str):
 def mix_numbers(number_to_move, numbers: list) -> list:
     """Move each number by the value of that number to a new position in the list."""
     initial_index = numbers.index(number_to_move)
-    new_index = (initial_index + number_to_move) % (len(numbers) - 1)
+    # modulo didn't work for me, so I'm going to ifs/whiles
+    new_index = (initial_index + number_to_move)
+    length_of_list = len(numbers)
+    if new_index >= length_of_list:
+        while new_index >= length_of_list:
+            new_index -= length_of_list
+    elif new_index < 0:
+        while new_index < 0:
+            new_index += length_of_list - 1
     numbers.remove(number_to_move)
     numbers.insert(new_index, number_to_move)
     return numbers
