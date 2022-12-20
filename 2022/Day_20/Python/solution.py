@@ -37,12 +37,11 @@ if __name__ == "__main__":
         our_numbers = mix_numbers(number, our_numbers)
         # print(f"moved {number}")
         # print(our_numbers)
-    one_thousand_number = None
-    two_thousand_number = None
-    three_thousand_number = None
     where_is_zero = our_numbers.index(0) - 1
     one_thousand_number = our_numbers[(1000 - where_is_zero) % len(our_numbers)]
     two_thousand_number = our_numbers[(2000 - where_is_zero) % len(our_numbers)]
     three_thousand_number = our_numbers[(3000 - where_is_zero) % len(our_numbers)]
     print(f"The sum of the 1000, 2000, and 3000th numbers is {one_thousand_number+two_thousand_number+three_thousand_number}")
     # print(our_numbers)
+
+# 6667 is too low
