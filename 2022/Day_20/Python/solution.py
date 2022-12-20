@@ -33,6 +33,10 @@ if __name__ == "__main__":
     our_numbers_for_iteration = deepcopy(our_numbers)
     for number in our_numbers_for_iteration:
         our_numbers = mix_numbers(number, our_numbers)
-        print(f"moved {number}")
-        print(our_numbers)
+        # print(f"moved {number}")
+        # print(our_numbers)
+    one_thousand_number = None
+    two_thousand_number = None
+    three_thousand_number = None
+    print(one_thousand_number)
     print(our_numbers)
