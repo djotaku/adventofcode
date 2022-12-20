@@ -15,10 +15,12 @@ def mix_numbers(number_to_move, numbers: list) -> list:
     length_of_list = len(numbers)
     if new_index >= length_of_list:
         while new_index >= length_of_list:
-            new_index -= length_of_list
+            new_index -= length_of_list - 1
     elif new_index < 0:
         while new_index < 0:
             new_index += length_of_list - 1
+    elif new_index == 0:
+        new_index = length_of_list - 1
     numbers.remove(number_to_move)
     numbers.insert(new_index, number_to_move)
     return numbers
