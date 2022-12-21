@@ -5,7 +5,7 @@ Out of respect for the author's wishes, I only put as much of the problem text a
 Visit the version with all the story elements [here](https://adventofcode.com/2022/day/20).
 
 ## Part 1
-
+Answer: 13183
 ## Part 2
 
 ## Commentary / Approach to the Problem
@@ -23,8 +23,14 @@ I use the original list to search for numbers and modify where they are in the l
 
 Turns out numbers aren't unique. So I may have to do this in a more brute force manner.
 
-Tried to make my code more like this guy's: https://www.reddit.com/r/adventofcode/comments/zqezkn/comment/j11n0z3/?utm_source=share&utm_medium=web2x&context=3 but still kept getting the wrong answer. Perhaps because I wasn't making the number class? Therefor the duplicate numbers were still causing me issues? 
+Tried to make my code more like this guy's: https://www.reddit.com/r/adventofcode/comments/zqezkn/comment/j11n0z3/?utm_source=share&utm_medium=web2x&context=3 but still kept getting the wrong answer. Perhaps because I wasn't making the number class? Therefor the duplicate numbers were still causing me issues? The key turned out to be his use of a Number class which made
+it so that the list items weren't duplicates anymore.
+
+Another thing I might consider for other language implementations is to have a dictionary with the numbers as the key and I can add a suffix when a number 
+appears more than once. And I could move keys around and then look up the values at the end.
 ### Part 2
+
+OK, things are about to get hairy. Especially because I'm not 100% sure (based on Wastl's use of -3) exactly when I'm multiplying. But I'll give it a shot!
 ## What I Learned
 
 ### Generic
