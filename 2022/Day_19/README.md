@@ -12,6 +12,9 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 ### Part 1
 Because each minute you have many robot possibilities to build (based on what you have resources for), I'm thinking of
 just doing a brute force like I did with [2015 - Day 22](https://github.com/djotaku/adventofcode/tree/main/2015/Day_22).
+
+Thinking of doing output like the example just to keep what I'm doing understandable. (Then again, it might get out of control if I'm brute forcing it)
+
 ### Part 2
 ## What I Learned
 
