@@ -9,6 +9,9 @@ class Number:
     def __init__(self, val) -> None:
         self.val = val
 
+    def __repr__(self):
+        return f"{self.val}"
+
 def input_per_line(file: str):
     """This is for when each line is an input to the puzzle. The newline character is stripped."""
     with open(file, 'r') as input_file:
@@ -40,6 +43,12 @@ if __name__ == "__main__":
     our_file = "../sample_input.txt" if debug else "../input.txt"
     our_numbers, zero = input_per_line(our_file)
     our_numbers_for_iteration = copy(our_numbers)
+    decryption_key = 811589153
+    part_two_numbers_to_move = []
+    for number in our_numbers:
+        part_two_numbers_to_move.append(Number(number.val * decryption_key))
+        if number.val == 0:
+            part_two_zero = part_two_numbers_to_move[-1]
     for number in our_numbers_for_iteration:
         our_numbers = mix_numbers(number, our_numbers)
         # print(f"moved {number}")
@@ -49,8 +58,15 @@ if __name__ == "__main__":
     two_thousand_number = our_numbers[(2000 + where_is_zero) % len(our_numbers)]
     three_thousand_number = our_numbers[(3000 + where_is_zero) % len(our_numbers)]
     print(f"The sum of the 1000, 2000, and 3000th numbers is {one_thousand_number.val+two_thousand_number.val+three_thousand_number.val}")
-    # print(our_numbers)
-
-# 6667 is too low
-# 11277 is too low
-# 12030 is too low
+    print("Actually we need a decryption key!")
+    print(f"{part_two_numbers_to_move=}")
+    part_two_numbers_for_iteration = copy(part_two_numbers_to_move)
+    for _ in range(10):
+        for number in part_two_numbers_for_iteration:
+            part_two_numbers_to_move = mix_numbers(number, part_two_numbers_to_move)
+    where_is_zero = part_two_numbers_to_move.index(part_two_zero)
+    print(where_is_zero)
+    one_thousand_number = part_two_numbers_to_move[(1000 + where_is_zero) % len(part_two_numbers_to_move)]
+    two_thousand_number = part_two_numbers_to_move[(2000 + where_is_zero) % len(part_two_numbers_to_move)]
+    three_thousand_number = part_two_numbers_to_move[(3000 + where_is_zero) % len(part_two_numbers_to_move)]
+    print(f"The sum of the 1000, 2000, and 3000th numbers is {one_thousand_number.val + two_thousand_number.val + three_thousand_number.val}")

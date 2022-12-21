@@ -7,7 +7,7 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 ## Part 1
 Answer: 13183
 ## Part 2
-
+Answer: 6676132372578
 ## Commentary / Approach to the Problem
 ### Part 1
 This seems deceptively simple for part one. I mean, it's rife with possibilities for bugs in the wrapping code or placement after the mixing, but it doesn't seem hard conceptually.
@@ -31,12 +31,15 @@ appears more than once. And I could move keys around and then look up the values
 ### Part 2
 
 OK, things are about to get hairy. Especially because I'm not 100% sure (based on Wastl's use of -3) exactly when I'm multiplying. But I'll give it a shot!
+
+The only tricky thing was making sure to generate the part 2 list before moving stuff around so you get the initial placement.
 ## What I Learned
 
 ### Generic
 
 ### Python
-
+- A default empty list has no positions, making it hard to put new numbers in there. Need to create a list with 0s or something first.
+- a trick to search a list that has duplicates is to use a class because each class will have a unique "id"
 ### Ruby
 
 ### Perl
