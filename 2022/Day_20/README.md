@@ -21,7 +21,9 @@ This doesn't work because, while the numbers have to go in order, they have to d
 I use the original list to search for numbers and modify where they are in the list. However, I think that will probably quickly overwhelm my computer - especially in part 2. I'm not currently seeing how to do it with a dict/map/hash. Probably a linked list? 
 (Not that I remember how to do that) 
 
+Turns out numbers aren't unique. So I may have to do this in a more brute force manner.
 
+Tried to make my code more like this guy's: https://www.reddit.com/r/adventofcode/comments/zqezkn/comment/j11n0z3/?utm_source=share&utm_medium=web2x&context=3 but still kept getting the wrong answer. Perhaps because I wasn't making the number class? Therefor the duplicate numbers were still causing me issues? 
 ### Part 2
 ## What I Learned
 
