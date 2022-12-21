@@ -51,21 +51,17 @@ if __name__ == "__main__":
             part_two_zero = part_two_numbers_to_move[-1]
     for number in our_numbers_for_iteration:
         our_numbers = mix_numbers(number, our_numbers)
-        # print(f"moved {number}")
-        # print(our_numbers)
     where_is_zero = our_numbers.index(zero)
     one_thousand_number = our_numbers[(1000 + where_is_zero) % len(our_numbers)]
     two_thousand_number = our_numbers[(2000 + where_is_zero) % len(our_numbers)]
     three_thousand_number = our_numbers[(3000 + where_is_zero) % len(our_numbers)]
     print(f"The sum of the 1000, 2000, and 3000th numbers is {one_thousand_number.val+two_thousand_number.val+three_thousand_number.val}")
     print("Actually we need a decryption key!")
-    print(f"{part_two_numbers_to_move=}")
     part_two_numbers_for_iteration = copy(part_two_numbers_to_move)
     for _ in range(10):
         for number in part_two_numbers_for_iteration:
             part_two_numbers_to_move = mix_numbers(number, part_two_numbers_to_move)
     where_is_zero = part_two_numbers_to_move.index(part_two_zero)
-    print(where_is_zero)
     one_thousand_number = part_two_numbers_to_move[(1000 + where_is_zero) % len(part_two_numbers_to_move)]
     two_thousand_number = part_two_numbers_to_move[(2000 + where_is_zero) % len(part_two_numbers_to_move)]
     three_thousand_number = part_two_numbers_to_move[(3000 + where_is_zero) % len(part_two_numbers_to_move)]
