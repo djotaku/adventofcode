@@ -12,24 +12,25 @@ My goal for the 2022 problem sets are:
 - In general my aim is to get more and more idiomatic with each language as the days go by.
 - To have fun solving programming puzzles
 
-![2022 stars](https://github.com/djotaku/adventofcode/blob/4441b52a313588b959b72bc83e2e5ff73af95cc1/screenshots/2022/2022_20221214.png)
+![2022 stars](https://github.com/djotaku/adventofcode/blob/1170f8729b83f231bd07bbbdfad62e870a2fb63d/screenshots/2022/2022_20221220.png)
 
 
 ## Live Score on Python Discord Server
 
-| Date   | Position | Score |
-|--------| -------- | ----- |
-| 18 Dec | 46       | 2024  |
-| 17 Dec | 49       | 1923  |
-| 15 Dec | 49       | 1923  |
-| 14 Dec | 52       | 1757  |
-| 12 Dec | 52       | 1526  |
-| 11 Dec | 56       | 1349  |
-| 10 Dec | 60       | 1189  |   
-| 9 Dec  | 62       | 1030  |
-| 8 Dec  | 62       | 880   |
-| 6 Dec  | 62       | 606   |
-| 5 Dec  |    61    |  457  |
+| Date    | Position | Score |
+|---------| -------- | ----- |
+| 20 Dec  | 42       | 2247  |
+| 18 Dec  | 46       | 2024  |
+| 17 Dec  | 49       | 1923  |
+| 15 Dec  | 49       | 1923  |
+| 14 Dec  | 52       | 1757  |
+| 12 Dec  | 52       | 1526  |
+| 11 Dec  | 56       | 1349  |
+| 10 Dec  | 60       | 1189  |   
+| 9 Dec   | 62       | 1030  |
+| 8 Dec   | 62       | 880   |
+| 6 Dec   | 62       | 606   |
+| 5 Dec   |    61    |  457  |
 
 ## Days I could not complete
 ### Part 1 Sections Still incomplete:
