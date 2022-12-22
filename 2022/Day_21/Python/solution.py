@@ -25,13 +25,15 @@ def fill_monkey_dictionary(monkey_list: list):
 
 
 @lru_cache()
-def find_monkey_value(monkey_name: str):
+def find_monkey_value(monkey_name: str, part_two: bool = False):
     """Try to find what the monkey's value is."""
     if isinstance(MONKEYS[monkey_name], int):
         return MONKEYS[monkey_name]
     monkey_equation = MONKEYS[monkey_name].split()
     left_monkey = find_monkey_value(monkey_equation[0])
     right_monkey = find_monkey_value(monkey_equation[2])
+    if part_two and monkey_name == "root":
+        return left_monkey == right_monkey
     match monkey_equation[1]:
         case "+":
             return left_monkey + right_monkey
@@ -44,9 +46,16 @@ def find_monkey_value(monkey_name: str):
 
 
 if __name__ == "__main__":
-    debug = True
+    debug = False
     our_file = "../sample_input.txt" if debug else "../input.txt"
     our_monkeys = input_per_line(our_file)
     fill_monkey_dictionary(our_monkeys)
     root_monkey_value = find_monkey_value("root")
-    print(f"Root monkey yells {root_monkey_value}")
+    print(f"With the initial instructions, the Root monkey yells {root_monkey_value}")
+    find_monkey_value.cache_clear()
+    human_guess = 0
+    while not find_monkey_value("root", True):
+        human_guess += 1
+        MONKEYS["humn"] = human_guess
+        find_monkey_value.cache_clear()
+    print(f"The number I need to yell at the Root Monkey is {human_guess}")
