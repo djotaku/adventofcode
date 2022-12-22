@@ -18,7 +18,10 @@ This turned out to be perfect and the result was immediately returns.
 
 ### Part 2
 
-I *think* this should be doable without TOO much trouble. Just modify the dictionary value of root and humn and run things (maybe with a slightly different function.)
+I *think* this should be doable without TOO much trouble. Just modify the dictionary value of root and humn and run things (maybe with a slightly different function.) More or less runs forever. 
+
+Will need to come up with a different approach for part 2. Some folks did the equations backwards to solve for humn. There may be other ways to do it. 
+
 ## What I Learned
 
 ### Generic
@@ -36,4 +39,3 @@ I *think* this should be doable without TOO much trouble. Just modify the dictio
 ### Rust
 
 ### Julia
-    
