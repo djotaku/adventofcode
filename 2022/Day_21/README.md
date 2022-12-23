@@ -22,6 +22,7 @@ I *think* this should be doable without TOO much trouble. Just modify the dictio
 
 Will need to come up with a different approach for part 2. Some folks did the equations backwards to solve for humn. There may be other ways to do it. 
 
+20221223 - idea that came to me was to have a recursive function that will return the equation with both sides of root’s equals. Then I can solve for hmn and either run again (if I still have some non-numeric) or just do it by hand.
 ## What I Learned
 
 ### Generic
