@@ -146,6 +146,7 @@ if __name__ == "__main__":
     the_score = walk_the_map(monkey_directions, monkey_map)
     print(the_score)
 
+# fixed a bug in the code and no longer works with sample input (lol). Step 1 is to get it working with the sample input again.
 
 # 8418 is too low
 # 191126 is too high
