@@ -29,7 +29,7 @@ def parse_instructions(monkey_steps: str) -> list:
     directions = re.findall(regex, monkey_steps)
     output = []
     for item in directions:
-        output.extend((item[0], item[1]))
+        output.extend((int(item[0]), item[1]))
     return output
 
 
@@ -38,6 +38,35 @@ def find_initial_coordinates(a_map: dict) -> int:
     for column in range(1, 100):
         if a_map[(column, 1)] == ".":
             return column
+
+
+def wrap_around(column: int, row: int, direction: str, our_map: dict) -> (int, bool):
+    """Return the new column or row after wrapping around and False if it's a wall."""
+    match direction:
+        case "R":
+            for col in range(100):
+                if our_map[(col, row)] == ".":
+                    return col, True
+                elif our_map[(col, row)] == "#":
+                    return column, False
+        case "L":
+            for col in range(200, 0, -1):
+                if our_map[(col, row)] == ".":
+                    return col, True
+                elif our_map[(col, row)] == "#":
+                    return column, False
+        case "U":
+            for this_row in range(230):
+                if our_map[(column, this_row)] == ".":
+                    return this_row, True
+                elif our_map[(column, this_row)] == "#":
+                    return row, False
+        case "D":
+            for this_row in range(230, 0, -1):
+                if our_map[(column, this_row)] == ".":
+                    return this_row, True
+                elif our_map[(column, this_row)] == "#":
+                    return row, False
 
 
 def walk_the_map(directions: list, the_map: dict) -> int:
@@ -49,18 +78,62 @@ def walk_the_map(directions: list, the_map: dict) -> int:
     facing = "R"  # we start off facing right
     col = find_initial_coordinates(the_map)
     row = 1
-    # still need to deal with
-    # - wrapping around
-    # - hitting a wall
-    # - turning in the directions
+    print(f"Initial coordinates: ({col}, {row})")
+    turning = {"R": {"R": "D", "L": "U"},
+               "D": {"R": "L", "L": "R"},
+               "U": {"R": "R", "L": "L"},
+               "L": {"R": "U", "L": "D"}}
+    scores = {"R": 0, "D": 1, "L": 2, "U": 3}
     for direction in directions:
+        print(f"Currently {facing=}")
+        print(f"{direction=}")
         if isinstance(direction, int):
-            if facing == "R":
-                if the_map[((col + 1), row)] == ".":
-                    col += 1
-            if facing == "L":
-                if the_map[((col - 1), row)] == ".":
-                    col -= 1
+            for _ in range(direction):
+                if facing == "D":
+                    if the_map[(col, (row + 1))] == ".":
+                        row += 1
+                    elif the_map[(col, (row + 1))] == "#":
+                        break
+                    elif the_map[(col, (row + 1))] not in [".", "#"]:
+                        row, stop_or_go = wrap_around(col, row, "U", the_map)
+                        if not stop_or_go:
+                            break
+                elif facing == "L":
+                    if the_map[((col - 1), row)] == ".":
+                        col -= 1
+                    elif the_map[((col - 1), row)] == "#":
+                        break
+                    elif the_map[((col - 1), row)] not in [".", "#"]:
+                        col, stop_or_go = wrap_around(col, row, "L", the_map)
+                        if not stop_or_go:
+                            break
+                elif facing == "R":
+                    if the_map[((col + 1), row)] == ".":
+                        col += 1
+                    elif the_map[((col + 1), row)] == "#":
+                        break
+                    elif the_map[((col + 1), row)] not in [".", "#"]:
+                        print("had to wrap around")
+                        col, stop_or_go = wrap_around(col, row, "R", the_map)
+                        if not stop_or_go:
+                            break
+                elif facing == "U":
+                    if the_map[(col, (row - 1))] == ".":
+                        row += 1
+                    elif the_map[(col, (row - 1))] == "#":
+                        break
+                    elif the_map[(col, (row - 1))] not in [".", "#"]:
+                        row, stop_or_go = wrap_around(col, row, "U", the_map)
+                        if not stop_or_go:
+                            break
+        elif direction in ["L", "R"]:
+            facing = turning[facing][direction]
+            print(f"We should have changed to {facing=}")
+        print(f"Coordinates at the end of the directions ({col}, {row})")
+    row_score = row * 1000
+    column_score = col * 4
+    return row_score + column_score + scores[facing]
+
 
 if __name__ == "__main__":
     debug = True
@@ -68,4 +141,5 @@ if __name__ == "__main__":
     map_steps, monkey_map_as_list = input_per_line_unique_last_line(our_file)
     monkey_map = map_out_map(monkey_map_as_list)
     monkey_directions = parse_instructions(map_steps)
-    print(monkey_directions)
+    the_score = walk_the_map(monkey_directions, monkey_map)
+    print(the_score)
