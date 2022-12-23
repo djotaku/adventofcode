@@ -44,7 +44,7 @@ def wrap_around(column: int, row: int, direction: str, our_map: dict) -> (int, b
     """Return the new column or row after wrapping around and False if it's a wall."""
     match direction:
         case "R":
-            for col in range(100):
+            for col in range(150):
                 if our_map[(col, row)] == ".":
                     return col, True
                 elif our_map[(col, row)] == "#":
@@ -56,17 +56,19 @@ def wrap_around(column: int, row: int, direction: str, our_map: dict) -> (int, b
                 elif our_map[(col, row)] == "#":
                     return column, False
         case "U":
-            for this_row in range(230):
-                if our_map[(column, this_row)] == ".":
-                    return this_row, True
-                elif our_map[(column, this_row)] == "#":
-                    return row, False
-        case "D":
             for this_row in range(230, 0, -1):
                 if our_map[(column, this_row)] == ".":
                     return this_row, True
                 elif our_map[(column, this_row)] == "#":
                     return row, False
+        case "D":
+            for this_row in range(230):
+                if our_map[(column, this_row)] == ".":
+                    return this_row, True
+                elif our_map[(column, this_row)] == "#":
+                    return row, False
+        case _:
+            print("Something messed up.")
 
 
 def walk_the_map(directions: list, the_map: dict) -> int:
@@ -119,7 +121,7 @@ def walk_the_map(directions: list, the_map: dict) -> int:
                             break
                 elif facing == "U":
                     if the_map[(col, (row - 1))] == ".":
-                        row += 1
+                        row -= 1
                     elif the_map[(col, (row - 1))] == "#":
                         break
                     elif the_map[(col, (row - 1))] not in [".", "#"]:
@@ -143,3 +145,7 @@ if __name__ == "__main__":
     monkey_directions = parse_instructions(map_steps)
     the_score = walk_the_map(monkey_directions, monkey_map)
     print(the_score)
+
+
+# 8418 is too low
+# 191126 is too high
