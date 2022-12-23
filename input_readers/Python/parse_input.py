@@ -19,3 +19,14 @@ def input_per_line_unique_first_line(file: str):
         our_input = input_file.read()
         first_line, *rest_of_lines = our_input.split("\n")
         return first_line, rest_of_lines[1:]  # get rid of space as first element
+
+
+def input_per_line_unique_last_line(file: str):
+    """This is for when each line is an input to the puzzle. The newline character is stripped."""
+    with open(file, 'r') as input_file:
+        our_input = input_file.readlines()
+        last_line = our_input.pop()
+        # get rid of space
+        our_input.pop()
+        rest_of_lines = our_input
+        return last_line, rest_of_lines
