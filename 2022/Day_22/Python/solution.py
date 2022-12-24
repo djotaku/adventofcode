@@ -42,6 +42,7 @@ def find_initial_coordinates(a_map: dict) -> int:
 
 def wrap_around(column: int, row: int, direction: str, our_map: dict) -> (int, bool):
     """Return the new column or row after wrapping around and False if it's a wall."""
+    print(f"In wrap_around and I am looking at {direction=}")
     match direction:
         case "R":
             for col in range(150):
@@ -63,6 +64,7 @@ def wrap_around(column: int, row: int, direction: str, our_map: dict) -> (int, b
                     return row, False
         case "D":
             for this_row in range(230):
+                print(f"considering ({column}, {this_row} during wraparound")
                 if our_map[(column, this_row)] == ".":
                     return this_row, True
                 elif our_map[(column, this_row)] == "#":
@@ -92,14 +94,18 @@ def walk_the_map(directions: list, the_map: dict) -> int:
         print(f"{direction=}")
         if isinstance(direction, int):
             for _ in range(direction):
+                print(f"({col},{row})")
                 if facing == "D":
                     if the_map[(col, (row + 1))] == ".":
                         row += 1
                     elif the_map[(col, (row + 1))] == "#":
                         break
                     elif the_map[(col, (row + 1))] not in [".", "#"]:
-                        row, stop_or_go = wrap_around(col, row, "U", the_map)
+                        print("had to wrap around while going down!")
+                        row, stop_or_go = wrap_around(col, row, "D", the_map)
+                        print(stop_or_go)
                         if not stop_or_go:
+                            print("test")
                             break
                 elif facing == "L":
                     if the_map[((col - 1), row)] == ".":
