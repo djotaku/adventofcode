@@ -32,15 +32,15 @@ def elves_move(elf_map: dict) -> dict:
     """
     # 0,0 is top left
     # NW, N, NE, E, SE, S, SW, W, NW
-    row_check = [-1, -1, -1, 0, 1, 1, 1, 0, -1]
+    row_check = [-1, -1, -1, 0, 1, 1, 0, -1]
     column_check = [-1, 0, 1, 1, 1, 0, -1, -1, -1]
+    col_row = zip(column_check, row_check)
     proposed_moves = defaultdict(list)
     elf_locations = [location for location, elf in elf_map.items() if elf]  # need this to keep dict from changing size
     for location in elf_locations:
-        elf_neighbors = [elf_map[((location[0] + x), (location[1] + y))] for x, y in itertools.product(column_check,
-                                                                                                       row_check)]
+        elf_neighbors = [elf_map[((location[0] + x), (location[1] + y))] for x, y in col_row]
         if not any(elf_neighbors):
-            print("Elf has no neighbors - staying still.")
+            print("Elf has no neighbors - staying still.")  # we are not getting here
         else:
             # elf has at least one neighbor. Time to see where they want to move to.
             for move in MOVES:
@@ -98,6 +98,16 @@ def count_empty_tiles(elf_map: dict, min_row, max_row, min_col, max_col) -> int:
                                                                          range(min_col, max_col + 1)))
 
 
+def print_image(elf_map: dict, min_row, max_row, min_col, max_col):
+    for row in range(min_row, max_row + 1):
+        for col in range(min_col, max_col + 1):
+            if elf_map[(col, row)]:
+                print("#", end="")
+            else:
+                print(".", end="")
+        print()
+
+
 if __name__ == "__main__":
     debug = "large"
     match debug:
@@ -109,7 +119,9 @@ if __name__ == "__main__":
             our_file = "../input.txt"
     elf_positions = input_per_line(our_file)
     mapped_elves = create_map(elf_positions)
-    for _ in range(10):
+    # for next line "print_image" valid values for large sample
+    print_image(mapped_elves, 0, 6, 0, 6)
+    for _ in range(2):  # step 1 is correct for large sample; step 2 is incorrect
         mapped_elves = elves_move(mapped_elves)
     minimum_row, maximum_row, minimum_column, maximum_column = find_bounding_rectangle(mapped_elves)
     empty_tiles = count_empty_tiles(mapped_elves, minimum_row, maximum_row, minimum_column, maximum_column)
@@ -119,14 +131,7 @@ if __name__ == "__main__":
                                                                                      maximum_column + 1)))
     print(f"{elf_count=}")
     # we have all our elves if we're doing large and elf_count = 22
-    for row in range(minimum_row, maximum_row + 1):
-        for col in range(minimum_column, maximum_column + 1):
-            if mapped_elves[(col, row)]:
-                print("#", end="")
-            else:
-                print(".", end="")
-        print()
-
+    print_image(mapped_elves, minimum_row, maximum_row, minimum_column, maximum_column)
     print(f"{empty_tiles=}")
 
 # currently the bounding rectangle does not look like the large example so there is some debugging to do in the
