@@ -177,8 +177,6 @@ if __name__ == "__main__":
 
 # fixed a bug in the code and no longer works with sample input (lol). Step 1 is to get it working with the sample input again.
 
-# after facing down at (8,8) not wrapping around as I think we should (can't check internet now)
-
 # for the sample code should end the path at (8, 6) facing to the right.
 # The final math answer should be 6032.
 
