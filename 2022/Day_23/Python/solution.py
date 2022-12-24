@@ -25,7 +25,7 @@ def create_map(elves_in_field: list) -> dict:
     return elf_map
 
 
-def elves_move(elf_map: dict) -> dict:
+def elves_move(elf_map: dict) -> (dict, bool):
     """Take in a dictionary with the elf positions.
     Move the elves.
     Return a new dictionary.
@@ -42,7 +42,8 @@ def elves_move(elf_map: dict) -> dict:
         elf_neighbors = [elf_map[((location[0] + x), (location[1] + y))] for x, y in col_row]
         # print(f"{elf_neighbors=}")
         if not any(elf_neighbors):
-            print(f"Elf at {location} has no neighbors - staying still.")  # we are not getting here
+            # print(f"Elf at {location} has no neighbors - staying still.")  # we are not getting here
+            pass
         else:
             # elf has at least one neighbor. Time to see where they want to move to.
             for move in MOVES:
@@ -73,6 +74,8 @@ def elves_move(elf_map: dict) -> dict:
                             # print("No Western neighbors, move West")
                             break
     # see who gets to move now
+    if len(proposed_moves) == 0:
+        return elf_map, True
     for proposed_location, elf_list in proposed_moves.items():
         # print(elf_list)
         if len(elf_list) == 1:
@@ -84,7 +87,7 @@ def elves_move(elf_map: dict) -> dict:
     rotating_move = MOVES.popleft()
     MOVES.append(rotating_move)
     # print(f"Moves list is now {MOVES}")
-    return elf_map
+    return elf_map, False
 
 
 def find_bounding_rectangle(elf_map: dict) -> tuple:
@@ -131,14 +134,17 @@ if __name__ == "__main__":
     mapped_elves = create_map(elf_positions)
     # for next line "print_image" valid values for large sample
     # print_image(mapped_elves, 0, 6, 0, 6)
-    for index in range(10):  # step 1 is correct for large sample; step 2 is incorrect
+    for index in range(100):  # step 1 is correct for large sample; step 2 is incorrect
         print("-------")
         print(f"Turn: {index + 1}")
-        mapped_elves = elves_move(mapped_elves)
+        mapped_elves, no_moves = elves_move(mapped_elves)
         if index == 9:
             minimum_row, maximum_row, minimum_column, maximum_column = find_bounding_rectangle(mapped_elves)
             empty_tiles = count_empty_tiles(mapped_elves, minimum_row, maximum_row, minimum_column, maximum_column)
             print(f"After 10 turns there are {empty_tiles=}")
+        if no_moves:
+            print(f"No elves moved starting with turn: {index + 1}")
+            break
         minimum_row, maximum_row, minimum_column, maximum_column = find_bounding_rectangle(mapped_elves)
         # print_image(mapped_elves, minimum_row, maximum_row, minimum_column, maximum_column)
     minimum_row, maximum_row, minimum_column, maximum_column = find_bounding_rectangle(mapped_elves)
