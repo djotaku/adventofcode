@@ -20,11 +20,14 @@ Answer: 3996
   - Finally, after 10 turns (probably make this a variable because part 2 is after more turns?) create bounding box. Search dictionary for highest/lowest x and y. Probably most efficient is to have it go through its keys and for each value, check against x_high, x_low, y_high, y_low and update if necessary. Then you have your bounds. You can then iterate over those bounds to count up “False”s
 
 ### Part 2
+
+I think just put in a check if proposed_moves is empty. Then break out or something.
 ## What I Learned
 
 ### Generic
 
 ### Python
+- Reminder that zip is an iterator. That is, once it's iterated over, it's empty.
 
 ### Ruby
 
