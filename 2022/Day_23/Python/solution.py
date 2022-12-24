@@ -113,4 +113,21 @@ if __name__ == "__main__":
         mapped_elves = elves_move(mapped_elves)
     minimum_row, maximum_row, minimum_column, maximum_column = find_bounding_rectangle(mapped_elves)
     empty_tiles = count_empty_tiles(mapped_elves, minimum_row, maximum_row, minimum_column, maximum_column)
+    # debug check
+    elf_count = sum(mapped_elves[(col, row)] for row, col in itertools.product(range(minimum_row, maximum_row + 1),
+                                                                               range(minimum_column,
+                                                                                     maximum_column + 1)))
+    print(f"{elf_count=}")
+    # we have all our elves if we're doing large and elf_count = 22
+    for row in range(minimum_row, maximum_row + 1):
+        for col in range(minimum_column, maximum_column + 1):
+            if mapped_elves[(col, row)]:
+                print("#", end="")
+            else:
+                print(".", end="")
+        print()
+
     print(f"{empty_tiles=}")
+
+# currently the bounding rectangle does not look like the large example so there is some debugging to do in the
+# elf movement.
