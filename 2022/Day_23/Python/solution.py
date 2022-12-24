@@ -134,7 +134,7 @@ if __name__ == "__main__":
     mapped_elves = create_map(elf_positions)
     # for next line "print_image" valid values for large sample
     # print_image(mapped_elves, 0, 6, 0, 6)
-    for index in range(100):  # step 1 is correct for large sample; step 2 is incorrect
+    for index in range(1000):  # step 1 is correct for large sample; step 2 is incorrect
         print("-------")
         print(f"Turn: {index + 1}")
         mapped_elves, no_moves = elves_move(mapped_elves)

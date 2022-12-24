@@ -7,7 +7,7 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 ## Part 1
 Answer: 3996
 ## Part 2
-
+Answer: 908
 
 ## Commentary / Approach to the Problem
 ### Part 1
@@ -21,7 +21,7 @@ Answer: 3996
 
 ### Part 2
 
-I think just put in a check if proposed_moves is empty. Then break out or something.
+I think just put in a check if proposed_moves is empty. Then break out or something. Decided to do it with a return.
 ## What I Learned
 
 ### Generic
