@@ -133,16 +133,32 @@ def walk_the_map(directions: list, the_map: dict) -> int:
             facing = turning[facing][direction]
             print(f"We should have changed to {facing=}")
         print(f"Coordinates at the end of the directions ({col}, {row})")
+        print_map(the_map, 0, 13, 0, 30, [col, row], facing)
     row_score = row * 1000
     column_score = col * 4
     return row_score + column_score + scores[facing]
 
-def print_map(mon_map: dict, min_row, max_row, min_col, max_col):
+def print_map(mon_map: dict, min_row, max_row, min_col, max_col, location = [], direction=""):
     for row in range(min_row, max_row + 1):
         for col in range(min_col, max_col + 1):
-            if mon_map[(col, row)] in ["#", "."]:
+            if location:
+                if [col, row] == location:
+                    match direction:
+                        case "U":
+                            print("^", end="")
+                        case "D":
+                            print("V", end="")
+                        case "L":
+                            print("<", end="")
+                        case "R":
+                            print(">", end="")
+                else:
+                    print(mon_map[(col, row)], end="")
+            else:
                 print(mon_map[(col, row)], end="")
         print()
+
+
 if __name__ == "__main__":
     debug = True
     our_file = "../sample_input.txt" if debug else "../input.txt"
@@ -154,6 +170,9 @@ if __name__ == "__main__":
     print(f"After traversing the map, the score is: {the_score}")
 
 # fixed a bug in the code and no longer works with sample input (lol). Step 1 is to get it working with the sample input again.
+
+# after facing down at (8,8) not wrapping around as I think we should (can't check internet now)
+
 # for the sample code should end the path at (8, 6) facing to the right.
 # The final math answer should be 6032.
 
