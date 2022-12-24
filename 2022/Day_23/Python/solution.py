@@ -31,16 +31,18 @@ def elves_move(elf_map: dict) -> dict:
     Return a new dictionary.
     """
     # 0,0 is top left
-    # NW, N, NE, E, SE, S, SW, W, NW
-    row_check = [-1, -1, -1, 0, 1, 1, 0, -1]
-    column_check = [-1, 0, 1, 1, 1, 0, -1, -1, -1]
-    col_row = zip(column_check, row_check)
     proposed_moves = defaultdict(list)
     elf_locations = [location for location, elf in elf_map.items() if elf]  # need this to keep dict from changing size
     for location in elf_locations:
+        # NW, N, NE, E, SE, S, SW, W, NW
+        row_check = [-1, -1, -1, 0, 1, 1, 0, -1]
+        column_check = [-1, 0, 1, 1, 1, 0, -1, -1, -1]
+        col_row = zip(column_check, row_check)
+        print(f"Considering elf at {location}")
         elf_neighbors = [elf_map[((location[0] + x), (location[1] + y))] for x, y in col_row]
+        print(f"{elf_neighbors=}")
         if not any(elf_neighbors):
-            print("Elf has no neighbors - staying still.")  # we are not getting here
+            print(f"Elf at {location} has no neighbors - staying still.")  # we are not getting here
         else:
             # elf has at least one neighbor. Time to see where they want to move to.
             for move in MOVES:
@@ -121,7 +123,8 @@ if __name__ == "__main__":
     mapped_elves = create_map(elf_positions)
     # for next line "print_image" valid values for large sample
     print_image(mapped_elves, 0, 6, 0, 6)
-    for _ in range(2):  # step 1 is correct for large sample; step 2 is incorrect
+    for index in range(10):  # step 1 is correct for large sample; step 2 is incorrect
+        print(f"Turn: {index}")
         mapped_elves = elves_move(mapped_elves)
     minimum_row, maximum_row, minimum_column, maximum_column = find_bounding_rectangle(mapped_elves)
     empty_tiles = count_empty_tiles(mapped_elves, minimum_row, maximum_row, minimum_column, maximum_column)
