@@ -42,6 +42,7 @@ total registered participants = 128
 - Day 17 - busy day and complicated sim.  Ran out of day before I could finish. Was debugging the horizontal line.
 - Day 19 - no time to work on it today. Have some ideas based on 2015 day 22 - maybe brute forcing it.
 - Day 22 - I think I'm close, but have some bugs and ran out of day. Will probably come back to this one first when I attempt to do some more days.
+- Day 23 - Just as Day 22 - I think my algorithms are sound, but ran out of time to work on it
 ### Part 2 Sections Still incomplete:
 - Day 18 - spent way too long confused about why my part 1 wasn't working. Don't quite understand the geometry necessary for part 2.
 - Day 21 - unsure how to modify the algorithm to work for part 2.
