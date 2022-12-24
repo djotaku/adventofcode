@@ -35,36 +35,36 @@ def elves_move(elf_map: dict) -> dict:
     row_check = [-1, -1, -1, 0, 1, 1, 1, 0, -1]
     column_check = [-1, 0, 1, 1, 1, 0, -1, -1, -1]
     proposed_moves = defaultdict(list)
-    for location, elf in elf_map.items():
-        if elf:  # we have an elf at this location
-            elf_neighbors = [elf_map[((location[0] + x), (location[1] + y))] for x, y in itertools.product(column_check,
-                                                                                                           row_check)]
-            if not any(elf_neighbors):
-                print("Elf has no neighbors - staying still.")
-            else:
-                # elf has at least one neighbor. Time to see where they want to move to.
-                for move in MOVES:
-                    match move:
-                        case "N":
-                            northern_neighbors = [elf_map[((location[0] + x), (location[1] - 1))] for x in [-1, 0, 1]]
-                            if not any(northern_neighbors):
-                                proposed_moves[((location[0]), (location[1] - 1))].append((location[0], location[1]))
-                                break
-                        case "S":
-                            southern_neighbors = [elf_map[((location[0] + x), (location[1] + 1))] for x in [-1, 0, 1]]
-                            if not any(southern_neighbors):
-                                proposed_moves[((location[0]), (location[1] + 1))].append((location[0], location[1]))
-                                break
-                        case "E":
-                            eastern_neighbors = [elf_map[((location[0] + 1), (location[1] + y))] for y in [-1, 0, 1]]
-                            if not any(eastern_neighbors):
-                                proposed_moves[((location[0] + 1), (location[1]))].append((location[0], location[1]))
-                                break
-                        case "W":
-                            western_neighbors = [elf_map[((location[0] - 1), (location[1] + y))] for y in [-1, 0, 1]]
-                            if not any(western_neighbors):
-                                proposed_moves[((location[0] - 1), (location[1]))].append((location[0], location[1]))
-                                break
+    elf_locations = [location for location, elf in elf_map.items() if elf]  # need this to keep dict from changing size
+    for location in elf_locations:
+        elf_neighbors = [elf_map[((location[0] + x), (location[1] + y))] for x, y in itertools.product(column_check,
+                                                                                                       row_check)]
+        if not any(elf_neighbors):
+            print("Elf has no neighbors - staying still.")
+        else:
+            # elf has at least one neighbor. Time to see where they want to move to.
+            for move in MOVES:
+                match move:
+                    case "N":
+                        northern_neighbors = [elf_map[((location[0] + x), (location[1] - 1))] for x in [-1, 0, 1]]
+                        if not any(northern_neighbors):
+                            proposed_moves[((location[0]), (location[1] - 1))].append((location[0], location[1]))
+                            break
+                    case "S":
+                        southern_neighbors = [elf_map[((location[0] + x), (location[1] + 1))] for x in [-1, 0, 1]]
+                        if not any(southern_neighbors):
+                            proposed_moves[((location[0]), (location[1] + 1))].append((location[0], location[1]))
+                            break
+                    case "E":
+                        eastern_neighbors = [elf_map[((location[0] + 1), (location[1] + y))] for y in [-1, 0, 1]]
+                        if not any(eastern_neighbors):
+                            proposed_moves[((location[0] + 1), (location[1]))].append((location[0], location[1]))
+                            break
+                    case "W":
+                        western_neighbors = [elf_map[((location[0] - 1), (location[1] + y))] for y in [-1, 0, 1]]
+                        if not any(western_neighbors):
+                            proposed_moves[((location[0] - 1), (location[1]))].append((location[0], location[1]))
+                            break
     # see who gets to move now
     for proposed_location, elf_list in proposed_moves.items():
         if len(elf_list) == 1:
@@ -77,13 +77,29 @@ def elves_move(elf_map: dict) -> dict:
     return elf_map
 
 
-def find_bounding_rectangle(elf_map: dict) -> list:
+def find_bounding_rectangle(elf_map: dict) -> tuple:
     """Take in a map and find the bounding rectangle that contains all the elves."""
-    pass
+    rows = []
+    cols = []
+    for location, elf in elf_map.items():
+        if elf:
+            cols.append(location[0])
+            rows.append(location[1])
+    min_row = min(rows)
+    max_row = max(rows)
+    min_col = min(cols)
+    max_col = max(cols)
+    return min_row, max_row, min_col, max_col
+
+
+def count_empty_tiles(elf_map: dict, min_row, max_row, min_col, max_col) -> int:
+    """Count up all the empty tiles."""
+    return sum(not elf_map[(col, row)] for row, col in itertools.product(range(min_row, max_row + 1),
+                                                                         range(min_col, max_col + 1)))
 
 
 if __name__ == "__main__":
-    debug = "small"
+    debug = "large"
     match debug:
         case "small":
             our_file = "../tiny_sample_input.txt"
@@ -95,4 +111,6 @@ if __name__ == "__main__":
     mapped_elves = create_map(elf_positions)
     for _ in range(10):
         mapped_elves = elves_move(mapped_elves)
-    # next need to do the rectangle and count empty spots
+    minimum_row, maximum_row, minimum_column, maximum_column = find_bounding_rectangle(mapped_elves)
+    empty_tiles = count_empty_tiles(mapped_elves, minimum_row, maximum_row, minimum_column, maximum_column)
+    print(f"{empty_tiles=}")
