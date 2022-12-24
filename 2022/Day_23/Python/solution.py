@@ -34,9 +34,9 @@ def elves_move(elf_map: dict) -> dict:
     proposed_moves = defaultdict(list)
     elf_locations = [location for location, elf in elf_map.items() if elf]  # need this to keep dict from changing size
     for location in elf_locations:
-        # NW, N, NE, E, SE, S, SW, W, NW
-        row_check = [-1, -1, -1, 0, 1, 1, 0, -1]
-        column_check = [-1, 0, 1, 1, 1, 0, -1, -1, -1]
+        #                NW, N, NE, E, SE, S, SW, W
+        row_check =    [-1, -1, -1, 0, 1, 1,  1, 0]
+        column_check = [-1,  0,  1, 1, 1, 0, -1, -1]
         col_row = zip(column_check, row_check)
         print(f"Considering elf at {location}")
         elf_neighbors = [elf_map[((location[0] + x), (location[1] + y))] for x, y in col_row]
@@ -46,36 +46,44 @@ def elves_move(elf_map: dict) -> dict:
         else:
             # elf has at least one neighbor. Time to see where they want to move to.
             for move in MOVES:
+                print(f"Checking {move}")
                 match move:
                     case "N":
                         northern_neighbors = [elf_map[((location[0] + x), (location[1] - 1))] for x in [-1, 0, 1]]
                         if not any(northern_neighbors):
                             proposed_moves[((location[0]), (location[1] - 1))].append((location[0], location[1]))
+                            print("No northern neighbors, move up.")
                             break
                     case "S":
                         southern_neighbors = [elf_map[((location[0] + x), (location[1] + 1))] for x in [-1, 0, 1]]
                         if not any(southern_neighbors):
-                            proposed_moves[((location[0]), (location[1] + 1))].append((location[0], location[1]))
+                            proposed_moves[(location[0], (location[1] + 1))].append((location[0], location[1]))
+                            print("No southern neighbors, move down.")
                             break
                     case "E":
                         eastern_neighbors = [elf_map[((location[0] + 1), (location[1] + y))] for y in [-1, 0, 1]]
                         if not any(eastern_neighbors):
-                            proposed_moves[((location[0] + 1), (location[1]))].append((location[0], location[1]))
+                            proposed_moves[((location[0] + 1), location[1])].append((location[0], location[1]))
+                            print("No eastern neighbors, move East.")
                             break
                     case "W":
-                        western_neighbors = [elf_map[((location[0] - 1), (location[1] + y))] for y in [-1, 0, 1]]
+                        western_neighbors = [elf_map[((location[0] - 1), location[1] + y)] for y in [-1, 0, 1]]
                         if not any(western_neighbors):
-                            proposed_moves[((location[0] - 1), (location[1]))].append((location[0], location[1]))
+                            proposed_moves[((location[0] - 1), location[1])].append((location[0], location[1]))
+                            print("No Western neighbors, move West")
                             break
     # see who gets to move now
     for proposed_location, elf_list in proposed_moves.items():
+        print(elf_list)
         if len(elf_list) == 1:
             # only 1 elf wanted to move there. The elf can move.
             elf = elf_list[0]
+            print(f"{elf=} moving to {proposed_location=}")
             elf_map[(elf[0], elf[1])] = False
             elf_map[(proposed_location[0], proposed_location[1])] = True
     rotating_move = MOVES.popleft()
     MOVES.append(rotating_move)
+    print(f"Moves list is now {MOVES}")
     return elf_map
 
 
@@ -123,9 +131,12 @@ if __name__ == "__main__":
     mapped_elves = create_map(elf_positions)
     # for next line "print_image" valid values for large sample
     print_image(mapped_elves, 0, 6, 0, 6)
-    for index in range(10):  # step 1 is correct for large sample; step 2 is incorrect
-        print(f"Turn: {index}")
+    for index in range(2):  # step 1 is correct for large sample; step 2 is incorrect
+        print("-------")
+        print(f"Turn: {index + 1}")
         mapped_elves = elves_move(mapped_elves)
+        minimum_row, maximum_row, minimum_column, maximum_column = find_bounding_rectangle(mapped_elves)
+        print_image(mapped_elves, minimum_row, maximum_row, minimum_column, maximum_column)
     minimum_row, maximum_row, minimum_column, maximum_column = find_bounding_rectangle(mapped_elves)
     empty_tiles = count_empty_tiles(mapped_elves, minimum_row, maximum_row, minimum_column, maximum_column)
     # debug check
