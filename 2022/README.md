@@ -21,6 +21,7 @@ total registered participants = 128
 
 | Date    | Position | Score |
 |---------| -------- | ----- |
+| 24 Dec  | 38       | 2607  |
 | 21 Dec  | 40       | 2383  |
 | 20 Dec  | 42       | 2247  |
 | 18 Dec  | 46       | 2024  |
