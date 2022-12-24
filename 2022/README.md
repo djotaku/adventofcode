@@ -53,6 +53,8 @@ total registered participants = 128
 A distillation of what I learned this year:
 - TBD!
 
+### Generic
+- Instead of using x and y it can help when debugging grids/maps/etc to use row and column. That keeps it clear which axis you're moving in.
 
 For a full list of what I learned, for each day the README will contain what I learned in each programming language.
 

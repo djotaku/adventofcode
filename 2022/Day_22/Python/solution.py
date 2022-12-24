@@ -87,6 +87,7 @@ def walk_the_map(directions: list, the_map: dict) -> int:
                "L": {"R": "U", "L": "D"}}
     scores = {"R": 0, "D": 1, "L": 2, "U": 3}
     for direction in directions:
+        print("----------")
         print(f"Currently {facing=}")
         print(f"{direction=}")
         if isinstance(direction, int):
@@ -136,18 +137,25 @@ def walk_the_map(directions: list, the_map: dict) -> int:
     column_score = col * 4
     return row_score + column_score + scores[facing]
 
-
+def print_map(mon_map: dict, min_row, max_row, min_col, max_col):
+    for row in range(min_row, max_row + 1):
+        for col in range(min_col, max_col + 1):
+            if mon_map[(col, row)] in ["#", "."]:
+                print(mon_map[(col, row)], end="")
+        print()
 if __name__ == "__main__":
     debug = True
     our_file = "../sample_input.txt" if debug else "../input.txt"
     map_steps, monkey_map_as_list = input_per_line_unique_last_line(our_file)
     monkey_map = map_out_map(monkey_map_as_list)
+    print_map(monkey_map, 0, 13, 0, 30)     
     monkey_directions = parse_instructions(map_steps)
     the_score = walk_the_map(monkey_directions, monkey_map)
-    print(the_score)
+    print(f"After traversing the map, the score is: {the_score}")
 
 # fixed a bug in the code and no longer works with sample input (lol). Step 1 is to get it working with the sample input again.
 # for the sample code should end the path at (8, 6) facing to the right.
+# The final math answer should be 6032.
 
 # 8418 is too low
 # 191126 is too high
