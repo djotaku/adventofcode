@@ -147,6 +147,7 @@ if __name__ == "__main__":
     print(the_score)
 
 # fixed a bug in the code and no longer works with sample input (lol). Step 1 is to get it working with the sample input again.
+# for the sample code should end the path at (8, 6) facing to the right.
 
 # 8418 is too low
 # 191126 is too high
