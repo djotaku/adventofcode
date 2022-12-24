@@ -119,7 +119,7 @@ def print_image(elf_map: dict, min_row, max_row, min_col, max_col):
 
 
 if __name__ == "__main__":
-    debug = "large"
+    debug = "input"
     match debug:
         case "small":
             our_file = "../tiny_sample_input.txt"
