@@ -15,7 +15,7 @@ def parse_inputs(number: str) -> list:
     return places
 
 
-def snafu_to_decimal(snafu_number:list) -> int:
+def snafu_to_decimal(snafu_number:str) -> int:
     """Take in a snafu number and change it to a decimal."""
     decimal_number = 0
     snafu_number = reversed(snafu_number)
@@ -30,22 +30,21 @@ def snafu_to_decimal(snafu_number:list) -> int:
 
 def decimal_to_snafu(decimal_number: int) -> str:
     """Take in a decimal number and change it to snafu."""
-    final_number = []
-    while decimal_number > 0:
-        final_number.append(decimal_number % 5)
-        decimal_number = decimal_number // 5
-    print(final_number)
-    final_snafu = []
-    for number in final_number:
-        if number == 3:
-            final_snafu.append('1=')
-        elif number == 4:
-            final_snafu.append('1-')
-        else:
-            final_snafu.append(str(number))
-    print(final_snafu)
-    final_snafu = reversed(final_snafu)
-    return "".join(final_snafu)
+    digits = {-2: "=", -1: "-", 0: "0", 1: "1", 2: "2"}
+    s = ""
+    while decimal_number != 0:
+        s += digits[(decimal_number + 2) % 5 - 2]
+        decimal_number = (decimal_number - ((decimal_number + 2) % 5 - 2)) // 5
+    return s[::-1]
 
 if __name__ == "__main__":
-    pass
+    debug = False
+    if debug:
+        our_file = "../sample_input.txt"
+    else:
+        our_file = "../input.txt"
+    snafu_numbers = input_per_line(our_file)
+    decimal_numbers = [snafu_to_decimal(snafu_num) for snafu_num in snafu_numbers]
+    decimal_sum = sum(decimal_numbers)
+    snafu_sum = decimal_to_snafu(decimal_sum)
+    print(f"The SNAFU number to enter is {snafu_sum}")
