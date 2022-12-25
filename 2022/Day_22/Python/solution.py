@@ -166,7 +166,7 @@ def print_map(mon_map: dict, min_row, max_row, min_col, max_col, location = [], 
 
 
 if __name__ == "__main__":
-    debug = True
+    debug = False 
     our_file = "../sample_input.txt" if debug else "../input.txt"
     map_steps, monkey_map_as_list = input_per_line_unique_last_line(our_file)
     monkey_map = map_out_map(monkey_map_as_list)
@@ -182,3 +182,4 @@ if __name__ == "__main__":
 
 # 8418 is too low
 # 191126 is too high
+# 149258 is too high
