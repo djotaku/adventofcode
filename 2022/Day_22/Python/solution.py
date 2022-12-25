@@ -110,7 +110,6 @@ def walk_the_map(directions: list, the_map: dict) -> int:
                         row, stop_or_go = wrap_around(col, row, "D", the_map)
                         print(stop_or_go)
                         if not stop_or_go:
-                            print("test")
                             break
                 elif facing == "L":
                     if the_map[((col - 1), row)] == ".":
@@ -172,7 +171,7 @@ def print_map(mon_map: dict, min_row, max_row, min_col, max_col, location = [], 
 
 
 if __name__ == "__main__":
-    debug = False 
+    debug = True
     our_file = "../sample_input.txt" if debug else "../input.txt"
     map_steps, monkey_map_as_list = input_per_line_unique_last_line(our_file)
     monkey_map = map_out_map(monkey_map_as_list)
@@ -181,4 +180,4 @@ if __name__ == "__main__":
     print(f"{monkey_directions=}")
     the_score = walk_the_map(monkey_directions, monkey_map)
     print(f"After traversing the map, the score is: {the_score}")
-
+    print(f"Now we need to treat the map as a cube and use different wrapping methods.")
