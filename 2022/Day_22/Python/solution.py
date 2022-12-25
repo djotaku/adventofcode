@@ -25,12 +25,10 @@ def map_out_map(the_map: list) -> dict:
 
 def parse_instructions(monkey_steps: str) -> list:
     """Break out the instructions into individual instructions."""
-    regex = re.compile(r'(\d+)(R|L)')
+    regex = re.compile(r'(\d+|R|L)')
     directions = re.findall(regex, monkey_steps)
-    output = []
-    for item in directions:
-        output.extend((int(item[0]), item[1]))
-    return output
+    print(f"In parse_instructions {directions=}")
+    return directions
 
 
 def find_initial_coordinates(a_map: dict) -> int:
@@ -46,26 +44,28 @@ def wrap_around(column: int, row: int, direction: str, our_map: dict) -> (int, b
     match direction:
         case "R":
             for col in range(151):
+                print(f"considering ({col}, {row} during Right wraparound")
                 if our_map[(col, row)] == ".":
                     return col, True
                 elif our_map[(col, row)] == "#":
                     return column, False
         case "L":
             for col in range(200, 0, -1):
+                print(f"considering ({col}, {row} during Left wraparound")
                 if our_map[(col, row)] == ".":
                     return col, True
                 elif our_map[(col, row)] == "#":
                     return column, False
         case "U":
             for this_row in range(230, 0, -1):
-                print(f"considering ({column}, {this_row} during wraparound")
+                print(f"considering ({column}, {this_row} during Up wraparound")
                 if our_map[(column, this_row)] == ".":
                     return this_row, True
                 elif our_map[(column, this_row)] == "#":
                     return row, False
         case "D":
             for this_row in range(230):
-                print(f"considering ({column}, {this_row} during wraparound")
+                print(f"considering ({column}, {this_row} during Down wraparound")
                 if our_map[(column, this_row)] == ".":
                     return this_row, True
                 elif our_map[(column, this_row)] == "#":
@@ -93,6 +93,10 @@ def walk_the_map(directions: list, the_map: dict) -> int:
         print("----------")
         print(f"Currently {facing=}")
         print(f"{direction=}")
+        try:
+            direction = int(direction)
+        except Exception:
+            pass
         if isinstance(direction, int):
             for _ in range(direction):
                 print(f"Coordinate before moving: ({col},{row})")
@@ -174,14 +178,7 @@ if __name__ == "__main__":
     monkey_map = map_out_map(monkey_map_as_list)
     # print_map(monkey_map, 0, 13, 0, 30)     
     monkey_directions = parse_instructions(map_steps)
+    print(f"{monkey_directions=}")
     the_score = walk_the_map(monkey_directions, monkey_map)
     print(f"After traversing the map, the score is: {the_score}")
 
-# fixed a bug in the code and no longer works with sample input (lol). Step 1 is to get it working with the sample input again.
-
-# for the sample code should end the path at (8, 6) facing to the right.
-# The final math answer should be 6032.
-
-# 8418 is too low
-# 191126 is too high
-# 149258 is too high
