@@ -45,11 +45,18 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
 - 2022
   - Fifth Problem Set Tackled/Third Year Participating Live
   - Will primarily solve with Python during December 2022
-  - 34 Stars Collected so far
+  - 36 Stars Collected so far
+  - A few days where I didn't get as much time to work on it as I wanted, but very happy with my progress this year. I finished Day 25 with 36 stars. This is in line with my averages - 35 stars in 2021 and 36 in 2020. (Although I may have solved 1-2 stars for each of those after the year in which the AoC took place)
+  - Repo stats: at the end of the 2022 Live period th erepo code was split as follows:
+    - 73.1% Python
+    - 11.7% Ruby
+    - 10.9% Perl
+    - 3.2% Go
+    - 1.1% Haskell
 
-![total stars](https://github.com/djotaku/adventofcode/blob/faff5eff438c91722ed3f9c263cff2ea82b81fef/screenshots/total/total_star_count_20221224.png)
+![total stars](https://github.com/djotaku/adventofcode/blob/f26592a1a60377f6757bcbb4b07ead8d13eafd57/screenshots/total/total_star_count_20221225.png)
 
-Total Stars Over All Years: 187
+Total Stars Over All Years: 189
 
 After I'm all caught up, I may try my hand at some visualizations.
     
