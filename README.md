@@ -45,11 +45,11 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
 - 2022
   - Fifth Problem Set Tackled/Third Year Participating Live
   - Will primarily solve with Python during December 2022
-  - 32 Stars Collected so far
+  - 34 Stars Collected so far
 
-![total stars](https://github.com/djotaku/adventofcode/blob/1800d25f36c8c860ab85a545d3f6750c7accaa28/screenshots/total/total_star_count_20221221.png)
+![total stars](https://github.com/djotaku/adventofcode/blob/faff5eff438c91722ed3f9c263cff2ea82b81fef/screenshots/total/total_star_count_20221224.png)
 
-Total Stars Over All Years: 185
+Total Stars Over All Years: 187
 
 After I'm all caught up, I may try my hand at some visualizations.
     

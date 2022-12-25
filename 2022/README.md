@@ -12,7 +12,7 @@ My goal for the 2022 problem sets are:
 - In general my aim is to get more and more idiomatic with each language as the days go by.
 - To have fun solving programming puzzles
 
-![2022 stars](https://github.com/djotaku/adventofcode/blob/1800d25f36c8c860ab85a545d3f6750c7accaa28/screenshots/2022/2022_20221221.png)
+![2022 stars](https://github.com/djotaku/adventofcode/blob/faff5eff438c91722ed3f9c263cff2ea82b81fef/screenshots/2022/2022_20221224.png)
 
 
 ## Live Score on Python Discord Server
