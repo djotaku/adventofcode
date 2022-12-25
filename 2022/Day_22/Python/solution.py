@@ -45,7 +45,7 @@ def wrap_around(column: int, row: int, direction: str, our_map: dict) -> (int, b
     print(f"In wrap_around and I am looking at {direction=}")
     match direction:
         case "R":
-            for col in range(150):
+            for col in range(151):
                 if our_map[(col, row)] == ".":
                     return col, True
                 elif our_map[(col, row)] == "#":
@@ -58,6 +58,7 @@ def wrap_around(column: int, row: int, direction: str, our_map: dict) -> (int, b
                     return column, False
         case "U":
             for this_row in range(230, 0, -1):
+                print(f"considering ({column}, {this_row} during wraparound")
                 if our_map[(column, this_row)] == ".":
                     return this_row, True
                 elif our_map[(column, this_row)] == "#":
@@ -94,7 +95,7 @@ def walk_the_map(directions: list, the_map: dict) -> int:
         print(f"{direction=}")
         if isinstance(direction, int):
             for _ in range(direction):
-                print(f"({col},{row})")
+                print(f"Coordinate before moving: ({col},{row})")
                 if facing == "D":
                     if the_map[(col, (row + 1))] == ".":
                         row += 1
@@ -139,7 +140,8 @@ def walk_the_map(directions: list, the_map: dict) -> int:
             facing = turning[facing][direction]
             print(f"We should have changed to {facing=}")
         print(f"Coordinates at the end of the directions ({col}, {row})")
-        print_map(the_map, 0, 13, 0, 30, [col, row], facing)
+        # print_map(the_map, 0, 13, 0, 30, [col, row], facing)
+        # print_map(the_map, 0, 200, 0, 200, [col, row], facing)
     row_score = row * 1000
     column_score = col * 4
     return row_score + column_score + scores[facing]
@@ -170,7 +172,7 @@ if __name__ == "__main__":
     our_file = "../sample_input.txt" if debug else "../input.txt"
     map_steps, monkey_map_as_list = input_per_line_unique_last_line(our_file)
     monkey_map = map_out_map(monkey_map_as_list)
-    print_map(monkey_map, 0, 13, 0, 30)     
+    # print_map(monkey_map, 0, 13, 0, 30)     
     monkey_directions = parse_instructions(map_steps)
     the_score = walk_the_map(monkey_directions, monkey_map)
     print(f"After traversing the map, the score is: {the_score}")
