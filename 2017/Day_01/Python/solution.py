@@ -20,10 +20,23 @@ def detect_double_numbers(number: str) -> int:
     return number_sum
 
 
+def detect_double_part_2(numbers: str) -> int:
+    """Consider the digit halfway around (it is a circular list) to see if it matches."""
+    lookahead = len(numbers)//2
+    number_sum = 0
+    # print(f"{numbers=}")
+    for index, the_number in enumerate(numbers):
+        check = (index + lookahead) % len(numbers)
+        # print(f"{check=}")
+        # print(f"{the_number=}")
+        # print(f"{numbers[check]=}")
+        if the_number == numbers[check]:
+            number_sum += int(the_number)
+    return number_sum
+
 if __name__ == "__main__":
     input_number = input_only_one_line("../input.txt")
     part_one = detect_double_numbers(input_number)
     print(f"The part 1 reverse captcha is {part_one}")
-
-
-# 942 is too low
+    part_two = detect_double_part_2(input_number)
+    print(f"The part 2 reverse captcha is {part_two}")
