@@ -18,7 +18,7 @@ def redistribute_blocks(blocks: list) -> list:
     return blocks
 
 if __name__ == "__main__":
-    debug = False
+    debug = True
     if debug:
         input_file = "../sample_input.txt"
     else:
@@ -31,6 +31,7 @@ if __name__ == "__main__":
         blocks_string += str(number)
     blocks_seen = {blocks_string}
     cycles = 0
+    loops = 0
     while True:
         cycles += 1
         the_blocks = redistribute_blocks(the_blocks)
@@ -38,7 +39,14 @@ if __name__ == "__main__":
         for number in the_blocks:
             blocks_string += str(number)
         if blocks_string in blocks_seen:
-            break
+            loops += 1
+            if loops == 1:
+                print(f"It took {cycles} cycles for the first time through the loop.")
+                blocks_seen.clear()
+                blocks_seen.add(blocks_string)
+                cycles = 0
+            elif loops == 2:
+                break
         else:
             blocks_seen.add(blocks_string)
-    print(f"It took {cycles} cycles.")
+    print(f"It took {cycles} cycles for the second time through the loop.")
