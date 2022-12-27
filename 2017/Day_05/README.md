@@ -8,6 +8,7 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 Answer: 358131
 
 ## Part 2
+Answer: 25558839
 
 ## Commentary / Approach to the Problem
 ### Part 1
