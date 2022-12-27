@@ -29,7 +29,8 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
   - Old languages for this set: Python, Ruby, Perl, Haskell, Go
   - New languages for this set: Rust and Julia (“One hard one and one easy one”)
   - started before done with 2016 to try and get to 200 stars for the repo before the end of 2022.
-  - 8 stars collected so far
+    - goal achieved 20221227 - 200 stars for the whole repo!
+  - 10 stars collected so far
 - 2020
     - First Year of Participation (1st attempt: Live Dec 2020; Trying to get all 50 stars: Sept 2021 -)
     - Solved with Python only during AoC
@@ -59,9 +60,9 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
     - 3.2% Go
     - 1.1% Haskell
 
-![total stars](https://github.com/djotaku/adventofcode/blob/f9a4d379cf78f6ae590b1be12373acfb9523fcb5/screenshots/total/total_star_count_20221226.png)
+![total stars](https://github.com/djotaku/adventofcode/blob/a170a923c57dc1d8491e4f206f7f3805976c4496/screenshots/total/total_star_count_20221227.png)
 
-Total Stars Over All Years: 198 
+Total Stars Over All Years: 200 
 
 After I'm all caught up, I may try my hand at some visualizations.
     
