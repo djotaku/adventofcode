@@ -18,7 +18,7 @@ def redistribute_blocks(blocks: list) -> list:
     return blocks
 
 if __name__ == "__main__":
-    debug = True
+    debug = False
     if debug:
         input_file = "../sample_input.txt"
     else:
