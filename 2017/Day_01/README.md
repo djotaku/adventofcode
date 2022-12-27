@@ -11,6 +11,7 @@ Answer: 1089
 Answer: 1156
 
 ## Commentary / Approach to the Problem
+
 ### Part 1
 Looks like I'll use the strategy I used for 2015 Day 05:
 
