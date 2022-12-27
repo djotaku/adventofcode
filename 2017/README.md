@@ -3,7 +3,7 @@
 
 Advent of Code 2017 can be found [here](https://adventofcode.com/2017).
 
-My ? Advent of Code Problem Set
+My Sixth Advent of Code Problem Set
 
 My goal for the 2017 problem sets are:
 

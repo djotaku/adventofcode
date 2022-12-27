@@ -8,7 +8,8 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
 
 - 2015 
     - Second Problem Set Tackled (April 2021 - Sept 2021)
-    - Originally solved with Python, Ruby, and Perl (other languages may be used in the future)
+    - Originally solved with Python
+    - New languages for this set: Ruby and Perl
     - 50 Stars Collected
       - 20210828 - Reached 34 stars without skipping any Days/Parts. This put me in a tie with my score at the end of 2020 when I was doing it live Dec 2020.
       - 20210919 - First set of Advent of Code I completed with all 50 stars!!!!
@@ -19,12 +20,15 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
       - 0.1% Shell
 - 2016
   - Third Problem Set Tackled (Oct 2021 - )
-  - Originally solved with Python, Ruby, Perl, Haskell, and Go
+  - Old languages for this set: Python, Ruby, Perl
+  - New languages for this set: Haskell and Go
   - 33 stars Collected so Far
   - 20221029 Reached 150 stars total for the repo
 - 2017
-  - Sixth Problem Set Tackled (TBD)
-  - Languages: Rust and Julia (“One hard one and one easy one”)
+  - Sixth Problem Set Tackled (Dec 2022 - )
+  - Old languages for this set: Python, Ruby, Perl, Haskell, Go
+  - New languages for this set: Rust and Julia (“One hard one and one easy one”)
+  - started before done with 2016 to try and get to 200 stars for the repo before the end of 2022.
 - 2020
     - First Year of Participation (1st attempt: Live Dec 2020; Trying to get all 50 stars: Sept 2021 -)
     - Solved with Python only during AoC
