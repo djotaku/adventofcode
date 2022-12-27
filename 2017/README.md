@@ -18,7 +18,8 @@ My goal for the 2017 problem sets are:
 
 ## Days I could not complete
 ### Part 1 Sections Still incomplete:
-
+- Day 03 - Can't figure out a good algorithm for the spiral.
+- 
 ### Part 2 Sections Still incomplete:
 
 ### Language Specific
