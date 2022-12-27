@@ -1,5 +1,6 @@
 # Advent of Code 2017 - Trapped in a Computer 
 
+They can't print the naughty/nice list, so you have to help.
 
 Advent of Code 2017 can be found [here](https://adventofcode.com/2017).
 
