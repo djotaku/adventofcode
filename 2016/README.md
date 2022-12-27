@@ -14,7 +14,7 @@ My goal for the 2016 problem sets are:
 - In general my aim is to get more and more idiomatic with each language as the days go by.
 - To have fun solving programming puzzles
 
-![progress](https://github.com/djotaku/adventofcode/blob/4441b52a313588b959b72bc83e2e5ff73af95cc1/screenshots/2016/2016_20221214.png)
+![progress](https://github.com/djotaku/adventofcode/blob/f9a4d379cf78f6ae590b1be12373acfb9523fcb5/screenshots/2016/2016_20221226.png)
 
 ## Days I could not complete
 ### Part 1 Sections Still incomplete:
@@ -30,6 +30,28 @@ My goal for the 2016 problem sets are:
 - Day 04 Haskell - Partially solved, but need to return to this
 - Day 05 Haskell - Wil come back to it
 ## What I learned from Advent of Code 2016
+
+## Languages Still todo
+- Day 06 - Go, Haskell, Ruby, Perl
+- Day 07 - Go, Haskell, Perl, Ruby
+- Day 08 - Go, Haskell, Perl, Ruby
+- Day 09 - Go, Haskell, Perl, Ruby
+- Day 10 - Go, Haskell, Perl, Ruby
+- Day 11 - Go, Haskell, Perl, Ruby
+- Day 12 - Go, Haskell, Perl, Ruby
+- Day 13 - Go, Haskell, Perl, Ruby
+- Day 14 - Go, Haskell, Perl, Ruby
+- Day 15 - Go, Haskell, Perl, Ruby
+- Day 16 - Go, Haskell, Perl, Ruby
+- Day 17 - Go, Haskell, Perl, Ruby
+- Day 18 - Go, Haskell, Perl, Ruby
+- Day 19 - Go, Haskell, Perl, Ruby
+- Day 20 - Go, Haskell, Perl, Ruby
+- Day 21 - Go, Haskell, Perl, Ruby
+- Day 22 - Go, Haskell, Perl, Ruby
+- Day 23 - Go, Haskell, Perl, Ruby
+- Day 24 - Go, Haskell, Perl, Ruby
+- Day 25 - Go, Haskell, Perl, Ruby
 
 A distillation of what I learned this year:
 - TBD!
