@@ -20,9 +20,9 @@ My goal for the 2016 problem sets are:
 ### Part 1 Sections Still incomplete:
 - Day 10 - I am not sure what the algorithm is
 - Day 11 - I don't know how to do this algorithmically
-- Day 13 - I think this is depth-first or breadth-first search, but I haven't remembered how to do this since undergrad (almost 20 years ago)
 - Day 17 - Might be a variant of Day 13 combined with MD5 hashes. Saving for later.
 ### Part 2 Sections Still incomplete:
+- Day 13 - Now they want the reverse of how we use BFS.
 - Day 19 - Need to use [this page](https://www.reddit.com/r/adventofcode/comments/yh2476/2016_day_19_part_2_how_do_i_figure_out_how_to/) to figure out how to do this programmatically.
 ### Language Specific
 - Day 01 Haskell - I had a hard enough time with part 1. I'll come back to this when I've got more Haskell experience.

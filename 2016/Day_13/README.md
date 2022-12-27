@@ -5,7 +5,7 @@ Out of respect for the author's wishes, I only put as much of the problem text a
 Visit the version with all the story elements [here](https://adventofcode.com/2016/day/13).
 
 ## Part 1
-Answer:
+Answer: 92
 ## Part 2
 
 ## Commentary / Approach to the Problem
@@ -16,7 +16,7 @@ Do a BFS and generate the walls at run-time. Maybe cache the results once calcul
 ### Generic
 
 ### Python
-
+- Nothing
 ### Ruby
 
 ### Perl
