@@ -26,17 +26,23 @@ func MultipleLines(fileName string) ([]string, error) {
 	return inputSlice, nil
 }
 
-// FindMaxLetter finds the letter that appears most often in the map
-func FindMaxLetter(positionMap map[rune]int) rune {
+// FindMinMaxLetter finds the letter that appears most often in the map
+func FindMinMaxLetter(positionMap map[rune]int) (rune, rune) {
 	maxVal := 0
-	var returnRune rune
+	minVal := 999999
+	var maxRune rune
+	var minRune rune
 	for key, value := range positionMap {
 		if value > maxVal {
 			maxVal = value
-			returnRune = key
+			maxRune = key
+		}
+		if value < minVal {
+			minVal = value
+			minRune = key
 		}
 	}
-	return returnRune
+	return maxRune, minRune
 }
 
 func main() {
@@ -55,10 +61,14 @@ func main() {
 			counters[position][character]++
 		}
 	}
+	outputPartOne := ""
+	outputPartTwo := ""
 	fmt.Println("The error-corrected message is:")
 	for _, value := range counters {
-		output := string(FindMaxLetter(value))
-		fmt.Print(output)
+		maxOutput, minOutput := FindMinMaxLetter(value)
+		outputPartOne += string(maxOutput)
+		outputPartTwo += string(minOutput)
 	}
-	fmt.Println("")
+	fmt.Println("For part one:", outputPartOne)
+	fmt.Println("For part two: ", outputPartTwo)
 }
