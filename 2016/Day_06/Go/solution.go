@@ -40,15 +40,15 @@ func FindMaxLetter(positionMap map[rune]int) rune {
 }
 
 func main() {
-	var position_zero = make(map[rune]int)
-	var position_one = make(map[rune]int)
-	var position_two = make(map[rune]int)
-	var position_three = make(map[rune]int)
-	var position_four = make(map[rune]int)
-	var position_five = make(map[rune]int)
-	var position_six = make(map[rune]int)
-	var position_seven = make(map[rune]int)
-	counters := [8]map[rune]int{position_zero, position_one, position_two, position_three, position_four, position_five, position_six, position_seven}
+	var positionZero = make(map[rune]int)
+	var positionOne = make(map[rune]int)
+	var positionTwo = make(map[rune]int)
+	var positionThree = make(map[rune]int)
+	var positionFour = make(map[rune]int)
+	var positionFive = make(map[rune]int)
+	var positionSix = make(map[rune]int)
+	var positionSeven = make(map[rune]int)
+	counters := [8]map[rune]int{positionZero, positionOne, positionTwo, positionThree, positionFour, positionFive, positionSix, positionSeven}
 	ourInput, _ := MultipleLines("/home/ermesa/Programming Projects/adventofcode/2016/Day_06/input.txt")
 	for _, word := range ourInput {
 		for position, character := range word {
