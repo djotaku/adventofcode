@@ -32,7 +32,7 @@ My goal for the 2016 problem sets are:
 ## What I learned from Advent of Code 2016
 
 ## Languages Still todo
-- Day 06 - Go, Haskell, Ruby, Perl
+- Day 06 - Haskell, Ruby, Perl
 - Day 07 - Go, Haskell, Perl, Ruby
 - Day 08 - Go, Haskell, Perl, Ruby
 - Day 09 - Go, Haskell, Perl, Ruby

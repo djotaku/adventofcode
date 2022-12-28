@@ -46,6 +46,11 @@ My initial approach to the problem: For each position, have a Count dict (or tal
 #### Go
 I decided to try and design an answer with basic Go libraries, not importing something like https://github.com/ekzhu/counter
 
+#### Ruby
+Originally I was thinking of using a Tally Hash, but since I need to break up by position of the letter in the word, I don't think I can.
+
+
+
 ## What I Learned
 
 ### Generic
