@@ -42,6 +42,10 @@ Answer: lragovly.
 ## Commentary / Approach to the Problem
 ### Part 1
 My initial approach to the problem: For each position, have a Count dict (or tally hash in Ruby or map/hash in Go/Perl) and then have it spit out #1 for each position. Should actually be a lot easier than Day 4 part 2.
+
+#### Go
+I decided to try and design an answer with basic Go libraries, not importing something like https://github.com/ekzhu/counter
+
 ## What I Learned
 
 ### Generic
