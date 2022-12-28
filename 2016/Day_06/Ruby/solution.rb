@@ -19,3 +19,9 @@ pos_seven =[]
 pos_eight = []
 
 positions = [[], [],[],[],[],[],[],[]]
+
+input_code = input_per_line(our_input)
+
+input_code.each  do | word |
+  word.each_with_index
+end
