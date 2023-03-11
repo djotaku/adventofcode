@@ -49,4 +49,18 @@ func main() {
 			break
 		}
 	}
+	// part 2
+	for _, firstNumberToCheck := range expenseReportEntries {
+		for _, secondNumberTocheck := range expenseReportEntries {
+			if firstNumberToCheck == secondNumberTocheck {
+				break
+			}
+			difference := 2020 - firstNumberToCheck - secondNumberTocheck
+			if findNumber(difference, expenseReportEntries) {
+				fmt.Printf("The three numbers are %d, %d, and %d\n", firstNumberToCheck, secondNumberTocheck, difference)
+				fmt.Printf("Multiplied together, the product is: %d\n", firstNumberToCheck*secondNumberTocheck*difference)
+				os.Exit(0)
+			}
+		}
+	}
 }
