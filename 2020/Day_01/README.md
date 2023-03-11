@@ -38,6 +38,7 @@ I created pairs out of all the numbers in my inputs and then I checked to find t
 
 When I come back to this to solve it with other programming languages, I intend to take the easier, less complex approach.
 
+That less complex approach is to take 2020, subtract one of the numbers. See if the answer is in list. Then you have your pair.
 
 ## What I Learned
 
