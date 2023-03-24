@@ -29,6 +29,7 @@ I think for this part, it's probably better not to use regex. Just search within
 ### Generic
 
 ### Python
+- A new type of lookahead in order to allow for overlapping without using the regex module. re.compile(r'(\d)(?=\1)')
 
 ### Ruby
 
