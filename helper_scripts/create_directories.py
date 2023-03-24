@@ -3,7 +3,7 @@ import os
 
 
 HOME = os.getenv('HOME')
-PROGRAMMING_LANGUAGES = ["Python", "Ruby", "Perl", "Haskell", "Go", "Rust", "Julia"]
+PROGRAMMING_LANGUAGES = ["Python", "Ruby", "Perl", "Haskell", "Go", "Rust", "Julia", "Java", "Kotlin"]
 
 
 def parse_args():
@@ -55,6 +55,10 @@ Visit the version with all the story elements [here](https://adventofcode.com/{y
 ### Rust
 
 ### Julia
+
+### Java
+
+### Kotlin
     """
     with open(f"{HOME}/Programming Projects/adventofcode/{year}/Day_{day:02d}/README.md", "w") as file:
         file.write(output_string)
