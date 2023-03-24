@@ -6,7 +6,6 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"regexp"
 	"strconv"
 )
 
@@ -31,18 +30,25 @@ func OneLine(fileName string) (string, error) {
 // detectDoubles takes in a string of numbers. It returns the sum of all doubles
 // Also if the first and last number are the same, those are considered doubles, too.
 func detectDoubles(numbers string) int {
-	re := regexp.MustCompile(`'(\d)(?=\1)'`)
-	matches := re.FindStringSubmatch(numbers)
+	// debug
+	fmt.Printf("numbers: %s\n", numbers)
 	doubleSum := 0
-	for _, number := range matches {
-		numberAsNumber, err := strconv.Atoi(number)
-		if err != nil {
-			print(err)
+	for index, number := range numbers {
+		// debug
+		fmt.Printf("doubleSum: %d, index: %d, number: %v\n", doubleSum, index, string(number))
+		if index+1 < len(numbers) {
+			// debug
+			fmt.Printf("number %s, numbers[index+1]: %s\n", string(number), string(numbers[index+1]))
+			if string(number) == string(numbers[index+1]) {
+
+				intyNumber, _ := strconv.Atoi(string(numbers[index]))
+				doubleSum += intyNumber
+			}
 		}
-		doubleSum += numberAsNumber
 	}
 	if numbers[0] == numbers[len(numbers)-1] {
-		doubleSum += int(numbers[0])
+		intyNumber, _ := strconv.Atoi(string(numbers[numbers[0]]))
+		doubleSum += intyNumber
 	}
 	return doubleSum
 }
@@ -52,6 +58,7 @@ func main() {
 	if err != nil {
 		print(err)
 	}
+	//captcha := "1122"
 	partOne := detectDoubles(captcha)
 	fmt.Printf("The solution to the captcha for part 1 is %d\n", partOne)
 }
