@@ -4,7 +4,7 @@ Someone has messed with past Santa events and you have to travel through time to
 
 Advent of Code 2017 can be found [here](https://adventofcode.com/2018).
 
-My Seventh (check) Advent of Code Problem Set
+My Seventh Advent of Code Problem Set
 
 My goal for the 2018 problem sets are:
 
