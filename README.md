@@ -66,7 +66,7 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
     - 3.2% Go
     - 1.1% Haskell
 
-![total stars](https://github.com/djotaku/adventofcode/blob/a170a923c57dc1d8491e4f206f7f3805976c4496/screenshots/total/total_star_count_20221227.png)
+![total stars](https://github.com/djotaku/adventofcode/blob/4dd826baa0ca7f608ac49b70bad540fa31cd442e/screenshots/total/total_star_count_20230324.png)
 
 Total Stars Over All Years: 202 
 
