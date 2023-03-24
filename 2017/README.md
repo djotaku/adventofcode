@@ -27,7 +27,7 @@ My goal for the 2017 problem sets are:
 ## What I learned from Advent of Code 2016
 
 ## Languages Still todo
-- Day 01 - Go, Haskell, Ruby, Perl, Julia, Rust
+- Day 01 - Haskell, Julia, Rust
 - Day 02 - Go, Haskell, Ruby, Perl, Julia, Rust
 - Day 03 - Go, Haskell, Ruby, Perl, Julia, Rust
 - Day 04 - Go, Haskell, Ruby, Perl, Julia, Rust
