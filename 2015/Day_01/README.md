@@ -58,3 +58,6 @@ I wasn't getting the right answer for part 1 until I changed from an == comparis
 - Did not bother setting up a parser yet because I don't know how to make
 Perl modules.
 - For Perl part 2 I used the "last" keyword to break out of the loop. First time using that.
+
+## Go
+- Just had to remember that running range on a string gives runes, not strings.
