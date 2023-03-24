@@ -29,28 +29,29 @@ func OneLine(fileName string) (string, error) {
 
 // detectDoubles takes in a string of numbers. It returns the sum of all doubles
 // Also if the first and last number are the same, those are considered doubles, too.
-func detectDoubles(numbers string) int {
-	// debug
-	fmt.Printf("numbers: %s\n", numbers)
+func detectDoubles(numbers string) (int, int) {
 	doubleSum := 0
+	lookAhead := len(numbers) / 2
+	part2Sum := 0
 	for index, number := range numbers {
-		// debug
-		fmt.Printf("doubleSum: %d, index: %d, number: %v\n", doubleSum, index, string(number))
 		if index+1 < len(numbers) {
-			// debug
-			fmt.Printf("number %s, numbers[index+1]: %s\n", string(number), string(numbers[index+1]))
 			if string(number) == string(numbers[index+1]) {
 
 				intyNumber, _ := strconv.Atoi(string(numbers[index]))
 				doubleSum += intyNumber
 			}
 		}
+		checkIndex := (index + lookAhead) % len(numbers)
+		if string(number) == string(numbers[checkIndex]) {
+			intyNumber, _ := strconv.Atoi(string(number))
+			part2Sum += intyNumber
+		}
 	}
 	if numbers[0] == numbers[len(numbers)-1] {
 		intyNumber, _ := strconv.Atoi(string(numbers[numbers[0]]))
 		doubleSum += intyNumber
 	}
-	return doubleSum
+	return doubleSum, part2Sum
 }
 
 func main() {
@@ -59,6 +60,7 @@ func main() {
 		print(err)
 	}
 	//captcha := "1122"
-	partOne := detectDoubles(captcha)
+	partOne, partTwo := detectDoubles(captcha)
 	fmt.Printf("The solution to the captcha for part 1 is %d\n", partOne)
+	fmt.Printf("The solution to the captcha for part 2 is %d\n", partTwo)
 }

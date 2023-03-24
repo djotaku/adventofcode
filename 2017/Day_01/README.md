@@ -36,7 +36,8 @@ I think for this part, it's probably better not to use regex. Just search within
 ### Perl
 
 ### Go (Golang)
-
+- Go does not support lookaheads in regular expressions
+- I continue to rue runes and how they are what you get from strings
 ### Haskell
 
 ### Rust
