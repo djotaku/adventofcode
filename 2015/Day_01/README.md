@@ -30,6 +30,11 @@ For example:
 What is the position of the character that causes him to first enter the basement?
 
 Answer: 1797
+## Commentary / Approach to the Problem
+(later fill in how you did this originally)
+
+Coming at this in 2023 for another go-around with newer languages (like Go!), the best approach for part 1 would be to do a map then reduce. Map the parens to -1 and 1 and then sum. However, knowing what's coming in part 2, 
+we can design the algorithm to do a for loop and store when we get to -1 and then keep on going.
 
 # Lessons Learned
 
