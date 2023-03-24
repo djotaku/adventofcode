@@ -14,6 +14,20 @@ def find_doubles(numbers)
 end
 
 
+def find_doubles_part2(numbers)
+  look_ahead = numbers.length / 2
+  number_sum = 0
+  numbers.split("").each_with_index do |number, index|
+    check_index = (index + look_ahead) % numbers.length
+    if number == numbers[check_index]
+      number_sum += number.to_i
+    end
+  end
+  number_sum
+end
+
 captcha = input_per_line("../input.txt")
-partOne = find_doubles(captcha[0])
-puts partOne
+part_one = find_doubles(captcha[0])
+puts part_one
+part_two = find_doubles_part2(captcha[0])
+puts part_two

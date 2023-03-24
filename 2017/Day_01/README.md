@@ -32,7 +32,7 @@ I think for this part, it's probably better not to use regex. Just search within
 - A new type of lookahead in order to allow for overlapping without using the regex module. re.compile(r'(\d)(?=\1)')
 
 ### Ruby
-
+- A reminder that array.each_with_index is the equivalent to Python's enumerate(list)
 ### Perl
 
 ### Go (Golang)
