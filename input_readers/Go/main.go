@@ -43,7 +43,7 @@ func MultipleLines(fileName string) ([]string, error) {
 	return inputSlice, nil
 }
 
-// MultipleLinesNumbers returns the input file if it contains multiple lines of text whicn are numbers
+// MultipleLinesNumbers returns the input file if it contains multiple lines of text which are numbers
 func MultipleLinesNumbers(fileName string) ([]int, error) {
 	inputSlice := make([]int, 0)
 	file, err := os.Open(fileName)
