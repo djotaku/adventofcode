@@ -7,7 +7,7 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 ## Part 1
 Answer: 54916
 ## Part 2
-
+Answer: 54728
 ## Commentary / Approach to the Problem
 ### Part 1
 Part 1 is straightforward. The biggest tweak I did was to just read the list from front and back rather than trying to duplicate when there is only one number.

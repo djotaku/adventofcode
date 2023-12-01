@@ -15,7 +15,7 @@ def find_numbers(line: str) -> list[str]:
 
 def find_numbers_part_2(line: str) -> list[str]:
     """Need to find numbers, including as words"""
-    search_pattern = re.compile(r'1|2|3|4|5|6|7|8|9|one|two|three|four|five|six|seven|eight|nine|zero')
+    search_pattern = re.compile(r'(?=(1|2|3|4|5|6|7|8|9|one|two|three|four|five|six|seven|eight|nine|zero))')
     patterns_found = re.findall(search_pattern, line)
     # print(patterns_found)
     translation = {"one": "1", "two": "2", "three": "3", "four": "4", "five": "5",
