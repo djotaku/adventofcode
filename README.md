@@ -70,9 +70,9 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
     - Python as primary language; probably Go as secondary and other languages if there's time.
     - 2 stars collected so far
 
-![total stars](https://github.com/djotaku/adventofcode/blob/4dd826baa0ca7f608ac49b70bad540fa31cd442e/screenshots/total/total_star_count_20230324.png)
+![total stars](https://github.com/djotaku/adventofcode/blob/6a29f4324a2eae0299094130758a1953b260e3b1/screenshots/total/total_star_count_20231201.png)
 
-Total Stars Over All Years: 202 
+Total Stars Over All Years: 204 
 
 After I'm all caught up, I may try my hand at some visualizations.
     
