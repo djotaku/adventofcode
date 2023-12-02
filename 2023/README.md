@@ -17,11 +17,11 @@ My goal for the 2023 problem sets are:
 
 ## Live Score on Python Discord Server
 
-total registered participants = XX
+total registered participants = 1085 
 
 | Date  | Position | Score |
 |-------|----------|-------|
-| 1 Dec | XX       | XX    |
+| 1 Dec | 217       | 1709    |
 
 
 ## Days I could not complete
