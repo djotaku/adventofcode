@@ -22,6 +22,7 @@ total registered participants = 1085
 | Date  | Position | Score |
 |-------|----------|-------|
 | 1 Dec | 217       | 1709    |
+| 2 Dec | 213| 3483 |
 
 
 ## Days I could not complete

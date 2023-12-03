@@ -1,4 +1,4 @@
-# Title of Problem
+# Day 01: Trebuchet?!
 
 Out of respect for the author's wishes, I only put as much of the problem text as necessary to understand the problem.
 
@@ -17,7 +17,7 @@ Part 1 is straightforward. The biggest tweak I did was to just read the list fro
 ### Generic
 
 ### Python
-
+- Nothing
 ### Ruby
 
 ### Perl

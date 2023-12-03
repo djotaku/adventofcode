@@ -1,4 +1,6 @@
 """Advent of Code Day 02 - Cube Conundrum."""
+import functools
+import operator
 import re
 
 part_1_cubes = {"red": 12, "green": 13, "blue": 14}
@@ -35,7 +37,35 @@ def run_through_games(games: list[str]) -> int:
     return sum(valid_games)
 
 
+def find_minimum_cubes(game: str) -> list[int]:
+    """Find the minimum number of cutes needed for a game to be played.
+
+    Return list is [red, green, blue]
+    """
+    find_blue = re.compile(r'(\d+) blue')
+    find_red = re.compile(r'(\d+) red')
+    find_green = re.compile(r'(\d+) green')
+    red_values = re.findall(find_red, game)
+    blue_values = re.findall(find_blue, game)
+    green_values = re.findall(find_green, game)
+    red_values = [int(value) for value in red_values]
+    blue_values = [int(value) for value in blue_values]
+    green_values = [int(value) for value in green_values]
+    return [max(red_values), max(green_values), max(blue_values)]
+
+
+def power_sums(games: list[str]) -> int:
+    """Computer the sum of the products (see part 2 description)"""
+    sums = []
+    for game in games:
+        product = functools.reduce(operator.mul, find_minimum_cubes(game), 1)
+        sums.append(product)
+    return sum(sums)
+
+
 if __name__ == '__main__':
-    games = input_per_line('../input.txt')
-    sum_of_valid_games = run_through_games(games)
+    games_list = input_per_line('../input.txt')
+    sum_of_valid_games = run_through_games(games_list)
     print(f"The sum of valid games is: {sum_of_valid_games}")
+    sum_of_products = power_sums(games_list)
+    print(f"The sum of the power of the sets is: {sum_of_products}")
