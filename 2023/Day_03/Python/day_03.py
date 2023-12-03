@@ -38,11 +38,13 @@ def create_schematic_dict(problem_input: list[str]) -> dict:
             schematic_dict[(x_coord, y_coord)] = char
     return schematic_dict
 
-def create_number(numbers_and_coordinates: tuple) -> int:
+
+def create_number(numbers_and_coordinates: list) -> int:
     number = ""
     for digit in numbers_and_coordinates:
         number += digit[1]
     return int(number)
+
 
 def create_valid_part_number_list(schematic: dict, width: int, height: int) -> list[int]:
     """Create a list of valid part numbers"""
@@ -51,12 +53,13 @@ def create_valid_part_number_list(schematic: dict, width: int, height: int) -> l
     # build up a list of all the numbers
     for y_coordinate in range(height):
         number_collector = []
-        for x_coordinate in range(width):
+        for x_coordinate in range(width+1):
             if schematic[(x_coordinate, y_coordinate)] in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]:
                 number_collector.append(((x_coordinate, y_coordinate), schematic[x_coordinate, y_coordinate]))
             else:
                 potential_part_numbers.append(number_collector.copy())
                 number_collector.clear()
+        # print(f"{x_coordinate=},{y_coordinate=}")
     # now check those numbers
     for number_list in potential_part_numbers:
         for coordinate_number in number_list:
@@ -67,9 +70,11 @@ def create_valid_part_number_list(schematic: dict, width: int, height: int) -> l
 
 
 if __name__ == '__main__':
-    our_input = input_per_line("../sample_input.txt")
+    our_input = input_per_line("../input.txt")
     puzzle_height = len(our_input)
     puzzle_width = len(our_input[0])
     input_as_dict = create_schematic_dict(our_input)
     part_numbers = create_valid_part_number_list(input_as_dict, puzzle_width, puzzle_height)
     print(f"The sum of the part numbers is {sum(part_numbers)}")
+
+# 542316 is too low
