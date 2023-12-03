@@ -104,8 +104,10 @@ def find_gear_ratios(asterisks: list) -> list[int]:
             for number_info in part_two_valid_number_coordinates:
                 if direction in number_info[0]:
                     multiplicands.append(number_info[1])
-        if len(multiplicands) >= 2:
-            print(f"{multiplicands=}")
+                if len(multiplicands) == 2:
+                    break
+        if len(multiplicands) == 2:
+            # print(f"{multiplicands=}")
             gear_ratios.append(multiplicands[0] * multiplicands[1])
             multiplicands.clear()
         else:
@@ -114,7 +116,7 @@ def find_gear_ratios(asterisks: list) -> list[int]:
 
 
 if __name__ == '__main__':
-    our_input = input_per_line("../sample_input.txt")
+    our_input = input_per_line("../input.txt")
     puzzle_height = len(our_input)
     puzzle_width = len(our_input[0])
     input_as_dict = create_schematic_dict(our_input)
@@ -122,6 +124,6 @@ if __name__ == '__main__':
     print(f"The sum of the part numbers is {sum(part_numbers)}")
     asterisk_locations = find_asterisk_coordinates(input_as_dict, puzzle_width, puzzle_height)
     the_gear_ratios = find_gear_ratios(asterisk_locations)
-    print(the_gear_ratios)
+    print(f"Sum of gear ratios is {sum(the_gear_ratios)}")
 
-# 542316 is too low
+# 97051299 is too high
