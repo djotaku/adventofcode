@@ -39,10 +39,16 @@ def create_schematic_dict(problem_input: list[str]) -> dict:
     return schematic_dict
 
 
+part_two_valid_number_coordinates = []
+
+
 def create_number(numbers_and_coordinates: list) -> int:
     number = ""
+    coordinates = []
     for digit in numbers_and_coordinates:
         number += digit[1]
+        coordinates.append(digit[0])
+    part_two_valid_number_coordinates.append((coordinates, int(number)))
     return int(number)
 
 
@@ -53,7 +59,7 @@ def create_valid_part_number_list(schematic: dict, width: int, height: int) -> l
     # build up a list of all the numbers
     for y_coordinate in range(height):
         number_collector = []
-        for x_coordinate in range(width+1):
+        for x_coordinate in range(width + 1):
             if schematic[(x_coordinate, y_coordinate)] in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]:
                 number_collector.append(((x_coordinate, y_coordinate), schematic[x_coordinate, y_coordinate]))
             else:
@@ -69,12 +75,53 @@ def create_valid_part_number_list(schematic: dict, width: int, height: int) -> l
     return valid_part_numbers
 
 
+def find_asterisk_coordinates(schematic: dict, width: int, height: int) -> list[tuple]:
+    asterisk_coordinates = []
+    for y_coordinate in range(height):
+        for x_coordinate in range(width + 1):
+            if schematic[(x_coordinate, y_coordinate)] == "*":
+                asterisk_coordinates.append((x_coordinate, y_coordinate))
+    return asterisk_coordinates
+
+
+def find_gear_ratios(asterisks: list) -> list[int]:
+    """Search to see if asterisks are adjacent to numbers and multiply them together and add to list."""
+    gear_ratios = []
+    for asterisk in asterisks:
+        multiplicands = []
+        x = asterisk[0]
+        y = asterisk[1]
+        top_left = (x - 1, y - 1)
+        top = (x, y - 1)
+        top_right = (x + 1, y - 1)
+        right = (x + 1, y)
+        bottom_right = (x + 1, y + 1)
+        bottom = (x, y + 1)
+        bottom_left = (x - 1, y + 1)
+        left = (x - 1, y)
+        directions = [top_left, top, top_right, right, bottom_right, bottom, bottom_left, left]
+        for direction in directions:
+            for number_info in part_two_valid_number_coordinates:
+                if direction in number_info[0]:
+                    multiplicands.append(number_info[1])
+        if len(multiplicands) >= 2:
+            print(f"{multiplicands=}")
+            gear_ratios.append(multiplicands[0] * multiplicands[1])
+            multiplicands.clear()
+        else:
+            multiplicands.clear()
+    return gear_ratios
+
+
 if __name__ == '__main__':
-    our_input = input_per_line("../input.txt")
+    our_input = input_per_line("../sample_input.txt")
     puzzle_height = len(our_input)
     puzzle_width = len(our_input[0])
     input_as_dict = create_schematic_dict(our_input)
     part_numbers = create_valid_part_number_list(input_as_dict, puzzle_width, puzzle_height)
     print(f"The sum of the part numbers is {sum(part_numbers)}")
+    asterisk_locations = find_asterisk_coordinates(input_as_dict, puzzle_width, puzzle_height)
+    the_gear_ratios = find_gear_ratios(asterisk_locations)
+    print(the_gear_ratios)
 
 # 542316 is too low
