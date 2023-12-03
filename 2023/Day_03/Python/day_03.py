@@ -88,7 +88,8 @@ def find_gear_ratios(asterisks: list) -> list[int]:
     """Search to see if asterisks are adjacent to numbers and multiply them together and add to list."""
     gear_ratios = []
     for asterisk in asterisks:
-        multiplicands = []
+        # multiplicands = []
+        multiplicands = set()
         x = asterisk[0]
         y = asterisk[1]
         top_left = (x - 1, y - 1)
@@ -103,12 +104,13 @@ def find_gear_ratios(asterisks: list) -> list[int]:
         for direction in directions:
             for number_info in part_two_valid_number_coordinates:
                 if direction in number_info[0]:
-                    multiplicands.append(number_info[1])
+                    multiplicands.add(number_info[1])
                 if len(multiplicands) == 2:
                     break
         if len(multiplicands) == 2:
             # print(f"{multiplicands=}")
-            gear_ratios.append(multiplicands[0] * multiplicands[1])
+            mult_list = list(multiplicands)
+            gear_ratios.append(mult_list[0] * mult_list[1])
             multiplicands.clear()
         else:
             multiplicands.clear()
