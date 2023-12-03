@@ -23,6 +23,7 @@ total registered participants = 1085
 |-------|----------|-------|
 | 1 Dec | 217       | 1709    |
 | 2 Dec | 213| 3483 |
+| 3 Dec |162 | 5336|
 
 
 ## Days I could not complete
