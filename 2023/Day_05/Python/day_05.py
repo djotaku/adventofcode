@@ -17,7 +17,6 @@ def generate_map(map_info: list[str]) -> dict:
 
     50 98 2 means that key of 98 gives 50 and key of 99 gives value of 51.
     """
-    output_dict = {}
     destination_list = []
     source_list = []
     for line in map_info:
@@ -31,6 +30,7 @@ def generate_map(map_info: list[str]) -> dict:
             destination += 1
             source += 1
             map_range -= 1
-    for pos, source_item in enumerate(source_list):
-        output_dict[source_item] = destination_list[pos]
-    return output_dict
+    return {
+        source_item: destination_list[pos]
+        for pos, source_item in enumerate(source_list)
+    }
