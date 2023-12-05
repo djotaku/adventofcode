@@ -1,4 +1,5 @@
 """Solution for AoC 2023 Day 4: Scratchcards."""
+from functools import lru_cache
 
 
 def input_per_line(file: str):
@@ -15,17 +16,18 @@ def find_winning_numbers(card: str) -> set:
     winning_numbers = [int(item) for item in winning_numbers if item != ""]
     card_numbers = card_numbers.split(" ")
     card_numbers = [int(item) for item in card_numbers if item != ""]
-    your_winning_numbers = set(winning_numbers).intersection(set(card_numbers))
-    return your_winning_numbers
+    return set(winning_numbers).intersection(set(card_numbers))
 
 
 def calculate_card_score(winning_numbers: set) -> int:
     """Calculate the winning score for a card"""
-    how_many = len(winning_numbers)
-    if how_many == 0:
-        return 0
-    else:
-        return pow(2, len(winning_numbers) - 1)
+    return pow(2, len(winning_numbers) - 1) if winning_numbers else 0
+
+
+@lru_cache
+def count_scratchcards(scratchcards: dict) -> int:
+    """Needs to count scratch cards recursively and use a cache."""
+    
 
 
 if __name__ == '__main__':
