@@ -31,7 +31,7 @@ total registered participants = 1085
 
 
 ### Part 2 Sections Still incomplete:
-
+- Day 04 - I think I have a rough idea of what I need to do to get the answer, but I need to fix the recursion. 
 ### Language Specific
 - Nothing Yet
 
