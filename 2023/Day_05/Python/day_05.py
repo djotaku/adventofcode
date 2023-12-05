@@ -1,5 +1,8 @@
 """Solution to AoC 2023 Day 5: If You Give A Seed A Fertilizer"""
 
+map_of_maps = {}
+
+
 def input_per_line_unique_first_line(file: str):
     """This is for when each line is an input to the puzzle. The newline character is stripped."""
     with open(file, 'r') as input_file:
@@ -34,3 +37,23 @@ def generate_map(map_info: list[str]) -> dict:
         source_item: destination_list[pos]
         for pos, source_item in enumerate(source_list)
     }
+
+
+def fill_in_map_of_maps(mappings: list[str]):
+    """Go through all the mappings and fill out the main dictionary."""
+    the_key = ""
+    the_numbers = []
+    for the_map in mappings:
+        if "-" in the_map:
+            the_key, _ = the_map.split()
+        elif the_map != "":
+            the_numbers.append(the_map)
+        elif the_map == "":
+            map_of_maps[the_key] = generate_map(the_numbers.copy())
+            the_key = ""
+            the_numbers.clear()
+
+
+if __name__ == '__main__':
+    seeds, mappings = input_per_line_unique_first_line("../sample_input.txt")
+    fill_in_map_of_maps(mappings)
