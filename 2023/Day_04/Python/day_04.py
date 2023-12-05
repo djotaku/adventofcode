@@ -24,10 +24,36 @@ def calculate_card_score(winning_numbers: set) -> int:
     return pow(2, len(winning_numbers) - 1) if winning_numbers else 0
 
 
-@lru_cache
-def count_scratchcards(scratchcards: dict) -> int:
+scratchcards = {}
+
+
+def create_scratchcard_dict(card: str, card_number: int):
+    """Go through the cards, figure out what cards they win."""
+    number_of_cards = len(find_winning_numbers(card))
+    card_ids = []
+    new_card_number = card_number
+    while number_of_cards > 0:
+        card_ids.append(new_card_number + 1)
+        new_card_number += 1
+        number_of_cards -= 1
+    scratchcards[card_number] = card_ids
+
+
+@lru_cache()
+def count_scratchcards(card_number: int) -> int:
     """Needs to count scratch cards recursively and use a cache."""
-    
+    card_count = 1  # the initial card
+    print(f"{card_number=}")
+    print(f"{scratchcards[card_number]=}")
+    for card in scratchcards[card_number]:
+        if not scratchcards[card]:
+            card_count = 1
+        else:
+            card_count_hold = count_scratchcards(card)
+            print(f'{card_count_hold=}')
+            card_count += card_count_hold
+            print(f"{card_count=}")
+    return card_count
 
 
 if __name__ == '__main__':
@@ -36,5 +62,5 @@ if __name__ == '__main__':
               for card
               in all_cards]
     print(f"The cards are worth {sum(points)} points.")
-
-# 26462 is too high
+    for number, card in enumerate(all_cards):
+        create_scratchcard_dict(card, card_number=number)
