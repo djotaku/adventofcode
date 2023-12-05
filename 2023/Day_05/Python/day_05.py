@@ -21,6 +21,7 @@ def generate_map(map_info: list[str]) -> dict:
 
     50 98 2 means that key of 98 gives 50 and key of 99 gives value of 51.
     """
+    print("is the problem here?")
     destination_list = []
     source_list = []
     for line in map_info:
@@ -49,8 +50,8 @@ def fill_in_map_of_maps(mappings: list[str]):
             the_key, _ = the_map.split()
         elif the_map != "":
             the_numbers.append(the_map)
-        elif the_map == "":
-            map_of_maps[the_key] = generate_map(the_numbers.copy())
+        else:
+            map_of_maps[the_key] = generate_map(the_numbers)
             the_key = ""
             the_numbers.clear()
     # final entry
@@ -95,7 +96,7 @@ def find_location(seed: int) -> int:
 
 
 if __name__ == '__main__':
-    seed_row, mappings = input_per_line_unique_first_line("../sample_input.txt")
+    seed_row, mappings = input_per_line_unique_first_line("../input.txt")
     print("filling in map")
     fill_in_map_of_maps(mappings)
     print(mappings)
