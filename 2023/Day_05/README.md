@@ -14,8 +14,9 @@ This description was bananas and took me 3 times reading through to understand w
 
 Thinking about it a bit more - map...ie dictionary. I will make dictionaries that can be looked up. This makes it easier for categories where there are multiple ranges.
 
-The solution found in [this commit](https://github.com/djotaku/adventofcode/blob/163353d4da1f354eac58e1b2594f6e0ebc3ca076/2023/Day_05/Python/day_05.py) causes my computer to run out of RAM. Will need to resturcture the solution.
+The solution found in [this commit](https://github.com/djotaku/adventofcode/blob/163353d4da1f354eac58e1b2594f6e0ebc3ca076/2023/Day_05/Python/day_05.py) causes my computer to run out of RAM. Will need to resturcture the solution. Had to change it to ranges and finding if the number was in the range. 
 ### Part 2
+Because of the incredible number of seeds involved, this has to be mathematical like the solution to part 1, but I'm not sure what math is involved here.  
 ## What I Learned
 
 ### Generic

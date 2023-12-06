@@ -99,11 +99,7 @@ def find_location(seed: int) -> int:
 
 if __name__ == '__main__':
     seed_row, mappings = input_per_line_unique_first_line("../input.txt")
-    # print("filling in map")
     fill_in_map_of_maps(mappings)
-    # print(mappings)
-    # print(map_of_maps["humidity-to-location"])
-    # print("getting seeds")
     seeds = get_seeds(seed_row)
     seed_locations = [find_location(seed) for seed in seeds]
     print(f"The lowest location is {min(seed_locations)}")

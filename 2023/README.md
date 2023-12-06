@@ -24,6 +24,7 @@ total registered participants = 1085
 | 1 Dec | 217       | 1709    |
 | 2 Dec | 213| 3483 |
 | 3 Dec |162 | 5336|
+|5 Dec| 216 | 7168 |
 
 
 ## Days I could not complete
@@ -32,6 +33,7 @@ total registered participants = 1085
 
 ### Part 2 Sections Still incomplete:
 - Day 04 - I think I have a rough idea of what I need to do to get the answer, but I need to fix the recursion. 
+- Day 05 - didn't think about how I was going to do part 2 without crashing the computer.
 ### Language Specific
 - Nothing Yet
 
