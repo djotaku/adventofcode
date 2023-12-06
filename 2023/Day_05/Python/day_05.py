@@ -1,9 +1,11 @@
 """Solution to AoC 2023 Day 5: If You Give A Seed A Fertilizer"""
 import re
 from collections import namedtuple
+
 map_of_maps = {}
 
 Mapping = namedtuple("Mapping", ["source_begin", "source_end", "destination_begin", "destination_end"])
+
 
 def input_per_line_unique_first_line(file: str):
     """This is for when each line is an input to the puzzle. The newline character is stripped."""
@@ -28,8 +30,8 @@ def generate_map(map_info: list[str]) -> list:
         destination = int(destination)
         source = int(source)
         map_range = int(map_range)
-        maps.append(Mapping(source_begin=source, source_end=source+map_range,
-                   destination_begin=destination, destination_end=destination+map_range))
+        maps.append(Mapping(source_begin=source, source_end=source + map_range,
+                            destination_begin=destination, destination_end=destination + map_range))
     return maps
 
 
@@ -57,16 +59,18 @@ def get_seeds(seed_line: str) -> list[int]:
     return [int(number) for number in numbers]
 
 
-def map_conversion(number: int, dict_key: str) -> int|None:
+def map_conversion(number: int, dict_key: str) -> int | None:
     final_destination = None
     maps = map_of_maps[dict_key]
-    for this_map in maps:
-        if this_map.source_begin <= number < this_map.source_end:
-            return this_map.destination_begin + (number-this_map.source_begin)
-    return None
+    return next(
+        (
+            this_map.destination_begin + (number - this_map.source_begin)
+            for this_map in maps
+            if this_map.source_begin <= number < this_map.source_end
+        ),
+        None,
+    )
 
-def new_find_location(seed: int) -> int:
-    pass
 
 def find_location(seed: int) -> int:
     soil_location = map_conversion(seed, "seed-to-soil")
