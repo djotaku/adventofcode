@@ -24,7 +24,7 @@ def find_button_presses(race_time: int, record_distance: int) -> int:
 
 
 if __name__ == '__main__':
-    race_records = input_per_line("../sample_input.txt")
+    race_records = input_per_line("../input.txt")
     regex = re.compile(r'\d+')
     times = re.findall(regex, race_records[0])
     distances = re.findall(regex, race_records[1])
