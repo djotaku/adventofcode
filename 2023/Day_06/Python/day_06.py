@@ -36,3 +36,4 @@ if __name__ == '__main__':
     part_two_time = int("".join(times))
     part_two_distance = int("".join(distances))
     part_two_answer = find_button_presses(part_two_time, part_two_distance)
+    print(f"Actually, you could beat the record {part_two_answer} ways.")
