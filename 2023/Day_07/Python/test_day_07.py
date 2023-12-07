@@ -19,6 +19,6 @@ def test_determine_hand():
 
 
 def test_merge_sort():
-    card_hands = ["32T3K", "T55J5", "KK677", "KTJJT", "QQQJA"]
+    card_hands = [("32T3K", 765), ("T55J5", 684), ("KK677", 28), ("KTJJT", 220), ("QQQJA", 483)]
     sorted_hands = day_07.merge_sort(card_hands)
-    assert sorted_hands == ["32T3K", "KTJJT", "KK677", "T55J5", "QQQJA"]
+    assert sorted_hands == [("32T3K", 765), ("KTJJT", 220), ("KK677", 28), ("T55J5", 684), ("QQQJA", 483)]

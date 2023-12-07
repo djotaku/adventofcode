@@ -8,6 +8,12 @@ possible_hands = ["FIVE_OF_A_KIND", "FOUR_OF_A_KIND", "FULL_HOUSE", "THREE_OF_A_
 card_labels = ["A", "K", "Q", "J", "T", "9", "8", "7", "6", "5", "4", "3", "2"]
 
 
+def input_per_line(file: str):
+    """This is for when each line is an input to the puzzle. The newline character is stripped."""
+    with open(file, 'r') as input_file:
+        return [line.rstrip() for line in input_file.readlines()]
+
+
 def determine_hand(hand: str) -> str:
     """Determine what kind of hand this is and return a string representation."""
     cards = list(hand)
@@ -48,14 +54,14 @@ def determine_winning_card(card_1: str, card_2: str) -> bool:
     """Return true if card_1 is the losing card."""
     card_1_ID = determine_hand(card_1)
     card_2_ID = determine_hand(card_2)
-    print(f"{card_1_ID=}")
-    print(f"{card_2_ID=}")
+    # print(f"{card_1_ID=}")
+    # print(f"{card_2_ID=}")
     if possible_hands.index(card_1_ID) > possible_hands.index(card_2_ID):
         return True
     elif possible_hands.index(card_1_ID) < possible_hands.index(card_2_ID):
         return False
     else:  # they are the same type
-        print(f"There's a tie. {card_1=} is a {card_1_ID} and {card_2=} is a {card_2_ID}")
+        # print(f"There's a tie. {card_1=} is a {card_1_ID} and {card_2=} is a {card_2_ID}")
         for num in range(5):
             if card_labels.index(card_1[num]) == card_labels.index(card_2[num]):
                 pass
@@ -85,8 +91,8 @@ def merge(left, right):
         # The elements need to be sorted to add them to the
         # resultant array, so you need to decide whether to get
         # the next element from the first or the second array
-        #if left[index_left] <= right[index_right]:
-        if determine_winning_card(left[index_left], right[index_right]):
+        # if left[index_left] <= right[index_right]:  # generic if it's something with a defined comparison
+        if determine_winning_card(left[index_left][0], right[index_right][0]):
             result.append(left[index_left])
             index_left += 1
         else:
@@ -108,5 +114,9 @@ def merge(left, right):
 
 
 if __name__ == '__main__':
-    card_hands = ["32T3K", "T55J5", "KK677", "KTJJT", "QQQJA"]
-    print(merge_sort(card_hands))
+    all_hands = input_per_line("../input.txt")
+    all_hands_formatted = [hand.split() for hand in all_hands]
+    # print(all_hands_formatted)
+    sorted_hands = merge_sort(all_hands_formatted)
+    winnings = [(pos+1) * int(hand[1]) for pos, hand in enumerate(sorted_hands)]
+    print(f"Total winnings are {sum(winnings)}")
