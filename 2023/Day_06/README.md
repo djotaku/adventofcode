@@ -12,6 +12,7 @@ Answer: 449820
 ### Part 1
 My naive first implementation idea is that I will calculate all possible button presses and stop when I am no longer beating the record.
 ### Part 2
+Ah, here is where the naive implementation surely will not work.
 ## What I Learned
 
 ### Generic

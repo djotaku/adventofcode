@@ -33,3 +33,6 @@ if __name__ == '__main__':
         button_press_amounts.append(find_button_presses(int(times[number]), int(distances[number])))
     product = reduce(operator.mul, button_press_amounts, 1)
     print(f"If you multiply winning button presses together you get {product}")
+    part_two_time = int("".join(times))
+    part_two_distance = int("".join(distances))
+    part_two_answer = find_button_presses(part_two_time, part_two_distance)
