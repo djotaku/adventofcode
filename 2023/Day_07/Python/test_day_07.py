@@ -16,6 +16,8 @@ def test_determine_hand():
     assert day_07.determine_hand(hand) == "ONE_PAIR"
     hand = "23456"
     assert day_07.determine_hand(hand) == "HIGH_CARD"
+    hand = "T55J5"
+    assert day_07.determine_hand(hand, True) == "FOUR_OF_A_KIND"
 
 
 def test_merge_sort():
