@@ -20,12 +20,6 @@ def determine_hand(hand: str, part_2: bool = False) -> str:
     """Determine what kind of hand this is and return a string representation."""
     cards = list(hand)
     card_counter = Counter(cards)
-    if part_2:
-        if "J" in cards:
-            most_common_card = card_counter.most_common(1)[0][0]
-            # print(most_common_card)
-            cards = [letter.replace('J', most_common_card) for letter in cards]
-    card_counter = Counter(cards)
     # print(card_counter)
     distinct_groups = len(card_counter.keys())
     # print(distinct_groups)
@@ -132,16 +126,30 @@ def merge(left, right, part_two):
 
 
 if __name__ == '__main__':
-    all_hands = input_per_line("../sample_input.txt")
+    all_hands = input_per_line("../input.txt")
     all_hands_formatted = [hand.split() for hand in all_hands]
     # print(all_hands_formatted)
     sorted_hands = merge_sort(all_hands_formatted)
     winnings = [(pos + 1) * int(hand[1]) for pos, hand in enumerate(sorted_hands)]
     print(f"Total winnings are {sum(winnings)}")
-
-    part_two_sorted_hands = merge_sort(all_hands_formatted, True)
-    print(part_two_sorted_hands)
+    part_two_modified_hands = []
+    for hand in all_hands_formatted:
+        # print(f"{hand=}")
+        if "J" in hand[0]:
+            cards = list(hand[0])
+            # print(f"{cards=}")
+            card_counter = Counter(cards)
+            most_common_card = card_counter.most_common(1)[0][0]
+            # print(most_common_card)
+            cards = [letter.replace('J', most_common_card) for letter in cards]
+            part_two_modified_hands.append(("".join(cards), hand[1], hand[0]))
+        else:
+            part_two_modified_hands.append(hand)
+    part_two_sorted_hands = merge_sort(part_two_modified_hands, True)
+    # print(part_two_sorted_hands)
     part_two_winnings = [(pos + 1) * int(hand[1]) for pos, hand in enumerate(part_two_sorted_hands)]
     print(f"With new rules, total winnings are {sum(part_two_winnings)}")
 
+
+# 250372376 is too low
 # 248313747 is too low
