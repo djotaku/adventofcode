@@ -10,3 +10,10 @@ def test_get_to_zzz():
     map_dict = day_08.create_map(rest)
     steps = day_08.get_to_zzz(map_dict, first_line)
     assert steps == 6
+
+
+def test_get_to_star_star_z():
+    first_line, rest = day_08.input_per_line_unique_first_line("../sample_input_3.txt")
+    map_dict = day_08.create_map(rest)
+    steps = day_08.get_to_star_star_z(map_dict, first_line)
+    assert steps == 6

@@ -12,6 +12,7 @@ Answer = 23147
 ### Part 1
 Seems as simple as creating a dictionary. I imagine part 2 will be a traveling salesman or similar thing. Cache may be useful in part 1 or part 2.
 ### Part 2
+Naive implementation didn't work. Tried lru_cache. That didn't seem to work either. 
 ## What I Learned
 
 ### Generic
