@@ -7,7 +7,7 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 ## Part 1
 Answer: 1834108701
 ## Part 2
-
+Answer : 993
 ## Commentary / Approach to the Problem
 ### Part 1
 This seems complicated, but I think I have an idea of how I would solve it. 
@@ -17,7 +17,10 @@ This seems complicated, but I think I have an idea of how I would solve it.
 - For each number in the list, add it to the one before it. 
 - That's your number for this line
 - Gather up all the numbers for all the lines and sum.
+
+Went with recursion, almost got it, but had to hold one number out from the recursion.
 ### Part 2
+Seems like it should be the same as part 1, but subtraction instead. (And from the front of the list/array)
 ## What I Learned
 
 ### Generic
