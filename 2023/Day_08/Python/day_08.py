@@ -1,6 +1,7 @@
 """Solution to AoC 2023 Day 8: Haunted Wasteland"""
 import re
-from functools import lru_cache
+from math import lcm
+
 
 def input_per_line_unique_first_line(file: str):
     """This is for when each line is an input to the puzzle. The newline character is stripped."""
@@ -23,7 +24,7 @@ def create_map(map_nodes: list[str]) -> dict:
     return map_dict
 
 
-def get_to_zzz(node_map: dict, directions: str) -> int:
+def get_to_zzz(node_map: dict,directions: str) -> int:
     """Traverse nodes from AAA to ZZZ. Return the number of steps required to get there."""
     directions_list = list(directions)
     completed = False
@@ -39,34 +40,20 @@ def get_to_zzz(node_map: dict, directions: str) -> int:
         if node == "ZZZ":
             return steps
 
-part_two_map = {}
 
-@lru_cache()
-def get_to_star_star_z(directions: str) -> int:
+def get_to_star_star_z(node_map: dict, node: str,  directions: str) -> int:
     """Simultaneously traverse nodes from **A to **Z. Return the number of steps required to get there."""
     directions_list = list(directions)
     completed = False
     steps = 0
     pointer = 0
-    nodes = [node for node in part_two_map if node[-1] == "A"]
     while not completed:
         steps += 1
         direction = directions_list[pointer]
-        # print(f"{nodes=}")
-        new_nodes = []
-        for node in nodes:
-            node = part_two_map[node][0] if direction == "L" else part_two_map[node][1]
-            new_nodes.append(node)
-        nodes = new_nodes.copy()
-        new_nodes.clear()
+        node = node_map[node][0] if direction == "L" else node_map[node][1]
         pointer += 1
         pointer %= len(directions_list)
-        z_nodes = 0
-        print(nodes)
-        for node in nodes:
-            if node[-1] == "Z":
-                z_nodes += 1
-        if z_nodes == len(nodes):
+        if node[-1] == "Z":
             return steps
 
 
@@ -76,5 +63,11 @@ if __name__ == '__main__':
     part_two_map = create_map(our_nodes)
     part_one_steps = get_to_zzz(our_map, dirs)
     print(f"It will take {part_one_steps} steps to get to ZZZ")
-    part_two_steps = get_to_star_star_z(dirs)
-    print(f"It will take {part_two_steps} steps to get to all the **Z nodes.")
+    # starting part 2
+    part_two_nodes = [node for node in our_map if node[-1] == "A"]
+    part_two_steps = [
+        get_to_star_star_z(our_map, node, dirs) for node in part_two_nodes
+    ]
+    least_common = lcm(*part_two_steps)
+    #part_two_steps = get_to_star_star_z(our_map, dirs)
+    print(f"It will take {least_common} steps to get to all the **Z nodes.")
