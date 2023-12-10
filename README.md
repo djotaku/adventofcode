@@ -68,11 +68,11 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
 -2023
     - Eighth Problem Set Tackled/Fourth Year Participating Live
     - Python as primary language; probably Go as secondary and other languages if there's time.
-    - 10 stars collected so far
+    - 16 stars collected so far
 
 ![total stars](https://github.com/djotaku/adventofcode/blob/ef49ac2fcf8a281e4c67a00cba0750510e44783f/screenshots/total/total_star_count_20231203.png)
 
-Total Stars Over All Years: 212 
+Total Stars Over All Years: 218 
 
 After I'm all caught up, I may try my hand at some visualizations.
     
