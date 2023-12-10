@@ -34,8 +34,6 @@ total registered participants = 1085
 ### Part 2 Sections Still incomplete:
 - Day 04 - I think I have a rough idea of what I need to do to get the answer, but I need to fix the recursion. 
 - Day 05 - didn't think about how I was going to do part 2 without crashing the computer.
-- Day 07 - I think what's happening is that I'm changing the cards, which is good for the Type comparison, but loses the "J" for the "tie" comparisons.
-- Day 08 - Ran out of time for the day (real life got in the way), need to return to this
 ### Language Specific
 - Nothing Yet
 
