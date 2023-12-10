@@ -7,7 +7,7 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 ## Part 1
 Answer: 248569531
 ## Part 2
-
+Answer: 250382098 
 ## Commentary / Approach to the Problem
 ### Part 1
 If I wanted to take a bunch of time, I think this problem could benefit from creating a class so that I can define less than and greater than. I'm going to try and do this with functional programming because my class skills aren't so great that it woudl be an easy slam-dunk for me.

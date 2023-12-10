@@ -20,9 +20,20 @@ def determine_hand(hand: str, part_2: bool = False) -> str:
     """Determine what kind of hand this is and return a string representation."""
     cards = list(hand)
     card_counter = Counter(cards)
-    # print(card_counter)
     distinct_groups = len(card_counter.keys())
-    # print(distinct_groups)
+    if part_2 and "J" in cards:
+        #print(f"I'm determining {hand=}")
+        most_common_card = card_counter.most_common(1)[0][0]
+        if most_common_card == "J":  # had to add this for my input, not the sample code
+            try:
+                most_common_card = card_counter.most_common(2)[1][0]
+            except:  # I don't know why it kept going out of range without this, nothing when I printed it out...
+                pass
+        # print(f"{most_common_card=}")
+        cards = [letter.replace('J', most_common_card) for letter in cards]
+        # print(f"{cards=}")
+        card_counter = Counter(cards)
+        distinct_groups = len(card_counter.keys())
     if distinct_groups == 1:
         return possible_hands[0]
     elif distinct_groups == 2:
@@ -48,25 +59,24 @@ def merge_sort(array, part_two=False):
     # into two equal halves, sorting each half and merging them
     # together into the final result
     return merge(
-        left=merge_sort(array[:midpoint]),
-        right=merge_sort(array[midpoint:]),
+        left=merge_sort(array[:midpoint], part_two),
+        right=merge_sort(array[midpoint:], part_two),
         part_two=part_two)
 
 
 def determine_winning_card(card_1: str, card_2: str, part_two: bool = False) -> bool:
     """Return true if card_1 is the losing card."""
-    card_1_ID = determine_hand(card_1, part_two)
-    card_2_ID = determine_hand(card_2, part_two)
-    # print(f"{card_1_ID=}")
-    # print(f"{card_2_ID=}")
-    if possible_hands.index(card_1_ID) > possible_hands.index(card_2_ID):
+    card_1_id = determine_hand(card_1, part_two)
+    card_2_id = determine_hand(card_2, part_two)
+    if possible_hands.index(card_1_id) > possible_hands.index(card_2_id):
         return True
-    elif possible_hands.index(card_1_ID) < possible_hands.index(card_2_ID):
+    elif possible_hands.index(card_1_id) < possible_hands.index(card_2_id):
         return False
     else:  # they are the same type
         # print(f"There's a tie. {card_1=} is a {card_1_ID} and {card_2=} is a {card_2_ID}")
         if part_two:
             for num in range(5):
+                # print(f"Comparing {card_1[num]=} with {card_2[num]=}")
                 if card_labels_part_2.index(card_1[num]) == card_labels_part_2.index(card_2[num]):
                     pass
                 elif card_labels_part_2.index(card_1[num]) > card_labels_part_2.index(card_2[num]):
@@ -132,24 +142,12 @@ if __name__ == '__main__':
     sorted_hands = merge_sort(all_hands_formatted)
     winnings = [(pos + 1) * int(hand[1]) for pos, hand in enumerate(sorted_hands)]
     print(f"Total winnings are {sum(winnings)}")
-    part_two_modified_hands = []
-    for hand in all_hands_formatted:
-        # print(f"{hand=}")
-        if "J" in hand[0]:
-            cards = list(hand[0])
-            # print(f"{cards=}")
-            card_counter = Counter(cards)
-            most_common_card = card_counter.most_common(1)[0][0]
-            # print(most_common_card)
-            cards = [letter.replace('J', most_common_card) for letter in cards]
-            part_two_modified_hands.append(("".join(cards), hand[1], hand[0]))
-        else:
-            part_two_modified_hands.append(hand)
-    part_two_sorted_hands = merge_sort(part_two_modified_hands, True)
+    part_two_sorted_hands = merge_sort(sorted_hands, True)
     # print(part_two_sorted_hands)
     part_two_winnings = [(pos + 1) * int(hand[1]) for pos, hand in enumerate(part_two_sorted_hands)]
     print(f"With new rules, total winnings are {sum(part_two_winnings)}")
 
 
+# 250520536 is too high
 # 250372376 is too low
 # 248313747 is too low
