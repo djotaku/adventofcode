@@ -19,17 +19,18 @@ My goal for the 2023 problem sets are:
 
 total registered participants = 1085 
 
-| Date  | Position | Score |
-|-------|----------|-------|
-| 1 Dec | 217       | 1709    |
-| 2 Dec | 213| 3483 |
-| 3 Dec |162 | 5336|
-|5 Dec| 216 | 7168 |
+| Date   | Position | Score |
+|--------|----------|-------|
+| 1 Dec  | 217      | 1709  |
+| 2 Dec  | 213      | 3483  |
+| 3 Dec  | 162      | 5336  |
+| 5 Dec  | 216      | 7168  |
+| 10 Dec | 171      | 14774 |
 
 
 ## Days I could not complete
 ### Part 1 Sections Still incomplete:
-
+- Day 10 - I was busy with other stuff, but started laying the groundwork for completing this.
 
 ### Part 2 Sections Still incomplete:
 - Day 04 - I think I have a rough idea of what I need to do to get the answer, but I need to fix the recursion. 
