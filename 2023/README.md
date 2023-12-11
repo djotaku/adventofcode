@@ -12,7 +12,7 @@ My goal for the 2023 problem sets are:
 - In general my aim is to get more and more idiomatic with each language as the days go by.
 - To have fun solving programming puzzles
 
-![2023 stars](https://github.com/djotaku/adventofcode/blob/ef49ac2fcf8a281e4c67a00cba0750510e44783f/screenshots/2023/20231203.png)
+![2023 stars](https://github.com/djotaku/adventofcode/blob/3b034d829c59bbb0b1dfaa7153e0eb62463e9e5b/screenshots/2023/20231210.png)
 
 
 ## Live Score on Python Discord Server
