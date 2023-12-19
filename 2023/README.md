@@ -31,7 +31,7 @@ total registered participants = 1085
 ## Days I could not complete
 ### Part 1 Sections Still incomplete:
 - Day 10 - I was busy with other stuff, but started laying the groundwork for completing this.
-- Day 11 - too busy with life.
+- Days 11 - 18 - too busy with life
 ### Part 2 Sections Still incomplete:
 - Day 04 - I think I have a rough idea of what I need to do to get the answer, but I need to fix the recursion. 
 - Day 05 - didn't think about how I was going to do part 2 without crashing the computer.
