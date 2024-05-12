@@ -7,7 +7,7 @@ fn sum_doubles(captcha: &str)->u32{
     for (position, element) in letters.iter().enumerate(){
         if position + 1 < letters.len(){
             if element.to_digit(10) == letters[position+1].to_digit(10){
-                double_sum += element.to_digit(10).unwrap_or(0) // unwrap_or(0) turns it from an Option<u32) to u32
+                double_sum += element.to_digit(10).unwrap_or(0) // unwrap_or(0) turns it from an Option<u32> to u32
             }
         }
     }
