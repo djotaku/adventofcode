@@ -38,7 +38,7 @@ total registered participants = 1085
 ### Language Specific
 - Nothing Yet
 
-## What I learned from Advent of Code 2022
+## What I learned from Advent of Code 2023
 
 A distillation of what I learned this year:
 - TBD!
