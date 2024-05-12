@@ -1,4 +1,4 @@
-# Advent of Code 2022
+# Advent of Code 2023
 
 Advent of Code 2023 can be found [here](https://adventofcode.com/2023).
 
