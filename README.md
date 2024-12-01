@@ -75,6 +75,10 @@ This repo contains my solutions to the Daily Challenges in folders by year. Each
         - 10.2% Perl
         - 3.9% Go
         - 1.1% Haskell
+- 2024
+    - Ninth Problem Set Tackled/Fifth Year Participating Live
+    - Python as primary language; probably Go as secondary and other languages if there's time.
+    - 2 stars collected so far
 
 ![total stars](https://github.com/djotaku/adventofcode/blob/3b034d829c59bbb0b1dfaa7153e0eb62463e9e5b/screenshots/total/total_star_count_20231210.png)
 
