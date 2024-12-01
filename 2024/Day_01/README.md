@@ -29,7 +29,7 @@ Easy compared to part 1
 ### Perl
 
 ### Go (Golang)
-
+- ParseFloat to convert a string to a float
 ### Haskell
 
 ### Rust
