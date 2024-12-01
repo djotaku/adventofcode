@@ -1,0 +1,7 @@
+[package]
+name = "solution"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+counter = "0.6.0"
