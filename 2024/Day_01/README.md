@@ -33,7 +33,11 @@ Easy compared to part 1
 ### Haskell
 
 ### Rust
-
+- how to sort vectors in Rust
+- how to split on whitespace and then use that output
+- summing vector values
+- Using the Counter crate
+- how to change number type using "as <T>" syntax
 ### Julia
 
 ### Java
