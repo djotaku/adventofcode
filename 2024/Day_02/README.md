@@ -7,7 +7,7 @@ Visit the version with all the story elements [here](https://adventofcode.com/20
 ## Part 1
 Answer: 526
 ## Part 2
-
+Answer: 566
 ## Commentary / Approach to the Problem
 ### Part 1
 When I saw today’s puzzle before heading off to work, I immediately thought of [2021 Day 01](https://github.com/djotaku/adventofcode/tree/1f6a3dcf738ed55ede1931847db2dbeee5e9fac6/2021/Day_01). In 2021 Day 01 the most efficient way to do the problem was to use a sliding “window” to do the math. However, as I went swimming and had nothing else to think about but the puzzle, I realized there were a few complications compared to that puzzle from 3 years ago. First of all, all the numbers in a row need to be going in the same direction (either all increasing or all decreasing). Second, I’m not just figuring out the difference - I need to keep it constrained to between 1 and 3 inclusive. 
@@ -32,6 +32,10 @@ Answer for part 1 is the placeholder variable value.
 
 ### Part 2
 For part 2 I need to make both checks a little more complex. And I would need to make sure I'm only removing one of them. The only thing I can think of right now is the first check if I can fix the same direction bug and then fail on check delta. Then do the same in the other direction.
+
+I was tearing my hair out trying to figure out why I kept coming up low, and it's that I needed to return the modified list if I modified it to then test it against the other criteria.
+
+After that I looked on reddit and found an edge case like [1, 2, 3, 4, 3] was causing failure. This was because I was too cavalier in part 1 about allowing same numbers in a row to pass the same direction test.
 ## What I Learned
 
 ### Generic

@@ -10,39 +10,40 @@ def input_per_line(file: str):
 
 def check_same_direction(numbers: list[int]) -> bool:
     """Check whether the numbers are all increasing or all decreasing and return true if they are.
-    This function will miss if there's a delta 0 between 2 numbers, but that will be caught in delta check."""
+    This function will return True if there's a delta 0 between 2 numbers, but that will be caught in delta check."""
     sorted_numbers = sorted(numbers)
     reverse_sorted_numbers = sorted(numbers, reverse=True)
+    for (a, b) in zip(numbers, numbers[1:]):
+        if a == b:
+            return False
     return True if sorted_numbers == numbers else reverse_sorted_numbers == numbers
 
 
-def apply_dampener_to_same_direction(numbers: list[int]) -> bool:
+def apply_dampener_to_same_direction(numbers: list[int]) -> (bool, list[int]):
     """Keeps checking if removing one number would fix the same direction error."""
     checks = len(numbers)
-    if check_same_direction(numbers) is True:
-        return True
+    if check_same_direction(numbers): # would have passed anyway
+        return True, numbers
     for position in range(checks):
-        modified_numbers = []
-        for pos, number in enumerate(numbers):
-            if pos != position:
-                modified_numbers.append(number)
-        if check_same_direction(modified_numbers) is True:
-            return True
-    return False
+        modified_numbers = [
+            number for pos, number in enumerate(numbers) if pos != position
+        ]
+        if check_same_direction(modified_numbers):
+            return True, modified_numbers
+    return False, numbers
 
-def apply_dampener_to_check_delta(numbers: list[int]) -> bool:
-    """Keeps checking if removing one number would fix the same direction error."""
+def apply_dampener_to_check_delta(numbers: list[int]) -> (bool, list[int]):
+    """Keeps checking if removing one number would fix the same delta error."""
     checks = len(numbers)
-    if check_delta(numbers) is True:
-        return True
+    if check_delta(numbers): # would have passed anyway
+        return True, numbers
     for position in range(checks):
-        modified_numbers = []
-        for pos, number in enumerate(numbers):
-            if pos != position:
-                modified_numbers.append(number)
-        if check_delta(modified_numbers) is True:
-            return True
-    return False
+        modified_numbers = [
+            number for pos, number in enumerate(numbers) if pos != position
+        ]
+        if check_delta(modified_numbers):
+            return True, modified_numbers
+    return False, numbers
 
 def check_delta(numbers: list[int])->bool:
     """Check whether the delta between any 2 numbers is between 1-3 inclusive."""
@@ -55,7 +56,13 @@ def check_delta(numbers: list[int])->bool:
     return all(deltas)
 
 def dampener(numbers: list[int])->bool:
-    return apply_dampener_to_same_direction(numbers) and check_delta(numbers) or check_same_direction(numbers) and apply_dampener_to_check_delta(numbers)
+    (worked, new_list) = apply_dampener_to_same_direction(numbers)
+    if worked and check_delta(new_list):
+        return True
+    (worked, new_list) = apply_dampener_to_check_delta(numbers)
+    if  worked and check_same_direction(new_list):
+            return True
+    return False
 
 if __name__ == '__main__':
     our_input = input_per_line("../input.txt")
